@@ -1,0 +1,10 @@
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\bin\Debug\CalledManagement.exe.config
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\bin\Debug\CalledManagement.exe
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\bin\Debug\CalledManagement.pdb
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.Properties.Resources.resources
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.csproj.GenerateResource.cache
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.exe
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.pdb
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
+G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
