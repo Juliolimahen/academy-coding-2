@@ -14,12 +14,12 @@ namespace CalledManagement
 {
     public partial class FrmRegisterCalled : Form
     {
-        string operation ="";
+        string operation;
         public FrmRegisterCalled()
         {
             InitializeComponent();
         }
-         
+
 
         private void label6_Click(object sender, EventArgs e)
         {
@@ -46,25 +46,25 @@ namespace CalledManagement
         private void btnRegSave_Click(object sender, EventArgs e)
         {
 
-            
-                Called called = new Called();
-                called.Name = txtRegName.Text;
-                called.Date = dtpRegDate.MaxDate;
-                called.Descripition = txtRegDescripition.Text;
-                called.Status = txtRegStatus.Text;
-                
 
-                if (operation == "Init")
+            Called called = new Called();
+            called.Name = txtRegName.Text;
+            called.Date = dtpRegDate.Value;
+            called.Descripition = txtRegDescripition.Text;
+            called.Status = txtRegStatus.Text;
+
+
+            if (operation == "Init")
+            {
+                CalledDAO calleddao = new CalledDAO();
+                if (calleddao.Inserir(called) == false)
                 {
-                    CalledDAO calleddao = new CalledDAO();
-                    if (calleddao.Inserir(called) == false)
-                    {
-                        txtRegName.Focus();
-                        return;
-                    }
-
+                    txtRegName.Focus();
+                    return;
                 }
-            
+
+            }
+
         }
 
         private void label11_Click(object sender, EventArgs e)

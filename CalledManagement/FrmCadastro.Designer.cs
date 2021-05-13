@@ -48,6 +48,8 @@
             this.lbId = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tbpResgister = new System.Windows.Forms.TabPage();
+            this.txtRegStatus = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnRegSave = new System.Windows.Forms.Button();
             this.txtRegDescripition = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,11 +61,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegFinish = new System.Windows.Forms.Button();
             this.btnRegInit = new System.Windows.Forms.Button();
-            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtRegStatus = new System.Windows.Forms.TextBox();
+            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -248,6 +249,7 @@
             // 
             // tbpResgister
             // 
+            this.tbpResgister.Controls.Add(this.groupBox1);
             this.tbpResgister.Controls.Add(this.txtRegStatus);
             this.tbpResgister.Controls.Add(this.label11);
             this.tbpResgister.Controls.Add(this.btnRegSave);
@@ -271,6 +273,23 @@
             this.tbpResgister.Text = "Cadastrar";
             this.tbpResgister.UseVisualStyleBackColor = true;
             // 
+            // txtRegStatus
+            // 
+            this.txtRegStatus.Location = new System.Drawing.Point(287, 23);
+            this.txtRegStatus.Name = "txtRegStatus";
+            this.txtRegStatus.Size = new System.Drawing.Size(125, 20);
+            this.txtRegStatus.TabIndex = 26;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(244, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Status";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
             // btnRegSave
             // 
             this.btnRegSave.Location = new System.Drawing.Point(325, 318);
@@ -286,7 +305,7 @@
             this.txtRegDescripition.Location = new System.Drawing.Point(22, 117);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
-            this.txtRegDescripition.Size = new System.Drawing.Size(567, 99);
+            this.txtRegDescripition.Size = new System.Drawing.Size(390, 99);
             this.txtRegDescripition.TabIndex = 23;
             // 
             // label8
@@ -336,7 +355,7 @@
             // 
             this.txtRegName.Location = new System.Drawing.Point(60, 60);
             this.txtRegName.Name = "txtRegName";
-            this.txtRegName.Size = new System.Drawing.Size(529, 20);
+            this.txtRegName.Size = new System.Drawing.Size(352, 20);
             this.txtRegName.TabIndex = 17;
             // 
             // label5
@@ -350,9 +369,9 @@
             // 
             // btnRegFinish
             // 
-            this.btnRegFinish.Location = new System.Drawing.Point(468, 318);
+            this.btnRegFinish.Location = new System.Drawing.Point(509, 318);
             this.btnRegFinish.Name = "btnRegFinish";
-            this.btnRegFinish.Size = new System.Drawing.Size(121, 49);
+            this.btnRegFinish.Size = new System.Drawing.Size(208, 49);
             this.btnRegFinish.TabIndex = 15;
             this.btnRegFinish.Text = "Finalizar Chamado";
             this.btnRegFinish.UseVisualStyleBackColor = true;
@@ -367,13 +386,6 @@
             this.btnRegInit.Text = "Iniciar";
             this.btnRegInit.UseVisualStyleBackColor = true;
             this.btnRegInit.Click += new System.EventHandler(this.btnRegInit_Click);
-            // 
-            // dtpRegDate
-            // 
-            this.dtpRegDate.Location = new System.Drawing.Point(22, 257);
-            this.dtpRegDate.Name = "dtpRegDate";
-            this.dtpRegDate.Size = new System.Drawing.Size(390, 20);
-            this.dtpRegDate.TabIndex = 11;
             // 
             // label6
             // 
@@ -396,22 +408,24 @@
             this.tbcCalled.Size = new System.Drawing.Size(776, 434);
             this.tbcCalled.TabIndex = 0;
             // 
-            // label11
+            // dtpRegDate
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(244, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Status";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.dtpRegDate.CustomFormat = "dd-MM-yyyy h:m";
+            this.dtpRegDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpRegDate.Location = new System.Drawing.Point(24, 257);
+            this.dtpRegDate.Name = "dtpRegDate";
+            this.dtpRegDate.Size = new System.Drawing.Size(388, 20);
+            this.dtpRegDate.TabIndex = 11;
+            this.dtpRegDate.Value = new System.DateTime(2021, 5, 13, 12, 34, 0, 0);
             // 
-            // txtRegStatus
+            // groupBox1
             // 
-            this.txtRegStatus.Location = new System.Drawing.Point(287, 23);
-            this.txtRegStatus.Name = "txtRegStatus";
-            this.txtRegStatus.Size = new System.Drawing.Size(100, 20);
-            this.txtRegStatus.TabIndex = 26;
+            this.groupBox1.Location = new System.Drawing.Point(509, 26);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(208, 251);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chamado Atual";
             // 
             // FrmRegisterCalled
             // 
@@ -450,7 +464,6 @@
         private System.Windows.Forms.Label lbId;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TabPage tbpResgister;
-        private System.Windows.Forms.DateTimePicker dtpRegDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tbcCalled;
         private System.Windows.Forms.Button btnRegFinish;
@@ -472,5 +485,7 @@
         private System.Windows.Forms.Button btnRegSave;
         private System.Windows.Forms.TextBox txtRegStatus;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker dtpRegDate;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

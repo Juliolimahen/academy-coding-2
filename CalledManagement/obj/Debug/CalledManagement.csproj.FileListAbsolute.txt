@@ -30,3 +30,14 @@ C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManag
 C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CoreCompileInputs.cache
 C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.exe
 C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.Properties.Resources.resources
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.csproj.GenerateResource.cache
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.csproj.CoreCompileInputs.cache
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.exe
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\obj\Debug\CalledManagement.pdb
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\bin\Debug\CalledManagement.exe.config
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\bin\Debug\CalledManagement.exe
+C:\Users\TI_NET_PC\Documents\academy\CalledManagement\bin\Debug\CalledManagement.pdb
