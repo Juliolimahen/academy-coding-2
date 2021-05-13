@@ -10,9 +10,9 @@ namespace CalledManagement.Entities
     class Called
     {
         public int Id { get; set; }
-        public int Nome { get; set; }
+        public string Name { get; set; }
         public DateTime Date { get; set; }
-        public CalledStatus Status { get; set; }
+        public string Status { get; set; }
         public string Descripition { get; set; }
     }
 }

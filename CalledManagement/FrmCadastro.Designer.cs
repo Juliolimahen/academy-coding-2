@@ -30,38 +30,40 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.tbpClosedCalled = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbpOpenCalled = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbId = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tbpResgister = new System.Windows.Forms.TabPage();
-            this.txtRegNome = new System.Windows.Forms.TextBox();
+            this.btnRegSave = new System.Windows.Forms.Button();
+            this.txtRegDescripition = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtRegID = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnRegCancel = new System.Windows.Forms.Button();
+            this.btnRegChange = new System.Windows.Forms.Button();
+            this.txtRegName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegFinish = new System.Windows.Forms.Button();
             this.btnRegInit = new System.Windows.Forms.Button();
-            this.dtpRegDescripition = new System.Windows.Forms.DateTimePicker();
+            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
-            this.btnRegChange = new System.Windows.Forms.Button();
-            this.btnRegCancel = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtRegID = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtDescripition = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtRegStatus = new System.Windows.Forms.TextBox();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -87,6 +89,31 @@
             this.tbpClosedCalled.TabIndex = 1;
             this.tbpClosedCalled.Text = "Chamados Fechados";
             this.tbpClosedCalled.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(181, 366);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Pesquisar";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(59, 368);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 371);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Nome";
             // 
             // label4
             // 
@@ -150,6 +177,31 @@
             this.tbpOpenCalled.Text = "Chamados abertos ";
             this.tbpOpenCalled.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(170, 356);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Pesquisar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(52, 358);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 361);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Nome";
+            // 
             // lbTime
             // 
             this.lbTime.AutoSize = true;
@@ -196,18 +248,20 @@
             // 
             // tbpResgister
             // 
-            this.tbpResgister.Controls.Add(this.button1);
-            this.tbpResgister.Controls.Add(this.txtDescripition);
+            this.tbpResgister.Controls.Add(this.txtRegStatus);
+            this.tbpResgister.Controls.Add(this.label11);
+            this.tbpResgister.Controls.Add(this.btnRegSave);
+            this.tbpResgister.Controls.Add(this.txtRegDescripition);
             this.tbpResgister.Controls.Add(this.label8);
             this.tbpResgister.Controls.Add(this.txtRegID);
             this.tbpResgister.Controls.Add(this.label7);
             this.tbpResgister.Controls.Add(this.btnRegCancel);
             this.tbpResgister.Controls.Add(this.btnRegChange);
-            this.tbpResgister.Controls.Add(this.txtRegNome);
+            this.tbpResgister.Controls.Add(this.txtRegName);
             this.tbpResgister.Controls.Add(this.label5);
             this.tbpResgister.Controls.Add(this.btnRegFinish);
             this.tbpResgister.Controls.Add(this.btnRegInit);
-            this.tbpResgister.Controls.Add(this.dtpRegDescripition);
+            this.tbpResgister.Controls.Add(this.dtpRegDate);
             this.tbpResgister.Controls.Add(this.label6);
             this.tbpResgister.Location = new System.Drawing.Point(4, 22);
             this.tbpResgister.Name = "tbpResgister";
@@ -217,12 +271,73 @@
             this.tbpResgister.Text = "Cadastrar";
             this.tbpResgister.UseVisualStyleBackColor = true;
             // 
-            // txtRegNome
+            // btnRegSave
             // 
-            this.txtRegNome.Location = new System.Drawing.Point(60, 60);
-            this.txtRegNome.Name = "txtRegNome";
-            this.txtRegNome.Size = new System.Drawing.Size(529, 20);
-            this.txtRegNome.TabIndex = 17;
+            this.btnRegSave.Location = new System.Drawing.Point(325, 318);
+            this.btnRegSave.Name = "btnRegSave";
+            this.btnRegSave.Size = new System.Drawing.Size(87, 49);
+            this.btnRegSave.TabIndex = 24;
+            this.btnRegSave.Text = "Salvar";
+            this.btnRegSave.UseVisualStyleBackColor = true;
+            this.btnRegSave.Click += new System.EventHandler(this.btnRegSave_Click);
+            // 
+            // txtRegDescripition
+            // 
+            this.txtRegDescripition.Location = new System.Drawing.Point(22, 117);
+            this.txtRegDescripition.Multiline = true;
+            this.txtRegDescripition.Name = "txtRegDescripition";
+            this.txtRegDescripition.Size = new System.Drawing.Size(567, 99);
+            this.txtRegDescripition.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 101);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Descrição";
+            // 
+            // txtRegID
+            // 
+            this.txtRegID.Location = new System.Drawing.Point(60, 23);
+            this.txtRegID.Name = "txtRegID";
+            this.txtRegID.Size = new System.Drawing.Size(118, 20);
+            this.txtRegID.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Codigo";
+            // 
+            // btnRegCancel
+            // 
+            this.btnRegCancel.Location = new System.Drawing.Point(223, 318);
+            this.btnRegCancel.Name = "btnRegCancel";
+            this.btnRegCancel.Size = new System.Drawing.Size(87, 49);
+            this.btnRegCancel.TabIndex = 19;
+            this.btnRegCancel.Text = "Cancelar";
+            this.btnRegCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnRegChange
+            // 
+            this.btnRegChange.Location = new System.Drawing.Point(117, 318);
+            this.btnRegChange.Name = "btnRegChange";
+            this.btnRegChange.Size = new System.Drawing.Size(91, 49);
+            this.btnRegChange.TabIndex = 18;
+            this.btnRegChange.Text = "Alterar";
+            this.btnRegChange.UseVisualStyleBackColor = true;
+            // 
+            // txtRegName
+            // 
+            this.txtRegName.Location = new System.Drawing.Point(60, 60);
+            this.txtRegName.Name = "txtRegName";
+            this.txtRegName.Size = new System.Drawing.Size(529, 20);
+            this.txtRegName.TabIndex = 17;
             // 
             // label5
             // 
@@ -251,13 +366,14 @@
             this.btnRegInit.TabIndex = 14;
             this.btnRegInit.Text = "Iniciar";
             this.btnRegInit.UseVisualStyleBackColor = true;
+            this.btnRegInit.Click += new System.EventHandler(this.btnRegInit_Click);
             // 
-            // dtpRegDescripition
+            // dtpRegDate
             // 
-            this.dtpRegDescripition.Location = new System.Drawing.Point(22, 257);
-            this.dtpRegDescripition.Name = "dtpRegDescripition";
-            this.dtpRegDescripition.Size = new System.Drawing.Size(390, 20);
-            this.dtpRegDescripition.TabIndex = 11;
+            this.dtpRegDate.Location = new System.Drawing.Point(22, 257);
+            this.dtpRegDate.Name = "dtpRegDate";
+            this.dtpRegDate.Size = new System.Drawing.Size(390, 20);
+            this.dtpRegDate.TabIndex = 11;
             // 
             // label6
             // 
@@ -280,115 +396,22 @@
             this.tbcCalled.Size = new System.Drawing.Size(776, 434);
             this.tbcCalled.TabIndex = 0;
             // 
-            // btnRegChange
+            // label11
             // 
-            this.btnRegChange.Location = new System.Drawing.Point(117, 318);
-            this.btnRegChange.Name = "btnRegChange";
-            this.btnRegChange.Size = new System.Drawing.Size(91, 49);
-            this.btnRegChange.TabIndex = 18;
-            this.btnRegChange.Text = "Alterar";
-            this.btnRegChange.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(244, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Status";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // btnRegCancel
+            // txtRegStatus
             // 
-            this.btnRegCancel.Location = new System.Drawing.Point(223, 318);
-            this.btnRegCancel.Name = "btnRegCancel";
-            this.btnRegCancel.Size = new System.Drawing.Size(87, 49);
-            this.btnRegCancel.TabIndex = 19;
-            this.btnRegCancel.Text = "Cancelar";
-            this.btnRegCancel.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Codigo";
-            // 
-            // txtRegID
-            // 
-            this.txtRegID.Location = new System.Drawing.Point(60, 23);
-            this.txtRegID.Name = "txtRegID";
-            this.txtRegID.Size = new System.Drawing.Size(118, 20);
-            this.txtRegID.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 101);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Descrição";
-            // 
-            // txtDescripition
-            // 
-            this.txtDescripition.Location = new System.Drawing.Point(22, 117);
-            this.txtDescripition.Multiline = true;
-            this.txtDescripition.Name = "txtDescripition";
-            this.txtDescripition.Size = new System.Drawing.Size(567, 99);
-            this.txtDescripition.TabIndex = 23;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(325, 318);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 49);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Salvar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 361);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Nome";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(52, 358);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(170, 356);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Pesquisar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 371);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Nome";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(59, 368);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(181, 366);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Pesquisar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.txtRegStatus.Location = new System.Drawing.Point(287, 23);
+            this.txtRegStatus.Name = "txtRegStatus";
+            this.txtRegStatus.Size = new System.Drawing.Size(100, 20);
+            this.txtRegStatus.TabIndex = 26;
             // 
             // FrmRegisterCalled
             // 
@@ -427,18 +450,18 @@
         private System.Windows.Forms.Label lbId;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TabPage tbpResgister;
-        private System.Windows.Forms.DateTimePicker dtpRegDescripition;
+        private System.Windows.Forms.DateTimePicker dtpRegDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tbcCalled;
         private System.Windows.Forms.Button btnRegFinish;
         private System.Windows.Forms.Button btnRegInit;
-        private System.Windows.Forms.TextBox txtRegNome;
+        private System.Windows.Forms.TextBox txtRegName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRegID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnRegCancel;
         private System.Windows.Forms.Button btnRegChange;
-        private System.Windows.Forms.TextBox txtDescripition;
+        private System.Windows.Forms.TextBox txtRegDescripition;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox2;
@@ -446,6 +469,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegSave;
+        private System.Windows.Forms.TextBox txtRegStatus;
+        private System.Windows.Forms.Label label11;
     }
 }

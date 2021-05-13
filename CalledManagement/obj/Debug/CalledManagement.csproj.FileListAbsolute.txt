@@ -8,3 +8,25 @@ G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagemen
 G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
 G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
 G:\Meu Drive\AcademyCoding\2.0\CalledManagement\CalledManagement\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\CalledManagement.exe.config
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\CalledManagement.exe
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\CalledManagement.pdb
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.Properties.Resources.resources
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.GenerateResource.cache
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CoreCompileInputs.cache
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.exe
+G:\Meu Drive\AcademyCoding\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\bin\Debug\CalledManagement.exe.config
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\bin\Debug\CalledManagement.exe
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\bin\Debug\CalledManagement.pdb
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.Properties.Resources.resources
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.GenerateResource.cache
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CoreCompileInputs.cache
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.exe
+C:\Users\julio\Documents\AcademyCoding 2.0\Nova pasta\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb
