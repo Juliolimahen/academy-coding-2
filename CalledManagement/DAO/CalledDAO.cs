@@ -15,14 +15,18 @@ namespace CalledManagement.DAO
 
         public bool Inserir(Called called)
         {
+            string strConn = @"server=DEVPC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
+
+            SqlConnection conn = new SqlConnection(strConn);
+            
+
             string sql = "INSERT INTO CALLED (NAME, DATE, DESCRIPITION, STATUS)";
             sql = sql + " VALUES (@Name, @Date, @Descripition, @Status";
 
             // Variavel sql que armazena código SQL para inserir o registro
 
             //using (FbConnection conn = new FbConnection(conStr))
-            string strConn = @"server=DEVPC; DataBase=academycoding2; Trusted_Connection = True";
-            SqlConnection conn = new SqlConnection(strConn);
+            
             
             // Cria objeto conn da classe FbConnection passando por parâmetro a string de conexão chamada conStr
             {

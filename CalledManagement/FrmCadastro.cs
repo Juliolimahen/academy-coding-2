@@ -14,7 +14,7 @@ namespace CalledManagement
 {
     public partial class FrmRegisterCalled : Form
     {
-        string operation = "";
+        string operation ="";
         public FrmRegisterCalled()
         {
             InitializeComponent();
