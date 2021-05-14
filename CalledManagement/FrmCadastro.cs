@@ -20,7 +20,22 @@ namespace CalledManagement
         {
             InitializeComponent();
         }
-
+        private void FrmCadastro_Activated(object sender, EventArgs e)
+        {
+            txtRegID.Focus();
+        }
+        private Boolean ValidateData()
+        {
+            {
+                if (txtRegName.Text == string.Empty)
+                {
+                    MessageBox.Show("O campo nome é obrigatório !", "Atenção");
+                    txtRegName.Focus();
+                    return false;
+                }
+                return true;
+            }
+        }
 
         private void label6_Click(object sender, EventArgs e)
         {
@@ -46,33 +61,35 @@ namespace CalledManagement
 
         private void btnRegSave_Click(object sender, EventArgs e)
         {
-
-
-            Called called = new Called();
-            called.Name = txtRegName.Text;
-            called.Date = dtpRegDate.Value;
-            called.Descripition = txtRegDescripition.Text;
-            called.Status = txtRegStatus.Text;
-
-            if (operation == "Init")
+            if (ValidateData() == true)
             {
-                CalledDAO calleddao = new CalledDAO();
-                if (calleddao.Insert(called) == false)
+
+                Called called = new Called();
+                called.Name = txtRegName.Text;
+                called.Date = dtpRegDate.Value;
+                called.Descripition = txtRegDescripition.Text;
+                called.Status = txtRegStatus.Text;
+
+                if (operation == "Init")
                 {
-                    txtRegName.Focus();
-                    return;
+                    CalledDAO calleddao = new CalledDAO();
+                    if (calleddao.Insert(called) == false)
+                    {
+                        txtRegName.Focus();
+                        return;
+                    }
+
                 }
-
-            }
-            else if (operation == "Change")
-            {
-
-                CalledDAO calleddao = new CalledDAO();
-                called.Id = int.Parse(txtRegID.Text);
-                if (calleddao.Change(called) == false)
+                else if (operation == "Change")
                 {
-                    txtRegName.Focus();
-                    return;
+
+                    CalledDAO calleddao = new CalledDAO();
+                    called.Id = int.Parse(txtRegID.Text);
+                    if (calleddao.Change(called) == false)
+                    {
+                        txtRegName.Focus();
+                        return;
+                    }
                 }
             }
 
@@ -98,6 +115,30 @@ namespace CalledManagement
             txtRegID.Enabled = false;
             txtRegName.Focus();
             operation = "Change";
+        }
+
+        private void btnRegDelete_Click(object sender, EventArgs e)
+        {
+            if (txtRegName.Text.Length > 0)
+            {
+                if (MessageBox.Show("Confirma a exclusão do registro ?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    CalledDAO calleddao = new CalledDAO();
+                    if (calleddao.Delete(int.Parse(txtRegID.Text)) == false)
+                    {
+                        txtRegID.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        Function.Clean(this);
+                        Function.EnableButtons(this, "Init");
+                        txtRegID.Focus();
+                    }
+                }
+            }
         }
     }
 }

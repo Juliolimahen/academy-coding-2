@@ -18,8 +18,6 @@ namespace CalledManagement.DAO
 
             //SqlConnection conn = new SqlConnection(strConn);
 
-
-
             //sql = sql + ;
 
             // Variavel sql que armazena código SQL para inserir o registro
@@ -37,9 +35,6 @@ namespace CalledManagement.DAO
 
                     ToConnection toconnection = new ToConnection();
 
-
-
-
                     //string query = "select * from dbo.alunos";
                     // Cria objeto cmd da classe FbCommand passando os comandos SQL e a conexão com o Banco de Dados
                     // Esse objeto é responsável em executar os comandos SQL
@@ -54,7 +49,6 @@ namespace CalledManagement.DAO
                     // Retorna o comando SQL de INSERT no banco de dados. (Sem Retorno de dados)
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
-                    MessageBox.Show("Cadastro salva com sucesso!");
                 }
                 catch (Exception ex)
                 {
@@ -65,6 +59,7 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
+                    MessageBox.Show("Cadastro salvo com sucesso!");
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                     // O finally é sempre executado,
@@ -78,8 +73,6 @@ namespace CalledManagement.DAO
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
             //SqlConnection conn = new SqlConnection(strConn);
-
-
 
             //sql = sql + ;
 
@@ -98,9 +91,6 @@ namespace CalledManagement.DAO
 
                     ToConnection toconnection = new ToConnection();
 
-
-
-
                     //string query = "select * from dbo.alunos";
                     // Cria objeto cmd da classe FbCommand passando os comandos SQL e a conexão com o Banco de Dados
                     // Esse objeto é responsável em executar os comandos SQL
@@ -116,7 +106,6 @@ namespace CalledManagement.DAO
                     // Retorna o comando SQL de INSERT no banco de dados. (Sem Retorno de dados)
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
-                    MessageBox.Show("Cadastro salva com sucesso!");
                 }
                 catch (Exception ex)
                 {
@@ -127,6 +116,7 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
+                    MessageBox.Show("Cadastro alterado com sucesso!");
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                     // O finally é sempre executado,
@@ -135,6 +125,37 @@ namespace CalledManagement.DAO
             }
         }
 
+        public bool Delete(int ID)
+        {
+            {
+                try
+                {
+                    //abre conexão
+                    SqlCommand cmd = new SqlCommand();
+                    ToConnection toconnection = new ToConnection();
+                    cmd.Connection = toconnection.ToConnect();
+
+                    cmd.CommandText = "delete from CALLED where Id = @Id";
+
+                    cmd.Parameters.AddWithValue("@Id", ID);
+
+                    cmd.ExecuteNonQuery();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao exluir registro: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    MessageBox.Show("Cadastro Excluido com sucesso!");
+                    ToConnection toconection = new ToConnection();
+                    toconection.ToDisconnect();
+                }
+            }
+        }
     }
 }
 

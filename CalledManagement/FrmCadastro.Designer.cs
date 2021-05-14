@@ -65,6 +65,7 @@
             this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
+            this.btnRegDelete = new System.Windows.Forms.Button();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -249,6 +250,7 @@
             // 
             // tbpResgister
             // 
+            this.tbpResgister.Controls.Add(this.btnRegDelete);
             this.tbpResgister.Controls.Add(this.groupBox1);
             this.tbpResgister.Controls.Add(this.txtRegStatus);
             this.tbpResgister.Controls.Add(this.label11);
@@ -301,9 +303,9 @@
             // 
             // btnRegSave
             // 
-            this.btnRegSave.Location = new System.Drawing.Point(325, 318);
+            this.btnRegSave.Location = new System.Drawing.Point(348, 318);
             this.btnRegSave.Name = "btnRegSave";
-            this.btnRegSave.Size = new System.Drawing.Size(87, 49);
+            this.btnRegSave.Size = new System.Drawing.Size(64, 49);
             this.btnRegSave.TabIndex = 24;
             this.btnRegSave.Text = "Salvar";
             this.btnRegSave.UseVisualStyleBackColor = true;
@@ -344,18 +346,18 @@
             // 
             // btnRegCancel
             // 
-            this.btnRegCancel.Location = new System.Drawing.Point(223, 318);
+            this.btnRegCancel.Location = new System.Drawing.Point(188, 318);
             this.btnRegCancel.Name = "btnRegCancel";
-            this.btnRegCancel.Size = new System.Drawing.Size(87, 49);
+            this.btnRegCancel.Size = new System.Drawing.Size(58, 49);
             this.btnRegCancel.TabIndex = 19;
             this.btnRegCancel.Text = "Cancelar";
             this.btnRegCancel.UseVisualStyleBackColor = true;
             // 
             // btnRegChange
             // 
-            this.btnRegChange.Location = new System.Drawing.Point(117, 318);
+            this.btnRegChange.Location = new System.Drawing.Point(106, 318);
             this.btnRegChange.Name = "btnRegChange";
-            this.btnRegChange.Size = new System.Drawing.Size(91, 49);
+            this.btnRegChange.Size = new System.Drawing.Size(61, 49);
             this.btnRegChange.TabIndex = 18;
             this.btnRegChange.Text = "Alterar";
             this.btnRegChange.UseVisualStyleBackColor = true;
@@ -391,7 +393,7 @@
             // 
             this.btnRegInit.Location = new System.Drawing.Point(22, 318);
             this.btnRegInit.Name = "btnRegInit";
-            this.btnRegInit.Size = new System.Drawing.Size(77, 49);
+            this.btnRegInit.Size = new System.Drawing.Size(62, 49);
             this.btnRegInit.TabIndex = 14;
             this.btnRegInit.Text = "Iniciar";
             this.btnRegInit.UseVisualStyleBackColor = true;
@@ -427,6 +429,16 @@
             this.tbcCalled.SelectedIndex = 0;
             this.tbcCalled.Size = new System.Drawing.Size(776, 434);
             this.tbcCalled.TabIndex = 0;
+            // 
+            // btnRegDelete
+            // 
+            this.btnRegDelete.Location = new System.Drawing.Point(268, 318);
+            this.btnRegDelete.Name = "btnRegDelete";
+            this.btnRegDelete.Size = new System.Drawing.Size(58, 49);
+            this.btnRegDelete.TabIndex = 28;
+            this.btnRegDelete.Text = "Excluir";
+            this.btnRegDelete.UseVisualStyleBackColor = true;
+            this.btnRegDelete.Click += new System.EventHandler(this.btnRegDelete_Click);
             // 
             // FrmRegisterCalled
             // 
@@ -488,5 +500,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dtpRegDate;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnRegDelete;
     }
 }
