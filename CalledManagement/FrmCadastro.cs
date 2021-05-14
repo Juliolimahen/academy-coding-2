@@ -1,5 +1,6 @@
 ﻿using CalledManagement.DAO;
 using CalledManagement.Entities;
+using CalledManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,14 +34,14 @@ namespace CalledManagement
 
         private void btnRegInit_Click(object sender, EventArgs e)
         {
-            Called called = new Called();
-            CalledDAO calleddao = new CalledDAO();
-            if (calleddao.Inserir(called) == false)
-            {
-                txtRegName.Focus();
-                operation = "Init";
-                return;
-            }
+
+            Function.EnableFields(this, true);
+            Function.Clean(this);
+            Function.EnableButtons(this, "Save");
+            txtRegID.Enabled = false;
+            txtRegName.Focus();
+            operation = "Init";
+
         }
 
         private void btnRegSave_Click(object sender, EventArgs e)
@@ -53,23 +54,50 @@ namespace CalledManagement
             called.Descripition = txtRegDescripition.Text;
             called.Status = txtRegStatus.Text;
 
-
             if (operation == "Init")
             {
                 CalledDAO calleddao = new CalledDAO();
-                if (calleddao.Inserir(called) == false)
+                if (calleddao.Insert(called) == false)
                 {
                     txtRegName.Focus();
                     return;
                 }
 
             }
+            else if (operation == "Change")
+            {
+
+                CalledDAO calleddao = new CalledDAO();
+                called.Id = int.Parse(txtRegID.Text);
+                if (calleddao.Change(called) == false)
+                {
+                    txtRegName.Focus();
+                    return;
+                }
+            }
+
+            Function.EnableFields(this, false);
+            Function.Clean(this);
+            Function.EnableButtons(this, "Init");
+            txtRegID.Enabled = true;
+            //txtRegResearch.Enabled = true;
+            txtRegID.Focus();
+            operation = "";
 
         }
 
         private void label11_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRegChange_Click(object sender, EventArgs e)
+        {
+            Function.EnableFields(this, true);
+            Function.EnableButtons(this, "Save");
+            txtRegID.Enabled = false;
+            txtRegName.Focus();
+            operation = "Change";
         }
     }
 }

@@ -48,6 +48,7 @@
             this.lbId = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tbpResgister = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtRegStatus = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnRegSave = new System.Windows.Forms.Button();
@@ -61,10 +62,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegFinish = new System.Windows.Forms.Button();
             this.btnRegInit = new System.Windows.Forms.Button();
+            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
-            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -273,6 +273,15 @@
             this.tbpResgister.Text = "Cadastrar";
             this.tbpResgister.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(509, 26);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(208, 251);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chamado Atual";
+            // 
             // txtRegStatus
             // 
             this.txtRegStatus.Location = new System.Drawing.Point(287, 23);
@@ -350,6 +359,7 @@
             this.btnRegChange.TabIndex = 18;
             this.btnRegChange.Text = "Alterar";
             this.btnRegChange.UseVisualStyleBackColor = true;
+            this.btnRegChange.Click += new System.EventHandler(this.btnRegChange_Click);
             // 
             // txtRegName
             // 
@@ -387,6 +397,16 @@
             this.btnRegInit.UseVisualStyleBackColor = true;
             this.btnRegInit.Click += new System.EventHandler(this.btnRegInit_Click);
             // 
+            // dtpRegDate
+            // 
+            this.dtpRegDate.CustomFormat = "dd-MM-yyyy h:m";
+            this.dtpRegDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dtpRegDate.Location = new System.Drawing.Point(24, 257);
+            this.dtpRegDate.Name = "dtpRegDate";
+            this.dtpRegDate.Size = new System.Drawing.Size(388, 20);
+            this.dtpRegDate.TabIndex = 11;
+            this.dtpRegDate.Value = new System.DateTime(2021, 5, 13, 12, 34, 0, 0);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -407,25 +427,6 @@
             this.tbcCalled.SelectedIndex = 0;
             this.tbcCalled.Size = new System.Drawing.Size(776, 434);
             this.tbcCalled.TabIndex = 0;
-            // 
-            // dtpRegDate
-            // 
-            this.dtpRegDate.CustomFormat = "dd-MM-yyyy h:m";
-            this.dtpRegDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpRegDate.Location = new System.Drawing.Point(24, 257);
-            this.dtpRegDate.Name = "dtpRegDate";
-            this.dtpRegDate.Size = new System.Drawing.Size(388, 20);
-            this.dtpRegDate.TabIndex = 11;
-            this.dtpRegDate.Value = new System.DateTime(2021, 5, 13, 12, 34, 0, 0);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(509, 26);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(208, 251);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chamado Atual";
             // 
             // FrmRegisterCalled
             // 

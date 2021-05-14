@@ -13,7 +13,7 @@ namespace CalledManagement.DAO
 
         public ToConnection()
         {
-            conn.ConnectionString = @"Data Source=TI-NET-PC\SQLEXPRESS;Initial Catalog=academycoding2;Integrated Security=True";
+            conn.ConnectionString = @"Data Source=DEVPC\SQLEXPRESS;Initial Catalog=academycoding2;Integrated Security=True";
             //@"server=TI-NET-PC\SQLEXPRESS;DataBase=academycoding2";
         }
         public SqlConnection ToConnect()
