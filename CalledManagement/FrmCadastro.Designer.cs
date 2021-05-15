@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.tbpClosedCalled = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,15 +41,20 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbpOpenCalled = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbId = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.tbpResgister = new System.Windows.Forms.TabPage();
+            this.btnRegDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbRegTimer = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbRegDateTime = new System.Windows.Forms.Label();
             this.txtRegStatus = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnRegSave = new System.Windows.Forms.Button();
@@ -65,13 +71,16 @@
             this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
-            this.btnRegDelete = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpResgister.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tbcCalled.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbpClosedCalled
@@ -164,13 +173,13 @@
             // tbpOpenCalled
             // 
             this.tbpOpenCalled.Controls.Add(this.button2);
-            this.tbpOpenCalled.Controls.Add(this.textBox1);
+            this.tbpOpenCalled.Controls.Add(this.txtSearch);
             this.tbpOpenCalled.Controls.Add(this.label9);
             this.tbpOpenCalled.Controls.Add(this.lbTime);
             this.tbpOpenCalled.Controls.Add(this.lbDate);
             this.tbpOpenCalled.Controls.Add(this.lbStatus);
             this.tbpOpenCalled.Controls.Add(this.lbId);
-            this.tbpOpenCalled.Controls.Add(this.dataGridView2);
+            this.tbpOpenCalled.Controls.Add(this.dgvSecCalled);
             this.tbpOpenCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpOpenCalled.Name = "tbpOpenCalled";
             this.tbpOpenCalled.Padding = new System.Windows.Forms.Padding(3);
@@ -188,12 +197,12 @@
             this.button2.Text = "Pesquisar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 358);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtSearch.Location = new System.Drawing.Point(52, 358);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.TabIndex = 6;
             // 
             // label9
             // 
@@ -240,13 +249,13 @@
             this.lbId.TabIndex = 1;
             this.lbId.Text = "ID: ";
             // 
-            // dataGridView2
+            // dgvSecCalled
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 28);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(756, 308);
-            this.dataGridView2.TabIndex = 0;
+            this.dgvSecCalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSecCalled.Location = new System.Drawing.Point(6, 28);
+            this.dgvSecCalled.Name = "dgvSecCalled";
+            this.dgvSecCalled.Size = new System.Drawing.Size(756, 308);
+            this.dgvSecCalled.TabIndex = 0;
             // 
             // tbpResgister
             // 
@@ -275,14 +284,68 @@
             this.tbpResgister.Text = "Cadastrar";
             this.tbpResgister.UseVisualStyleBackColor = true;
             // 
+            // btnRegDelete
+            // 
+            this.btnRegDelete.Location = new System.Drawing.Point(268, 318);
+            this.btnRegDelete.Name = "btnRegDelete";
+            this.btnRegDelete.Size = new System.Drawing.Size(58, 49);
+            this.btnRegDelete.TabIndex = 28;
+            this.btnRegDelete.Text = "Excluir";
+            this.btnRegDelete.UseVisualStyleBackColor = true;
+            this.btnRegDelete.Click += new System.EventHandler(this.btnRegDelete_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbRegTimer);
+            this.groupBox1.Controls.Add(this.label33);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.lbRegDateTime);
             this.groupBox1.Location = new System.Drawing.Point(509, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(208, 251);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chamado Atual";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lbRegTimer
+            // 
+            this.lbRegTimer.AutoSize = true;
+            this.lbRegTimer.Location = new System.Drawing.Point(24, 120);
+            this.lbRegTimer.Name = "lbRegTimer";
+            this.lbRegTimer.Size = new System.Drawing.Size(49, 13);
+            this.lbRegTimer.TabIndex = 3;
+            this.lbRegTimer.Text = "00:00:00";
+            this.lbRegTimer.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(24, 91);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(112, 13);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Tempo no Chamado...";
+            this.label33.Click += new System.EventHandler(this.lbRegTimer_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(24, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Data/Hora cadastro";
+            // 
+            // lbRegDateTime
+            // 
+            this.lbRegDateTime.AutoSize = true;
+            this.lbRegDateTime.Location = new System.Drawing.Point(24, 64);
+            this.lbRegDateTime.Name = "lbRegDateTime";
+            this.lbRegDateTime.Size = new System.Drawing.Size(81, 13);
+            this.lbRegDateTime.TabIndex = 0;
+            this.lbRegDateTime.Text = "dd-MM-yy h:m:s";
+            this.lbRegDateTime.Click += new System.EventHandler(this.lbRegDateTime_Click);
             // 
             // txtRegStatus
             // 
@@ -430,15 +493,14 @@
             this.tbcCalled.Size = new System.Drawing.Size(776, 434);
             this.tbcCalled.TabIndex = 0;
             // 
-            // btnRegDelete
+            // timer1
             // 
-            this.btnRegDelete.Location = new System.Drawing.Point(268, 318);
-            this.btnRegDelete.Name = "btnRegDelete";
-            this.btnRegDelete.Size = new System.Drawing.Size(58, 49);
-            this.btnRegDelete.TabIndex = 28;
-            this.btnRegDelete.Text = "Excluir";
-            this.btnRegDelete.UseVisualStyleBackColor = true;
-            this.btnRegDelete.Click += new System.EventHandler(this.btnRegDelete_Click);
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
             // FrmRegisterCalled
             // 
@@ -454,10 +516,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tbpOpenCalled.ResumeLayout(false);
             this.tbpOpenCalled.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
             this.tbpResgister.ResumeLayout(false);
             this.tbpResgister.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tbcCalled.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -475,7 +540,7 @@
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label lbId;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvSecCalled;
         private System.Windows.Forms.TabPage tbpResgister;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tbcCalled;
@@ -493,7 +558,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnRegSave;
         private System.Windows.Forms.TextBox txtRegStatus;
@@ -501,5 +566,11 @@
         private System.Windows.Forms.DateTimePicker dtpRegDate;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnRegDelete;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbRegDateTime;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label lbRegTimer;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

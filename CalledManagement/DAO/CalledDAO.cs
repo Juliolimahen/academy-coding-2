@@ -90,6 +90,7 @@ namespace CalledManagement.DAO
                     //conn.Open(); // Abre a conexão com o banco de dados.
 
                     ToConnection toconnection = new ToConnection();
+                    toconnection.ToConnect();
 
                     //string query = "select * from dbo.alunos";
                     // Cria objeto cmd da classe FbCommand passando os comandos SQL e a conexão com o Banco de Dados
@@ -156,6 +157,96 @@ namespace CalledManagement.DAO
                 }
             }
         }
+        public Called SearchID(int ID)
+        {
+            Called called = new Called();
+            SqlCommand cmd = new SqlCommand();
+
+            {
+                //conn.Open();
+                ToConnection toconnection = new ToConnection();
+                toconnection.ToConnect();
+
+                cmd.CommandText = "SELECT Id, Name, Date, Status, Descripition FROM CALLED WHERE Id = '@ID'";
+                cmd.Parameters.AddWithValue("@Id", ID);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //percorre todas as linhas de DataReader
+                while (reader.Read())
+                {
+                    //recuperar os campos
+                    called.Id = int.Parse(reader["Id"].ToString());
+                    called.Name = reader["Name"].ToString();
+                    called.Date = Convert.ToDateTime(reader["Date"].ToString());
+                    called.Status = reader["Status"].ToString();
+                    called.Descripition = reader["Descripition"].ToString();
+                }
+                //conn.Close();
+                ToConnection toconection = new ToConnection();
+                toconection.ToDisconnect();
+            }
+            return called;
+        }
+
+        public List<Called> SearchName(string nome)
+        {
+            List<Called> lista = new List<Called>();
+
+
+            SqlCommand cmd = new SqlCommand();
+
+            {
+                //conn.Open();
+                ToConnection toconnection = new ToConnection();
+                toconnection.ToConnect();
+                cmd.CommandText = "SELECT Id, Name, Date, Status, Descripition FROM CALLED WHERE Name LIKE '@Name' ORDER BY Name";
+                cmd.Parameters.AddWithValue("@Name", "%" + nome + "%");
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //percorre todas as linhas do DataReader
+                while (reader.Read())
+                {
+                    //Recupera Campos
+                    Called called = new Called();
+                    called.Id = int.Parse(reader["Id"].ToString());
+                    called.Name = reader["Name"].ToString();
+                    called.Date = Convert.ToDateTime(reader["Date"].ToString());
+                    called.Status = reader["Status"].ToString();
+                    called.Descripition = reader["Descripition"].ToString();
+
+                    lista.Add(called);
+                }
+            }
+            return lista;
+
+        }
+        /*
+            public DataSet SearchReport(string nomeinicial, string nomefinal)
+            {
+                DataSet ds = new DataSet("Cliente");
+                SqlDataAdapter da = new SqlDataAdapter();
+
+                SqlCommand cmd = new SqlCommand();
+                {
+                    ToConnection toconnection = new ToConnection();
+                    toconnection.ToConnect();
+
+                    StringBuilder sql = new StringBuilder();
+
+                    sql.Append("SELECT ID, NOME ,LOGRADOURO, NUMERO FROM CLIENTE ");
+                    sql.Append("WHERE NOME BETWEEN @NOMEINI AND @NOMEFIM ");
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql.ToString());
+                    cmd.Parameters.AddWithValue("@NOMEINI", nomeinicial);
+                    cmd.Parameters.AddWithValue("@NOMEFIM", nomefinal);
+
+                    da.SelectCommand = cmd;
+                    da.Fill(ds);
+                    conn.Close();
+                }
+                return ds;
+
+            }*/
     }
 }
 

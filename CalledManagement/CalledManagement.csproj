@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="academycoding2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAO\CalledDAO.cs" />
     <Compile Include="DAO\ToConnection.cs" />
     <Compile Include="Entities\Called.cs" />
@@ -83,6 +88,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="academycoding2DataSet.xsc">
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="academycoding2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>academycoding2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="academycoding2DataSet.xss">
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
