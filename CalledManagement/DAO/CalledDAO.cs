@@ -1,6 +1,7 @@
 ﻿using CalledManagement.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace CalledManagement.DAO
 
             //using (FbConnection conn = new FbConnection(conStr))
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "insert into CALLED (Name, Date, Descripition, Status) values (@Name, @Date, @Descripition, @Status)";
+            cmd.CommandText = "insert into CALLED (Name, Date, Descripition, Finished) values (@Name, @Date, @Descripition, @Finished)";
             // Cria objeto conn da classe FbConnection passando por parâmetro a string de conexão chamada conStr
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -41,7 +42,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
-                    cmd.Parameters.AddWithValue("@Status", called.Status);
+                    cmd.Parameters.AddWithValue("@Finished", called.Finished);
 
                     cmd.Connection = toconnection.ToConnect();
                     // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
@@ -80,7 +81,7 @@ namespace CalledManagement.DAO
 
             //using (FbConnection conn = new FbConnection(conStr))
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Status = @Status  where Id = @Id";
+            cmd.CommandText = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished  where Id = @Id";
             // Cria objeto conn da classe FbConnection passando por parâmetro a string de conexão chamada conStr
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -99,7 +100,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
-                    cmd.Parameters.AddWithValue("@Status", called.Status);
+                    cmd.Parameters.AddWithValue("@Finished", called.Finished);
 
                     cmd.Connection = toconnection.ToConnect();
                     // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
@@ -157,18 +158,72 @@ namespace CalledManagement.DAO
                 }
             }
         }
+
+        public void ListarGrid(DataGridView dgvSec)
+        {
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            try
+            {
+                cmd.Connection = toconnection.ToConnect();
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED ORDER BY Date  ASC";
+
+                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable db = new DataTable();
+                adp.Fill(db);
+                dgvSec.DataSource = db;
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Erro ao Lista registro: " + ex.Message);
+            }
+
+        }
+        public void SearchGrid(DataGridView dgvSec, string Name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            try
+            {
+                cmd.Connection = toconnection.ToConnect();
+
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
+                cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
+
+
+
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable db = new DataTable();
+                adp.Fill(db);
+                dgvSec.DataSource = db;
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Erro ao Lista registro: " + ex.Message);
+            }
+
+        }
         public Called SearchID(int ID)
         {
             Called called = new Called();
+
             SqlCommand cmd = new SqlCommand();
-
+            ToConnection toconnection = new ToConnection();
             {
-                //conn.Open();
-                ToConnection toconnection = new ToConnection();
-                toconnection.ToConnect();
+                cmd.Connection = toconnection.ToConnect();
 
-                cmd.CommandText = "SELECT Id, Name, Date, Status, Descripition FROM CALLED WHERE Id = '@ID'";
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Id'";
                 cmd.Parameters.AddWithValue("@Id", ID);
+                cmd.Connection = toconnection.ToConnect();
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //percorre todas as linhas de DataReader
@@ -178,29 +233,24 @@ namespace CalledManagement.DAO
                     called.Id = int.Parse(reader["Id"].ToString());
                     called.Name = reader["Name"].ToString();
                     called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    called.Status = reader["Status"].ToString();
+                    called.Finished = reader["Finished"].ToString();
                     called.Descripition = reader["Descripition"].ToString();
                 }
-                //conn.Close();
-                ToConnection toconection = new ToConnection();
-                toconection.ToDisconnect();
+                toconnection.ToDisconnect();
             }
             return called;
         }
-
-        public List<Called> SearchName(string nome)
+        public List<Called> SearchName(string Name)
         {
             List<Called> lista = new List<Called>();
-
-
-            SqlCommand cmd = new SqlCommand();
-
             {
                 //conn.Open();
                 ToConnection toconnection = new ToConnection();
                 toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Status, Descripition FROM CALLED WHERE Name LIKE '@Name' ORDER BY Name";
-                cmd.Parameters.AddWithValue("@Name", "%" + nome + "%");
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
+                cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
+                cmd.Connection = toconnection.ToConnect();
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //percorre todas as linhas do DataReader
@@ -211,7 +261,7 @@ namespace CalledManagement.DAO
                     called.Id = int.Parse(reader["Id"].ToString());
                     called.Name = reader["Name"].ToString();
                     called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    called.Status = reader["Status"].ToString();
+                    called.Finished = reader["Finished"].ToString();
                     called.Descripition = reader["Descripition"].ToString();
 
                     lista.Add(called);
@@ -220,33 +270,6 @@ namespace CalledManagement.DAO
             return lista;
 
         }
-        /*
-            public DataSet SearchReport(string nomeinicial, string nomefinal)
-            {
-                DataSet ds = new DataSet("Cliente");
-                SqlDataAdapter da = new SqlDataAdapter();
-
-                SqlCommand cmd = new SqlCommand();
-                {
-                    ToConnection toconnection = new ToConnection();
-                    toconnection.ToConnect();
-
-                    StringBuilder sql = new StringBuilder();
-
-                    sql.Append("SELECT ID, NOME ,LOGRADOURO, NUMERO FROM CLIENTE ");
-                    sql.Append("WHERE NOME BETWEEN @NOMEINI AND @NOMEFIM ");
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sql.ToString());
-                    cmd.Parameters.AddWithValue("@NOMEINI", nomeinicial);
-                    cmd.Parameters.AddWithValue("@NOMEFIM", nomefinal);
-
-                    da.SelectCommand = cmd;
-                    da.Fill(ds);
-                    conn.Close();
-                }
-                return ds;
-
-            }*/
     }
 }
 

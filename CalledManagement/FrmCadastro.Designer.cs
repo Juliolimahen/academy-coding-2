@@ -34,20 +34,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbpOpenCalled = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSecSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.lbTime = new System.Windows.Forms.Label();
-            this.lbDate = new System.Windows.Forms.Label();
-            this.lbStatus = new System.Windows.Forms.Label();
-            this.lbId = new System.Windows.Forms.Label();
-            this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.btnRegDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -72,15 +63,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpResgister.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbcCalled.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.SuspendLayout();
             // 
             // tbpClosedCalled
@@ -88,10 +78,6 @@
             this.tbpClosedCalled.Controls.Add(this.button3);
             this.tbpClosedCalled.Controls.Add(this.textBox2);
             this.tbpClosedCalled.Controls.Add(this.label10);
-            this.tbpClosedCalled.Controls.Add(this.label4);
-            this.tbpClosedCalled.Controls.Add(this.label3);
-            this.tbpClosedCalled.Controls.Add(this.label2);
-            this.tbpClosedCalled.Controls.Add(this.label1);
             this.tbpClosedCalled.Controls.Add(this.dataGridView1);
             this.tbpClosedCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpClosedCalled.Name = "tbpClosedCalled";
@@ -126,44 +112,9 @@
             this.label10.TabIndex = 6;
             this.label10.Text = "Nome";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(178, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Tempo:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(139, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Data:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(80, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Status: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "ID: ";
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.MintCream;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 27);
             this.dataGridView1.Name = "dataGridView1";
@@ -172,13 +123,9 @@
             // 
             // tbpOpenCalled
             // 
-            this.tbpOpenCalled.Controls.Add(this.button2);
+            this.tbpOpenCalled.Controls.Add(this.btnSecSearch);
             this.tbpOpenCalled.Controls.Add(this.txtSearch);
             this.tbpOpenCalled.Controls.Add(this.label9);
-            this.tbpOpenCalled.Controls.Add(this.lbTime);
-            this.tbpOpenCalled.Controls.Add(this.lbDate);
-            this.tbpOpenCalled.Controls.Add(this.lbStatus);
-            this.tbpOpenCalled.Controls.Add(this.lbId);
             this.tbpOpenCalled.Controls.Add(this.dgvSecCalled);
             this.tbpOpenCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpOpenCalled.Name = "tbpOpenCalled";
@@ -188,14 +135,15 @@
             this.tbpOpenCalled.Text = "Chamados abertos ";
             this.tbpOpenCalled.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSecSearch
             // 
-            this.button2.Location = new System.Drawing.Point(170, 356);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Pesquisar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSecSearch.Location = new System.Drawing.Point(192, 355);
+            this.btnSecSearch.Name = "btnSecSearch";
+            this.btnSecSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSecSearch.TabIndex = 7;
+            this.btnSecSearch.Text = "Pesquisar";
+            this.btnSecSearch.UseVisualStyleBackColor = true;
+            this.btnSecSearch.Click += new System.EventHandler(this.btnSecSearch_Click);
             // 
             // txtSearch
             // 
@@ -212,50 +160,6 @@
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 5;
             this.label9.Text = "Nome";
-            // 
-            // lbTime
-            // 
-            this.lbTime.AutoSize = true;
-            this.lbTime.Location = new System.Drawing.Point(189, 12);
-            this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(43, 13);
-            this.lbTime.TabIndex = 4;
-            this.lbTime.Text = "Tempo:";
-            // 
-            // lbDate
-            // 
-            this.lbDate.AutoSize = true;
-            this.lbDate.Location = new System.Drawing.Point(140, 12);
-            this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(33, 13);
-            this.lbDate.TabIndex = 3;
-            this.lbDate.Text = "Data:";
-            // 
-            // lbStatus
-            // 
-            this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(71, 12);
-            this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(43, 13);
-            this.lbStatus.TabIndex = 2;
-            this.lbStatus.Text = "Status: ";
-            // 
-            // lbId
-            // 
-            this.lbId.AutoSize = true;
-            this.lbId.Location = new System.Drawing.Point(21, 12);
-            this.lbId.Name = "lbId";
-            this.lbId.Size = new System.Drawing.Size(24, 13);
-            this.lbId.TabIndex = 1;
-            this.lbId.Text = "ID: ";
-            // 
-            // dgvSecCalled
-            // 
-            this.dgvSecCalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSecCalled.Location = new System.Drawing.Point(6, 28);
-            this.dgvSecCalled.Name = "dgvSecCalled";
-            this.dgvSecCalled.Size = new System.Drawing.Size(756, 308);
-            this.dgvSecCalled.TabIndex = 0;
             // 
             // tbpResgister
             // 
@@ -286,7 +190,7 @@
             // 
             // btnRegDelete
             // 
-            this.btnRegDelete.Location = new System.Drawing.Point(268, 318);
+            this.btnRegDelete.Location = new System.Drawing.Point(268, 327);
             this.btnRegDelete.Name = "btnRegDelete";
             this.btnRegDelete.Size = new System.Drawing.Size(58, 49);
             this.btnRegDelete.TabIndex = 28;
@@ -349,24 +253,24 @@
             // 
             // txtRegStatus
             // 
-            this.txtRegStatus.Location = new System.Drawing.Point(287, 23);
+            this.txtRegStatus.Location = new System.Drawing.Point(103, 287);
             this.txtRegStatus.Name = "txtRegStatus";
-            this.txtRegStatus.Size = new System.Drawing.Size(125, 20);
+            this.txtRegStatus.Size = new System.Drawing.Size(307, 20);
             this.txtRegStatus.TabIndex = 26;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(244, 26);
+            this.label11.Location = new System.Drawing.Point(24, 290);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.Size = new System.Drawing.Size(79, 13);
             this.label11.TabIndex = 25;
-            this.label11.Text = "Status";
+            this.label11.Text = "Finalizado (s/n)";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // btnRegSave
             // 
-            this.btnRegSave.Location = new System.Drawing.Point(348, 318);
+            this.btnRegSave.Location = new System.Drawing.Point(348, 327);
             this.btnRegSave.Name = "btnRegSave";
             this.btnRegSave.Size = new System.Drawing.Size(64, 49);
             this.btnRegSave.TabIndex = 24;
@@ -376,7 +280,7 @@
             // 
             // txtRegDescripition
             // 
-            this.txtRegDescripition.Location = new System.Drawing.Point(22, 117);
+            this.txtRegDescripition.Location = new System.Drawing.Point(22, 114);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
             this.txtRegDescripition.Size = new System.Drawing.Size(390, 99);
@@ -385,7 +289,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 101);
+            this.label8.Location = new System.Drawing.Point(21, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 22;
@@ -395,7 +299,7 @@
             // 
             this.txtRegID.Location = new System.Drawing.Point(60, 23);
             this.txtRegID.Name = "txtRegID";
-            this.txtRegID.Size = new System.Drawing.Size(118, 20);
+            this.txtRegID.Size = new System.Drawing.Size(350, 20);
             this.txtRegID.TabIndex = 21;
             // 
             // label7
@@ -409,7 +313,7 @@
             // 
             // btnRegCancel
             // 
-            this.btnRegCancel.Location = new System.Drawing.Point(188, 318);
+            this.btnRegCancel.Location = new System.Drawing.Point(188, 327);
             this.btnRegCancel.Name = "btnRegCancel";
             this.btnRegCancel.Size = new System.Drawing.Size(58, 49);
             this.btnRegCancel.TabIndex = 19;
@@ -418,7 +322,7 @@
             // 
             // btnRegChange
             // 
-            this.btnRegChange.Location = new System.Drawing.Point(106, 318);
+            this.btnRegChange.Location = new System.Drawing.Point(103, 327);
             this.btnRegChange.Name = "btnRegChange";
             this.btnRegChange.Size = new System.Drawing.Size(61, 49);
             this.btnRegChange.TabIndex = 18;
@@ -444,7 +348,7 @@
             // 
             // btnRegFinish
             // 
-            this.btnRegFinish.Location = new System.Drawing.Point(509, 318);
+            this.btnRegFinish.Location = new System.Drawing.Point(509, 327);
             this.btnRegFinish.Name = "btnRegFinish";
             this.btnRegFinish.Size = new System.Drawing.Size(208, 49);
             this.btnRegFinish.TabIndex = 15;
@@ -454,7 +358,7 @@
             // 
             // btnRegInit
             // 
-            this.btnRegInit.Location = new System.Drawing.Point(22, 318);
+            this.btnRegInit.Location = new System.Drawing.Point(24, 327);
             this.btnRegInit.Name = "btnRegInit";
             this.btnRegInit.Size = new System.Drawing.Size(62, 49);
             this.btnRegInit.TabIndex = 14;
@@ -466,7 +370,7 @@
             // 
             this.dtpRegDate.CustomFormat = "dd-MM-yyyy h:m";
             this.dtpRegDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtpRegDate.Location = new System.Drawing.Point(24, 257);
+            this.dtpRegDate.Location = new System.Drawing.Point(22, 248);
             this.dtpRegDate.Name = "dtpRegDate";
             this.dtpRegDate.Size = new System.Drawing.Size(388, 20);
             this.dtpRegDate.TabIndex = 11;
@@ -475,7 +379,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 241);
+            this.label6.Location = new System.Drawing.Point(21, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 1;
@@ -498,31 +402,42 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bindingSource1
+            // dgvSecCalled
             // 
-            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            this.dgvSecCalled.AllowUserToAddRows = false;
+            this.dgvSecCalled.AllowUserToDeleteRows = false;
+            this.dgvSecCalled.AllowUserToResizeColumns = false;
+            this.dgvSecCalled.AllowUserToResizeRows = false;
+            this.dgvSecCalled.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvSecCalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSecCalled.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvSecCalled.Location = new System.Drawing.Point(21, 19);
+            this.dgvSecCalled.Name = "dgvSecCalled";
+            this.dgvSecCalled.Size = new System.Drawing.Size(727, 318);
+            this.dgvSecCalled.TabIndex = 0;
+            this.dgvSecCalled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecCalled_CellContentClick);
             // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 458);
+            this.ClientSize = new System.Drawing.Size(831, 481);
             this.Controls.Add(this.tbcCalled);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRegisterCalled";
             this.Text = "CHAMADOS";
+            this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpClosedCalled.ResumeLayout(false);
             this.tbpClosedCalled.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tbpOpenCalled.ResumeLayout(false);
             this.tbpOpenCalled.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
             this.tbpResgister.ResumeLayout(false);
             this.tbpResgister.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tbcCalled.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -530,17 +445,8 @@
         #endregion
 
         private System.Windows.Forms.TabPage tbpClosedCalled;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tbpOpenCalled;
-        private System.Windows.Forms.Label lbTime;
-        private System.Windows.Forms.Label lbDate;
-        private System.Windows.Forms.Label lbStatus;
-        private System.Windows.Forms.Label lbId;
-        private System.Windows.Forms.DataGridView dgvSecCalled;
         private System.Windows.Forms.TabPage tbpResgister;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tbcCalled;
@@ -557,7 +463,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSecSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnRegSave;
@@ -571,6 +477,6 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label lbRegTimer;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridView dgvSecCalled;
     }
 }

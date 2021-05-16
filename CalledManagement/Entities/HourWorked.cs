@@ -8,12 +8,11 @@ namespace CalledManagement.Entities
 {
     class HourWorked
     {
-        public string Descripition { get; set; }
-        public int MyProperty { get; set; }
-        public Called Id { get;}
-        public DateTime StartDate { get; set;}
+        public Called CalledId { get; }
+        public DateTime DateInserted { get; set;}
+        public DateTime DateStarted{ get; set;}
         public DateTime EndDate { get; set; }
-        public char Manual { get; set; }
         public DateTime DateChange { get; set; }
+        public char Manual { get; set; }
     }
 }

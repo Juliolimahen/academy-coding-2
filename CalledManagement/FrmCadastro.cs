@@ -73,7 +73,7 @@ namespace CalledManagement
                 called.Name = txtRegName.Text;
                 called.Date = dtpRegDate.Value;
                 called.Descripition = txtRegDescripition.Text;
-                called.Status = txtRegStatus.Text;
+                called.Finished = txtRegStatus.Text;
 
                 if (operation == "Init")
                 {
@@ -139,80 +139,34 @@ namespace CalledManagement
                     else
                     {
                         Function.Clean(this);
-                        Function.EnableButtons(this, "Init");
+                        Function.EnableButtons(this, "");
                         txtRegID.Focus();
                     }
                 }
             }
         }
 
-        private void SearchRegistration()
-        {
-            int id = int.Parse(txtRegID.Text);
-            Function.Clean(this);
-            CalledDAO calleddao = new CalledDAO();
-            Called called = new Called();
+         private void SearchRegistration()
+         {
+             int id = int.Parse(txtRegID.Text);
+             Function.Clean(this);
+             CalledDAO calleddao = new CalledDAO();
+             Called called = new Called();
 
-            called = calleddao.SearchID(id);
+             called = calleddao.SearchID(id);
 
-            if (called.Id > 0)
-            {
-                txtRegID.Text = called.Id.ToString();
-                txtRegName.Text = called.Name;
-                dtpRegDate.Text = called.Date.ToString();
-                txtRegStatus.Text = called.Status;
-                txtRegDescripition.Text = called.Descripition;
+             if (called.Id > 0)
+             {
+                 txtRegID.Text = called.Id.ToString();
+                 txtRegName.Text = called.Name;
+                 dtpRegDate.Text = called.Date.ToString();
+                 txtRegStatus.Text = called.Finished;
+                 txtRegDescripition.Text = called.Descripition;
 
-                Function.EnableButtons(this, "Change");
-            }
-            else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
-        }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (txtSearch.Text.Length > 0)
-                {
-                    CalledDAO clientedao = new CalledDAO();
-                    bindingSource1.DataSource = clientedao.SearchName(txtSearch.Text);
-
-                    dgvSecCalled.AutoGenerateColumns = false;
-                    dgvSecCalled.DataSource = bindingSource1;
-                }
-            }
-        }
-
-        private void dgvSecCalled_DoubleClick(object sender, EventArgs e)
-        {
-            // método executado somente quando o dado um
-            // duplo clique no DataGridView
-            LevarID();
-        }
-
-        private void dgvSecCalled_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                // método executado somente quando
-                // dado um ENTER no datagridview
-                LevarID();
-            }
-        }
-
-        private void LevarID()
-        {
-            if (dgvSecCalled.RowCount > 0)
-            {
-                txtRegID.Text = dgvSecCalled.CurrentRow.Cells[0].Value.ToString();
-                //Pega o valor da celula [0] que é referente
-                // o <<ID>> e passa para o campo txtcodigo
-                tbcCalled.SelectedTab = tbpResgister;
-                txtRegID.Focus();
-                SearchRegistration();
-
-            }
-        }
+                 Function.EnableButtons(this, "Change");
+             }
+             else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
+         }
 
         private void lbRegTimer_Click(object sender, EventArgs e)
         {
@@ -243,6 +197,39 @@ namespace CalledManagement
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSecSearch_Click(object sender, EventArgs e)
+        {
+            CalledDAO calleddao = new CalledDAO();
+            //string Name = txtSearch.Text;
+            //calleddao.SearchGrid(dgvSecCalled, Name);
+
+            dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
+
+        }
+
+        private void dgvSecCalled_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void FrmRegisterCalled_Load(object sender, EventArgs e)
+        {
+            CalledDAO calleddao = new CalledDAO();
+            calleddao.ListarGrid(dgvSecCalled);
+        }
+
+        private void txtRegID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtRegID.Text.Length > 0)
+                {
+                    SearchRegistration();
+                    btnRegChange.Focus();
+                }
+            }
         }
     }
 }
