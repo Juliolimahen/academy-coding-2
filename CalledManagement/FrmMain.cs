@@ -23,5 +23,11 @@ namespace CalledManagement
             frmregidtercalled.ShowDialog();
 
         }
+
+        private void tsmiReport_Click(object sender, EventArgs e)
+        {
+            FrmRepCalled frmrepcalled = new FrmRepCalled();
+            frmrepcalled.ShowDialog();
+        }
     }
 }

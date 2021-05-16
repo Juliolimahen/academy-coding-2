@@ -39,6 +39,7 @@
             this.btnSecSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.btnRegDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -63,14 +64,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpResgister.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbcCalled.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.SuspendLayout();
             // 
             // tbpClosedCalled
@@ -160,6 +160,21 @@
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 5;
             this.label9.Text = "Nome";
+            // 
+            // dgvSecCalled
+            // 
+            this.dgvSecCalled.AllowUserToAddRows = false;
+            this.dgvSecCalled.AllowUserToDeleteRows = false;
+            this.dgvSecCalled.AllowUserToResizeColumns = false;
+            this.dgvSecCalled.AllowUserToResizeRows = false;
+            this.dgvSecCalled.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvSecCalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSecCalled.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvSecCalled.Location = new System.Drawing.Point(21, 19);
+            this.dgvSecCalled.Name = "dgvSecCalled";
+            this.dgvSecCalled.Size = new System.Drawing.Size(727, 318);
+            this.dgvSecCalled.TabIndex = 0;
+            this.dgvSecCalled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecCalled_CellContentClick);
             // 
             // tbpResgister
             // 
@@ -319,6 +334,7 @@
             this.btnRegCancel.TabIndex = 19;
             this.btnRegCancel.Text = "Cancelar";
             this.btnRegCancel.UseVisualStyleBackColor = true;
+            this.btnRegCancel.Click += new System.EventHandler(this.btnRegCancel_Click);
             // 
             // btnRegChange
             // 
@@ -374,7 +390,7 @@
             this.dtpRegDate.Name = "dtpRegDate";
             this.dtpRegDate.Size = new System.Drawing.Size(388, 20);
             this.dtpRegDate.TabIndex = 11;
-            this.dtpRegDate.Value = new System.DateTime(2021, 5, 13, 12, 34, 0, 0);
+            this.dtpRegDate.Value = new System.DateTime(2021, 5, 16, 15, 0, 9, 0);
             // 
             // label6
             // 
@@ -402,21 +418,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // dgvSecCalled
-            // 
-            this.dgvSecCalled.AllowUserToAddRows = false;
-            this.dgvSecCalled.AllowUserToDeleteRows = false;
-            this.dgvSecCalled.AllowUserToResizeColumns = false;
-            this.dgvSecCalled.AllowUserToResizeRows = false;
-            this.dgvSecCalled.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvSecCalled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSecCalled.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvSecCalled.Location = new System.Drawing.Point(21, 19);
-            this.dgvSecCalled.Name = "dgvSecCalled";
-            this.dgvSecCalled.Size = new System.Drawing.Size(727, 318);
-            this.dgvSecCalled.TabIndex = 0;
-            this.dgvSecCalled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecCalled_CellContentClick);
-            // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,12 +433,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tbpOpenCalled.ResumeLayout(false);
             this.tbpOpenCalled.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
             this.tbpResgister.ResumeLayout(false);
             this.tbpResgister.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tbcCalled.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
             this.ResumeLayout(false);
 
         }

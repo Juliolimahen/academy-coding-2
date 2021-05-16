@@ -139,7 +139,7 @@ namespace CalledManagement
                     else
                     {
                         Function.Clean(this);
-                        Function.EnableButtons(this, "");
+                        Function.EnableButtons(this, "Init");
                         txtRegID.Focus();
                     }
                 }
@@ -229,6 +229,21 @@ namespace CalledManagement
                     SearchRegistration();
                     btnRegChange.Focus();
                 }
+            }
+        }
+
+        private void btnRegCancel_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Function.EnableFields(this, false);
+                Function.Clean(this);
+                Function.EnableButtons(this, "Init");
+                txtRegID.Enabled = true;
+                txtSearch.Enabled = true;
+                txtRegID.Focus();
+                operation = "";
             }
         }
     }

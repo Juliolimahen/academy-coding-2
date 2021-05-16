@@ -64,14 +64,14 @@
             // tsmiRegister
             // 
             this.tsmiRegister.Name = "tsmiRegister";
-            this.tsmiRegister.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRegister.Size = new System.Drawing.Size(124, 22);
             this.tsmiRegister.Text = "Cadastrar";
             this.tsmiRegister.Click += new System.EventHandler(this.tsmiRegister_Click);
             // 
             // tsmiSearch
             // 
             this.tsmiSearch.Name = "tsmiSearch";
-            this.tsmiSearch.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSearch.Size = new System.Drawing.Size(124, 22);
             this.tsmiSearch.Text = "Pesquisar";
             // 
             // toolStripMenuItem3
@@ -86,14 +86,15 @@
             // tsmiReport
             // 
             this.tsmiReport.Name = "tsmiReport";
-            this.tsmiReport.Size = new System.Drawing.Size(184, 22);
-            this.tsmiReport.Text = "Chamados Abertos";
+            this.tsmiReport.Size = new System.Drawing.Size(180, 22);
+            this.tsmiReport.Text = "Chamados";
+            this.tsmiReport.Click += new System.EventHandler(this.tsmiReport_Click);
             // 
             // chamadosFechadosToolStripMenuItem
             // 
             this.chamadosFechadosToolStripMenuItem.Name = "chamadosFechadosToolStripMenuItem";
-            this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.chamadosFechadosToolStripMenuItem.Text = "Chamados Fechados";
+            this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chamadosFechadosToolStripMenuItem.Text = "Horas Trabalhadas ";
             // 
             // pictureBox1
             // 
