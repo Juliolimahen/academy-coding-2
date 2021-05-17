@@ -13,10 +13,14 @@ using System.Windows.Forms;
 
 namespace CalledManagement
 {
+    //Classe resposavel pelo formulário de registro. herdada da classe Form
     public partial class FrmRegisterCalled : Form
     {
+        // variavel global resposanvel por armazanar qual operação seguir na troca de botoes 
         string operation;
+        //variavel global resposavel por guardar hora e data da inserção dos chamados 
         DateTime _DateTime;
+        //Construtor responsavel por inicializar o componente; 
         public FrmRegisterCalled()
         {
             InitializeComponent();
@@ -25,29 +29,17 @@ namespace CalledManagement
         {
             txtRegID.Focus();
         }
-        private Boolean ValidateData()
-        {
-            {
-                if (txtRegName.Text == string.Empty)
-                {
-                    MessageBox.Show("O campo nome é obrigatório !", "Atenção");
-                    txtRegName.Focus();
-                    return false;
-                }
-                return true;
-            }
-        }
-
         private void label6_Click(object sender, EventArgs e)
         {
 
         }
 
+        //Botão para Finalizar chamado
         private void btnRegFinish_Click(object sender, EventArgs e)
         {
             Dispose();
         }
-
+        //Botao para iniciar chamado 
         private void btnRegInit_Click(object sender, EventArgs e)
         {
 
@@ -59,11 +51,13 @@ namespace CalledManagement
             operation = "Init";
             _DateTime = DateTime.Now;
             lbRegDateTime.Text = _DateTime.ToString();
+            // ativa o timer ao iniciar um chamado
             timer1.Enabled = true;
 
 
         }
 
+        //botão para salvar registros 
         private void btnRegSave_Click(object sender, EventArgs e)
         {
             if (ValidateData() == true)
@@ -113,6 +107,7 @@ namespace CalledManagement
 
         }
 
+        //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
             Function.EnableFields(this, true);
@@ -124,6 +119,7 @@ namespace CalledManagement
 
         private void btnRegDelete_Click(object sender, EventArgs e)
         {
+            //verifica se campo nome esta vazio 
             if (txtRegName.Text.Length > 0)
             {
                 if (MessageBox.Show("Confirma a exclusão do registro ?", "Atenção",
@@ -145,28 +141,6 @@ namespace CalledManagement
                 }
             }
         }
-
-         private void SearchRegistration()
-         {
-             int id = int.Parse(txtRegID.Text);
-             Function.Clean(this);
-             CalledDAO calleddao = new CalledDAO();
-             Called called = new Called();
-
-             called = calleddao.SearchID(id);
-
-             if (called.Id > 0)
-             {
-                 txtRegID.Text = called.Id.ToString();
-                 txtRegName.Text = called.Name;
-                 dtpRegDate.Text = called.Date.ToString();
-                 txtRegStatus.Text = called.Finished;
-                 txtRegDescripition.Text = called.Descripition;
-
-                 Function.EnableButtons(this, "Change");
-             }
-             else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
-         }
 
         private void lbRegTimer_Click(object sender, EventArgs e)
         {
@@ -190,6 +164,8 @@ namespace CalledManagement
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
+            //variavel responsavel por atribuir a hora timer, falta zerar e enviar esse date time ao banco
             _DateTime = DateTime.Now;
             lbRegTimer.Text = _DateTime.ToLongTimeString();
         }
@@ -199,39 +175,34 @@ namespace CalledManagement
 
         }
 
+        //Botão pesquisa na grid view 
         private void btnSecSearch_Click(object sender, EventArgs e)
         {
+            //nova instancia 
             CalledDAO calleddao = new CalledDAO();
+
             //string Name = txtSearch.Text;
             //calleddao.SearchGrid(dgvSecCalled, Name);
 
-            dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
+            //Passa texto do text box por parametro
+            //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
 
         }
 
         private void dgvSecCalled_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void FrmRegisterCalled_Load(object sender, EventArgs e)
         {
+            //Cria nova instância
             CalledDAO calleddao = new CalledDAO();
+            //passa a data grid view por parametro
             calleddao.ListarGrid(dgvSecCalled);
         }
 
-        private void txtRegID_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (txtRegID.Text.Length > 0)
-                {
-                    SearchRegistration();
-                    btnRegChange.Focus();
-                }
-            }
-        }
-
+        //Botão Cancelar 
         private void btnRegCancel_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
@@ -245,6 +216,17 @@ namespace CalledManagement
                 txtRegID.Focus();
                 operation = "";
             }
+        }
+        //metodo resposavel pela validação dos dados 
+        private Boolean ValidateData()
+        {
+            if (txtRegName.Text == string.Empty)
+            {
+                MessageBox.Show("O campo nome é obrigatório !", "Atenção");
+                txtRegName.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }

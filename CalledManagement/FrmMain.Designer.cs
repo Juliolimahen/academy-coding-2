@@ -48,7 +48,7 @@
             this.toolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1284, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1284, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -57,21 +57,22 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRegister,
             this.tsmiSearch});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(96, 25);
             this.toolStripMenuItem1.Text = "Chamados";
             // 
             // tsmiRegister
             // 
             this.tsmiRegister.Name = "tsmiRegister";
-            this.tsmiRegister.Size = new System.Drawing.Size(124, 22);
+            this.tsmiRegister.Size = new System.Drawing.Size(180, 26);
             this.tsmiRegister.Text = "Cadastrar";
             this.tsmiRegister.Click += new System.EventHandler(this.tsmiRegister_Click);
             // 
             // tsmiSearch
             // 
             this.tsmiSearch.Name = "tsmiSearch";
-            this.tsmiSearch.Size = new System.Drawing.Size(124, 22);
+            this.tsmiSearch.Size = new System.Drawing.Size(180, 26);
             this.tsmiSearch.Text = "Pesquisar";
             // 
             // toolStripMenuItem3
@@ -79,30 +80,31 @@
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiReport,
             this.chamadosFechadosToolStripMenuItem});
+            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(66, 20);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(85, 25);
             this.toolStripMenuItem3.Text = "Relatório";
             // 
             // tsmiReport
             // 
             this.tsmiReport.Name = "tsmiReport";
-            this.tsmiReport.Size = new System.Drawing.Size(180, 22);
+            this.tsmiReport.Size = new System.Drawing.Size(212, 26);
             this.tsmiReport.Text = "Chamados";
             this.tsmiReport.Click += new System.EventHandler(this.tsmiReport_Click);
             // 
             // chamadosFechadosToolStripMenuItem
             // 
             this.chamadosFechadosToolStripMenuItem.Name = "chamadosFechadosToolStripMenuItem";
-            this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.chamadosFechadosToolStripMenuItem.Text = "Horas Trabalhadas ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 32);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1284, 653);
+            this.pictureBox1.Size = new System.Drawing.Size(1284, 648);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -110,6 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1284, 681);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);

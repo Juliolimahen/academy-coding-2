@@ -10,6 +10,7 @@ namespace CalledManagement.Utils
 {
     class Function
     {
+        //funcao responsavel por habilitar os campos 
         public static void EnableFields(Control formulario, bool p)
         {
             foreach (Control ctl in formulario.Controls)
@@ -33,6 +34,7 @@ namespace CalledManagement.Utils
             }
         }
 
+        //funcao responsavel por liampar formularios 
         public static void Clean(Control formulario)
         {
             foreach (Control ctl in formulario.Controls)
@@ -56,6 +58,7 @@ namespace CalledManagement.Utils
             }
         }
 
+        //funcao responsavel por habiliatar os botoes 
         public static void EnableButtons(Control formulario, String sit)
         {
             foreach (Control ctl in formulario.Controls)
@@ -150,6 +153,7 @@ namespace CalledManagement.Utils
                 }
             }
         }
+        //funÇão resposavel por não permitir a entrada de caracteres indesejaveis 
         public static void EnterNumbers(KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar) || //Letras
@@ -158,7 +162,6 @@ namespace CalledManagement.Utils
                 char.IsPunctuation(e.KeyChar)) //Pontuação
                 e.Handled = true; //Não permitir
 
-            /* */
         }
         public static void EnterCurrency(KeyPressEventArgs e)
         {
@@ -167,7 +170,7 @@ namespace CalledManagement.Utils
                 char.IsWhiteSpace(e.KeyChar)) //Espaço
                 e.Handled = true; //Não permitir
         }
-
+        //Função resposavel por cacular horas trabalhadas 
         public double CalculateHoursWorked(double hoursWorked)
         {
             HourWorked hw = new HourWorked();

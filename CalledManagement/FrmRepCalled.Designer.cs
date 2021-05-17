@@ -30,37 +30,38 @@ namespace CalledManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.academycoding2DataSet1 = new CalledManagement.academycoding2DataSet1();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.CALLEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.academycoding2DataSet1 = new CalledManagement.academycoding2DataSet1();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.CALLEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.CALLEDTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CALLEDBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // CALLEDBindingSource
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.CALLEDBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CalledManagement.ReportCalled.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(821, 519);
-            this.reportViewer1.TabIndex = 0;
+            this.CALLEDBindingSource.DataMember = "CALLED";
+            this.CALLEDBindingSource.DataSource = this.academycoding2DataSet1;
             // 
             // academycoding2DataSet1
             // 
             this.academycoding2DataSet1.DataSetName = "academycoding2DataSet1";
             this.academycoding2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // CALLEDBindingSource
+            // reportViewer1
             // 
-            this.CALLEDBindingSource.DataMember = "CALLED";
-            this.CALLEDBindingSource.DataSource = this.academycoding2DataSet1;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.CALLEDBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CalledManagement.ReportCalled.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(821, 519);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // CALLEDTableAdapter
             // 
@@ -73,10 +74,10 @@ namespace CalledManagement
             this.ClientSize = new System.Drawing.Size(821, 519);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FrmRepCalled";
-            this.Text = "FrmRepCalled";
+            this.Text = "Relatório  Chamados";
             this.Load += new System.EventHandler(this.FrmRepCalled_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CALLEDBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CalledManagement.Entities.Enums
 {
-     enum CalledStatus
+    //Enumeração responsavel por 
+    enum CalledStatus
     {
-
+        //Não utilizado ainda  
+        Finished, Pending
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="Entities\Called.cs" />
     <Compile Include="Entities\Enums\CalledStatus.cs" />
     <Compile Include="Entities\HourWorked.cs" />
+    <Compile Include="Enums\Operation.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace CalledManagement.DAO
 {
+    //Classe responsavel pela comunicação da entidade Called com o banco de dados 
     class CalledDAO
     {
 
@@ -19,25 +20,21 @@ namespace CalledManagement.DAO
 
             //SqlConnection conn = new SqlConnection(strConn);
 
-            //sql = sql + ;
 
-            // Variavel sql que armazena código SQL para inserir o registro
-
-            //using (FbConnection conn = new FbConnection(conStr))
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "insert into CALLED (Name, Date, Descripition, Finished) values (@Name, @Date, @Descripition, @Finished)";
-            // Cria objeto conn da classe FbConnection passando por parâmetro a string de conexão chamada conStr
+
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
                     //SqlCommand cmd = new SqlCommand(strConn);
 
-                    //conn.Open(); // Abre a conexão com o banco de dados.
+                    //conn.Open(); 
 
                     ToConnection toconnection = new ToConnection();
+                    // Abre a conexão com o banco de dados.
+                    toconnection.ToConnect();
 
-                    //string query = "select * from dbo.alunos";
-                    // Cria objeto cmd da classe FbCommand passando os comandos SQL e a conexão com o Banco de Dados
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
@@ -45,11 +42,15 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
 
                     cmd.Connection = toconnection.ToConnect();
-                    // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
+
+                    // Retorna o comando SQL de INSERT no banco de dados. 
                     cmd.ExecuteNonQuery();
-                    // Retorna o comando SQL de INSERT no banco de dados. (Sem Retorno de dados)
+
+                    //teste...
+                    MessageBox.Show("Cadastro salvo com sucesso!");
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
+
                 }
                 catch (Exception ex)
                 {
@@ -58,13 +59,13 @@ namespace CalledManagement.DAO
                     // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
                     // Informando "Erro ao salvar registro" + o erro recebido do banco de dados
                 }
+                // O finally é sempre executado,
                 finally
                 {
-                    MessageBox.Show("Cadastro salvo com sucesso!");
                     ToConnection toconection = new ToConnection();
-                    toconection.ToDisconnect();
-                    // O finally é sempre executado,
                     // fechando a conexão com o banco de dados.
+                    toconection.ToDisconnect();
+
                 }
             }
         }
@@ -75,26 +76,19 @@ namespace CalledManagement.DAO
 
             //SqlConnection conn = new SqlConnection(strConn);
 
-            //sql = sql + ;
-
-            // Variavel sql que armazena código SQL para inserir o registro
-
-            //using (FbConnection conn = new FbConnection(conStr))
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished  where Id = @Id";
-            // Cria objeto conn da classe FbConnection passando por parâmetro a string de conexão chamada conStr
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
                     //SqlCommand cmd = new SqlCommand(strConn);
 
-                    //conn.Open(); // Abre a conexão com o banco de dados.
+                    //conn.Open(); 
 
                     ToConnection toconnection = new ToConnection();
+                    // Abre a conexão com o banco de dados.
                     toconnection.ToConnect();
 
-                    //string query = "select * from dbo.alunos";
-                    // Cria objeto cmd da classe FbCommand passando os comandos SQL e a conexão com o Banco de Dados
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Id", called.Id);
                     cmd.Parameters.AddWithValue("@Name", called.Name);
@@ -102,12 +96,16 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
 
+                    // O objetro cmd recebe os parâmetros com os valores dos campos 
                     cmd.Connection = toconnection.ToConnect();
-                    // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
+
                     cmd.ExecuteNonQuery();
-                    // Retorna o comando SQL de INSERT no banco de dados. (Sem Retorno de dados)
+                    // Retorna o comando SQL de INSERT no banco de dados
+                    //teste
+                    MessageBox.Show("Cadastro Excluido com sucesso!");
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
+
                 }
                 catch (Exception ex)
                 {
@@ -118,11 +116,10 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    MessageBox.Show("Cadastro alterado com sucesso!");
-                    ToConnection toconection = new ToConnection();
-                    toconection.ToDisconnect();
-                    // O finally é sempre executado,
-                    // fechando a conexão com o banco de dados.
+                    ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                    toconection.ToDisconnect();// O finally é sempre executado,
+
+
                 }
             }
         }
@@ -143,7 +140,10 @@ namespace CalledManagement.DAO
 
                     cmd.ExecuteNonQuery();
 
+                    MessageBox.Show("Cadastro Excluido com sucesso!");
+
                     return true;
+
                 }
                 catch (Exception ex)
                 {
@@ -152,7 +152,6 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    MessageBox.Show("Cadastro Excluido com sucesso!");
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
@@ -180,9 +179,8 @@ namespace CalledManagement.DAO
             catch (Exception ex)
             {
 
-                MessageBox.Show("Erro ao Lista registro: " + ex.Message);
+                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
-
         }
         public void SearchGrid(DataGridView dgvSec, string Name)
         {
@@ -208,10 +206,11 @@ namespace CalledManagement.DAO
             catch (Exception ex)
             {
 
-                MessageBox.Show("Erro ao Lista registro: " + ex.Message);
+                MessageBox.Show("Erro ao Listar registros: " + ex.Message);
             }
-
         }
+        //Corrigir...
+        /*
         public Called SearchID(int ID)
         {
             Called called = new Called();
@@ -269,7 +268,7 @@ namespace CalledManagement.DAO
             }
             return lista;
 
-        }
+        }*/
     }
 }
 
