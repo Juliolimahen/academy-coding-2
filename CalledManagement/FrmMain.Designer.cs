@@ -65,14 +65,14 @@
             // tsmiRegister
             // 
             this.tsmiRegister.Name = "tsmiRegister";
-            this.tsmiRegister.Size = new System.Drawing.Size(180, 26);
+            this.tsmiRegister.Size = new System.Drawing.Size(147, 26);
             this.tsmiRegister.Text = "Cadastrar";
             this.tsmiRegister.Click += new System.EventHandler(this.tsmiRegister_Click);
             // 
             // tsmiSearch
             // 
             this.tsmiSearch.Name = "tsmiSearch";
-            this.tsmiSearch.Size = new System.Drawing.Size(180, 26);
+            this.tsmiSearch.Size = new System.Drawing.Size(147, 26);
             this.tsmiSearch.Text = "Pesquisar";
             // 
             // toolStripMenuItem3

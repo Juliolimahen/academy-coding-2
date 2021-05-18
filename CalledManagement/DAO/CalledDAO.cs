@@ -158,7 +158,7 @@ namespace CalledManagement.DAO
             }
         }
 
-        public void ListarGrid(DataGridView dgvSec)
+        public void ListarGrid(DataGridView dgvSec, string name)
         {
             SqlCommand cmd = new SqlCommand();
             ToConnection toconnection = new ToConnection();
@@ -166,8 +166,16 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED ORDER BY Date  ASC";
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED ORDER BY Date DESC";
 
+                if (name.Length > 0)
+                {
+                    cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE @Name";
+
+                    cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+
+                    cmd.ExecuteNonQuery();
+                }
                 // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -182,18 +190,23 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
-        public void SearchGrid(DataGridView dgvSec, string Name)
+        public void SearchGrid(DataGridView dgvSec, string name)
         {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
+
 
             try
             {
+                SqlCommand cmd = new SqlCommand();
+                ToConnection toconnection = new ToConnection();
                 cmd.Connection = toconnection.ToConnect();
 
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
-                cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
+
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
+
+                cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+
+                cmd.ExecuteNonQuery();
 
 
 

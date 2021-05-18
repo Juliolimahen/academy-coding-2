@@ -191,7 +191,7 @@ namespace CalledManagement.DAO
             {
                 cmd.Connection = toconnection.ToConnect();
 
-                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED CalledId LIKE '@CalledId' ORDER BY DateInserted ASC";
+                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED CalledId LIKE '@CalledId' ORDER BY DateInserted A";
                 cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
 

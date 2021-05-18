@@ -21,6 +21,10 @@ namespace CalledManagement.Utils
                 }
                 else if (ctl is MaskedTextBox)
                 {
+                    ((DateTimePicker)ctl).Enabled = p;
+                }
+                else if (ctl is MaskedTextBox)
+                {
                     ((MaskedTextBox)ctl).Enabled = p;
                 }
                 else if (ctl is ComboBox)
@@ -143,7 +147,34 @@ namespace CalledManagement.Utils
                         }
                         else if (((Button)ctl).Name == "btnRegFinish")
                         {
+                            ((Button)ctl).Enabled = false;
+                        }
+                    }
+                    if (sit == "Load")
+                    {
+                        if (((Button)ctl).Name == "btnRegInit")
+                        {
                             ((Button)ctl).Enabled = true;
+                        }
+                        else if (((Button)ctl).Name == "btnRegChange")
+                        {
+                            ((Button)ctl).Enabled = true;
+                        }
+                        else if (((Button)ctl).Name == "btnRegSave")
+                        {
+                            ((Button)ctl).Enabled = true;
+                        }
+                        else if (((Button)ctl).Name == "btnRegDelete")
+                        {
+                            ((Button)ctl).Enabled = true;
+                        }
+                        else if (((Button)ctl).Name == "btnRegCancel")
+                        {
+                            ((Button)ctl).Enabled = false;
+                        }
+                        else if (((Button)ctl).Name == "btnRegFinish")
+                        {
+                            ((Button)ctl).Enabled = false;
                         }
                     }
                 }

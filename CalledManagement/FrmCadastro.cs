@@ -52,7 +52,11 @@ namespace CalledManagement
             _DateTime = DateTime.Now;
             lbRegDateTime.Text = _DateTime.ToString();
             // ativa o timer ao iniciar um chamado
+            timer1.Start();
             timer1.Enabled = true;
+            
+
+
 
 
         }
@@ -110,10 +114,23 @@ namespace CalledManagement
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
-            Function.EnableFields(this, true);
-            Function.EnableButtons(this, "Save");
-            txtRegID.Enabled = false;
-            txtRegName.Focus();
+            if (txtRegID.Text.Length == 0)
+            {
+                MessageBox.Show("Digite um codigo identificador para alterar o registro!");
+                txtRegID.Focus();
+                Function.EnableFields(this, true);
+                Function.EnableButtons(this, "Change");
+            }
+            
+           
+            else if (txtRegID.Text.Length > 0)
+            {
+                Function.EnableFields(this, true);
+                Function.EnableButtons(this, "Save");
+                txtRegID.Enabled = false;
+                txtRegName.Focus();
+            }
+
             operation = "Change";
         }
 
@@ -122,7 +139,7 @@ namespace CalledManagement
             //verifica se campo nome esta vazio 
             if (txtRegName.Text.Length > 0)
             {
-                if (MessageBox.Show("Confirma a exclusão do registro ?", "Atenção",
+                if (MessageBox.Show("Confirma a exclusão do registro?", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
@@ -130,7 +147,6 @@ namespace CalledManagement
                     if (calleddao.Delete(int.Parse(txtRegID.Text)) == false)
                     {
                         txtRegID.Focus();
-                        return;
                     }
                     else
                     {
@@ -164,10 +180,17 @@ namespace CalledManagement
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+             DateTime timerCalled = new DateTime();
+
             //variavel responsavel por atribuir a hora timer, falta zerar e enviar esse date time ao banco
-            _DateTime = DateTime.Now;
-            lbRegTimer.Text = _DateTime.ToLongTimeString();
+            //_DateTime = DateTime.Now
+            //timerCalled.ToString("01"); 
+            lbRegTimer.Text = timerCalled.ToString("");
+            
+           
+            
+
+            
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
@@ -181,8 +204,10 @@ namespace CalledManagement
             //nova instancia 
             CalledDAO calleddao = new CalledDAO();
 
-            //string Name = txtSearch.Text;
-            //calleddao.SearchGrid(dgvSecCalled, Name);
+            string name = txtSearch.Text;
+            //calleddao.SearchGrid(dgvSecCalled, name);
+         
+            calleddao.ListarGrid(dgvSecCalled, name);
 
             //Passa texto do text box por parametro
             //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
@@ -199,7 +224,9 @@ namespace CalledManagement
             //Cria nova instância
             CalledDAO calleddao = new CalledDAO();
             //passa a data grid view por parametro
-            calleddao.ListarGrid(dgvSecCalled);
+            string name=txtSearch.Text;
+            calleddao.ListarGrid(dgvSecCalled, name);
+            Refresh();
         }
 
         //Botão Cancelar 
@@ -208,11 +235,9 @@ namespace CalledManagement
             if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Function.EnableFields(this, false);
+                Function.EnableFields(this, true);
                 Function.Clean(this);
-                Function.EnableButtons(this, "Init");
-                txtRegID.Enabled = true;
-                txtSearch.Enabled = true;
+                Function.EnableButtons(this, "Load");
                 txtRegID.Focus();
                 operation = "";
             }
@@ -222,7 +247,7 @@ namespace CalledManagement
         {
             if (txtRegName.Text == string.Empty)
             {
-                MessageBox.Show("O campo nome é obrigatório !", "Atenção");
+                MessageBox.Show("O campo nome é obrigatório!", "Atenção");
                 txtRegName.Focus();
                 return false;
             }
