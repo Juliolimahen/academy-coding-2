@@ -88,11 +88,17 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCadastro.cs">
+    <Compile Include="FrmRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCadastro.Designer.cs">
-      <DependentUpon>FrmCadastro.cs</DependentUpon>
+    <Compile Include="FrmRegister.Designer.cs">
+      <DependentUpon>FrmRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUser.Designer.cs">
+      <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRepCalled.cs">
       <SubType>Form</SubType>
@@ -107,8 +113,11 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCadastro.resx">
-      <DependentUpon>FrmCadastro.cs</DependentUpon>
+    <EmbeddedResource Include="FrmRegister.resx">
+      <DependentUpon>FrmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUser.resx">
+      <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRepCalled.resx">
       <DependentUpon>FrmRepCalled.cs</DependentUpon>

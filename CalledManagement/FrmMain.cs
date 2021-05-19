@@ -29,5 +29,11 @@ namespace CalledManagement
             FrmRepCalled frmrepcalled = new FrmRepCalled();
             frmrepcalled.ShowDialog();
         }
+
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUser frmuser = new FrmUser();
+            frmuser.ShowDialog();
+        }
     }
 }
