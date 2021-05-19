@@ -42,7 +42,6 @@ namespace CalledManagement
         //Botao para iniciar chamado 
         private void btnRegInit_Click(object sender, EventArgs e)
         {
-
             Function.EnableFields(this, true);
             Function.Clean(this);
             Function.EnableButtons(this, "Save");
@@ -54,11 +53,6 @@ namespace CalledManagement
             // ativa o timer ao iniciar um chamado
             timer1.Start();
             timer1.Enabled = true;
-            
-
-
-
-
         }
 
         //botão para salvar registros 
@@ -277,6 +271,11 @@ namespace CalledManagement
 
             //Passa texto do text box por parametro
             //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
+        }
+
+        private void btnRegInitHours_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

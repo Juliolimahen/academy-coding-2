@@ -31,11 +31,8 @@ namespace CalledManagement
         {
             this.tbcUser = new System.Windows.Forms.TabControl();
             this.tbpRegUser = new System.Windows.Forms.TabPage();
-            this.tbpSecUser = new System.Windows.Forms.TabPage();
             this.btnRegDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbRegTimer = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lbRegDateTime = new System.Windows.Forms.Label();
             this.txtRegStatus = new System.Windows.Forms.TextBox();
@@ -53,6 +50,7 @@ namespace CalledManagement
             this.btnRegInit = new System.Windows.Forms.Button();
             this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.tbpSecUser = new System.Windows.Forms.TabPage();
             this.tbcUser.SuspendLayout();
             this.tbpRegUser.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,16 +93,6 @@ namespace CalledManagement
             this.tbpRegUser.Text = "Cadastrar";
             this.tbpRegUser.UseVisualStyleBackColor = true;
             // 
-            // tbpSecUser
-            // 
-            this.tbpSecUser.Location = new System.Drawing.Point(4, 22);
-            this.tbpSecUser.Name = "tbpSecUser";
-            this.tbpSecUser.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpSecUser.Size = new System.Drawing.Size(799, 431);
-            this.tbpSecUser.TabIndex = 1;
-            this.tbpSecUser.Text = "Cadastrados";
-            this.tbpSecUser.UseVisualStyleBackColor = true;
-            // 
             // btnRegDelete
             // 
             this.btnRegDelete.Location = new System.Drawing.Point(286, 343);
@@ -116,8 +104,6 @@ namespace CalledManagement
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lbRegTimer);
-            this.groupBox1.Controls.Add(this.label33);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.lbRegDateTime);
             this.groupBox1.Location = new System.Drawing.Point(539, 42);
@@ -125,25 +111,7 @@ namespace CalledManagement
             this.groupBox1.Size = new System.Drawing.Size(208, 251);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chamado Atual";
-            // 
-            // lbRegTimer
-            // 
-            this.lbRegTimer.AutoSize = true;
-            this.lbRegTimer.Location = new System.Drawing.Point(24, 120);
-            this.lbRegTimer.Name = "lbRegTimer";
-            this.lbRegTimer.Size = new System.Drawing.Size(49, 13);
-            this.lbRegTimer.TabIndex = 3;
-            this.lbRegTimer.Text = "00:00:00";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(24, 91);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(112, 13);
-            this.label33.TabIndex = 2;
-            this.label33.Text = "Tempo no Chamado...";
+            this.groupBox1.Text = "Dados Cadastrados";
             // 
             // label12
             // 
@@ -262,7 +230,7 @@ namespace CalledManagement
             this.btnRegFinish.Name = "btnRegFinish";
             this.btnRegFinish.Size = new System.Drawing.Size(208, 49);
             this.btnRegFinish.TabIndex = 32;
-            this.btnRegFinish.Text = "Finalizar Chamado";
+            this.btnRegFinish.Text = "Sair";
             this.btnRegFinish.UseVisualStyleBackColor = true;
             // 
             // btnRegInit
@@ -293,13 +261,23 @@ namespace CalledManagement
             this.label6.TabIndex = 29;
             this.label6.Text = "Data e hora";
             // 
-            // FrmRegClient
+            // tbpSecUser
+            // 
+            this.tbpSecUser.Location = new System.Drawing.Point(4, 22);
+            this.tbpSecUser.Name = "tbpSecUser";
+            this.tbpSecUser.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpSecUser.Size = new System.Drawing.Size(799, 431);
+            this.tbpSecUser.TabIndex = 1;
+            this.tbpSecUser.Text = "Cadastrados";
+            this.tbpSecUser.UseVisualStyleBackColor = true;
+            // 
+            // FrmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 481);
             this.Controls.Add(this.tbcUser);
-            this.Name = "FrmRegClient";
+            this.Name = "FrmUser";
             this.Text = "Usuário";
             this.tbcUser.ResumeLayout(false);
             this.tbpRegUser.ResumeLayout(false);
@@ -317,8 +295,6 @@ namespace CalledManagement
         private System.Windows.Forms.TabPage tbpSecUser;
         private System.Windows.Forms.Button btnRegDelete;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lbRegTimer;
-        private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbRegDateTime;
         private System.Windows.Forms.TextBox txtRegStatus;

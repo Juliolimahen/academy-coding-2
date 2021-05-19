@@ -22,7 +22,6 @@ namespace CalledManagement.DAO
 
             cmd.CommandText = "insert into HOURWORKED (DateInserted, DateStarted, DateStarted, EndDate, DateChange) values (@Name, @Date, @Descripition, @Finished)";
 
-
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
@@ -84,7 +83,6 @@ namespace CalledManagement.DAO
 
                     ToConnection toconnection = new ToConnection();
                     toconnection.ToConnect();
-
 
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId);
