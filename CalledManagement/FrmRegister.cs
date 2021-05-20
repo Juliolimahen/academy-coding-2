@@ -115,8 +115,8 @@ namespace CalledManagement
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
-            
-           
+
+
             else if (txtRegID.Text.Length > 0)
             {
                 Function.EnableFields(this, true);
@@ -126,6 +126,18 @@ namespace CalledManagement
             }
 
             operation = "Change";
+        }
+        private void btnRegCancel_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Function.EnableFields(this, true);
+                Function.Clean(this);
+                Function.EnableButtons(this, "Load");
+                txtRegID.Focus();
+                operation = "";
+            }
         }
 
         private void btnRegDelete_Click(object sender, EventArgs e)
@@ -174,17 +186,13 @@ namespace CalledManagement
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-             DateTime timerCalled = new DateTime();
+            DateTime timerCalled = new DateTime();
 
             //variavel responsavel por atribuir a hora timer, falta zerar e enviar esse date time ao banco
             //_DateTime = DateTime.Now
             //timerCalled.ToString("01"); 
             lbRegTimer.Text = timerCalled.ToString("");
-            
-           
-            
 
-            
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
@@ -197,11 +205,17 @@ namespace CalledManagement
         {
             //nova instancia 
             CalledDAO calleddao = new CalledDAO();
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
-            string name = txtSearch.Text;
+            string SecSearchCalled = txtSecSearchCalled.Text;
             //calleddao.SearchGrid(dgvSecCalled, name);
-         
-            calleddao.ListarGrid(dgvSecCalled, name);
+
+            calleddao.ListarGrid(dgvSecCalled, SecSearchCalled);
+
+            string SecSearchHours;
+            SecSearchHours = txtSecSearchHours.Text;
+            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
+
 
             //Passa texto do text box por parametro
             //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
@@ -217,25 +231,22 @@ namespace CalledManagement
         {
             //Cria nova instância
             CalledDAO calleddao = new CalledDAO();
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             //passa a data grid view por parametro
-            string name=txtSearch.Text;
+
+            string name = txtSecSearchCalled.Text;
             calleddao.ListarGrid(dgvSecCalled, name);
-            Refresh();
+            string SecSearchHours;
+
+            SecSearchHours = txtSecSearchHours.Text;
+            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
+
+            calleddao.ListarComboBox(cbxRegHours);
+
         }
 
         //Botão Cancelar 
-        private void btnRegCancel_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Function.EnableFields(this, true);
-                Function.Clean(this);
-                Function.EnableButtons(this, "Load");
-                txtRegID.Focus();
-                operation = "";
-            }
-        }
+
         //metodo resposavel pela validação dos dados 
         private Boolean ValidateData()
         {
@@ -263,19 +274,152 @@ namespace CalledManagement
 
             //nova instancia 
             CalledDAO calleddao = new CalledDAO();
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
-            string name = txtSearch.Text;
-            //calleddao.SearchGrid(dgvSecCalled, name);
-
+            string name = txtSecSearchCalled.Text;
+           
             calleddao.ListarGrid(dgvSecCalled, name);
+
+            string SecSearchHours;
+            SecSearchHours = txtSecSearchHours.Text;
+            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
 
             //Passa texto do text box por parametro
             //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
+
         }
 
         private void btnRegInitHours_Click(object sender, EventArgs e)
         {
+            Function.EnableFields(this, true);
+            Function.Clean(this);
+            Function.EnableButtons(this, "Save");
+            txtRegID.Enabled = false;
+            txtRegName.Focus();
+            operation = "Init";
+            _DateTime = DateTime.Now;
+            lbRegDateTime.Text = _DateTime.ToString();
+            // ativa o timer ao iniciar um chamado
+            timer1.Start();
+            timer1.Enabled = true;
+        }
 
+        private void dgvSecHours_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnRegChangeHours_Click(object sender, EventArgs e)
+        {
+            if (txtRegID.Text.Length == 0)
+            {
+                MessageBox.Show("Digite um codigo identificador para alterar o registro!");
+                txtRegID.Focus();
+                Function.EnableFields(this, true);
+                Function.EnableButtons(this, "Change");
+            }
+
+
+            else if (txtRegID.Text.Length > 0)
+            {
+                Function.EnableFields(this, true);
+                Function.EnableButtons(this, "Save");
+                txtRegID.Enabled = false;
+                txtRegName.Focus();
+            }
+
+            operation = "Change";
+        }
+
+        private void btnRegDeleteHours_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Function.EnableFields(this, true);
+                Function.Clean(this);
+                Function.EnableButtons(this, "Load");
+                txtRegID.Focus();
+                operation = "";
+            }
+        }
+
+        private void btnRegSaveHours_Click(object sender, EventArgs e)
+        {
+            if (ValidateData() == true)
+            {
+                Called called = new Called();
+                called.Name = txtRegName.Text;
+                called.Date = dtpRegDate.Value;
+                called.Descripition = txtRegDescripition.Text;
+                called.Finished = txtRegStatus.Text;
+
+                if (operation == "Init")
+                {
+                    CalledDAO calleddao = new CalledDAO();
+                    if (calleddao.Insert(called) == false)
+                    {
+                        txtRegName.Focus();
+                        return;
+                    }
+
+                }
+                else if (operation == "Change")
+                {
+
+                    CalledDAO calleddao = new CalledDAO();
+                    called.Id = int.Parse(txtRegID.Text);
+                    if (calleddao.Change(called) == false)
+                    {
+                        txtRegName.Focus();
+                        return;
+                    }
+                }
+            }
+            Function.EnableFields(this, false);
+            Function.Clean(this);
+            Function.EnableButtons(this, "Init");
+            txtRegID.Enabled = true;
+            //txtRegResearch.Enabled = true;
+            txtRegID.Focus();
+            operation = "";
+        }
+
+        private void btnRegCancelHours_Click(object sender, EventArgs e)
+        {
+            //verifica se campo nome esta vazio 
+            if (txtRegName.Text.Length > 0)
+            {
+                if (MessageBox.Show("Confirma a exclusão do registro?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    CalledDAO calleddao = new CalledDAO();
+                    if (calleddao.Delete(int.Parse(txtRegID.Text)) == false)
+                    {
+                        txtRegID.Focus();
+                    }
+                    else
+                    {
+                        Function.Clean(this);
+                        Function.EnableButtons(this, "Init");
+                        txtRegID.Focus();
+                    }
+                }
+            }
+        }
+
+        private void btnRegFinishedHours_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void cbxRegHours_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //CalledDAO calleddao = new CalledDAO();
+            //passa a data grid view por parametro
+            //string name ="";
+            //calleddao.ListarComboBox(cbxRegHours);
         }
     }
 }

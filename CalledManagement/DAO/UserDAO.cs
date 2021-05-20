@@ -18,7 +18,6 @@ namespace CalledManagement.DAO
 
             //SqlConnection conn = new SqlConnection(strConn);
 
-
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "insert into USER (Name, Date, Descripition, Finished) values (@Name, @Date, @Descripition, @Finished)";
 
@@ -35,9 +34,11 @@ namespace CalledManagement.DAO
 
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Name", user.Name);
-                    cmd.Parameters.AddWithValue("@Date", user.DateTimeRegister);
-                    cmd.Parameters.AddWithValue("@Descripition", user.Login);
-                    cmd.Parameters.AddWithValue("@Finished", user.Password);
+                    cmd.Parameters.AddWithValue("@DateTimeRegister", user.DateTimeRegister);
+                    cmd.Parameters.AddWithValue("@Login", user.Login);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@Occupation", user.Occupation);
+                    cmd.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
 
                     cmd.Connection = toconnection.ToConnect();
 
@@ -136,7 +137,7 @@ namespace CalledManagement.DAO
                     ToConnection toconnection = new ToConnection();
                     cmd.Connection = toconnection.ToConnect();
 
-                    cmd.CommandText = "delete from user where Id = @Id";
+                    cmd.CommandText = "delete from USER where Id = @Id";
 
                     cmd.Parameters.AddWithValue("@Id", ID);
 
@@ -195,22 +196,17 @@ namespace CalledManagement.DAO
         public void SearchGrid(DataGridView dgvSec, string name)
         {
 
-
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 ToConnection toconnection = new ToConnection();
                 cmd.Connection = toconnection.ToConnect();
 
-
-
                 cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM user WHERE Name LIKE '@Name'";
 
                 cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
 
                 cmd.ExecuteNonQuery();
-
-
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataTable db = new DataTable();

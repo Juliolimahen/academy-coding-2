@@ -20,7 +20,7 @@ namespace CalledManagement.DAO
             // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "insert into HOURWORKED (DateInserted, DateStarted, DateStarted, EndDate, DateChange) values (@Name, @Date, @Descripition, @Finished)";
+            cmd.CommandText = "insert into HOURWORKED (CalleId, DateInserted, DateStarted, DateStarted, EndDate, DateChange) values (@CalledId, @DateInserted, @DateStarted, @Descripition, @Finished)";
 
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -41,7 +41,7 @@ namespace CalledManagement.DAO
                     // O objetro cmd recebe os parâmetros com os valores dos campos
 
                     cmd.ExecuteNonQuery();
-                    
+
                     //teste...
                     MessageBox.Show("Cadastro salvo com sucesso!");
 
@@ -129,7 +129,7 @@ namespace CalledManagement.DAO
                     ToConnection toconnection = new ToConnection();
                     cmd.Connection = toconnection.ToConnect();
 
-                    
+
                     cmd.CommandText = "delete from HOURWORKED where calledId = @Id";
 
                     // Esse objeto é responsável em executar os comandos SQL
@@ -155,7 +155,7 @@ namespace CalledManagement.DAO
                 }
             }
         }
-        public void ListarGrid(DataGridView dgvSec)
+        public void ListarGrid(DataGridView dgvSec, string name)
         {
             SqlCommand cmd = new SqlCommand();
             ToConnection toconnection = new ToConnection();
@@ -163,8 +163,16 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED ORDER BY DateInserted ASC";
+                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, DateStarted, EndDate, DateChange FROM HOURWORKED ORDER BY Date DESC";
 
+                if (name.Length > 0)
+                {
+                    cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, DateStarted, EndDate, DateChange FROM HOURWORKED WHERE Name LIKE @Name";
+
+                    cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+
+                    cmd.ExecuteNonQuery();
+                }
                 // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -176,9 +184,8 @@ namespace CalledManagement.DAO
             catch (Exception ex)
             {
 
-                MessageBox.Show("Erro ao Lista registro: " + ex.Message);
+                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
-
         }
         public void SearchGrid(DataGridView dgvSec, string Name)
         {

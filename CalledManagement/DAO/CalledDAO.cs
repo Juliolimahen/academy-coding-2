@@ -222,6 +222,28 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listar registros: " + ex.Message);
             }
         }
+        public void ListarComboBox(ComboBox cbxSec)
+        {
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            try
+            {
+                cmd.Connection = toconnection.ToConnect();
+                cmd.CommandText = "SELECT Name FROM CALLED ORDER BY Date DESC";
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable db = new DataTable();
+                adp.Fill(db);
+                cbxSec.DataSource = db;
+                cbxSec.DisplayMember = "Name";
+            }
+
+            catch (Exception ex)
+            { 
+                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            }
+        }
         //Corrigir...
         /*
         public Called SearchID(int ID)
@@ -251,8 +273,8 @@ namespace CalledManagement.DAO
                 toconnection.ToDisconnect();
             }
             return called;
-        }
-        public List<Called> SearchName(string Name)
+        }*/
+        /*public List<Called> SearchName(ComboBox cbxSec, string Name)
         {
             List<Called> lista = new List<Called>();
             {
@@ -260,8 +282,9 @@ namespace CalledManagement.DAO
                 ToConnection toconnection = new ToConnection();
                 toconnection.ToConnect();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
-                cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
+                //cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
+                cmd.CommandText = "SELECT Name FROM CALLED ORDER BY Date DESC";
+               // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
                 cmd.Connection = toconnection.ToConnect();
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -270,11 +293,11 @@ namespace CalledManagement.DAO
                 {
                     //Recupera Campos
                     Called called = new Called();
-                    called.Id = int.Parse(reader["Id"].ToString());
+                    // called.Id = int.Parse(reader["Id"].ToString());
                     called.Name = reader["Name"].ToString();
-                    called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    called.Finished = reader["Finished"].ToString();
-                    called.Descripition = reader["Descripition"].ToString();
+                    // called.Date = Convert.ToDateTime(reader["Date"].ToString());
+                    //called.Finished = reader["Finished"].ToString();
+                    //called.Descripition = reader["Descripition"].ToString();
 
                     lista.Add(called);
                 }
