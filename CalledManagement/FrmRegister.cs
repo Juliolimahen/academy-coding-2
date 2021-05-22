@@ -29,11 +29,7 @@ namespace CalledManagement
         {
             txtRegID.Focus();
         }
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
         //Botão para Finalizar chamado
         private void btnRegFinish_Click(object sender, EventArgs e)
         {
@@ -50,9 +46,6 @@ namespace CalledManagement
             operation = "Init";
             _DateTime = DateTime.Now;
             lbRegDateTime.Text = _DateTime.ToString();
-            // ativa o timer ao iniciar um chamado
-            timer1.Start();
-            timer1.Enabled = true;
         }
 
         //botão para salvar registros 
@@ -60,7 +53,6 @@ namespace CalledManagement
         {
             if (ValidateData() == true)
             {
-
                 Called called = new Called();
                 called.Name = txtRegName.Text;
                 called.Date = dtpRegDate.Value;
@@ -94,14 +86,8 @@ namespace CalledManagement
             Function.Clean(this);
             Function.EnableButtons(this, "Init");
             txtRegID.Enabled = true;
-            //txtRegResearch.Enabled = true;
             txtRegID.Focus();
             operation = "";
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -115,7 +101,6 @@ namespace CalledManagement
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
-
 
             else if (txtRegID.Text.Length > 0)
             {
@@ -164,26 +149,6 @@ namespace CalledManagement
             }
         }
 
-        private void lbRegTimer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbRegDateTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime timerCalled = new DateTime();
@@ -192,11 +157,6 @@ namespace CalledManagement
             //_DateTime = DateTime.Now
             //timerCalled.ToString("01"); 
             lbRegTimer.Text = timerCalled.ToString("");
-
-        }
-
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -215,16 +175,6 @@ namespace CalledManagement
             string SecSearchHours;
             SecSearchHours = txtSecSearchHours.Text;
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
-
-
-            //Passa texto do text box por parametro
-            //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
-
-        }
-
-        private void dgvSecCalled_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void FrmRegisterCalled_Load(object sender, EventArgs e)
@@ -259,16 +209,6 @@ namespace CalledManagement
             return true;
         }
 
-        private void tbpResgister_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvSecCalled_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnSecSearch_Click_1(object sender, EventArgs e)
         {
 
@@ -294,8 +234,7 @@ namespace CalledManagement
             Function.EnableFields(this, true);
             Function.Clean(this);
             Function.EnableButtons(this, "Save");
-            txtRegID.Enabled = false;
-            txtRegName.Focus();
+            cbxRegHours.Focus();
             operation = "Init";
             _DateTime = DateTime.Now;
             lbRegDateTime.Text = _DateTime.ToString();
@@ -304,29 +243,23 @@ namespace CalledManagement
             timer1.Enabled = true;
         }
 
-        private void dgvSecHours_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
             if (txtRegID.Text.Length == 0)
             {
-                MessageBox.Show("Digite um codigo identificador para alterar o registro!");
-                txtRegID.Focus();
+                MessageBox.Show("Selecione o chamado para qual deseja alterar as horas!");
+                cbxRegHours.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
 
-
-            else if (txtRegID.Text.Length > 0)
-            {
+            //else if (cbxRegHours)
+          //  {
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Save");
                 txtRegID.Enabled = false;
                 txtRegName.Focus();
-            }
+           // }
 
             operation = "Change";
         }
@@ -348,16 +281,16 @@ namespace CalledManagement
         {
             if (ValidateData() == true)
             {
-                Called called = new Called();
-                called.Name = txtRegName.Text;
-                called.Date = dtpRegDate.Value;
-                called.Descripition = txtRegDescripition.Text;
-                called.Finished = txtRegStatus.Text;
+                HourWorked hourworked = new HourWorked();
+                //hourworked.CalledId = cbxRegHours.;
+               // hourworked.Date = dtpRegDate.Value;
+               // hourworked.Descripition = txtRegDescripition.Text;
+               // hourworked.Finished = txtRegStatus.Text;
 
                 if (operation == "Init")
                 {
                     CalledDAO calleddao = new CalledDAO();
-                    if (calleddao.Insert(called) == false)
+                   // if (calleddao.Insert(called) == false)
                     {
                         txtRegName.Focus();
                         return;
@@ -368,8 +301,8 @@ namespace CalledManagement
                 {
 
                     CalledDAO calleddao = new CalledDAO();
-                    called.Id = int.Parse(txtRegID.Text);
-                    if (calleddao.Change(called) == false)
+                 //   called.Id = int.Parse(txtRegID.Text);
+                   // if (calleddao.Change(called) == false)
                     {
                         txtRegName.Focus();
                         return;
@@ -407,11 +340,6 @@ namespace CalledManagement
                     }
                 }
             }
-        }
-
-        private void btnRegFinishedHours_Click(object sender, EventArgs e)
-        {
-            Dispose();
         }
 
         private void cbxRegHours_SelectedIndexChanged(object sender, EventArgs e)

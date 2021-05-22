@@ -135,9 +135,7 @@ namespace CalledManagement.DAO
                     cmd.Connection = toconnection.ToConnect();
 
                     cmd.CommandText = "delete from CALLED where Id = @Id";
-
                     cmd.Parameters.AddWithValue("@Id", ID);
-
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Cadastro Excluido com sucesso!");
@@ -203,12 +201,8 @@ namespace CalledManagement.DAO
 
 
                 cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
-
                 cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
-
                 cmd.ExecuteNonQuery();
-
-
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataTable db = new DataTable();
@@ -233,9 +227,9 @@ namespace CalledManagement.DAO
                 cmd.CommandText = "SELECT Name FROM CALLED ORDER BY Date DESC";
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable db = new DataTable();
-                adp.Fill(db);
-                cbxSec.DataSource = db;
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                cbxSec.DataSource = dt;
                 cbxSec.DisplayMember = "Name";
             }
 
@@ -244,67 +238,6 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
-        //Corrigir...
-        /*
-        public Called SearchID(int ID)
-        {
-            Called called = new Called();
-
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
-            {
-                cmd.Connection = toconnection.ToConnect();
-
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Id'";
-                cmd.Parameters.AddWithValue("@Id", ID);
-                cmd.Connection = toconnection.ToConnect();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                //percorre todas as linhas de DataReader
-                while (reader.Read())
-                {
-                    //recuperar os campos
-                    called.Id = int.Parse(reader["Id"].ToString());
-                    called.Name = reader["Name"].ToString();
-                    called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    called.Finished = reader["Finished"].ToString();
-                    called.Descripition = reader["Descripition"].ToString();
-                }
-                toconnection.ToDisconnect();
-            }
-            return called;
-        }*/
-        /*public List<Called> SearchName(ComboBox cbxSec, string Name)
-        {
-            List<Called> lista = new List<Called>();
-            {
-                //conn.Open();
-                ToConnection toconnection = new ToConnection();
-                toconnection.ToConnect();
-                SqlCommand cmd = new SqlCommand();
-                //cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
-                cmd.CommandText = "SELECT Name FROM CALLED ORDER BY Date DESC";
-               // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
-                cmd.Connection = toconnection.ToConnect();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                //percorre todas as linhas do DataReader
-                while (reader.Read())
-                {
-                    //Recupera Campos
-                    Called called = new Called();
-                    // called.Id = int.Parse(reader["Id"].ToString());
-                    called.Name = reader["Name"].ToString();
-                    // called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    //called.Finished = reader["Finished"].ToString();
-                    //called.Descripition = reader["Descripition"].ToString();
-
-                    lista.Add(called);
-                }
-            }
-            return lista;
-
-        }*/
     }
 }
 

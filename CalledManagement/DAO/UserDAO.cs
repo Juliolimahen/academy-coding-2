@@ -97,13 +97,13 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Occupation", user.Occupation);
                     cmd.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
 
-                    
+
 
                     // O objetro cmd recebe os parâmetros com os valores dos campos 
                     cmd.Connection = toconnection.ToConnect();
-
+                   // Retorna o comando SQL de INSERT no banco de dados
                     cmd.ExecuteNonQuery();
-                    // Retorna o comando SQL de INSERT no banco de dados
+                    
                     //teste
                     MessageBox.Show("Cadastro Excluido com sucesso!");
                     return true;
@@ -121,8 +121,6 @@ namespace CalledManagement.DAO
                 {
                     ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();// O finally é sempre executado,
-
-
                 }
             }
         }
@@ -136,17 +134,13 @@ namespace CalledManagement.DAO
                     SqlCommand cmd = new SqlCommand();
                     ToConnection toconnection = new ToConnection();
                     cmd.Connection = toconnection.ToConnect();
-
                     cmd.CommandText = "delete from USER where Id = @Id";
-
                     cmd.Parameters.AddWithValue("@Id", ID);
-
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Cadastro Excluido com sucesso!");
 
                     return true;
-
                 }
                 catch (Exception ex)
                 {
@@ -174,12 +168,9 @@ namespace CalledManagement.DAO
                 if (name.Length > 0)
                 {
                     cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM user WHERE Name LIKE @Name";
-
                     cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
-
                     cmd.ExecuteNonQuery();
                 }
-                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataTable db = new DataTable();
@@ -189,23 +180,18 @@ namespace CalledManagement.DAO
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
         public void SearchGrid(DataGridView dgvSec, string name)
         {
-
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 ToConnection toconnection = new ToConnection();
                 cmd.Connection = toconnection.ToConnect();
-
                 cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM user WHERE Name LIKE '@Name'";
-
                 cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
-
                 cmd.ExecuteNonQuery();
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -216,69 +202,8 @@ namespace CalledManagement.DAO
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao Listar registros: " + ex.Message);
             }
         }
-        //Corrigir...
-        /*
-        public user SearchID(int ID)
-        {
-            user user = new user();
-
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
-            {
-                cmd.Connection = toconnection.ToConnect();
-
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM user WHERE Name LIKE '@Id'";
-                cmd.Parameters.AddWithValue("@Id", ID);
-                cmd.Connection = toconnection.ToConnect();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                //percorre todas as linhas de DataReader
-                while (reader.Read())
-                {
-                    //recuperar os campos
-                    user.Id = int.Parse(reader["Id"].ToString());
-                    user.Name = reader["Name"].ToString();
-                    user.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    user.Finished = reader["Finished"].ToString();
-                    user.Descripition = reader["Descripition"].ToString();
-                }
-                toconnection.ToDisconnect();
-            }
-            return user;
-        }
-        public List<user> SearchName(string Name)
-        {
-            List<user> lista = new List<user>();
-            {
-                //conn.Open();
-                ToConnection toconnection = new ToConnection();
-                toconnection.ToConnect();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM user WHERE Name LIKE '@Name'";
-                cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
-                cmd.Connection = toconnection.ToConnect();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                //percorre todas as linhas do DataReader
-                while (reader.Read())
-                {
-                    //Recupera Campos
-                    user user = new user();
-                    user.Id = int.Parse(reader["Id"].ToString());
-                    user.Name = reader["Name"].ToString();
-                    user.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    user.Finished = reader["Finished"].ToString();
-                    user.Descripition = reader["Descripition"].ToString();
-
-                    lista.Add(user);
-                }
-            }
-            return lista;
-
-        }*/
     }
 }

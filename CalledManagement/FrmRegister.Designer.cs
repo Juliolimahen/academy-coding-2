@@ -40,13 +40,10 @@
             this.btnRegInitHours = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.mstbRegHourInit = new System.Windows.Forms.MaskedTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.mstbRegHourFinished = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxRegHours = new System.Windows.Forms.ComboBox();
-            this.mstbRegDateFinished = new System.Windows.Forms.MaskedTextBox();
-            this.mstbRegDateInit = new System.Windows.Forms.MaskedTextBox();
+            this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
+            this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbpResgister = new System.Windows.Forms.TabPage();
@@ -107,13 +104,10 @@
             this.tbpRegisterHoras.Controls.Add(this.btnRegInitHours);
             this.tbpRegisterHoras.Controls.Add(this.groupBox2);
             this.tbpRegisterHoras.Controls.Add(this.label13);
-            this.tbpRegisterHoras.Controls.Add(this.mstbRegHourInit);
-            this.tbpRegisterHoras.Controls.Add(this.label4);
-            this.tbpRegisterHoras.Controls.Add(this.mstbRegHourFinished);
             this.tbpRegisterHoras.Controls.Add(this.label3);
             this.tbpRegisterHoras.Controls.Add(this.cbxRegHours);
-            this.tbpRegisterHoras.Controls.Add(this.mstbRegDateFinished);
-            this.tbpRegisterHoras.Controls.Add(this.mstbRegDateInit);
+            this.tbpRegisterHoras.Controls.Add(this.mstbRegDateTimeFinished);
+            this.tbpRegisterHoras.Controls.Add(this.mstbRegDateTimeInit);
             this.tbpRegisterHoras.Controls.Add(this.label2);
             this.tbpRegisterHoras.Controls.Add(this.label1);
             this.tbpRegisterHoras.Location = new System.Drawing.Point(4, 22);
@@ -172,7 +166,6 @@
             this.btnRegFinishedHours.TabIndex = 39;
             this.btnRegFinishedHours.Text = "Finalizar Chamado";
             this.btnRegFinishedHours.UseVisualStyleBackColor = true;
-            this.btnRegFinishedHours.Click += new System.EventHandler(this.btnRegFinishedHours_Click);
             // 
             // btnRegInitHours
             // 
@@ -191,7 +184,7 @@
             this.groupBox2.Size = new System.Drawing.Size(214, 223);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dados do chamado";
+            this.groupBox2.Text = "Dados Cadastro";
             // 
             // label13
             // 
@@ -202,44 +195,17 @@
             this.label13.TabIndex = 36;
             this.label13.Text = "Chamados Cadastrados ";
             // 
-            // mstbRegHourInit
-            // 
-            this.mstbRegHourInit.Location = new System.Drawing.Point(37, 227);
-            this.mstbRegHourInit.Mask = "00:00";
-            this.mstbRegHourInit.Name = "mstbRegHourInit";
-            this.mstbRegHourInit.Size = new System.Drawing.Size(134, 20);
-            this.mstbRegHourInit.TabIndex = 35;
-            this.mstbRegHourInit.ValidatingType = typeof(System.DateTime);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(272, 200);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 34;
-            this.label4.Text = "Hora Termino";
-            // 
-            // mstbRegHourFinished
-            // 
-            this.mstbRegHourFinished.Location = new System.Drawing.Point(275, 227);
-            this.mstbRegHourFinished.Mask = "00:00";
-            this.mstbRegHourFinished.Name = "mstbRegHourFinished";
-            this.mstbRegHourFinished.Size = new System.Drawing.Size(144, 20);
-            this.mstbRegHourFinished.TabIndex = 33;
-            this.mstbRegHourFinished.ValidatingType = typeof(System.DateTime);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 200);
+            this.label3.Location = new System.Drawing.Point(115, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 32;
-            this.label3.Text = "Hora Inicio";
             // 
             // cbxRegHours
             // 
+            this.cbxRegHours.DisplayMember = "Selecione um chamado";
             this.cbxRegHours.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cbxRegHours.FormattingEnabled = true;
             this.cbxRegHours.Location = new System.Drawing.Point(37, 72);
@@ -248,41 +214,41 @@
             this.cbxRegHours.TabIndex = 31;
             this.cbxRegHours.SelectedIndexChanged += new System.EventHandler(this.cbxRegHours_SelectedIndexChanged);
             // 
-            // mstbRegDateFinished
+            // mstbRegDateTimeFinished
             // 
-            this.mstbRegDateFinished.Location = new System.Drawing.Point(275, 154);
-            this.mstbRegDateFinished.Mask = "00/00/0000";
-            this.mstbRegDateFinished.Name = "mstbRegDateFinished";
-            this.mstbRegDateFinished.Size = new System.Drawing.Size(144, 20);
-            this.mstbRegDateFinished.TabIndex = 30;
-            this.mstbRegDateFinished.ValidatingType = typeof(System.DateTime);
+            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(37, 227);
+            this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
+            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(121, 20);
+            this.mstbRegDateTimeFinished.TabIndex = 30;
+            this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
             // 
-            // mstbRegDateInit
+            // mstbRegDateTimeInit
             // 
-            this.mstbRegDateInit.Location = new System.Drawing.Point(37, 154);
-            this.mstbRegDateInit.Mask = "00/00/0000";
-            this.mstbRegDateInit.Name = "mstbRegDateInit";
-            this.mstbRegDateInit.Size = new System.Drawing.Size(134, 20);
-            this.mstbRegDateInit.TabIndex = 29;
-            this.mstbRegDateInit.ValidatingType = typeof(System.DateTime);
+            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(37, 154);
+            this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
+            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(121, 20);
+            this.mstbRegDateTimeInit.TabIndex = 29;
+            this.mstbRegDateTimeInit.ValidatingType = typeof(System.DateTime);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(272, 126);
+            this.label2.Location = new System.Drawing.Point(38, 200);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Data Termino";
+            this.label2.Text = "Data/Hora Termino";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(36, 126);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Data da Inicio";
+            this.label1.Text = "Data/Hora Inicio";
             // 
             // tbpResgister
             // 
@@ -333,7 +299,6 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chamado Atual";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lbRegTimer
             // 
@@ -343,7 +308,6 @@
             this.lbRegTimer.Size = new System.Drawing.Size(49, 13);
             this.lbRegTimer.TabIndex = 3;
             this.lbRegTimer.Text = "00:00:00";
-            this.lbRegTimer.Click += new System.EventHandler(this.label13_Click);
             // 
             // label33
             // 
@@ -353,7 +317,6 @@
             this.label33.Size = new System.Drawing.Size(112, 13);
             this.label33.TabIndex = 2;
             this.label33.Text = "Tempo no Chamado...";
-            this.label33.Click += new System.EventHandler(this.lbRegTimer_Click);
             // 
             // label12
             // 
@@ -372,11 +335,10 @@
             this.lbRegDateTime.Size = new System.Drawing.Size(81, 13);
             this.lbRegDateTime.TabIndex = 0;
             this.lbRegDateTime.Text = "dd-MM-yy h:m:s";
-            this.lbRegDateTime.Click += new System.EventHandler(this.lbRegDateTime_Click);
             // 
             // txtRegStatus
             // 
-            this.txtRegStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtRegStatus.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtRegStatus.Location = new System.Drawing.Point(103, 287);
             this.txtRegStatus.Name = "txtRegStatus";
             this.txtRegStatus.Size = new System.Drawing.Size(307, 20);
@@ -384,7 +346,7 @@
             // 
             // txtRegDescripition
             // 
-            this.txtRegDescripition.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtRegDescripition.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtRegDescripition.Location = new System.Drawing.Point(22, 114);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
@@ -393,15 +355,15 @@
             // 
             // txtRegID
             // 
-            this.txtRegID.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtRegID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtRegID.Location = new System.Drawing.Point(60, 23);
             this.txtRegID.Name = "txtRegID";
-            this.txtRegID.Size = new System.Drawing.Size(350, 20);
+            this.txtRegID.Size = new System.Drawing.Size(352, 20);
             this.txtRegID.TabIndex = 21;
             // 
             // txtRegName
             // 
-            this.txtRegName.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtRegName.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtRegName.Location = new System.Drawing.Point(60, 60);
             this.txtRegName.Name = "txtRegName";
             this.txtRegName.Size = new System.Drawing.Size(352, 20);
@@ -415,7 +377,6 @@
             this.label11.Size = new System.Drawing.Size(79, 13);
             this.label11.TabIndex = 25;
             this.label11.Text = "Finalizado (s/n)";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // btnRegSaveCalled
             // 
@@ -513,7 +474,6 @@
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Data e hora";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // tbcCalled
             // 
@@ -580,7 +540,6 @@
             this.dgvSecCalled.Name = "dgvSecCalled";
             this.dgvSecCalled.Size = new System.Drawing.Size(727, 311);
             this.dgvSecCalled.TabIndex = 0;
-            this.dgvSecCalled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecCalled_CellContentClick_1);
             // 
             // tbpClosedCalled
             // 
@@ -632,7 +591,6 @@
             this.dgvSecHours.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSecHours.Size = new System.Drawing.Size(727, 308);
             this.dgvSecHours.TabIndex = 1;
-            this.dgvSecHours.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecHours_CellContentClick);
             // 
             // FrmRegisterCalled
             // 
@@ -699,20 +657,17 @@
         private System.Windows.Forms.DataGridView dgvSecHours;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateFinished;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeFinished;
         private System.Windows.Forms.ComboBox cbxRegHours;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MaskedTextBox mstbRegHourInit;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox mstbRegHourFinished;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateInit;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeInit;
         private System.Windows.Forms.Button btnRegDeleteHours;
         private System.Windows.Forms.Button btnRegSaveHours;
         private System.Windows.Forms.Button btnRegCancelHours;
         private System.Windows.Forms.Button btnRegChangeHours;
         private System.Windows.Forms.Button btnRegFinishedHours;
         private System.Windows.Forms.Button btnRegInitHours;
+        private System.Windows.Forms.Label label3;
     }
 }

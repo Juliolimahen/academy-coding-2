@@ -19,7 +19,7 @@ namespace CalledManagement.Utils
                 {
                     ((TextBox)ctl).Enabled = p;
                 }
-                else if (ctl is MaskedTextBox)
+                else if (ctl is DateTimePicker)
                 {
                     ((DateTimePicker)ctl).Enabled = p;
                 }

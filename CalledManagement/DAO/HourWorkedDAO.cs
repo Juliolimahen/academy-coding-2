@@ -20,7 +20,7 @@ namespace CalledManagement.DAO
             // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "insert into HOURWORKED (CalleId, DateInserted, DateStarted, DateStarted, EndDate, DateChange) values (@CalledId, @DateInserted, @DateStarted, @Descripition, @Finished)";
+            cmd.CommandText = "insert into HOURWORKED (CalleId, DateInserted, DateStarted, EndDate, DateChange, Manual) values (@CalledId, @DateInserted, @DateStarted, @DateChange, @EndDate, @Manual)";
 
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -131,13 +131,10 @@ namespace CalledManagement.DAO
 
 
                     cmd.CommandText = "delete from HOURWORKED where calledId = @Id";
-
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Id", ID);
-
                     cmd.ExecuteNonQuery();
                     //teste
-
                     MessageBox.Show("Cadastro Excluido com sucesso!");
 
 
@@ -163,12 +160,11 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, DateStarted, EndDate, DateChange FROM HOURWORKED ORDER BY Date DESC";
+                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED ORDER BY DateInserted DESC";
 
                 if (name.Length > 0)
                 {
-                    cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, DateStarted, EndDate, DateChange FROM HOURWORKED WHERE Name LIKE @Name";
-
+                    cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED WHERE Name LIKE @Name";
                     cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
 
                     cmd.ExecuteNonQuery();
@@ -183,7 +179,6 @@ namespace CalledManagement.DAO
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
@@ -199,9 +194,6 @@ namespace CalledManagement.DAO
                 cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED CalledId LIKE '@CalledId' ORDER BY DateInserted A";
                 cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
-
-
-
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataTable db = new DataTable();
                 adp.Fill(db);
@@ -210,68 +202,9 @@ namespace CalledManagement.DAO
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao Lista registro: " + ex.Message);
             }
 
         }
-        //Corrigir...
-        /* public HourWorked SearchID(int ID)
-         {
-             HourWorked hourworked = new HourWorked();
-
-             SqlCommand cmd = new SqlCommand();
-             ToConnection toconnection = new ToConnection();
-             {
-                 cmd.Connection = toconnection.ToConnect();
-
-                 cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED CalledId LIKE '@CalledId' ORDER BY DateInserted ASC";
-                 cmd.Parameters.AddWithValue("@Id", ID);
-                 cmd.Connection = toconnection.ToConnect();
-                 SqlDataReader reader = cmd.ExecuteReader();
-
-                 //percorre todas as linhas de DataReader
-                 while (reader.Read())
-                 {
-                     //recuperar os campos
-                     hourworked.CalledId = int.Parse(reader["Id"].ToString());
-                     HourWorked.Name = reader["Name"].ToString();
-                     HourWorked.Date = Convert.ToDateTime(reader["Date"].ToString());
-                     HourWorked.Finished = reader["Finished"].ToString();
-                     HourWorked.Descripition = reader["Descripition"].ToString();
-                 }
-                 toconnection.ToDisconnect();
-             }
-             return HourWorked;
-         }
-         public List<HourWorked> SearchName(string Name)
-         {
-             List<HourWorked> lista = new List<HourWorked>();
-             {
-                 //conn.Open();
-                 ToConnection toconnection = new ToConnection();
-                 toconnection.ToConnect();
-                 SqlCommand cmd = new SqlCommand();
-                 cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED CalledId LIKE '@CalledId' ORDER BY DateInserted ASC"; ;
-                 cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
-                 cmd.Connection = toconnection.ToConnect();
-                 SqlDataReader reader = cmd.ExecuteReader();
-
-                 //percorre todas as linhas do DataReader
-                 while (reader.Read())
-                 {
-                     //Recupera Campos
-                     HourWorked HourWorked = new HourWorked();
-                     HourWorked.Id = int.Parse(reader["Id"].ToString());
-                     HourWorked.Name = reader["Name"].ToString();
-                     HourWorked.Date = Convert.ToDateTime(reader["Date"].ToString());
-                     HourWorked.Finished = reader["Finished"].ToString();
-                     HourWorked.Descripition = reader["Descripition"].ToString();
-
-                     lista.Add(HourWorked);
-                 }
-             }
-             return lista;
-         }*/
     }
 }
