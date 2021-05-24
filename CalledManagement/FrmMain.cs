@@ -19,8 +19,8 @@ namespace CalledManagement
 
         private void tsmiRegister_Click(object sender, EventArgs e)
         {
-            FrmRegisterCalled frmregidtercalled = new FrmRegisterCalled();
-            frmregidtercalled.ShowDialog();
+            FrmRegisterCalled frmregistercalled = new FrmRegisterCalled();
+            frmregistercalled.ShowDialog();
 
         }
 

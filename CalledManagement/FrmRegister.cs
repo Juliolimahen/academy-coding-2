@@ -287,15 +287,15 @@ namespace CalledManagement
             _DateTime = DateTime.Now;
             HourWorked hourworked = new HourWorked();
             Called called = new Called();
+            CalledDAO calleddao = new CalledDAO();
+            
+            MessageBox.Show(text: cbxRegHours.SelectedValue.ToString());
             hourworked.CalledId = called;
-            hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedIndex);
-            ///hourworked.CalledId = id;
-            hourworked.DateInserted = _DateTime;
+            hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
+            hourworked.DateInserted = _DateTime = DateTime.Now;
             hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
             hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
-            hourworked.Manual = Convert.ToChar(txtRegManual.Text);
-            // hourworked.Descripition = txtRegDescripition.Text;
-            // hourworked.Finished = txtRegStatus.Text;
+            hourworked.DateChange = Convert.ToDateTime(mstbRegDateTimeChange.Text);
 
             // if (operation == "Init")
             // {
@@ -315,7 +315,6 @@ namespace CalledManagement
             // return;
             ///}
             // }
-
 
             Function.EnableFields(this, false);
             Function.Clean(this);
@@ -353,7 +352,12 @@ namespace CalledManagement
 
         private void cbxRegHours_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void btnRegFinishedHours_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
 
         //CalledDAO calleddao = new CalledDAO();

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tbpRegisterHoras = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnRegDeleteHours = new System.Windows.Forms.Button();
             this.btnRegSaveHours = new System.Windows.Forms.Button();
             this.btnRegCancelHours = new System.Windows.Forms.Button();
@@ -44,15 +44,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxRegHours = new System.Windows.Forms.ComboBox();
-            this.fKCalledIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cALLEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.academycoding2DataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.academycoding2DataSet1 = new CalledManagement.academycoding2DataSet1();
             this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
             this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cALLEDBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.btnRegDeleteCalled = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -86,16 +81,16 @@
             this.txtSecSearchHours = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvSecHours = new System.Windows.Forms.DataGridView();
+            this.cALLEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cALLEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.CALLEDTableAdapter();
+            this.fKCalledIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hOURWORKEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.HOURWORKEDTableAdapter();
             this.cALLEDBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cALLEDBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.mstbRegDateTimeChange = new System.Windows.Forms.MaskedTextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tbpRegisterHoras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).BeginInit();
             this.tbpResgister.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbcCalled.SuspendLayout();
@@ -103,19 +98,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // tbpRegisterHoras
             // 
+            this.tbpRegisterHoras.Controls.Add(this.label15);
+            this.tbpRegisterHoras.Controls.Add(this.mstbRegDateTimeChange);
+            this.tbpRegisterHoras.Controls.Add(this.label4);
+            this.tbpRegisterHoras.Controls.Add(this.checkBox2);
             this.tbpRegisterHoras.Controls.Add(this.checkBox1);
-            this.tbpRegisterHoras.Controls.Add(this.label14);
-            this.tbpRegisterHoras.Controls.Add(this.textBox1);
             this.tbpRegisterHoras.Controls.Add(this.btnRegDeleteHours);
             this.tbpRegisterHoras.Controls.Add(this.btnRegSaveHours);
             this.tbpRegisterHoras.Controls.Add(this.btnRegCancelHours);
@@ -138,22 +133,34 @@
             this.tbpRegisterHoras.Text = "Cadastrar Horas";
             this.tbpRegisterHoras.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // label4
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(38, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(40, 13);
-            this.label14.TabIndex = 47;
-            this.label14.Text = "Codigo";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 186);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "Inserção Manual?";
             // 
-            // textBox1
+            // checkBox2
             // 
-            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox1.Location = new System.Drawing.Point(37, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(382, 20);
-            this.textBox1.TabIndex = 46;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(189, 185);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(46, 17);
+            this.checkBox2.TabIndex = 50;
+            this.checkBox2.Text = "Não";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(140, 185);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(43, 17);
+            this.checkBox1.TabIndex = 49;
+            this.checkBox1.Text = "Sim";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // btnRegDeleteHours
             // 
@@ -203,6 +210,7 @@
             this.btnRegFinishedHours.TabIndex = 39;
             this.btnRegFinishedHours.Text = "Finalizar Chamado";
             this.btnRegFinishedHours.UseVisualStyleBackColor = true;
+            this.btnRegFinishedHours.Click += new System.EventHandler(this.btnRegFinishedHours_Click);
             // 
             // btnRegInitHours
             // 
@@ -216,7 +224,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(491, 32);
+            this.groupBox2.Location = new System.Drawing.Point(491, 44);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(214, 237);
             this.groupBox2.TabIndex = 37;
@@ -226,7 +234,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(36, 81);
+            this.label13.Location = new System.Drawing.Point(36, 44);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(122, 13);
             this.label13.TabIndex = 36;
@@ -242,39 +250,17 @@
             // 
             // cbxRegHours
             // 
-            this.cbxRegHours.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.fKCalledIdBindingSource, "CalledId", true));
             this.cbxRegHours.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cbxRegHours.FormattingEnabled = true;
-            this.cbxRegHours.Location = new System.Drawing.Point(37, 118);
+            this.cbxRegHours.Location = new System.Drawing.Point(37, 69);
             this.cbxRegHours.Name = "cbxRegHours";
             this.cbxRegHours.Size = new System.Drawing.Size(378, 21);
             this.cbxRegHours.TabIndex = 31;
-            this.cbxRegHours.SelectedIndexChanged += new System.EventHandler(this.cbxRegHours_SelectedIndexChanged);
-            // 
-            // fKCalledIdBindingSource
-            // 
-            this.fKCalledIdBindingSource.DataMember = "FK_CalledId";
-            this.fKCalledIdBindingSource.DataSource = this.cALLEDBindingSource;
-            // 
-            // cALLEDBindingSource
-            // 
-            this.cALLEDBindingSource.DataMember = "CALLED";
-            this.cALLEDBindingSource.DataSource = this.academycoding2DataSet1BindingSource;
-            // 
-            // academycoding2DataSet1BindingSource
-            // 
-            this.academycoding2DataSet1BindingSource.DataSource = this.academycoding2DataSet1;
-            this.academycoding2DataSet1BindingSource.Position = 0;
-            // 
-            // academycoding2DataSet1
-            // 
-            this.academycoding2DataSet1.DataSetName = "academycoding2DataSet1";
-            this.academycoding2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // mstbRegDateTimeFinished
             // 
-            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(245, 195);
-            this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(245, 142);
+            this.mstbRegDateTimeFinished.Mask = "00-00-0000 90:00";
             this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
             this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(170, 20);
             this.mstbRegDateTimeFinished.TabIndex = 30;
@@ -282,8 +268,8 @@
             // 
             // mstbRegDateTimeInit
             // 
-            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(37, 195);
-            this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(37, 142);
+            this.mstbRegDateTimeInit.Mask = "00-00-0000 90:00";
             this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
             this.mstbRegDateTimeInit.Size = new System.Drawing.Size(146, 20);
             this.mstbRegDateTimeInit.TabIndex = 29;
@@ -292,7 +278,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(246, 160);
+            this.label2.Location = new System.Drawing.Point(242, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 24;
@@ -301,16 +287,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 160);
+            this.label1.Location = new System.Drawing.Point(36, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 23;
             this.label1.Text = "Data/Hora Inicio";
-            // 
-            // cALLEDBindingSource2
-            // 
-            this.cALLEDBindingSource2.DataMember = "CALLED";
-            this.cALLEDBindingSource2.DataSource = this.academycoding2DataSet1BindingSource;
             // 
             // tbpResgister
             // 
@@ -644,6 +625,10 @@
             // 
             // dgvSecHours
             // 
+            this.dgvSecHours.AllowUserToAddRows = false;
+            this.dgvSecHours.AllowUserToDeleteRows = false;
+            this.dgvSecHours.AllowUserToResizeColumns = false;
+            this.dgvSecHours.AllowUserToResizeRows = false;
             this.dgvSecHours.BackgroundColor = System.Drawing.Color.White;
             this.dgvSecHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSecHours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -658,24 +643,36 @@
             // 
             this.cALLEDTableAdapter.ClearBeforeFill = true;
             // 
+            // fKCalledIdBindingSource
+            // 
+            this.fKCalledIdBindingSource.DataSource = this.cALLEDBindingSource;
+            // 
             // hOURWORKEDTableAdapter
             // 
             this.hOURWORKEDTableAdapter.ClearBeforeFill = true;
             // 
-            // cALLEDBindingSource1
+            // timer1
             // 
-            this.cALLEDBindingSource1.DataMember = "CALLED";
-            this.cALLEDBindingSource1.DataSource = this.academycoding2DataSet1BindingSource;
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // checkBox1
+            // mstbRegDateTimeChange
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(37, 252);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(111, 17);
-            this.checkBox1.TabIndex = 49;
-            this.checkBox1.Text = "Inserção Manual?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.mstbRegDateTimeChange.Location = new System.Drawing.Point(161, 227);
+            this.mstbRegDateTimeChange.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeChange.Name = "mstbRegDateTimeChange";
+            this.mstbRegDateTimeChange.Size = new System.Drawing.Size(100, 20);
+            this.mstbRegDateTimeChange.TabIndex = 52;
+            this.mstbRegDateTimeChange.ValidatingType = typeof(System.DateTime);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(36, 230);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(119, 13);
+            this.label15.TabIndex = 53;
+            this.label15.Text = "Data Alteração(TESTE)";
             // 
             // FrmRegisterCalled
             // 
@@ -689,11 +686,6 @@
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpRegisterHoras.ResumeLayout(false);
             this.tbpRegisterHoras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).EndInit();
             this.tbpResgister.ResumeLayout(false);
             this.tbpResgister.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -705,13 +697,15 @@
             this.tbpClosedCalled.ResumeLayout(false);
             this.tbpClosedCalled.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TabPage tbpRegisterHoras;
         private System.Windows.Forms.TabPage tbpResgister;
         private System.Windows.Forms.Button btnRegDeleteCalled;
@@ -760,16 +754,17 @@
         private System.Windows.Forms.Button btnRegFinishedHours;
         private System.Windows.Forms.Button btnRegInitHours;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.BindingSource academycoding2DataSet1BindingSource;
-        private academycoding2DataSet1 academycoding2DataSet1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.BindingSource cALLEDBindingSource;
         private academycoding2DataSet1TableAdapters.CALLEDTableAdapter cALLEDTableAdapter;
         private System.Windows.Forms.BindingSource fKCalledIdBindingSource;
         private academycoding2DataSet1TableAdapters.HOURWORKEDTableAdapter hOURWORKEDTableAdapter;
         private System.Windows.Forms.BindingSource cALLEDBindingSource1;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.BindingSource cALLEDBindingSource2;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeChange;
     }
 }

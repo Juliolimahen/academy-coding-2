@@ -224,15 +224,22 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Name FROM CALLED ORDER BY Date DESC";
+                cmd.CommandText = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
 
                 SqlDataReader adp = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
+               
                 dt.Load(adp);
+
                 cbxSec.DisplayMember = "Name";
                 cbxSec.ValueMember = "Id";
+
                 cbxSec.DataSource = dt;
-                cbxSec.Text = "Selecione um Chamado";
+
+
+
+
+
             }
 
             catch (Exception ex)
