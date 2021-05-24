@@ -29,7 +29,7 @@ namespace CalledManagement
         {
             txtRegID.Focus();
         }
-       
+
         //Botão para Finalizar chamado
         private void btnRegFinish_Click(object sender, EventArgs e)
         {
@@ -179,6 +179,10 @@ namespace CalledManagement
 
         private void FrmRegisterCalled_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet1.HOURWORKED'. Você pode movê-la ou removê-la conforme necessário.
+            //this.hOURWORKEDTableAdapter.Fill(this.academycoding2DataSet1.HOURWORKED);
+            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet1.CALLED'. Você pode movê-la ou removê-la conforme necessário.
+            //this.cALLEDTableAdapter.Fill(this.academycoding2DataSet1.CALLED);
             //Cria nova instância
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
@@ -217,7 +221,7 @@ namespace CalledManagement
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
             string name = txtSecSearchCalled.Text;
-           
+
             calleddao.ListarGrid(dgvSecCalled, name);
 
             string SecSearchHours;
@@ -254,12 +258,12 @@ namespace CalledManagement
             }
 
             //else if (cbxRegHours)
-          //  {
-                Function.EnableFields(this, true);
-                Function.EnableButtons(this, "Save");
-                txtRegID.Enabled = false;
-                txtRegName.Focus();
-           // }
+            //  {
+            Function.EnableFields(this, true);
+            Function.EnableButtons(this, "Save");
+            txtRegID.Enabled = false;
+            txtRegName.Focus();
+            // }
 
             operation = "Change";
         }
@@ -279,43 +283,48 @@ namespace CalledManagement
 
         private void btnRegSaveHours_Click(object sender, EventArgs e)
         {
-            if (ValidateData() == true)
-            {
-                HourWorked hourworked = new HourWorked();
-                //hourworked.CalledId = cbxRegHours.;
-               // hourworked.Date = dtpRegDate.Value;
-               // hourworked.Descripition = txtRegDescripition.Text;
-               // hourworked.Finished = txtRegStatus.Text;
+         
+            _DateTime = DateTime.Now;
+            HourWorked hourworked = new HourWorked();
+            Called called = new Called();
+            hourworked.CalledId = called;
+            hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedIndex);
+            ///hourworked.CalledId = id;
+            hourworked.DateInserted = _DateTime;
+            hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
+            hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
+            hourworked.Manual = Convert.ToChar(txtRegManual.Text);
+            // hourworked.Descripition = txtRegDescripition.Text;
+            // hourworked.Finished = txtRegStatus.Text;
 
-                if (operation == "Init")
-                {
-                    CalledDAO calleddao = new CalledDAO();
-                   // if (calleddao.Insert(called) == false)
-                    {
-                        txtRegName.Focus();
-                        return;
-                    }
+            // if (operation == "Init")
+            // {
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
-                }
-                else if (operation == "Change")
-                {
+            hourworkeddao.Insert(hourworked);
 
-                    CalledDAO calleddao = new CalledDAO();
-                 //   called.Id = int.Parse(txtRegID.Text);
-                   // if (calleddao.Change(called) == false)
-                    {
-                        txtRegName.Focus();
-                        return;
-                    }
-                }
-            }
+
+            // else if (operation == "Change")
+            //{
+
+            //CalledDAO calleddao = new CalledDAO();
+            //   called.Id = int.Parse(txtRegID.Text);
+            // if (calleddao.Change(called) == false)
+            //{
+            //txtRegName.Focus();
+            // return;
+            ///}
+            // }
+
+
             Function.EnableFields(this, false);
             Function.Clean(this);
             Function.EnableButtons(this, "Init");
-            txtRegID.Enabled = true;
+            //txtRegID.Enabled = true;
             //txtRegResearch.Enabled = true;
-            txtRegID.Focus();
+            //txtRegID.Focus();
             operation = "";
+            //}
         }
 
         private void btnRegCancelHours_Click(object sender, EventArgs e)
@@ -344,10 +353,15 @@ namespace CalledManagement
 
         private void cbxRegHours_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //CalledDAO calleddao = new CalledDAO();
-            //passa a data grid view por parametro
-            //string name ="";
-            //calleddao.ListarComboBox(cbxRegHours);
+            
         }
+
+        //CalledDAO calleddao = new CalledDAO();
+        //passa a data grid view por parametro
+        //string name ="";
+        //calleddao.ListarComboBox(cbxRegHours);
     }
-}
+
+       
+   }
+

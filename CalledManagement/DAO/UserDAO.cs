@@ -38,7 +38,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Login", user.Login);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
                     cmd.Parameters.AddWithValue("@Occupation", user.Occupation);
-                    cmd.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
+                    cmd.Parameters.AddWithValue("@AccessLevel", user.Group);
 
                     cmd.Connection = toconnection.ToConnect();
 
@@ -95,7 +95,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Login", user.Login);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
                     cmd.Parameters.AddWithValue("@Occupation", user.Occupation);
-                    cmd.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
+                    cmd.Parameters.AddWithValue("@AccessLevel", user.Group);
 
 
 

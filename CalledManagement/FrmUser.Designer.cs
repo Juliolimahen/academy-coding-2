@@ -31,15 +31,16 @@ namespace CalledManagement
         {
             this.tbcUser = new System.Windows.Forms.TabControl();
             this.tbpRegUser = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtRegLogin = new System.Windows.Forms.TextBox();
             this.btnRegDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lbRegDateTime = new System.Windows.Forms.Label();
-            this.txtRegStatus = new System.Windows.Forms.TextBox();
+            this.txtRegPassword = new System.Windows.Forms.TextBox();
             this.txtRegDescripition = new System.Windows.Forms.TextBox();
             this.txtRegID = new System.Windows.Forms.TextBox();
             this.txtRegName = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnRegSave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@ namespace CalledManagement
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegFinish = new System.Windows.Forms.Button();
             this.btnRegInit = new System.Windows.Forms.Button();
-            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbpSecUser = new System.Windows.Forms.TabPage();
             this.tbcUser.SuspendLayout();
@@ -68,13 +68,14 @@ namespace CalledManagement
             // 
             // tbpRegUser
             // 
+            this.tbpRegUser.Controls.Add(this.label1);
+            this.tbpRegUser.Controls.Add(this.txtRegLogin);
             this.tbpRegUser.Controls.Add(this.btnRegDelete);
             this.tbpRegUser.Controls.Add(this.groupBox1);
-            this.tbpRegUser.Controls.Add(this.txtRegStatus);
+            this.tbpRegUser.Controls.Add(this.txtRegPassword);
             this.tbpRegUser.Controls.Add(this.txtRegDescripition);
             this.tbpRegUser.Controls.Add(this.txtRegID);
             this.tbpRegUser.Controls.Add(this.txtRegName);
-            this.tbpRegUser.Controls.Add(this.label11);
             this.tbpRegUser.Controls.Add(this.btnRegSave);
             this.tbpRegUser.Controls.Add(this.label8);
             this.tbpRegUser.Controls.Add(this.label7);
@@ -83,7 +84,6 @@ namespace CalledManagement
             this.tbpRegUser.Controls.Add(this.label5);
             this.tbpRegUser.Controls.Add(this.btnRegFinish);
             this.tbpRegUser.Controls.Add(this.btnRegInit);
-            this.tbpRegUser.Controls.Add(this.dtpRegDate);
             this.tbpRegUser.Controls.Add(this.label6);
             this.tbpRegUser.Location = new System.Drawing.Point(4, 22);
             this.tbpRegUser.Name = "tbpRegUser";
@@ -92,6 +92,22 @@ namespace CalledManagement
             this.tbpRegUser.TabIndex = 0;
             this.tbpRegUser.Text = "Cadastrar";
             this.tbpRegUser.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Senha";
+            // 
+            // txtRegLogin
+            // 
+            this.txtRegLogin.Location = new System.Drawing.Point(81, 106);
+            this.txtRegLogin.Name = "txtRegLogin";
+            this.txtRegLogin.Size = new System.Drawing.Size(354, 20);
+            this.txtRegLogin.TabIndex = 46;
             // 
             // btnRegDelete
             // 
@@ -131,16 +147,16 @@ namespace CalledManagement
             this.lbRegDateTime.TabIndex = 0;
             this.lbRegDateTime.Text = "dd-MM-yy h:m:s";
             // 
-            // txtRegStatus
+            // txtRegPassword
             // 
-            this.txtRegStatus.Location = new System.Drawing.Point(124, 303);
-            this.txtRegStatus.Name = "txtRegStatus";
-            this.txtRegStatus.Size = new System.Drawing.Size(307, 20);
-            this.txtRegStatus.TabIndex = 43;
+            this.txtRegPassword.Location = new System.Drawing.Point(81, 137);
+            this.txtRegPassword.Name = "txtRegPassword";
+            this.txtRegPassword.Size = new System.Drawing.Size(354, 20);
+            this.txtRegPassword.TabIndex = 43;
             // 
             // txtRegDescripition
             // 
-            this.txtRegDescripition.Location = new System.Drawing.Point(36, 130);
+            this.txtRegDescripition.Location = new System.Drawing.Point(40, 209);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
             this.txtRegDescripition.Size = new System.Drawing.Size(395, 99);
@@ -148,26 +164,17 @@ namespace CalledManagement
             // 
             // txtRegID
             // 
-            this.txtRegID.Location = new System.Drawing.Point(79, 39);
+            this.txtRegID.Location = new System.Drawing.Point(81, 39);
             this.txtRegID.Name = "txtRegID";
-            this.txtRegID.Size = new System.Drawing.Size(352, 20);
+            this.txtRegID.Size = new System.Drawing.Size(354, 20);
             this.txtRegID.TabIndex = 38;
             // 
             // txtRegName
             // 
-            this.txtRegName.Location = new System.Drawing.Point(79, 76);
+            this.txtRegName.Location = new System.Drawing.Point(81, 76);
             this.txtRegName.Name = "txtRegName";
-            this.txtRegName.Size = new System.Drawing.Size(352, 20);
+            this.txtRegName.Size = new System.Drawing.Size(354, 20);
             this.txtRegName.TabIndex = 34;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(37, 306);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 13);
-            this.label11.TabIndex = 42;
-            this.label11.Text = "Finalizado (s/n)";
             // 
             // btnRegSave
             // 
@@ -181,7 +188,7 @@ namespace CalledManagement
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(33, 106);
+            this.label8.Location = new System.Drawing.Point(37, 182);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 39;
@@ -232,6 +239,7 @@ namespace CalledManagement
             this.btnRegFinish.TabIndex = 32;
             this.btnRegFinish.Text = "Sair";
             this.btnRegFinish.UseVisualStyleBackColor = true;
+            this.btnRegFinish.Click += new System.EventHandler(this.btnRegFinish_Click_1);
             // 
             // btnRegInit
             // 
@@ -242,24 +250,14 @@ namespace CalledManagement
             this.btnRegInit.Text = "Iniciar";
             this.btnRegInit.UseVisualStyleBackColor = true;
             // 
-            // dtpRegDate
-            // 
-            this.dtpRegDate.CustomFormat = "dd-MM-yyyy h:m";
-            this.dtpRegDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtpRegDate.Location = new System.Drawing.Point(36, 264);
-            this.dtpRegDate.Name = "dtpRegDate";
-            this.dtpRegDate.Size = new System.Drawing.Size(395, 20);
-            this.dtpRegDate.TabIndex = 30;
-            this.dtpRegDate.Value = new System.DateTime(2021, 5, 16, 15, 0, 9, 0);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 248);
+            this.label6.Location = new System.Drawing.Point(35, 109);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 29;
-            this.label6.Text = "Data e hora";
+            this.label6.Text = "Login";
             // 
             // tbpSecUser
             // 
@@ -297,11 +295,9 @@ namespace CalledManagement
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbRegDateTime;
-        private System.Windows.Forms.TextBox txtRegStatus;
-        private System.Windows.Forms.TextBox txtRegDescripition;
+        private System.Windows.Forms.TextBox txtRegPassword;
         private System.Windows.Forms.TextBox txtRegID;
         private System.Windows.Forms.TextBox txtRegName;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnRegSave;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -310,7 +306,9 @@ namespace CalledManagement
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRegFinish;
         private System.Windows.Forms.Button btnRegInit;
-        private System.Windows.Forms.DateTimePicker dtpRegDate;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtRegLogin;
+        private System.Windows.Forms.TextBox txtRegDescripition;
     }
 }

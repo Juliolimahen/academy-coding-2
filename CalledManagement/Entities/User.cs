@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalledManagement.Entities
 {
-    class User
+    public class User
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,7 +14,6 @@ namespace CalledManagement.Entities
         public string Login { get; set; }
         public string Password { get; set; }
         public string Occupation { get; set; }
-        public string AccessLevel { get; set; }
-
+        public string Group { get; set; }
     }
 }

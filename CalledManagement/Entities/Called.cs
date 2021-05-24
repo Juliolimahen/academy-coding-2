@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CalledManagement.Entities
 {
     //Classe responsável pela modelagem do chamado
-    class Called
+    public class Called
     {
         //metodos get e set "props" gerados pela IDE
         public int Id { get; set; }
@@ -16,5 +16,6 @@ namespace CalledManagement.Entities
         public DateTime Date { get; set; }
         public string Finished { get; set; }
         public string Descripition { get; set; }
+        public User UserId { get; set; }
     }
 }

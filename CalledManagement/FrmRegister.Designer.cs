@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tbpRegisterHoras = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnRegDeleteHours = new System.Windows.Forms.Button();
             this.btnRegSaveHours = new System.Windows.Forms.Button();
             this.btnRegCancelHours = new System.Windows.Forms.Button();
@@ -42,10 +44,15 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxRegHours = new System.Windows.Forms.ComboBox();
+            this.fKCalledIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cALLEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.academycoding2DataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.academycoding2DataSet1 = new CalledManagement.academycoding2DataSet1();
             this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
             this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cALLEDBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.btnRegDeleteCalled = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -79,7 +86,16 @@
             this.txtSecSearchHours = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvSecHours = new System.Windows.Forms.DataGridView();
+            this.cALLEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.CALLEDTableAdapter();
+            this.hOURWORKEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.HOURWORKEDTableAdapter();
+            this.cALLEDBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tbpRegisterHoras.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).BeginInit();
             this.tbpResgister.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbcCalled.SuspendLayout();
@@ -87,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -96,6 +113,9 @@
             // 
             // tbpRegisterHoras
             // 
+            this.tbpRegisterHoras.Controls.Add(this.checkBox1);
+            this.tbpRegisterHoras.Controls.Add(this.label14);
+            this.tbpRegisterHoras.Controls.Add(this.textBox1);
             this.tbpRegisterHoras.Controls.Add(this.btnRegDeleteHours);
             this.tbpRegisterHoras.Controls.Add(this.btnRegSaveHours);
             this.tbpRegisterHoras.Controls.Add(this.btnRegCancelHours);
@@ -118,9 +138,26 @@
             this.tbpRegisterHoras.Text = "Cadastrar Horas";
             this.tbpRegisterHoras.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(38, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(40, 13);
+            this.label14.TabIndex = 47;
+            this.label14.Text = "Codigo";
+            // 
+            // textBox1
+            // 
+            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBox1.Location = new System.Drawing.Point(37, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(382, 20);
+            this.textBox1.TabIndex = 46;
+            // 
             // btnRegDeleteHours
             // 
-            this.btnRegDeleteHours.Location = new System.Drawing.Point(275, 325);
+            this.btnRegDeleteHours.Location = new System.Drawing.Point(271, 313);
             this.btnRegDeleteHours.Name = "btnRegDeleteHours";
             this.btnRegDeleteHours.Size = new System.Drawing.Size(58, 49);
             this.btnRegDeleteHours.TabIndex = 43;
@@ -130,7 +167,7 @@
             // 
             // btnRegSaveHours
             // 
-            this.btnRegSaveHours.Location = new System.Drawing.Point(355, 325);
+            this.btnRegSaveHours.Location = new System.Drawing.Point(355, 313);
             this.btnRegSaveHours.Name = "btnRegSaveHours";
             this.btnRegSaveHours.Size = new System.Drawing.Size(64, 49);
             this.btnRegSaveHours.TabIndex = 42;
@@ -140,7 +177,7 @@
             // 
             // btnRegCancelHours
             // 
-            this.btnRegCancelHours.Location = new System.Drawing.Point(195, 325);
+            this.btnRegCancelHours.Location = new System.Drawing.Point(195, 313);
             this.btnRegCancelHours.Name = "btnRegCancelHours";
             this.btnRegCancelHours.Size = new System.Drawing.Size(58, 49);
             this.btnRegCancelHours.TabIndex = 41;
@@ -150,7 +187,7 @@
             // 
             // btnRegChangeHours
             // 
-            this.btnRegChangeHours.Location = new System.Drawing.Point(110, 325);
+            this.btnRegChangeHours.Location = new System.Drawing.Point(118, 313);
             this.btnRegChangeHours.Name = "btnRegChangeHours";
             this.btnRegChangeHours.Size = new System.Drawing.Size(61, 49);
             this.btnRegChangeHours.TabIndex = 40;
@@ -160,7 +197,7 @@
             // 
             // btnRegFinishedHours
             // 
-            this.btnRegFinishedHours.Location = new System.Drawing.Point(491, 325);
+            this.btnRegFinishedHours.Location = new System.Drawing.Point(491, 313);
             this.btnRegFinishedHours.Name = "btnRegFinishedHours";
             this.btnRegFinishedHours.Size = new System.Drawing.Size(214, 49);
             this.btnRegFinishedHours.TabIndex = 39;
@@ -169,7 +206,7 @@
             // 
             // btnRegInitHours
             // 
-            this.btnRegInitHours.Location = new System.Drawing.Point(31, 325);
+            this.btnRegInitHours.Location = new System.Drawing.Point(37, 313);
             this.btnRegInitHours.Name = "btnRegInitHours";
             this.btnRegInitHours.Size = new System.Drawing.Size(62, 49);
             this.btnRegInitHours.TabIndex = 38;
@@ -179,9 +216,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(491, 46);
+            this.groupBox2.Location = new System.Drawing.Point(491, 32);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(214, 223);
+            this.groupBox2.Size = new System.Drawing.Size(214, 237);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Cadastro";
@@ -189,7 +226,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(36, 46);
+            this.label13.Location = new System.Drawing.Point(36, 81);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(122, 13);
             this.label13.TabIndex = 36;
@@ -205,37 +242,57 @@
             // 
             // cbxRegHours
             // 
-            this.cbxRegHours.DisplayMember = "Selecione um chamado";
+            this.cbxRegHours.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.fKCalledIdBindingSource, "CalledId", true));
             this.cbxRegHours.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cbxRegHours.FormattingEnabled = true;
-            this.cbxRegHours.Location = new System.Drawing.Point(37, 72);
+            this.cbxRegHours.Location = new System.Drawing.Point(37, 118);
             this.cbxRegHours.Name = "cbxRegHours";
-            this.cbxRegHours.Size = new System.Drawing.Size(382, 21);
+            this.cbxRegHours.Size = new System.Drawing.Size(378, 21);
             this.cbxRegHours.TabIndex = 31;
             this.cbxRegHours.SelectedIndexChanged += new System.EventHandler(this.cbxRegHours_SelectedIndexChanged);
             // 
+            // fKCalledIdBindingSource
+            // 
+            this.fKCalledIdBindingSource.DataMember = "FK_CalledId";
+            this.fKCalledIdBindingSource.DataSource = this.cALLEDBindingSource;
+            // 
+            // cALLEDBindingSource
+            // 
+            this.cALLEDBindingSource.DataMember = "CALLED";
+            this.cALLEDBindingSource.DataSource = this.academycoding2DataSet1BindingSource;
+            // 
+            // academycoding2DataSet1BindingSource
+            // 
+            this.academycoding2DataSet1BindingSource.DataSource = this.academycoding2DataSet1;
+            this.academycoding2DataSet1BindingSource.Position = 0;
+            // 
+            // academycoding2DataSet1
+            // 
+            this.academycoding2DataSet1.DataSetName = "academycoding2DataSet1";
+            this.academycoding2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // mstbRegDateTimeFinished
             // 
-            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(37, 227);
+            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(245, 195);
             this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
             this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
-            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(121, 20);
+            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(170, 20);
             this.mstbRegDateTimeFinished.TabIndex = 30;
             this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
             // 
             // mstbRegDateTimeInit
             // 
-            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(37, 154);
+            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(37, 195);
             this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
             this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
-            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(121, 20);
+            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(146, 20);
             this.mstbRegDateTimeInit.TabIndex = 29;
             this.mstbRegDateTimeInit.ValidatingType = typeof(System.DateTime);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 200);
+            this.label2.Location = new System.Drawing.Point(246, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 24;
@@ -244,11 +301,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 126);
+            this.label1.Location = new System.Drawing.Point(36, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 23;
             this.label1.Text = "Data/Hora Inicio";
+            // 
+            // cALLEDBindingSource2
+            // 
+            this.cALLEDBindingSource2.DataMember = "CALLED";
+            this.cALLEDBindingSource2.DataSource = this.academycoding2DataSet1BindingSource;
             // 
             // tbpResgister
             // 
@@ -592,6 +654,29 @@
             this.dgvSecHours.Size = new System.Drawing.Size(727, 308);
             this.dgvSecHours.TabIndex = 1;
             // 
+            // cALLEDTableAdapter
+            // 
+            this.cALLEDTableAdapter.ClearBeforeFill = true;
+            // 
+            // hOURWORKEDTableAdapter
+            // 
+            this.hOURWORKEDTableAdapter.ClearBeforeFill = true;
+            // 
+            // cALLEDBindingSource1
+            // 
+            this.cALLEDBindingSource1.DataMember = "CALLED";
+            this.cALLEDBindingSource1.DataSource = this.academycoding2DataSet1BindingSource;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(37, 252);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(111, 17);
+            this.checkBox1.TabIndex = 49;
+            this.checkBox1.Text = "Inserção Manual?";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,6 +689,11 @@
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpRegisterHoras.ResumeLayout(false);
             this.tbpRegisterHoras.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).EndInit();
             this.tbpResgister.ResumeLayout(false);
             this.tbpResgister.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -615,6 +705,7 @@
             this.tbpClosedCalled.ResumeLayout(false);
             this.tbpClosedCalled.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -669,5 +760,16 @@
         private System.Windows.Forms.Button btnRegFinishedHours;
         private System.Windows.Forms.Button btnRegInitHours;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.BindingSource academycoding2DataSet1BindingSource;
+        private academycoding2DataSet1 academycoding2DataSet1;
+        private System.Windows.Forms.BindingSource cALLEDBindingSource;
+        private academycoding2DataSet1TableAdapters.CALLEDTableAdapter cALLEDTableAdapter;
+        private System.Windows.Forms.BindingSource fKCalledIdBindingSource;
+        private academycoding2DataSet1TableAdapters.HOURWORKEDTableAdapter hOURWORKEDTableAdapter;
+        private System.Windows.Forms.BindingSource cALLEDBindingSource1;
+        private System.Windows.Forms.BindingSource cALLEDBindingSource2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

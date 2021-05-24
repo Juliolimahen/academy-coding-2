@@ -20,7 +20,7 @@ namespace CalledManagement.DAO
             // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "insert into HOURWORKED (CalleId, DateInserted, DateStarted, EndDate, DateChange, Manual) values (@CalledId, @DateInserted, @DateStarted, @DateChange, @EndDate, @Manual)";
+            cmd.CommandText = "insert into HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) values (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
 
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -34,7 +34,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
-                    cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
+                   // cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
                     cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
 
                     cmd.Connection = toconnection.ToConnect();
