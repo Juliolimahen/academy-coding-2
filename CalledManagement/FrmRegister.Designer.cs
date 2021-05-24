@@ -88,8 +88,7 @@
             this.cALLEDBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.cALLEDBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.mstbRegDateTimeChange = new System.Windows.Forms.MaskedTextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tbpRegisterHoras.SuspendLayout();
             this.tbpResgister.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -106,8 +105,7 @@
             // 
             // tbpRegisterHoras
             // 
-            this.tbpRegisterHoras.Controls.Add(this.label15);
-            this.tbpRegisterHoras.Controls.Add(this.mstbRegDateTimeChange);
+            this.tbpRegisterHoras.Controls.Add(this.comboBox1);
             this.tbpRegisterHoras.Controls.Add(this.label4);
             this.tbpRegisterHoras.Controls.Add(this.checkBox2);
             this.tbpRegisterHoras.Controls.Add(this.checkBox1);
@@ -256,6 +254,7 @@
             this.cbxRegHours.Name = "cbxRegHours";
             this.cbxRegHours.Size = new System.Drawing.Size(378, 21);
             this.cbxRegHours.TabIndex = 31;
+            this.cbxRegHours.Text = "Selecione um chamado";
             // 
             // mstbRegDateTimeFinished
             // 
@@ -656,23 +655,13 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // mstbRegDateTimeChange
+            // comboBox1
             // 
-            this.mstbRegDateTimeChange.Location = new System.Drawing.Point(161, 227);
-            this.mstbRegDateTimeChange.Mask = "00/00/0000 90:00";
-            this.mstbRegDateTimeChange.Name = "mstbRegDateTimeChange";
-            this.mstbRegDateTimeChange.Size = new System.Drawing.Size(100, 20);
-            this.mstbRegDateTimeChange.TabIndex = 52;
-            this.mstbRegDateTimeChange.ValidatingType = typeof(System.DateTime);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(36, 230);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(119, 13);
-            this.label15.TabIndex = 53;
-            this.label15.Text = "Data Alteração(TESTE)";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(39, 239);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 54;
             // 
             // FrmRegisterCalled
             // 
@@ -764,7 +753,6 @@
         private System.Windows.Forms.BindingSource cALLEDBindingSource1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.BindingSource cALLEDBindingSource2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeChange;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

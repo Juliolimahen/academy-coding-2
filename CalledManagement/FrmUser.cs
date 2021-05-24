@@ -17,70 +17,7 @@ namespace CalledManagement
             InitializeComponent();
         }
 
-        private void btnRegDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbRegTimer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbRegDateTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegChange_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegFinish_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegInit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegChange_Click_1(object sender, EventArgs e)
-        {
-
-        }
+        Boolean PerIsert=false; Boolean PerChange=false; Boolean PerDelete=false;Boolean PerView=false;
 
         private void btnRegFinish_Click_1(object sender, EventArgs e)
         {

@@ -20,24 +20,20 @@ namespace CalledManagement.DAO
             // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "insert into HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, DateChange) values (@CalledId, @DateInserted, @DateStarted, @EndDate, @DateChange)";
+            cmd.CommandText = "insert into HOURWORKED (CalledId, DateInserted, DateStarted, EndDate) values (@CalledId, @DateInserted, @DateStarted, @EndDate)";
 
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
-                    //conn.Open(); 
                     ToConnection toconnection = new ToConnection();
-                    // Abre a conexão com o banco de dados.
 
-                    // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId.Id);
                     cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     //cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
-                    cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
+                    //cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
                     
-
                     cmd.Connection = toconnection.ToConnect();
                     // O objetro cmd recebe os parâmetros com os valores dos campos
 
@@ -74,7 +70,7 @@ namespace CalledManagement.DAO
             //SqlConnection conn = new SqlConnection(strConn);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update HOURWORKED set DateInserted = @DateInserted, DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange, Manual = @Manual  where CalledId = @CalledId";
+            cmd.CommandText = "update HOURWORKED set DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange, Manual = @Manual  where CalledId = @CalledId";
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
@@ -87,7 +83,7 @@ namespace CalledManagement.DAO
 
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId);
-                    cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
+                    //cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
@@ -182,30 +178,6 @@ namespace CalledManagement.DAO
             {
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
-        }
-        public void SearchGrid(DataGridView dgvSec, string Name)
-        {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
-
-            try
-            {
-                cmd.Connection = toconnection.ToConnect();
-
-                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual  FROM HOURWORKED CalledId LIKE '@CalledId' ORDER BY DateInserted A";
-                cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
-
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable db = new DataTable();
-                adp.Fill(db);
-                dgvSec.DataSource = db;
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Lista registro: " + ex.Message);
-            }
-
         }
     }
 }

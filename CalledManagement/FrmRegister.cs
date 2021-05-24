@@ -256,7 +256,7 @@ namespace CalledManagement
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
-
+ 
             //else if (cbxRegHours)
             //  {
             Function.EnableFields(this, true);
@@ -283,8 +283,6 @@ namespace CalledManagement
 
         private void btnRegSaveHours_Click(object sender, EventArgs e)
         {
-         
-            _DateTime = DateTime.Now;
             HourWorked hourworked = new HourWorked();
             Called called = new Called();
             CalledDAO calleddao = new CalledDAO();
@@ -292,10 +290,17 @@ namespace CalledManagement
             MessageBox.Show(text: cbxRegHours.SelectedValue.ToString());
             hourworked.CalledId = called;
             hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
-            hourworked.DateInserted = _DateTime = DateTime.Now;
+            if(operation == "Init")
+            {
+                hourworked.DateInserted = _DateTime = DateTime.Now;
+            }
             hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
             hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
-            hourworked.DateChange = Convert.ToDateTime(mstbRegDateTimeChange.Text);
+            if (operation == "Change")
+            {
+                hourworked.DateChange =_DateTime = DateTime.Now;
+            }
+ 
 
             // if (operation == "Init")
             // {
@@ -349,21 +354,10 @@ namespace CalledManagement
                 }
             }
         }
-
-        private void cbxRegHours_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRegFinishedHours_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-
-        //CalledDAO calleddao = new CalledDAO();
-        //passa a data grid view por parametro
-        //string name ="";
-        //calleddao.ListarComboBox(cbxRegHours);
     }
 
        

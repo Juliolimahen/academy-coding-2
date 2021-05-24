@@ -188,34 +188,6 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
-        public void SearchGrid(DataGridView dgvSec, string name)
-        {
-
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                ToConnection toconnection = new ToConnection();
-                cmd.Connection = toconnection.ToConnect();
-
-
-
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE '@Name'";
-                cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
-                cmd.ExecuteNonQuery();
-
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable db = new DataTable();
-                adp.Fill(db);
-                dgvSec.DataSource = db;
-            }
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Erro ao Listar registros: " + ex.Message);
-            }
-        }
         public void ListarComboBox(ComboBox cbxSec)
         {
             SqlCommand cmd = new SqlCommand();
@@ -230,16 +202,11 @@ namespace CalledManagement.DAO
                 DataTable dt = new DataTable();
                
                 dt.Load(adp);
-
+                cbxSec.Text = "Selecione um chamado";
                 cbxSec.DisplayMember = "Name";
                 cbxSec.ValueMember = "Id";
 
                 cbxSec.DataSource = dt;
-
-
-
-
-
             }
 
             catch (Exception ex)

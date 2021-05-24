@@ -29,6 +29,7 @@ namespace CalledManagement
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUser));
             this.tbcUser = new System.Windows.Forms.TabControl();
             this.tbpRegUser = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +52,8 @@ namespace CalledManagement
             this.btnRegInit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tbpSecUser = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tbcUser.SuspendLayout();
             this.tbpRegUser.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -68,6 +71,8 @@ namespace CalledManagement
             // 
             // tbpRegUser
             // 
+            this.tbpRegUser.Controls.Add(this.comboBox1);
+            this.tbpRegUser.Controls.Add(this.label2);
             this.tbpRegUser.Controls.Add(this.label1);
             this.tbpRegUser.Controls.Add(this.txtRegLogin);
             this.tbpRegUser.Controls.Add(this.btnRegDelete);
@@ -156,10 +161,10 @@ namespace CalledManagement
             // 
             // txtRegDescripition
             // 
-            this.txtRegDescripition.Location = new System.Drawing.Point(40, 209);
+            this.txtRegDescripition.Location = new System.Drawing.Point(40, 246);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
-            this.txtRegDescripition.Size = new System.Drawing.Size(395, 99);
+            this.txtRegDescripition.Size = new System.Drawing.Size(395, 57);
             this.txtRegDescripition.TabIndex = 40;
             // 
             // txtRegID
@@ -188,7 +193,7 @@ namespace CalledManagement
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 182);
+            this.label8.Location = new System.Drawing.Point(37, 221);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 39;
@@ -220,7 +225,6 @@ namespace CalledManagement
             this.btnRegChange.TabIndex = 35;
             this.btnRegChange.Text = "Alterar";
             this.btnRegChange.UseVisualStyleBackColor = true;
-            this.btnRegChange.Click += new System.EventHandler(this.btnRegChange_Click_1);
             // 
             // label5
             // 
@@ -269,12 +273,34 @@ namespace CalledManagement
             this.tbpSecUser.Text = "Cadastrados";
             this.tbpSecUser.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 175);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Grupo";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Admin",
+            "normal"});
+            this.comboBox1.Location = new System.Drawing.Point(79, 172);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(356, 21);
+            this.comboBox1.TabIndex = 49;
+            this.comboBox1.Text = "Selecione um grupo";
+            // 
             // FrmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 481);
             this.Controls.Add(this.tbcUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUser";
             this.Text = "Usuário";
             this.tbcUser.ResumeLayout(false);
@@ -310,5 +336,7 @@ namespace CalledManagement
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtRegLogin;
         private System.Windows.Forms.TextBox txtRegDescripition;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
     }
 }
