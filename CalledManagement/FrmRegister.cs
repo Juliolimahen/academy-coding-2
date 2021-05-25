@@ -117,7 +117,7 @@ namespace CalledManagement
             if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Function.EnableFields(this, true);
+                Function.EnableFields(this, false);
                 Function.Clean(this);
                 Function.EnableButtons(this, "Load");
                 txtRegID.Focus();
@@ -128,7 +128,7 @@ namespace CalledManagement
         private void btnRegDelete_Click(object sender, EventArgs e)
         {
             //verifica se campo nome esta vazio 
-            if (txtRegName.Text.Length > 0)
+            if (txtRegID.Text.Length > 0)
             {
                 if (MessageBox.Show("Confirma a exclusão do registro?", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -146,6 +146,11 @@ namespace CalledManagement
                         txtRegID.Focus();
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Digite um codigo identificador para excluir um registro!");
+                Function.EnableFields(this, true);
             }
         }
 
@@ -179,14 +184,14 @@ namespace CalledManagement
 
         private void FrmRegisterCalled_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet1.HOURWORKED'. Você pode movê-la ou removê-la conforme necessário.
-            //this.hOURWORKEDTableAdapter.Fill(this.academycoding2DataSet1.HOURWORKED);
-            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet1.CALLED'. Você pode movê-la ou removê-la conforme necessário.
-            //this.cALLEDTableAdapter.Fill(this.academycoding2DataSet1.CALLED);
-            //Cria nova instância
+            txtRegID.Enabled=false;
+            txtRegName.Enabled = false;
+            txtRegDescripition.Enabled = false;
+            dtpRegDate.Enabled = false;
+            txtRegStatus.Enabled = false;
+
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
-            //passa a data grid view por parametro
 
             string name = txtSecSearchCalled.Text;
             calleddao.ListarGrid(dgvSecCalled, name);
@@ -196,6 +201,7 @@ namespace CalledManagement
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
 
             calleddao.ListarComboBox(cbxRegHours);
+            
 
         }
 
@@ -215,22 +221,16 @@ namespace CalledManagement
 
         private void btnSecSearch_Click_1(object sender, EventArgs e)
         {
-
             //nova instancia 
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
             string name = txtSecSearchCalled.Text;
-
             calleddao.ListarGrid(dgvSecCalled, name);
 
             string SecSearchHours;
             SecSearchHours = txtSecSearchHours.Text;
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
-
-            //Passa texto do text box por parametro
-            //dgvSecCalled.DataSource = calleddao.SearchName(txtSearch.Text);
-
         }
 
         private void btnRegInitHours_Click(object sender, EventArgs e)
@@ -290,7 +290,7 @@ namespace CalledManagement
             MessageBox.Show(text: cbxRegHours.SelectedValue.ToString());
             hourworked.CalledId = called;
             hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
-            if(operation == "Init")
+            if(operation == "Load")
             {
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
@@ -358,8 +358,11 @@ namespace CalledManagement
         {
             this.Dispose();
         }
-    }
 
-       
-   }
+        private void dgvSecHours_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }   
+}
 

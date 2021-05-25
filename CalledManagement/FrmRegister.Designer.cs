@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.tbpRegisterHoras = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -81,14 +82,9 @@
             this.txtSecSearchHours = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvSecHours = new System.Windows.Forms.DataGridView();
-            this.cALLEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cALLEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.CALLEDTableAdapter();
-            this.fKCalledIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hOURWORKEDTableAdapter = new CalledManagement.academycoding2DataSet1TableAdapters.HOURWORKEDTableAdapter();
-            this.cALLEDBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cALLEDBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tbpRegisterHoras.SuspendLayout();
             this.tbpResgister.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -97,10 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbpRegisterHoras
@@ -130,6 +122,20 @@
             this.tbpRegisterHoras.TabIndex = 8;
             this.tbpRegisterHoras.Text = "Cadastrar Horas";
             this.tbpRegisterHoras.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Urgente ",
+            "Alta ",
+            "Média",
+            "Baixo"});
+            this.comboBox1.Location = new System.Drawing.Point(39, 239);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(376, 21);
+            this.comboBox1.TabIndex = 54;
+            this.comboBox1.Text = "selecione um prioridade";
             // 
             // label4
             // 
@@ -254,7 +260,7 @@
             this.cbxRegHours.Name = "cbxRegHours";
             this.cbxRegHours.Size = new System.Drawing.Size(378, 21);
             this.cbxRegHours.TabIndex = 31;
-            this.cbxRegHours.Text = "Selecione um chamado";
+            this.cbxRegHours.Text = "selecione um chamado";
             // 
             // mstbRegDateTimeFinished
             // 
@@ -523,7 +529,7 @@
             this.tbcCalled.Controls.Add(this.tbpRegisterHoras);
             this.tbcCalled.Controls.Add(this.tbpOpenCalled);
             this.tbcCalled.Controls.Add(this.tbpClosedCalled);
-            this.tbcCalled.Location = new System.Drawing.Point(12, 12);
+            this.tbcCalled.Location = new System.Drawing.Point(0, 0);
             this.tbcCalled.Name = "tbcCalled";
             this.tbcCalled.SelectedIndex = 0;
             this.tbcCalled.Size = new System.Drawing.Size(794, 418);
@@ -531,6 +537,7 @@
             // 
             // tbpOpenCalled
             // 
+            this.tbpOpenCalled.Controls.Add(this.button1);
             this.tbpOpenCalled.Controls.Add(this.btnSecSearch);
             this.tbpOpenCalled.Controls.Add(this.txtSecSearchCalled);
             this.tbpOpenCalled.Controls.Add(this.label9);
@@ -585,6 +592,7 @@
             // 
             // tbpClosedCalled
             // 
+            this.tbpClosedCalled.Controls.Add(this.button2);
             this.tbpClosedCalled.Controls.Add(this.button3);
             this.tbpClosedCalled.Controls.Add(this.txtSecSearchHours);
             this.tbpClosedCalled.Controls.Add(this.label10);
@@ -637,31 +645,30 @@
             this.dgvSecHours.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSecHours.Size = new System.Drawing.Size(727, 308);
             this.dgvSecHours.TabIndex = 1;
-            // 
-            // cALLEDTableAdapter
-            // 
-            this.cALLEDTableAdapter.ClearBeforeFill = true;
-            // 
-            // fKCalledIdBindingSource
-            // 
-            this.fKCalledIdBindingSource.DataSource = this.cALLEDBindingSource;
-            // 
-            // hOURWORKEDTableAdapter
-            // 
-            this.hOURWORKEDTableAdapter.ClearBeforeFill = true;
+            this.dgvSecHours.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecHours_CellContentClick);
             // 
             // timer1
             // 
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // comboBox1
+            // button1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(39, 239);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 54;
+            this.button1.Location = new System.Drawing.Point(390, 354);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Atualizar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(390, 354);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Atualizar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // FrmRegisterCalled
             // 
@@ -686,10 +693,6 @@
             this.tbpClosedCalled.ResumeLayout(false);
             this.tbpClosedCalled.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKCalledIdBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cALLEDBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -746,13 +749,9 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.BindingSource cALLEDBindingSource;
-        private academycoding2DataSet1TableAdapters.CALLEDTableAdapter cALLEDTableAdapter;
-        private System.Windows.Forms.BindingSource fKCalledIdBindingSource;
-        private academycoding2DataSet1TableAdapters.HOURWORKEDTableAdapter hOURWORKEDTableAdapter;
-        private System.Windows.Forms.BindingSource cALLEDBindingSource1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.BindingSource cALLEDBindingSource2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
