@@ -60,6 +60,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gbxRegCalled = new System.Windows.Forms.GroupBox();
+            this.btnRegInit = new System.Windows.Forms.Button();
+            this.cbxRegID = new System.Windows.Forms.ComboBox();
             this.gbxStatus = new System.Windows.Forms.GroupBox();
             this.rbRegStatusFinished = new System.Windows.Forms.RadioButton();
             this.rbRegStatusProgress = new System.Windows.Forms.RadioButton();
@@ -70,10 +72,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnRegFinishedCalled = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxRegPriority = new System.Windows.Forms.ComboBox();
             this.btnRegDeleteCalled = new System.Windows.Forms.Button();
             this.txtRegDescripition = new System.Windows.Forms.TextBox();
-            this.txtRegID = new System.Windows.Forms.TextBox();
             this.txtRegName = new System.Windows.Forms.TextBox();
             this.btnRegSaveCalled = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -81,7 +82,6 @@
             this.btnRegCancelCalled = new System.Windows.Forms.Button();
             this.btnRegChangeCalled = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnRegInitCalled = new System.Windows.Forms.Button();
             this.tbcCalled = new System.Windows.Forms.TabControl();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
@@ -419,14 +419,15 @@
             // 
             // gbxRegCalled
             // 
+            this.gbxRegCalled.Controls.Add(this.btnRegInit);
+            this.gbxRegCalled.Controls.Add(this.cbxRegID);
             this.gbxRegCalled.Controls.Add(this.gbxStatus);
             this.gbxRegCalled.Controls.Add(this.gbxTypeRegHoursCalled);
             this.gbxRegCalled.Controls.Add(this.btnRegFinishedCalled);
             this.gbxRegCalled.Controls.Add(this.label4);
-            this.gbxRegCalled.Controls.Add(this.comboBox1);
+            this.gbxRegCalled.Controls.Add(this.cbxRegPriority);
             this.gbxRegCalled.Controls.Add(this.btnRegDeleteCalled);
             this.gbxRegCalled.Controls.Add(this.txtRegDescripition);
-            this.gbxRegCalled.Controls.Add(this.txtRegID);
             this.gbxRegCalled.Controls.Add(this.txtRegName);
             this.gbxRegCalled.Controls.Add(this.btnRegSaveCalled);
             this.gbxRegCalled.Controls.Add(this.label8);
@@ -434,13 +435,31 @@
             this.gbxRegCalled.Controls.Add(this.btnRegCancelCalled);
             this.gbxRegCalled.Controls.Add(this.btnRegChangeCalled);
             this.gbxRegCalled.Controls.Add(this.label5);
-            this.gbxRegCalled.Controls.Add(this.btnRegInitCalled);
             this.gbxRegCalled.Location = new System.Drawing.Point(8, 19);
             this.gbxRegCalled.Name = "gbxRegCalled";
             this.gbxRegCalled.Size = new System.Drawing.Size(547, 556);
             this.gbxRegCalled.TabIndex = 16;
             this.gbxRegCalled.TabStop = false;
             this.gbxRegCalled.Text = "Cadastro Chamado";
+            // 
+            // btnRegInit
+            // 
+            this.btnRegInit.Location = new System.Drawing.Point(35, 501);
+            this.btnRegInit.Name = "btnRegInit";
+            this.btnRegInit.Size = new System.Drawing.Size(61, 49);
+            this.btnRegInit.TabIndex = 81;
+            this.btnRegInit.Text = "Novo";
+            this.btnRegInit.UseVisualStyleBackColor = true;
+            this.btnRegInit.Click += new System.EventHandler(this.btnRegInit_Click);
+            // 
+            // cbxRegID
+            // 
+            this.cbxRegID.FormattingEnabled = true;
+            this.cbxRegID.Location = new System.Drawing.Point(72, 27);
+            this.cbxRegID.Name = "cbxRegID";
+            this.cbxRegID.Size = new System.Drawing.Size(418, 21);
+            this.cbxRegID.TabIndex = 80;
+            this.cbxRegID.Text = "selicione um id";
             // 
             // gbxStatus
             // 
@@ -549,19 +568,14 @@
             this.label4.TabIndex = 74;
             this.label4.Text = "Prioridade";
             // 
-            // comboBox1
+            // cbxRegPriority
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Urgente ",
-            "Alta ",
-            "Média",
-            "Baixo"});
-            this.comboBox1.Location = new System.Drawing.Point(34, 336);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(461, 21);
-            this.comboBox1.TabIndex = 73;
-            this.comboBox1.Text = "selecione um prioridade";
+            this.cbxRegPriority.FormattingEnabled = true;
+            this.cbxRegPriority.Location = new System.Drawing.Point(34, 336);
+            this.cbxRegPriority.Name = "cbxRegPriority";
+            this.cbxRegPriority.Size = new System.Drawing.Size(461, 21);
+            this.cbxRegPriority.TabIndex = 73;
+            this.cbxRegPriority.Text = "selecione um prioridade";
             // 
             // btnRegDeleteCalled
             // 
@@ -581,14 +595,6 @@
             this.txtRegDescripition.Name = "txtRegDescripition";
             this.txtRegDescripition.Size = new System.Drawing.Size(458, 72);
             this.txtRegDescripition.TabIndex = 39;
-            // 
-            // txtRegID
-            // 
-            this.txtRegID.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtRegID.Location = new System.Drawing.Point(72, 27);
-            this.txtRegID.Name = "txtRegID";
-            this.txtRegID.Size = new System.Drawing.Size(418, 20);
-            this.txtRegID.TabIndex = 37;
             // 
             // txtRegName
             // 
@@ -620,7 +626,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(29, 30);
+            this.label7.Location = new System.Drawing.Point(31, 30);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 36;
@@ -654,16 +660,6 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 32;
             this.label5.Text = "Nome";
-            // 
-            // btnRegInitCalled
-            // 
-            this.btnRegInitCalled.Location = new System.Drawing.Point(34, 501);
-            this.btnRegInitCalled.Name = "btnRegInitCalled";
-            this.btnRegInitCalled.Size = new System.Drawing.Size(62, 49);
-            this.btnRegInitCalled.TabIndex = 31;
-            this.btnRegInitCalled.Text = "Iniciar";
-            this.btnRegInitCalled.UseVisualStyleBackColor = true;
-            this.btnRegInitCalled.Click += new System.EventHandler(this.btnRegInit_Click);
             // 
             // tbcCalled
             // 
@@ -745,7 +741,6 @@
         private System.Windows.Forms.MaskedTextBox dtpRegDate;
         private System.Windows.Forms.Button btnRegDeleteCalled;
         private System.Windows.Forms.TextBox txtRegDescripition;
-        private System.Windows.Forms.TextBox txtRegID;
         private System.Windows.Forms.TextBox txtRegName;
         private System.Windows.Forms.Button btnRegSaveCalled;
         private System.Windows.Forms.Label label8;
@@ -753,17 +748,18 @@
         private System.Windows.Forms.Button btnRegCancelCalled;
         private System.Windows.Forms.Button btnRegChangeCalled;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnRegInitCalled;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tbcCalled;
         private System.Windows.Forms.Button btnRegFinishedCalled;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxRegPriority;
         private System.Windows.Forms.GroupBox gbxTypeRegHoursCalled;
         private System.Windows.Forms.RadioButton rbRegCalledHoursSystem;
         private System.Windows.Forms.RadioButton rbRegCalledHoursManual;
         private System.Windows.Forms.GroupBox gbxStatus;
         private System.Windows.Forms.RadioButton rbRegStatusFinished;
         private System.Windows.Forms.RadioButton rbRegStatusProgress;
+        private System.Windows.Forms.ComboBox cbxRegID;
+        private System.Windows.Forms.Button btnRegInit;
     }
 }

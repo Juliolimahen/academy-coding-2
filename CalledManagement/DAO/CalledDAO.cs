@@ -13,7 +13,6 @@ namespace CalledManagement.DAO
     //Classe responsavel pela comunicação da entidade Called com o banco de dados 
     class CalledDAO
     {
-
         public bool Insert(Called called, DataGridView dgvSecCalled)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
@@ -22,7 +21,7 @@ namespace CalledManagement.DAO
 
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "insert into CALLED (Name, Date, Descripition, Finished) values (@Name, @Date, @Descripition, @Finished)";
+            cmd.CommandText = "insert into CALLED (Name, Date, Descripition, Finished, PriorityId) values (@Name, @Date, @Descripition, @Finished, @PriorityId)";
 
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -40,6 +39,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Date", called.Date);
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
+                    cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
 
                     cmd.Connection = toconnection.ToConnect();
 
@@ -165,8 +165,8 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-                    "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition ORDER BY Date DESC";
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId, SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
+                    "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId  ORDER BY Date DESC";
                 //SELECT Name, 
 
                 if (name.Length > 0)
@@ -204,17 +204,41 @@ namespace CalledManagement.DAO
 
                 SqlDataReader adp = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
-               
+
                 dt.Load(adp);
                 cbxSec.Text = "Selecione um chamado";
                 cbxSec.DisplayMember = "Name";
                 cbxSec.ValueMember = "Id";
                 cbxSec.DataSource = dt;
-                cbxSec.Refresh();
             }
 
             catch (Exception ex)
-            { 
+            {
+                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            }
+        }
+        public void ListarComBoxID(ComboBox cbxRegID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            try
+            {
+                cmd.Connection = toconnection.ToConnect();
+                cmd.CommandText = "SELECT Id FROM CALLED ORDER BY Id ASC";
+
+                SqlDataReader adp = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+
+                dt.Load(adp);
+                cbxRegID.Text = "Selecione um id";
+                cbxRegID.DisplayMember = "Id";
+                cbxRegID.ValueMember = "Id";
+                cbxRegID.DataSource = dt;
+            }
+
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }

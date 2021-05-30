@@ -17,5 +17,7 @@ namespace CalledManagement.Entities
         public string Finished { get; set; }
         public string Descripition { get; set; }
         public User UserId { get; set; }
+        public Priority PriorityId { get; set; }
+
     }
 }

@@ -72,11 +72,13 @@
     </Compile>
     <Compile Include="DAO\CalledDAO.cs" />
     <Compile Include="DAO\HourWorkedDAO.cs" />
+    <Compile Include="DAO\PriorityDAO.cs" />
     <Compile Include="DAO\ToConnection.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Entities\Called.cs" />
     <Compile Include="Entities\Enums\CalledStatus.cs" />
     <Compile Include="Entities\HourWorked.cs" />
+    <Compile Include="Entities\Priority.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Operation.cs" />
     <Compile Include="FrmLogin.cs">
