@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRegister = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRegister = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReport = new System.Windows.Forms.ToolStripMenuItem();
             this.chamadosFechadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,29 +55,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1284, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiRegister,
-            this.tsmiSearch});
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(82, 21);
-            this.toolStripMenuItem1.Text = "Chamados";
-            // 
-            // tsmiRegister
-            // 
-            this.tsmiRegister.Name = "tsmiRegister";
-            this.tsmiRegister.Size = new System.Drawing.Size(180, 22);
-            this.tsmiRegister.Text = "Cadastrar";
-            this.tsmiRegister.Click += new System.EventHandler(this.tsmiRegister_Click);
-            // 
-            // tsmiSearch
-            // 
-            this.tsmiSearch.Name = "tsmiSearch";
-            this.tsmiSearch.Size = new System.Drawing.Size(180, 22);
-            this.tsmiSearch.Text = "Pesquisar";
             // 
             // usuáriosToolStripMenuItem
             // 
@@ -101,6 +78,29 @@
             this.pesquisarToolStripMenuItem.Name = "pesquisarToolStripMenuItem";
             this.pesquisarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem.Text = "Pesquisar";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiRegister,
+            this.tsmiSearch});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(82, 21);
+            this.toolStripMenuItem1.Text = "Chamados";
+            // 
+            // tsmiRegister
+            // 
+            this.tsmiRegister.Name = "tsmiRegister";
+            this.tsmiRegister.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRegister.Text = "Cadastrar";
+            this.tsmiRegister.Click += new System.EventHandler(this.tsmiRegister_Click);
+            // 
+            // tsmiSearch
+            // 
+            this.tsmiSearch.Name = "tsmiSearch";
+            this.tsmiSearch.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSearch.Text = "Pesquisar";
             // 
             // toolStripMenuItem3
             // 
@@ -147,6 +147,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Called Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

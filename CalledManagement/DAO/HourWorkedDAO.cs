@@ -13,7 +13,7 @@ namespace CalledManagement.DAO
     //Classe responsavel pela comunicação da entidade HourWorked com o banco de dados 
     class HourWorkedDAO
     {
-        public bool Insert(HourWorked hourworked)
+        public bool Insert(HourWorked hourworked, DataGridView dgvSecHours)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -56,6 +56,7 @@ namespace CalledManagement.DAO
                 // O finally é sempre executado,
                 finally
                 {
+                    dgvSecHours.Refresh();
                     ToConnection toconection = new ToConnection();
                     // fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();
@@ -63,7 +64,7 @@ namespace CalledManagement.DAO
             }
         }
 
-        public bool Change(HourWorked hourworked)
+        public bool Change(HourWorked hourworked, DataGridView dgvSecHours)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -87,7 +88,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
-                    cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
+                    //cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
 
                     cmd.Connection = toconnection.ToConnect();
                     // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
@@ -110,13 +111,14 @@ namespace CalledManagement.DAO
                 // O finally é sempre executado,
                 finally
                 {
+                    dgvSecHours.Refresh();
                     // fechando a conexão com o banco de dados.
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
             }
         }
-        public bool Delete(int ID)
+        public bool Delete(int ID, DataGridView dgvSecHours)
         {
             {
                 try
@@ -144,12 +146,13 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
+                    dgvSecHours.Refresh();
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
             }
         }
-        public void ListarGrid(DataGridView dgvSec, string name)
+        public void ListarGrid(DataGridView dgvSecHours, string name)
         {
             SqlCommand cmd = new SqlCommand();
             ToConnection toconnection = new ToConnection();
@@ -168,10 +171,38 @@ namespace CalledManagement.DAO
                 }
                 // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable db = new DataTable();
-                adp.Fill(db);
-                dgvSec.DataSource = db;
+                SqlDataReader rd = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(rd);
+                dgvSecHours.DataSource = dt;
+                dgvSecHours.Refresh();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            }
+        }
+        public void CalculateHoursWorked(int ID, DataGridView dgvPanelRegCalled)
+        {
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            try
+            {
+                cmd.Connection = toconnection.ToConnect();
+                cmd.CommandText = "SELECT Name, SUM(DATEDIFF(minute, DateStarted, EndDate)) FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name ";
+                //cmd.Parameters.AddWithValue("@ID", "%" + ID + "%");
+
+                    cmd.ExecuteNonQuery();
+                
+                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
+
+                SqlDataReader rd = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(rd);
+                dgvPanelRegCalled.DataSource = dt;
+                dgvPanelRegCalled.Refresh();
             }
 
             catch (Exception ex)

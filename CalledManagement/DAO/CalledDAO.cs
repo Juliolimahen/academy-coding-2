@@ -14,7 +14,7 @@ namespace CalledManagement.DAO
     class CalledDAO
     {
 
-        public bool Insert(Called called)
+        public bool Insert(Called called, DataGridView dgvSecCalled)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -62,6 +62,7 @@ namespace CalledManagement.DAO
                 // O finally é sempre executado,
                 finally
                 {
+                    dgvSecCalled.Refresh();
                     ToConnection toconection = new ToConnection();
                     // fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();
@@ -70,7 +71,7 @@ namespace CalledManagement.DAO
             }
         }
 
-        public bool Change(Called called)
+        public bool Change(Called called, DataGridView dgvSecCalled)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -102,7 +103,7 @@ namespace CalledManagement.DAO
                     cmd.ExecuteNonQuery();
                     // Retorna o comando SQL de INSERT no banco de dados
                     //teste
-                    MessageBox.Show("Cadastro Excluido com sucesso!");
+                    MessageBox.Show("Cadastro alterado com sucesso!");
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
 
@@ -116,15 +117,14 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
+                    dgvSecCalled.Refresh();
                     ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();// O finally é sempre executado,
-
 
                 }
             }
         }
-
-        public bool Delete(int ID)
+        public bool Delete(int ID, DataGridView dgvSecCalled)
         {
             {
                 try
@@ -150,13 +150,14 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
+                    dgvSecCalled.Refresh();
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
             }
         }
 
-        public void ListarGrid(DataGridView dgvSec, string name)
+        public void ListarGrid(DataGridView dgvSecCalled, string name)
         {
             SqlCommand cmd = new SqlCommand();
             ToConnection toconnection = new ToConnection();
@@ -164,7 +165,9 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED ORDER BY Date DESC";
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
+                    "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition ORDER BY Date DESC";
+                //SELECT Name, 
 
                 if (name.Length > 0)
                 {
@@ -176,10 +179,11 @@ namespace CalledManagement.DAO
                 }
                 // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable db = new DataTable();
-                adp.Fill(db);
-                dgvSec.DataSource = db;
+                SqlDataReader rd = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(rd);
+                dgvSecCalled.DataSource = dt;
+                dgvSecCalled.Refresh();
             }
 
             catch (Exception ex)
@@ -205,8 +209,8 @@ namespace CalledManagement.DAO
                 cbxSec.Text = "Selecione um chamado";
                 cbxSec.DisplayMember = "Name";
                 cbxSec.ValueMember = "Id";
-
                 cbxSec.DataSource = dt;
+                cbxSec.Refresh();
             }
 
             catch (Exception ex)
@@ -216,4 +220,5 @@ namespace CalledManagement.DAO
         }
     }
 }
+
 
