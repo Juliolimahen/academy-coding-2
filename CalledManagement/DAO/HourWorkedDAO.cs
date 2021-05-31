@@ -195,14 +195,18 @@ namespace CalledManagement.DAO
                 //cmd.Parameters.AddWithValue("@ID", "%" + ID + "%");
 
                     cmd.ExecuteNonQuery();
-                
-                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
-                SqlDataReader rd = cmd.ExecuteReader();
+                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable db = new DataTable();
+                adp.Fill(db);
+                //dgvSec.DataSource = db;
+
+                /*SqlDataReader rd = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(rd);
                 dgvPanelRegCalled.DataSource = dt;
-                dgvPanelRegCalled.Refresh();
+                dgvPanelRegCalled.Refresh();*/
             }
 
             catch (Exception ex)

@@ -73,7 +73,7 @@
     <Compile Include="DAO\CalledDAO.cs" />
     <Compile Include="DAO\HourWorkedDAO.cs" />
     <Compile Include="DAO\PriorityDAO.cs" />
-    <Compile Include="DAO\ToConnection.cs" />
+    <Compile Include="DAO\Conexao\ToConnection.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Entities\Called.cs" />
     <Compile Include="Entities\Enums\CalledStatus.cs" />
@@ -81,53 +81,53 @@
     <Compile Include="Entities\Priority.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Operation.cs" />
-    <Compile Include="FrmLogin.cs">
+    <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
+    <Compile Include="View\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.cs">
+    <Compile Include="View\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain.Designer.cs">
+    <Compile Include="View\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRegister.cs">
+    <Compile Include="View\FrmRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRegister.Designer.cs">
+    <Compile Include="View\FrmRegister.Designer.cs">
       <DependentUpon>FrmRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUser.cs">
+    <Compile Include="View\FrmUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUser.Designer.cs">
+    <Compile Include="View\FrmUser.Designer.cs">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRepCalled.cs">
+    <Compile Include="View\FrmRepCalled.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRepCalled.Designer.cs">
+    <Compile Include="View\FrmRepCalled.Designer.cs">
       <DependentUpon>FrmRepCalled.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\Function.cs" />
-    <EmbeddedResource Include="FrmLogin.resx">
+    <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
+    <EmbeddedResource Include="View\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegister.resx">
+    <EmbeddedResource Include="View\FrmRegister.resx">
       <DependentUpon>FrmRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUser.resx">
+    <EmbeddedResource Include="View\FrmUser.resx">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmRepCalled.resx">
+    <EmbeddedResource Include="View\FrmRepCalled.resx">
       <DependentUpon>FrmRepCalled.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -140,7 +140,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReportCalled.rdlc" />
+    <EmbeddedResource Include="View\ReportCalled.rdlc" />
     <None Include="academycoding2DataSet1.xsc">
       <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
     </None>

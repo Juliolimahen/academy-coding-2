@@ -65,8 +65,7 @@ namespace CalledManagement
                     dtpRegDate.Enabled = true;
                     called.Date = Convert.ToDateTime(dtpRegDate.Text);    
                 }
-
-                called.Descripition = txtRegDescripition.Text;
+                    called.Descripition = txtRegDescripition.Text;
 
                 if (rbRegStatusFinished.Checked == true)
                 {
@@ -114,18 +113,20 @@ namespace CalledManagement
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
+                    
             if (cbxRegID.SelectedIndex == 0)
             {
-                MessageBox.Show("Digite um codigo identificador para alterar o registro!");
+                MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
                 cbxRegID.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
 
-            else if (cbxRegID.SelectedIndex > 0)
+            else if (cbxRegID.SelectedIndex > -1)
             {
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Save");
+                BuscarRegistro();
                 cbxRegID.Enabled = false;
                 txtRegName.Focus();
             }
@@ -193,10 +194,10 @@ namespace CalledManagement
 
         private void FrmRegisterCalled_Load(object sender, EventArgs e)
         {
-            cbxRegID.Enabled=false;
-            txtRegName.Enabled = false;
-            txtRegDescripition.Enabled = false;
-            dtpRegDate.Enabled = false;
+            //cbxRegID.Enabled=false;
+            //txtRegName.Enabled = false;
+            //txtRegDescripition.Enabled = false;
+            //dtpRegDate.Enabled = false;
             //txtRegStatus.Enabled = false;
             if (rbRegCalledHoursSystem.Checked == true)
             {
@@ -236,12 +237,12 @@ namespace CalledManagement
                 txtRegName.Focus();
                 return false;
             }
-            if (txtRegDescripition.Text == string.Empty)
-            {
-                MessageBox.Show("O campo nome é obrigatório!", "Atenção");
-                txtRegName.Focus();
-                return false;
-            }
+            //if (txtRegDescripition.Text == string.Empty)
+           // {
+               // MessageBox.Show("O campo nome é obrigatório!", "Atenção");
+               // txtRegName.Focus();
+                //return false;
+          //  }
             return true;
         }
 
@@ -383,6 +384,39 @@ namespace CalledManagement
             }
         }
 
+        private void BuscarRegistro()
+        {
+            int id = int.Parse(cbxRegID.SelectedValue.ToString());
+            Function.Clean(this);
+            CalledDAO calleddao = new CalledDAO();
+            Called called = new Called();
+
+            called = calleddao.SearchID(id);
+
+            if (called.Id > 0)
+            {
+                cbxRegID.SelectedValue = int.Parse(called.Id.ToString());
+                txtRegName.Text = called.Name;
+                txtRegDescripition.Text = called.Descripition;
+                dtpRegDate.Text = called.Date.ToString();
+                //cbxRegPriority.SelectedIndex = int.Parse(called.PriorityId.ToString());
+                if (called.Finished == "N")
+                {
+                    rbRegStatusProgress.Checked = true;
+                }
+                else
+                {
+                    rbRegStatusFinished.Checked = true;
+                }
+
+                Function.EnableButtons(this, "Change");
+            }
+            else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
+        }
+        private void cbxRegID_SelectedIndex(object sender, KeyEventArgs e)
+        {
+            BuscarRegistro();
+        }
     }   
 }
 

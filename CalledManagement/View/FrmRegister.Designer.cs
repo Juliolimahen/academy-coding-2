@@ -467,7 +467,7 @@
             this.gbxStatus.Controls.Add(this.rbRegStatusProgress);
             this.gbxStatus.Location = new System.Drawing.Point(34, 376);
             this.gbxStatus.Name = "gbxStatus";
-            this.gbxStatus.Size = new System.Drawing.Size(461, 68);
+            this.gbxStatus.Size = new System.Drawing.Size(456, 68);
             this.gbxStatus.TabIndex = 79;
             this.gbxStatus.TabStop = false;
             this.gbxStatus.Text = "Status";
@@ -500,7 +500,7 @@
             this.gbxTypeRegHoursCalled.Controls.Add(this.rbRegCalledHoursManual);
             this.gbxTypeRegHoursCalled.Controls.Add(this.dtpRegDate);
             this.gbxTypeRegHoursCalled.Controls.Add(this.label6);
-            this.gbxTypeRegHoursCalled.Location = new System.Drawing.Point(34, 213);
+            this.gbxTypeRegHoursCalled.Location = new System.Drawing.Point(32, 213);
             this.gbxTypeRegHoursCalled.Name = "gbxTypeRegHoursCalled";
             this.gbxTypeRegHoursCalled.Size = new System.Drawing.Size(458, 94);
             this.gbxTypeRegHoursCalled.TabIndex = 78;
@@ -573,7 +573,7 @@
             this.cbxRegPriority.FormattingEnabled = true;
             this.cbxRegPriority.Location = new System.Drawing.Point(34, 336);
             this.cbxRegPriority.Name = "cbxRegPriority";
-            this.cbxRegPriority.Size = new System.Drawing.Size(461, 21);
+            this.cbxRegPriority.Size = new System.Drawing.Size(456, 21);
             this.cbxRegPriority.TabIndex = 73;
             this.cbxRegPriority.Text = "selecione um prioridade";
             // 

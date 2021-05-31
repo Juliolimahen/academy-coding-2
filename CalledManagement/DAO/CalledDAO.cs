@@ -91,6 +91,7 @@ namespace CalledManagement.DAO
                     toconnection.ToConnect();
 
                     // Esse objeto é responsável em executar os comandos SQL
+                    
                     cmd.Parameters.AddWithValue("@Id", called.Id);
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
@@ -241,6 +242,35 @@ namespace CalledManagement.DAO
             {
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
+        }
+
+        public Called SearchID(int ID)
+        {
+            Called called = new Called();
+
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+            {
+                cmd.Connection = toconnection.ToConnect();
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Id LIKE @Id";
+                cmd.Parameters.AddWithValue("@Id", ID);
+                cmd.Connection = toconnection.ToConnect();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //percorre todas as linhas de DataReader
+                while (reader.Read())
+                {
+                    //recuperar os campos
+                    called.Id = int.Parse(reader["Id"].ToString());
+                    called.Name = reader["Name"].ToString();
+                    called.Date = Convert.ToDateTime(reader["Date"].ToString());
+                    called.Finished = reader["Finished"].ToString();
+                    called.Descripition = reader["Descripition"].ToString();
+                    //called.PriorityId.Id= int.Parse(reader["PriorityId"].ToString());
+                }
+
+            }
+            return called;
         }
     }
 }
