@@ -78,7 +78,7 @@ namespace CalledManagement.DAO
             //SqlConnection conn = new SqlConnection(strConn);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished  where Id = @Id";
+            cmd.CommandText = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId where Id = @Id";
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
@@ -97,6 +97,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Date", called.Date);
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
+                    cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
 
                     // O objetro cmd recebe os parâmetros com os valores dos campos 
                     cmd.Connection = toconnection.ToConnect();
@@ -247,12 +248,14 @@ namespace CalledManagement.DAO
         public Called SearchID(int ID)
         {
             Called called = new Called();
+            Priority priority = new Priority();
+            called.PriorityId = priority;
 
             SqlCommand cmd = new SqlCommand();
             ToConnection toconnection = new ToConnection();
-            {
+            
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Id LIKE @Id";
+                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
                 cmd.Parameters.AddWithValue("@Id", ID);
                 cmd.Connection = toconnection.ToConnect();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -266,10 +269,10 @@ namespace CalledManagement.DAO
                     called.Date = Convert.ToDateTime(reader["Date"].ToString());
                     called.Finished = reader["Finished"].ToString();
                     called.Descripition = reader["Descripition"].ToString();
-                    //called.PriorityId.Id= int.Parse(reader["PriorityId"].ToString());
+                    called.PriorityId.Id= int.Parse(reader["PriorityId"].ToString());
                 }
 
-            }
+            
             return called;
         }
     }

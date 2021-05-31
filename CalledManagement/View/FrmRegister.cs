@@ -93,7 +93,7 @@ namespace CalledManagement
                 {
 
                     CalledDAO calleddao = new CalledDAO();
-                    called.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
+                    called.Id = Convert.ToInt32(cbxRegID.SelectedValue.ToString());
                     if (calleddao.Change(called, dgvSecCalled) == false)
                     {
                         txtRegName.Focus();
@@ -399,7 +399,7 @@ namespace CalledManagement
                 txtRegName.Text = called.Name;
                 txtRegDescripition.Text = called.Descripition;
                 dtpRegDate.Text = called.Date.ToString();
-                //cbxRegPriority.SelectedIndex = int.Parse(called.PriorityId.ToString());
+                cbxRegPriority.SelectedValue = int.Parse(called.PriorityId.Id.ToString());
                 if (called.Finished == "N")
                 {
                     rbRegStatusProgress.Checked = true;
