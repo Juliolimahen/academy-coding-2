@@ -214,5 +214,32 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
+        public HourWorked SearchID(int ID)
+        {
+            HourWorked hourworked = new HourWorked();
+            Called called = new Called();
+            hourworked.CalledId = called;
+
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            cmd.Connection = toconnection.ToConnect();
+            cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED WHERE Id LIKE @Id";
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Connection = toconnection.ToConnect();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            //percorre todas as linhas de DataReader
+            while (reader.Read())
+            {
+                //recuperar os campos
+                hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
+                hourworked.DateStarted = Convert.ToDateTime(reader["Date"].ToString());
+                hourworked.EndDate = Convert.ToDateTime(reader["Date"].ToString());
+                hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
+            }
+
+            return hourworked;
+        }
     }
 }

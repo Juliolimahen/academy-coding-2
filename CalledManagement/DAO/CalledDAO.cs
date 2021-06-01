@@ -13,7 +13,7 @@ namespace CalledManagement.DAO
     //Classe responsavel pela comunicação da entidade Called com o banco de dados 
     class CalledDAO
     {
-        public bool Insert(Called called, DataGridView dgvSecCalled)
+        public bool Insert(Called called)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -62,16 +62,14 @@ namespace CalledManagement.DAO
                 // O finally é sempre executado,
                 finally
                 {
-                    dgvSecCalled.Refresh();
                     ToConnection toconection = new ToConnection();
                     // fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();
-
                 }
             }
         }
 
-        public bool Change(Called called, DataGridView dgvSecCalled)
+        public bool Change(Called called)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -119,14 +117,12 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    dgvSecCalled.Refresh();
                     ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();// O finally é sempre executado,
-
                 }
             }
         }
-        public bool Delete(int ID, DataGridView dgvSecCalled)
+        public bool Delete(int ID)
         {
             {
                 try
@@ -152,7 +148,6 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    dgvSecCalled.Refresh();
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
@@ -185,13 +180,17 @@ namespace CalledManagement.DAO
                 DataTable dt = new DataTable();
                 dt.Load(rd);
                 dgvSecCalled.DataSource = dt;
-                dgvSecCalled.Refresh();
             }
 
             catch (Exception ex)
             {
 
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            }
+            finally
+            {
+                //ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                //toconection.ToDisconnect();
             }
         }
         public void ListarComboBox(ComboBox cbxSec)
@@ -218,6 +217,11 @@ namespace CalledManagement.DAO
             {
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
+            finally
+            {
+                ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                toconection.ToDisconnect();
+            }
         }
         public void ListarComBoxID(ComboBox cbxRegID)
         {
@@ -242,6 +246,12 @@ namespace CalledManagement.DAO
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            }
+
+            finally
+            {
+                ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                toconection.ToDisconnect();
             }
         }
 
@@ -272,7 +282,6 @@ namespace CalledManagement.DAO
                     called.PriorityId.Id= int.Parse(reader["PriorityId"].ToString());
                 }
 
-            
             return called;
         }
     }
