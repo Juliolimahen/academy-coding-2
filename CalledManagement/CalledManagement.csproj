@@ -140,7 +140,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\ReportCalled.rdlc" />
+    <EmbeddedResource Include="ReportCalled.rdlc" />
     <None Include="academycoding2DataSet1.xsc">
       <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
     </None>

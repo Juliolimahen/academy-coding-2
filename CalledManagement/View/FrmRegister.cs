@@ -54,16 +54,19 @@ namespace CalledManagement
             if (ValidateData() == true)
             {
                 Called called = new Called();
+                HourWorked hourworked = new HourWorked();
                 called.Name = txtRegName.Text;
                 if (rbRegCalledHoursSystem.Checked == true)
                 {
                     dtpRegDate.Enabled = false;
                     called.Date = DateTime.Now;
+                    hourworked.Manual = 'N';
                 }
                 else
                 {
                     dtpRegDate.Enabled = true;
-                    called.Date = Convert.ToDateTime(dtpRegDate.Text);    
+                    called.Date = Convert.ToDateTime(dtpRegDate.Text);
+                    hourworked.Manual = 'S';
                 }
                     called.Descripition = txtRegDescripition.Text;
 
@@ -114,7 +117,7 @@ namespace CalledManagement
         private void btnRegChange_Click(object sender, EventArgs e)
         {
                     
-            if (cbxRegID.SelectedIndex == 0)
+            if (cbxRegID.SelectedIndex < 0)
             {
                 MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
                 cbxRegID.Focus();
@@ -214,15 +217,14 @@ namespace CalledManagement
 
             string name = txtSecSearchCalled.Text;
             calleddao.ListarGrid(dgvSecCalled, name);
+            
             string SecSearchHours;
-
             SecSearchHours = txtSecSearchHours.Text;
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
 
             calleddao.ListarComboBox(cbxRegHours);
             prioritydao.ListarComboBox(cbxRegPriority);
             calleddao.ListarComBoxID(cbxRegID);
-
 
         }
 
@@ -320,7 +322,15 @@ namespace CalledManagement
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
             hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
-            hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
+            int result = DateTime.Compare(hourworked.DateStarted, hourworked.EndDate);
+            if (result < 0)
+            {
+                MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+            }
+            else { 
+                  hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text); 
+            }
+
             if (operation == "Change")
             {
                 hourworked.DateChange =_DateTime = DateTime.Now;
