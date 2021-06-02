@@ -271,7 +271,7 @@
             this.groupBox3.Controls.Add(this.lbRegDateTime);
             this.groupBox3.Location = new System.Drawing.Point(29, 197);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(203, 96);
+            this.groupBox3.Size = new System.Drawing.Size(463, 160);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chamado Atual";
@@ -555,7 +555,7 @@
             this.btnRegFinishedCalled.Name = "btnRegFinishedCalled";
             this.btnRegFinishedCalled.Size = new System.Drawing.Size(123, 49);
             this.btnRegFinishedCalled.TabIndex = 75;
-            this.btnRegFinishedCalled.Text = "Finalizar Cadastro";
+            this.btnRegFinishedCalled.Text = "Cadastrar Horas";
             this.btnRegFinishedCalled.UseVisualStyleBackColor = true;
             this.btnRegFinishedCalled.Click += new System.EventHandler(this.btnRegFinishedCalled_Click);
             // 

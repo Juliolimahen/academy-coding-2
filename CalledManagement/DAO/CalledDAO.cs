@@ -162,8 +162,11 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId, SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-                    "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId  ORDER BY Date DESC";
+                cmd.CommandText = "SELECT c.Id, Name, Date, Finished, Descripition, PriorityId, " +
+                    "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
+                    "FROM CALLED c LEFT JOIN HOURWORKED h ON " +
+                    "c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId  " +
+                    "ORDER BY Date DESC";
                 //SELECT Name, 
 
                 if (name.Length > 0)

@@ -333,14 +333,17 @@ namespace CalledManagement
             {
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
-            hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
-            int result = DateTime.Compare(hourworked.DateStarted, hourworked.EndDate);
-            if (result < 0)
-            {
+
+            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text)){
+               
                 MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+                
             }
-            else { 
-                  hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text); 
+           
+            else {
+                hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
+                hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
+
             }
 
             if (operation == "Change")
@@ -460,7 +463,6 @@ namespace CalledManagement
         {
             BuscarRegistroCalled();
         }
-
     }   
 }
 

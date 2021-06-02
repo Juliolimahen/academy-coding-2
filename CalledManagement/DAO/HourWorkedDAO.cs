@@ -20,7 +20,7 @@ namespace CalledManagement.DAO
             // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "insert into HOURWORKED (CalledId, DateInserted, DateStarted, EndDate) values (@CalledId, @DateInserted, @DateStarted, @EndDate)";
+            cmd.CommandText = "insert into HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) values (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
 
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
@@ -31,7 +31,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
-                    //cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
+                    cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
                     //cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
                     
                     cmd.Connection = toconnection.ToConnect();
@@ -63,7 +63,6 @@ namespace CalledManagement.DAO
                 }
             }
         }
-
         public bool Change(HourWorked hourworked, DataGridView dgvSecHours)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
@@ -160,7 +159,8 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED ORDER BY DateInserted DESC";
+                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual " +
+                    "FROM HOURWORKED ORDER BY DateInserted DESC";
 
                 if (name.Length > 0)
                 {
@@ -191,7 +191,8 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Name, SUM(DATEDIFF(minute, DateStarted, EndDate)) FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name ";
+                cmd.CommandText = "SELECT Name, SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
+                    "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name ";
                 //cmd.Parameters.AddWithValue("@ID", "%" + ID + "%");
 
                     cmd.ExecuteNonQuery();
