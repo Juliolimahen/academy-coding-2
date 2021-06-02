@@ -25,7 +25,7 @@ namespace CalledManagement
         {
             InitializeComponent();
         }
-     
+
         //Botão para Finalizar chamado
         private void btnRegFinish_Click(object sender, EventArgs e)
         {
@@ -64,7 +64,7 @@ namespace CalledManagement
                     called.Date = Convert.ToDateTime(dtpRegDate.Text);
                     hourworked.Manual = 'S';
                 }
-                    called.Descripition = txtRegDescripition.Text;
+                called.Descripition = txtRegDescripition.Text;
 
                 if (rbRegStatusFinished.Checked == true)
                 {
@@ -76,7 +76,7 @@ namespace CalledManagement
                 }
                 Priority priority = new Priority();
                 called.PriorityId = priority;
-                called.PriorityId.Id= Convert.ToInt32(cbxRegPriority.SelectedValue.ToString());
+                called.PriorityId.Id = Convert.ToInt32(cbxRegPriority.SelectedValue.ToString());
 
                 if (operation == "Init")
                 {
@@ -112,7 +112,7 @@ namespace CalledManagement
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
-                    
+
             if (cbxRegID.SelectedIndex < 0)
             {
                 MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
@@ -236,12 +236,7 @@ namespace CalledManagement
                 txtRegName.Focus();
                 return false;
             }
-            //if (txtRegDescripition.Text == string.Empty)
-           // {
-               // MessageBox.Show("O campo nome é obrigatório!", "Atenção");
-               // txtRegName.Focus();
-                //return false;
-          //  }
+
             return true;
         }
 
@@ -258,7 +253,7 @@ namespace CalledManagement
             SecSearchHours = txtSecSearchHours.Text;
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
         }
-       
+
         private void btnRegInitHours_Click(object sender, EventArgs e)
         {
             Function.EnableFields(this, true);
@@ -272,7 +267,7 @@ namespace CalledManagement
 
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
-            if (cbxRegID.Text.Length == 0)
+            if (cbxRegHours.SelectedIndex > 0)
             {
                 MessageBox.Show("Selecione o chamado para qual deseja alterar as horas!");
                 cbxRegHours.Focus();
@@ -284,8 +279,8 @@ namespace CalledManagement
             //  {
             Function.EnableFields(this, true);
             Function.EnableButtons(this, "Save");
-            cbxRegID.Enabled = false;
-            txtRegName.Focus();
+            cbxRegHours.Enabled = false;
+            ///txtRegName.Focus();
             // }
 
             operation = "Change";
@@ -318,29 +313,30 @@ namespace CalledManagement
                 Function.EnableFields(this, true);
             }
         }
-    
         private void btnRegSaveHours_Click(object sender, EventArgs e)
         {
             HourWorked hourworked = new HourWorked();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             Called called = new Called();
             CalledDAO calleddao = new CalledDAO();
-            
+
             MessageBox.Show(text: cbxRegHours.SelectedValue.ToString());
             hourworked.CalledId = called;
             hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
-            if(operation == "Init")
+            if (operation == "Init")
             {
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
 
-            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text)){
-               
+            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
+            {
+
                 MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
-                
+
             }
-           
-            else {
+
+            else
+            {
                 hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
                 hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
 
@@ -348,9 +344,9 @@ namespace CalledManagement
 
             if (operation == "Change")
             {
-                hourworked.DateChange =_DateTime = DateTime.Now;
+                hourworked.DateChange = _DateTime = DateTime.Now;
             }
- 
+
             if (operation == "Init")
             {
                 hourworkeddao.Insert(hourworked, dgvSecHours);
@@ -442,7 +438,7 @@ namespace CalledManagement
         }
         private void BuscarRegistroHours()
         {
-            int id = int.Parse(cbxRegID.SelectedValue.ToString());
+            int id = int.Parse(cbxRegHours.SelectedValue.ToString());
             Function.Clean(this);
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             HourWorked hourworked = new HourWorked();
@@ -451,10 +447,10 @@ namespace CalledManagement
 
             if (hourworked.CalledId.Id > 0)
             {
-                cbxRegID.SelectedValue = int.Parse(hourworked.CalledId.Id.ToString());
+                cbxRegHours.SelectedValue = int.Parse(hourworked.CalledId.Id.ToString());
                 mstbRegDateTimeInit.Text = hourworked.DateStarted.ToString();
                 mstbRegDateTimeFinished.Text = hourworked.EndDate.ToString();
- 
+
                 Function.EnableButtons(this, "Change");
             }
             else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
@@ -463,6 +459,6 @@ namespace CalledManagement
         {
             BuscarRegistroCalled();
         }
-    }   
+    }
 }
 

@@ -33,7 +33,7 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
                     //cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
-                    
+
                     cmd.Connection = toconnection.ToConnect();
                     // O objetro cmd recebe os parâmetros com os valores dos campos
 
@@ -195,7 +195,7 @@ namespace CalledManagement.DAO
                     "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name ";
                 //cmd.Parameters.AddWithValue("@ID", "%" + ID + "%");
 
-                    cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
                 // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -235,8 +235,8 @@ namespace CalledManagement.DAO
             {
                 //recuperar os campos
                 hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
-                hourworked.DateStarted = Convert.ToDateTime(reader["Date"].ToString());
-                hourworked.EndDate = Convert.ToDateTime(reader["Date"].ToString());
+                hourworked.DateStarted = Convert.ToDateTime(reader["DateStarted"].ToString());
+                hourworked.EndDate = Convert.ToDateTime(reader["EndDate"].ToString());
                 hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
             }
 
