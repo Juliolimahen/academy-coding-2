@@ -35,5 +35,12 @@ namespace CalledManagement
             FrmUser frmuser = new FrmUser();
             frmuser.ShowDialog();
         }
+
+        private void chamadosFechadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRepHours frmrephours = new FrmRepHours();
+            frmrephours.ShowDialog();
+        }
     }
+    
 }

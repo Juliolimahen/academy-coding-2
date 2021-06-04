@@ -13,7 +13,7 @@ namespace CalledManagement.DAO
     //Classe responsavel pela comunicação da entidade HourWorked com o banco de dados 
     class HourWorkedDAO
     {
-        public bool Insert(HourWorked hourworked, DataGridView dgvSecHours)
+        public bool Insert(HourWorked hourworked)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -56,21 +56,20 @@ namespace CalledManagement.DAO
                 // O finally é sempre executado,
                 finally
                 {
-                    dgvSecHours.Refresh();
                     ToConnection toconection = new ToConnection();
                     // fechando a conexão com o banco de dados.
                     toconection.ToDisconnect();
                 }
             }
         }
-        public bool Change(HourWorked hourworked, DataGridView dgvSecHours)
+        public bool Change(HourWorked hourworked)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
             //SqlConnection conn = new SqlConnection(strConn);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update HOURWORKED set DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange, Manual = @Manual  where CalledId = @CalledId";
+            cmd.CommandText = "update HOURWORKED set DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where CalledId = @CalledId";
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
@@ -82,7 +81,7 @@ namespace CalledManagement.DAO
                     toconnection.ToConnect();
 
                     // Esse objeto é responsável em executar os comandos SQL
-                    cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId);
+                    cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId.Id);
                     //cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
@@ -109,15 +108,14 @@ namespace CalledManagement.DAO
                 }
                 // O finally é sempre executado,
                 finally
-                {
-                    dgvSecHours.Refresh();
+                { 
                     // fechando a conexão com o banco de dados.
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
             }
         }
-        public bool Delete(int ID, DataGridView dgvSecHours)
+        public bool Delete(int ID)
         {
             {
                 try
@@ -145,7 +143,6 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    dgvSecHours.Refresh();
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
                 }
@@ -159,8 +156,11 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual " +
-                    "FROM HOURWORKED ORDER BY DateInserted DESC";
+                cmd.CommandText = "" +
+                    "SELECT H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
+                    "FROM HOURWORKED AS H " +
+                    "INNER JOIN CALLED AS C " +
+                    "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC";
 
                 if (name.Length > 0)
                 {
@@ -225,7 +225,8 @@ namespace CalledManagement.DAO
             ToConnection toconnection = new ToConnection();
 
             cmd.Connection = toconnection.ToConnect();
-            cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED WHERE Id LIKE @Id";
+            cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
+                "Manual FROM HOURWORKED WHERE Id LIKE @Id";
             cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Connection = toconnection.ToConnect();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -237,7 +238,7 @@ namespace CalledManagement.DAO
                 hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
                 hourworked.DateStarted = Convert.ToDateTime(reader["DateStarted"].ToString());
                 hourworked.EndDate = Convert.ToDateTime(reader["EndDate"].ToString());
-                hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
+                //hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
             }
 
             return hourworked;

@@ -65,10 +65,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="academycoding2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="academycoding2DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="academycoding2DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>academycoding2DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAO\CalledDAO.cs" />
     <Compile Include="DAO\HourWorkedDAO.cs" />
@@ -81,6 +91,12 @@
     <Compile Include="Entities\Priority.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Operation.cs" />
+    <Compile Include="View\FrmRepHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmRepHours.Designer.cs">
+      <DependentUpon>FrmRepHours.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +131,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\Function.cs" />
+    <EmbeddedResource Include="View\FrmRepHours.resx">
+      <DependentUpon>FrmRepHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportHours .rdlc" />
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +161,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportCalled.rdlc" />
+    <None Include="academycoding2DataSet.xsc">
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="academycoding2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>academycoding2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="academycoding2DataSet.xss">
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </None>
     <None Include="academycoding2DataSet1.xsc">
       <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
     </None>
@@ -151,6 +182,17 @@
     </None>
     <None Include="academycoding2DataSet1.xss">
       <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="academycoding2DataSet2.xsc">
+      <DependentUpon>academycoding2DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="academycoding2DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>academycoding2DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="academycoding2DataSet2.xss">
+      <DependentUpon>academycoding2DataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

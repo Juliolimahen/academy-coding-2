@@ -162,11 +162,17 @@ namespace CalledManagement.DAO
             try
             {
                 cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT c.Id, Name, Date, Finished, Descripition, PriorityId, " +
+                cmd.CommandText = "" +
+                    "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, " +
                     "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-                    "FROM CALLED c LEFT JOIN HOURWORKED h ON " +
-                    "c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId  " +
-                    "ORDER BY Date DESC";
+                    "FROM CALLED c " +
+                    "INNER JOIN PRIORITY p " +
+                    "ON c.PriorityId = p.Id " +
+                    "LEFT JOIN HOURWORKED h ON " +
+                    "c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days " +
+                    "ORDER BY c.PriorityId DESC, p.Days, c.Date DESC";
+
+                
                 //SELECT Name, 
 
                 if (name.Length > 0)
@@ -183,11 +189,12 @@ namespace CalledManagement.DAO
                 DataTable dt = new DataTable();
                 dt.Load(rd);
                 dgvSecCalled.DataSource = dt;
+                
+ 
             }
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
             finally

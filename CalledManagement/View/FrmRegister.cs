@@ -13,9 +13,11 @@ using System.Windows.Forms;
 
 namespace CalledManagement
 {
+    
     //Classe resposavel pelo formulário de registro. herdada da classe Form
     public partial class FrmRegisterCalled : Form
     {
+
         // variavel global resposanvel por armazanar qual operação seguir na troca de botoes 
         string operation;
         //variavel global resposavel por guardar hora e data da inserção dos chamados 
@@ -267,21 +269,22 @@ namespace CalledManagement
 
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
-            if (cbxRegHours.SelectedIndex > 0)
+            if (cbxRegHours.SelectedIndex <= 0)
             {
-                MessageBox.Show("Selecione o chamado para qual deseja alterar as horas!");
+                MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
                 cbxRegHours.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
-            BuscarRegistroHours();
-            //else if (cbxRegHours)
-            //  {
-            Function.EnableFields(this, true);
-            Function.EnableButtons(this, "Save");
-            cbxRegHours.Enabled = false;
-            ///txtRegName.Focus();
-            // }
+
+            else if (cbxRegHours.SelectedIndex > -1)
+            {
+                Function.EnableFields(this, true);
+                Function.EnableButtons(this, "Save");
+                BuscarRegistroHours();
+                cbxRegHours.Enabled = false;
+                //txtRegName.Focus();
+            }
 
             operation = "Change";
         }
@@ -295,7 +298,7 @@ namespace CalledManagement
                 {
 
                     HourWorkedDAO hourworkeddao = new HourWorkedDAO();
-                    if (hourworkeddao.Delete(Convert.ToInt32(cbxRegHours.SelectedValue.ToString()), dgvSecCalled) == false)
+                    if (hourworkeddao.Delete(Convert.ToInt32(cbxRegHours.SelectedValue.ToString())) == false)
                     {
                         cbxRegHours.Focus();
                     }
@@ -318,7 +321,6 @@ namespace CalledManagement
             HourWorked hourworked = new HourWorked();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             Called called = new Called();
-            CalledDAO calleddao = new CalledDAO();
 
             MessageBox.Show(text: cbxRegHours.SelectedValue.ToString());
             hourworked.CalledId = called;
@@ -349,13 +351,13 @@ namespace CalledManagement
 
             if (operation == "Init")
             {
-                hourworkeddao.Insert(hourworked, dgvSecHours);
+                hourworkeddao.Insert(hourworked);
 
             }
             else if (operation == "Change")
             {
-                hourworked.CalledId.Id = Convert.ToInt32(cbxRegID.SelectedValue.ToString());
-                if (calleddao.Change(called) == false)
+                hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
+                if (hourworkeddao.Change(hourworked) == false)
                 {
                     txtRegName.Focus();
                     return;
@@ -455,10 +457,7 @@ namespace CalledManagement
             }
             else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
         }
-        private void cbxRegID_SelectedIndex(object sender, KeyEventArgs e)
-        {
-            BuscarRegistroCalled();
-        }
+
     }
 }
 

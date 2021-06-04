@@ -124,6 +124,7 @@
             this.chamadosFechadosToolStripMenuItem.Name = "chamadosFechadosToolStripMenuItem";
             this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.chamadosFechadosToolStripMenuItem.Text = "Horas Trabalhadas ";
+            this.chamadosFechadosToolStripMenuItem.Click += new System.EventHandler(this.chamadosFechadosToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
