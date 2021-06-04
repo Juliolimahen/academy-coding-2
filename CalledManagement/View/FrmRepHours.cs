@@ -19,35 +19,14 @@ namespace CalledManagement
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet2.HOURWORKED'. Você pode movê-la ou removê-la conforme necessário.
-            this.HOURWORKEDTableAdapter.Fill(this.academycoding2DataSet2.HOURWORKED);
+            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet.Query_Hours_Report'. Você pode movê-la ou removê-la conforme necessário.
+            this.Query_Hours_ReportTableAdapter.Fill(this.academycoding2DataSet.Query_Hours_Report);
+
 
             this.reportViewer1.RefreshReport();
         }
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        private void reportViewer1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                this.HOURWORKEDTableAdapter.FillBy(this.academycoding2DataSet2.HOURWORKED);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void fillByToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                this.HOURWORKEDTableAdapter.FillBy(this.academycoding2DataSet2.HOURWORKED);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
 
         }
     }

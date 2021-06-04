@@ -170,7 +170,7 @@ namespace CalledManagement.DAO
                     "ON c.PriorityId = p.Id " +
                     "LEFT JOIN HOURWORKED h ON " +
                     "c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days " +
-                    "ORDER BY c.PriorityId DESC, p.Days, c.Date DESC";
+                    "ORDER BY c.Date DESC, c.PriorityId DESC, p.Days";
 
                 
                 //SELECT Name, 

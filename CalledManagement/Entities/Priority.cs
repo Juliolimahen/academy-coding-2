@@ -11,5 +11,13 @@ namespace CalledManagement.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public int Days { get; set; }
+
+        public List<Priority> ListPriority(){
+
+            List<Priority> list = new List<Priority>();
+
+            return list; 
+        }
     }
+    
 }

@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.tbpClosedCalled = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSecUpdateHours = new System.Windows.Forms.Button();
             this.btnSecSearchHours = new System.Windows.Forms.Button();
             this.txtSecSearchHours = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvSecHours = new System.Windows.Forms.DataGridView();
             this.tbpOpenCalled = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSecUpdateCalled = new System.Windows.Forms.Button();
             this.btnSecSearch = new System.Windows.Forms.Button();
             this.txtSecSearchCalled = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@
             // 
             // tbpClosedCalled
             // 
-            this.tbpClosedCalled.Controls.Add(this.button2);
+            this.tbpClosedCalled.Controls.Add(this.btnSecUpdateHours);
             this.tbpClosedCalled.Controls.Add(this.btnSecSearchHours);
             this.tbpClosedCalled.Controls.Add(this.txtSecSearchHours);
             this.tbpClosedCalled.Controls.Add(this.label10);
@@ -120,14 +120,14 @@
             this.tbpClosedCalled.Text = "Horas Cadastradas";
             this.tbpClosedCalled.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSecUpdateHours
             // 
-            this.button2.Location = new System.Drawing.Point(388, 550);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Atualizar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSecUpdateHours.Location = new System.Drawing.Point(388, 550);
+            this.btnSecUpdateHours.Name = "btnSecUpdateHours";
+            this.btnSecUpdateHours.Size = new System.Drawing.Size(102, 23);
+            this.btnSecUpdateHours.TabIndex = 9;
+            this.btnSecUpdateHours.Text = "Atualizar";
+            this.btnSecUpdateHours.UseVisualStyleBackColor = true;
             // 
             // btnSecSearchHours
             // 
@@ -172,7 +172,7 @@
             // 
             // tbpOpenCalled
             // 
-            this.tbpOpenCalled.Controls.Add(this.button1);
+            this.tbpOpenCalled.Controls.Add(this.btnSecUpdateCalled);
             this.tbpOpenCalled.Controls.Add(this.btnSecSearch);
             this.tbpOpenCalled.Controls.Add(this.txtSecSearchCalled);
             this.tbpOpenCalled.Controls.Add(this.label9);
@@ -185,14 +185,15 @@
             this.tbpOpenCalled.Text = "Chamados Cadastrados";
             this.tbpOpenCalled.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnSecUpdateCalled
             // 
-            this.button1.Location = new System.Drawing.Point(377, 548);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Atualizar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSecUpdateCalled.Location = new System.Drawing.Point(377, 548);
+            this.btnSecUpdateCalled.Name = "btnSecUpdateCalled";
+            this.btnSecUpdateCalled.Size = new System.Drawing.Size(102, 23);
+            this.btnSecUpdateCalled.TabIndex = 8;
+            this.btnSecUpdateCalled.Text = "Atualizar";
+            this.btnSecUpdateCalled.UseVisualStyleBackColor = true;
+            this.btnSecUpdateCalled.Click += new System.EventHandler(this.btnSecUpdateCalled_Click);
             // 
             // btnSecSearch
             // 
@@ -807,13 +808,13 @@
         #endregion
 
         private System.Windows.Forms.TabPage tbpClosedCalled;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSecUpdateHours;
         private System.Windows.Forms.Button btnSecSearchHours;
         private System.Windows.Forms.TextBox txtSecSearchHours;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvSecHours;
         private System.Windows.Forms.TabPage tbpOpenCalled;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSecUpdateCalled;
         private System.Windows.Forms.Button btnSecSearch;
         private System.Windows.Forms.TextBox txtSecSearchCalled;
         private System.Windows.Forms.Label label9;

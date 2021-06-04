@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CalledManagement.Enums
 {
     //Responsavel pela operação dos botoes do resgistro dos chamados
-    enum Operation
+    enum Operation : int
     {
         //não utilizada ainda...
         Init, Save, Change

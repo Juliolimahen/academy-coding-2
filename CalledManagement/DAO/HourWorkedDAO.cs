@@ -226,7 +226,7 @@ namespace CalledManagement.DAO
 
             cmd.Connection = toconnection.ToConnect();
             cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
-                "Manual FROM HOURWORKED WHERE Id LIKE @Id";
+                "Manual FROM HOURWORKED WHERE CalledId LIKE @Id";
             cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Connection = toconnection.ToConnect();
             SqlDataReader reader = cmd.ExecuteReader();

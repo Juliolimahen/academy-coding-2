@@ -1,6 +1,7 @@
 ﻿using CalledManagement.DAO;
 using CalledManagement.Entities;
 using CalledManagement.Utils;
+using CalledManagement.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace CalledManagement
 
         // variavel global resposanvel por armazanar qual operação seguir na troca de botoes 
         string operation;
+        
         //variavel global resposavel por guardar hora e data da inserção dos chamados 
         DateTime _DateTime;
         //Construtor responsavel por inicializar o componente; 
@@ -114,21 +116,21 @@ namespace CalledManagement
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
-
+            
             if (cbxRegID.SelectedIndex < 0)
             {
-                MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
+                MessageBox.Show("Selecione um codigo identificador para alterar um registro e clique novamente em alterar!","Atenção!!!");
                 cbxRegID.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
 
-            else if (cbxRegID.SelectedIndex > -1)
+            else if (cbxRegID.SelectedIndex >= 0)
             {
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Save");
                 BuscarRegistroCalled();
-                cbxRegID.Enabled = false;
+                cbxRegID.Enabled = true;
                 txtRegName.Focus();
             }
 
@@ -194,12 +196,10 @@ namespace CalledManagement
         }
 
         private void FrmRegisterCalled_Load(object sender, EventArgs e)
-        {
-            //cbxRegID.Enabled=false;
-            //txtRegName.Enabled = false;
-            //txtRegDescripition.Enabled = false;
-            //dtpRegDate.Enabled = false;
-            //txtRegStatus.Enabled = false;
+        {   
+            Function.EnableFields(this, false);
+            Function.EnableButtons(this, "Load");
+            txtSecSearchCalled.Enabled = true;
 
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
@@ -225,6 +225,7 @@ namespace CalledManagement
                 dtpRegDate.Enabled = true;
             }
 
+            Function.Clean(this);
         }
 
         //Botão Cancelar 
@@ -269,7 +270,7 @@ namespace CalledManagement
 
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
-            if (cbxRegHours.SelectedIndex <= 0)
+            if (cbxRegHours.SelectedIndex < 0)
             {
                 MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
                 cbxRegHours.Focus();
@@ -330,13 +331,13 @@ namespace CalledManagement
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
 
-            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
-            {
+                if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
+                {
 
-                MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+                    MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
 
-            }
-
+                }
+            
             else
             {
                 hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
@@ -436,7 +437,7 @@ namespace CalledManagement
 
                 Function.EnableButtons(this, "Change");
             }
-            else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
+            else MessageBox.Show("Codigo do chamado não encontrado!", "Atenção");
         }
         private void BuscarRegistroHours()
         {
@@ -455,9 +456,15 @@ namespace CalledManagement
 
                 Function.EnableButtons(this, "Change");
             }
-            else MessageBox.Show("Codigo de cliente não encontrado!", "Atenção");
+            else MessageBox.Show("Nenhuma hora cadastrada para este chamado!", "Atenção");
         }
 
+        private void btnSecUpdateCalled_Click(object sender, EventArgs e)
+        {
+            CalledDAO calleddao = new CalledDAO();
+            string name = txtSecSearchCalled.Text;
+            calleddao.ListarGrid(dgvSecCalled, name);
+        }
     }
 }
 

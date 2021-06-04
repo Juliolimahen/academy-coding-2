@@ -30,41 +30,42 @@ namespace CalledManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.HOURWORKEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.academycoding2DataSet2 = new CalledManagement.academycoding2DataSet2();
-            this.HOURWORKEDTableAdapter = new CalledManagement.academycoding2DataSet2TableAdapters.HOURWORKEDTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.HOURWORKEDBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet2)).BeginInit();
+            this.academycoding2DataSet = new CalledManagement.academycoding2DataSet();
+            this.Query_Hours_ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Query_Hours_ReportTableAdapter = new CalledManagement.academycoding2DataSetTableAdapters.Query_Hours_ReportTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Query_Hours_ReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "DataSet1";
-            reportDataSource3.Value = this.HOURWORKEDBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.Query_Hours_ReportBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CalledManagement.ReportHours .rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // HOURWORKEDBindingSource
+            // academycoding2DataSet
             // 
-            this.HOURWORKEDBindingSource.DataMember = "HOURWORKED";
-            this.HOURWORKEDBindingSource.DataSource = this.academycoding2DataSet2;
+            this.academycoding2DataSet.DataSetName = "academycoding2DataSet";
+            this.academycoding2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // academycoding2DataSet2
+            // Query_Hours_ReportBindingSource
             // 
-            this.academycoding2DataSet2.DataSetName = "academycoding2DataSet2";
-            this.academycoding2DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.Query_Hours_ReportBindingSource.DataMember = "Query_Hours_Report";
+            this.Query_Hours_ReportBindingSource.DataSource = this.academycoding2DataSet;
             // 
-            // HOURWORKEDTableAdapter
+            // Query_Hours_ReportTableAdapter
             // 
-            this.HOURWORKEDTableAdapter.ClearBeforeFill = true;
+            this.Query_Hours_ReportTableAdapter.ClearBeforeFill = true;
             // 
             // FrmRepHours
             // 
@@ -75,8 +76,8 @@ namespace CalledManagement
             this.Name = "FrmRepHours";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.HOURWORKEDBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Query_Hours_ReportBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,8 +85,8 @@ namespace CalledManagement
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource HOURWORKEDBindingSource;
-        private academycoding2DataSet2 academycoding2DataSet2;
-        private academycoding2DataSet2TableAdapters.HOURWORKEDTableAdapter HOURWORKEDTableAdapter;
+        private System.Windows.Forms.BindingSource Query_Hours_ReportBindingSource;
+        private academycoding2DataSet academycoding2DataSet;
+        private academycoding2DataSetTableAdapters.Query_Hours_ReportTableAdapter Query_Hours_ReportTableAdapter;
     }
 }

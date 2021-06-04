@@ -19,8 +19,8 @@ namespace CalledManagement
 
         private void FrmRepCalled_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet1.CALLED'. Você pode movê-la ou removê-la conforme necessário.
-            this.CALLEDTableAdapter.Fill(this.academycoding2DataSet1.CALLED);
+            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet.Query_Called_Report'. Você pode movê-la ou removê-la conforme necessário.
+            this.Query_Called_ReportTableAdapter.Fill(this.academycoding2DataSet.Query_Called_Report);
 
             this.reportViewer1.RefreshReport();
         }

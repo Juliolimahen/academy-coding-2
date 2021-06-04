@@ -65,20 +65,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="academycoding2DataSet.cs">
+      <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="academycoding2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="academycoding2DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="academycoding2DataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>academycoding2DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAO\CalledDAO.cs" />
     <Compile Include="DAO\HourWorkedDAO.cs" />
@@ -171,28 +164,6 @@
     </None>
     <None Include="academycoding2DataSet.xss">
       <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="academycoding2DataSet1.xsc">
-      <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="academycoding2DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>academycoding2DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="academycoding2DataSet1.xss">
-      <DependentUpon>academycoding2DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="academycoding2DataSet2.xsc">
-      <DependentUpon>academycoding2DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="academycoding2DataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>academycoding2DataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="academycoding2DataSet2.xss">
-      <DependentUpon>academycoding2DataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
