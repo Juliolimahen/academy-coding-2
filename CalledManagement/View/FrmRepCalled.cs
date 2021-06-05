@@ -21,7 +21,6 @@ namespace CalledManagement
         {
             // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet.Query_Called_Report'. Você pode movê-la ou removê-la conforme necessário.
             this.Query_Called_ReportTableAdapter.Fill(this.academycoding2DataSet.Query_Called_Report);
-
             this.reportViewer1.RefreshReport();
         }
 

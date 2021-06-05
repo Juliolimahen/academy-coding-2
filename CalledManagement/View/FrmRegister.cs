@@ -215,6 +215,7 @@ namespace CalledManagement
             calleddao.ListarComboBox(cbxRegHours);
             prioritydao.ListarComboBox(cbxRegPriority);
             calleddao.ListarComBoxID(cbxRegID);
+            hourworkeddao.ListarComBoxID(cbxRegIDHours);
 
             if (rbRegCalledHoursSystem.Checked == true)
             {
@@ -270,15 +271,15 @@ namespace CalledManagement
 
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
-            if (cbxRegHours.SelectedIndex < 0)
+            if (cbxRegIDHours.SelectedIndex < 0)
             {
                 MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
-                cbxRegHours.Focus();
+                cbxRegIDHours.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
             }
 
-            else if (cbxRegHours.SelectedIndex > -1)
+            else if (cbxRegIDHours.SelectedIndex > -1)
             {
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Save");
@@ -441,15 +442,16 @@ namespace CalledManagement
         }
         private void BuscarRegistroHours()
         {
-            int id = int.Parse(cbxRegHours.SelectedValue.ToString());
+            int id = int.Parse(cbxRegIDHours.SelectedValue.ToString());
             Function.Clean(this);
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             HourWorked hourworked = new HourWorked();
 
             hourworked = hourworkeddao.SearchID(id);
 
-            if (hourworked.CalledId.Id > 0)
+            if (hourworked.Id > 0)
             {
+                cbxRegIDHours.SelectedValue = int.Parse(hourworked.Id.ToString());
                 cbxRegHours.SelectedValue = int.Parse(hourworked.CalledId.Id.ToString());
                 mstbRegDateTimeInit.Text = hourworked.DateStarted.ToString();
                 mstbRegDateTimeFinished.Text = hourworked.EndDate.ToString();

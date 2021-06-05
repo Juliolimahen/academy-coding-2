@@ -34,9 +34,9 @@ namespace CalledManagement {
         
         private USUARIODataTable tableUSUARIO;
         
-        private Query_Called_ReportDataTable tableQuery_Called_Report;
-        
         private Query_Hours_ReportDataTable tableQuery_Hours_Report;
+        
+        private Query_Called_ReportDataTable tableQuery_Called_Report;
         
         private global::System.Data.DataRelation relationFK_Priority_id;
         
@@ -44,13 +44,9 @@ namespace CalledManagement {
         
         private global::System.Data.DataRelation relationUSERPERMISSAO_USUARIO_FK;
         
-        private global::System.Data.DataRelation relationFK_CalledId1;
+        private global::System.Data.DataRelation relationFK_CalledId3;
         
         private global::System.Data.DataRelation relationFK_Priority_id1;
-        
-        private global::System.Data.DataRelation relationFK_CalledId2;
-        
-        private global::System.Data.DataRelation relationFK_CalledId3;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -95,11 +91,11 @@ namespace CalledManagement {
                 if ((ds.Tables["USUARIO"] != null)) {
                     base.Tables.Add(new USUARIODataTable(ds.Tables["USUARIO"]));
                 }
-                if ((ds.Tables["Query_Called_Report"] != null)) {
-                    base.Tables.Add(new Query_Called_ReportDataTable(ds.Tables["Query_Called_Report"]));
-                }
                 if ((ds.Tables["Query_Hours_Report"] != null)) {
                     base.Tables.Add(new Query_Hours_ReportDataTable(ds.Tables["Query_Hours_Report"]));
+                }
+                if ((ds.Tables["Query_Called_Report"] != null)) {
+                    base.Tables.Add(new Query_Called_ReportDataTable(ds.Tables["Query_Called_Report"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -173,9 +169,9 @@ namespace CalledManagement {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public Query_Called_ReportDataTable Query_Called_Report {
+        public Query_Hours_ReportDataTable Query_Hours_Report {
             get {
-                return this.tableQuery_Called_Report;
+                return this.tableQuery_Hours_Report;
             }
         }
         
@@ -183,9 +179,9 @@ namespace CalledManagement {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public Query_Hours_ReportDataTable Query_Hours_Report {
+        public Query_Called_ReportDataTable Query_Called_Report {
             get {
-                return this.tableQuery_Hours_Report;
+                return this.tableQuery_Called_Report;
             }
         }
         
@@ -271,11 +267,11 @@ namespace CalledManagement {
                 if ((ds.Tables["USUARIO"] != null)) {
                     base.Tables.Add(new USUARIODataTable(ds.Tables["USUARIO"]));
                 }
-                if ((ds.Tables["Query_Called_Report"] != null)) {
-                    base.Tables.Add(new Query_Called_ReportDataTable(ds.Tables["Query_Called_Report"]));
-                }
                 if ((ds.Tables["Query_Hours_Report"] != null)) {
                     base.Tables.Add(new Query_Hours_ReportDataTable(ds.Tables["Query_Hours_Report"]));
+                }
+                if ((ds.Tables["Query_Called_Report"] != null)) {
+                    base.Tables.Add(new Query_Called_ReportDataTable(ds.Tables["Query_Called_Report"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -340,25 +336,23 @@ namespace CalledManagement {
                     this.tableUSUARIO.InitVars();
                 }
             }
-            this.tableQuery_Called_Report = ((Query_Called_ReportDataTable)(base.Tables["Query_Called_Report"]));
-            if ((initTable == true)) {
-                if ((this.tableQuery_Called_Report != null)) {
-                    this.tableQuery_Called_Report.InitVars();
-                }
-            }
             this.tableQuery_Hours_Report = ((Query_Hours_ReportDataTable)(base.Tables["Query_Hours_Report"]));
             if ((initTable == true)) {
                 if ((this.tableQuery_Hours_Report != null)) {
                     this.tableQuery_Hours_Report.InitVars();
                 }
             }
+            this.tableQuery_Called_Report = ((Query_Called_ReportDataTable)(base.Tables["Query_Called_Report"]));
+            if ((initTable == true)) {
+                if ((this.tableQuery_Called_Report != null)) {
+                    this.tableQuery_Called_Report.InitVars();
+                }
+            }
             this.relationFK_Priority_id = this.Relations["FK_Priority_id"];
             this.relationFK_CalledId = this.Relations["FK_CalledId"];
             this.relationUSERPERMISSAO_USUARIO_FK = this.Relations["USERPERMISSAO_USUARIO_FK"];
-            this.relationFK_CalledId1 = this.Relations["FK_CalledId1"];
-            this.relationFK_Priority_id1 = this.Relations["FK_Priority_id1"];
-            this.relationFK_CalledId2 = this.Relations["FK_CalledId2"];
             this.relationFK_CalledId3 = this.Relations["FK_CalledId3"];
+            this.relationFK_Priority_id1 = this.Relations["FK_Priority_id1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -379,10 +373,10 @@ namespace CalledManagement {
             base.Tables.Add(this.tablePRIORITY);
             this.tableUSUARIO = new USUARIODataTable();
             base.Tables.Add(this.tableUSUARIO);
-            this.tableQuery_Called_Report = new Query_Called_ReportDataTable();
-            base.Tables.Add(this.tableQuery_Called_Report);
             this.tableQuery_Hours_Report = new Query_Hours_ReportDataTable();
             base.Tables.Add(this.tableQuery_Hours_Report);
+            this.tableQuery_Called_Report = new Query_Called_ReportDataTable();
+            base.Tables.Add(this.tableQuery_Called_Report);
             this.relationFK_Priority_id = new global::System.Data.DataRelation("FK_Priority_id", new global::System.Data.DataColumn[] {
                         this.tablePRIORITY.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableCALLED.PriorityIdColumn}, false);
@@ -395,22 +389,14 @@ namespace CalledManagement {
                         this.tableUSUARIO.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tablePERMISSAO_USUARIO.UserIdColumn}, false);
             this.Relations.Add(this.relationUSERPERMISSAO_USUARIO_FK);
-            this.relationFK_CalledId1 = new global::System.Data.DataRelation("FK_CalledId1", new global::System.Data.DataColumn[] {
-                        this.tableQuery_Called_Report.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableHOURWORKED.CalledIdColumn}, false);
-            this.Relations.Add(this.relationFK_CalledId1);
-            this.relationFK_Priority_id1 = new global::System.Data.DataRelation("FK_Priority_id1", new global::System.Data.DataColumn[] {
-                        this.tablePRIORITY.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableQuery_Called_Report.PriorityIdColumn}, false);
-            this.Relations.Add(this.relationFK_Priority_id1);
-            this.relationFK_CalledId2 = new global::System.Data.DataRelation("FK_CalledId2", new global::System.Data.DataColumn[] {
-                        this.tableCALLED.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableQuery_Hours_Report.CalledIdColumn}, false);
-            this.Relations.Add(this.relationFK_CalledId2);
             this.relationFK_CalledId3 = new global::System.Data.DataRelation("FK_CalledId3", new global::System.Data.DataColumn[] {
                         this.tableQuery_Hours_Report.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableHOURWORKED.CalledIdColumn}, false);
             this.Relations.Add(this.relationFK_CalledId3);
+            this.relationFK_Priority_id1 = new global::System.Data.DataRelation("FK_Priority_id1", new global::System.Data.DataColumn[] {
+                        this.tablePRIORITY.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableQuery_Called_Report.PriorityIdColumn}, false);
+            this.Relations.Add(this.relationFK_Priority_id1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -445,13 +431,13 @@ namespace CalledManagement {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeQuery_Called_Report() {
+        private bool ShouldSerializeQuery_Hours_Report() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeQuery_Hours_Report() {
+        private bool ShouldSerializeQuery_Called_Report() {
             return false;
         }
         
@@ -526,10 +512,10 @@ namespace CalledManagement {
         public delegate void USUARIORowChangeEventHandler(object sender, USUARIORowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void Query_Called_ReportRowChangeEventHandler(object sender, Query_Called_ReportRowChangeEvent e);
+        public delegate void Query_Hours_ReportRowChangeEventHandler(object sender, Query_Hours_ReportRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void Query_Hours_ReportRowChangeEventHandler(object sender, Query_Hours_ReportRowChangeEvent e);
+        public delegate void Query_Called_ReportRowChangeEventHandler(object sender, Query_Called_ReportRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2211,394 +2197,6 @@ namespace CalledManagement {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class Query_Called_ReportDataTable : global::System.Data.TypedTableBase<Query_Called_ReportRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnDate;
-            
-            private global::System.Data.DataColumn columnFinished;
-            
-            private global::System.Data.DataColumn columnDescripition;
-            
-            private global::System.Data.DataColumn columnPriorityId;
-            
-            private global::System.Data.DataColumn columnExpr1;
-            
-            private global::System.Data.DataColumn columnDays;
-            
-            private global::System.Data.DataColumn columnExpr2;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportDataTable() {
-                this.TableName = "Query_Called_Report";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal Query_Called_ReportDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected Query_Called_ReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DateColumn {
-                get {
-                    return this.columnDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FinishedColumn {
-                get {
-                    return this.columnFinished;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DescripitionColumn {
-                get {
-                    return this.columnDescripition;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PriorityIdColumn {
-                get {
-                    return this.columnPriorityId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Expr1Column {
-                get {
-                    return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DaysColumn {
-                get {
-                    return this.columnDays;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Expr2Column {
-                get {
-                    return this.columnExpr2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRow this[int index] {
-                get {
-                    return ((Query_Called_ReportRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddQuery_Called_ReportRow(Query_Called_ReportRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRow AddQuery_Called_ReportRow(string Name, System.DateTime Date, string Finished, string Descripition, PRIORITYRow parentPRIORITYRowByFK_Priority_id1, string Expr1, int Days, int Expr2) {
-                Query_Called_ReportRow rowQuery_Called_ReportRow = ((Query_Called_ReportRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Name,
-                        Date,
-                        Finished,
-                        Descripition,
-                        null,
-                        Expr1,
-                        Days,
-                        Expr2};
-                if ((parentPRIORITYRowByFK_Priority_id1 != null)) {
-                    columnValuesArray[5] = parentPRIORITYRowByFK_Priority_id1[0];
-                }
-                rowQuery_Called_ReportRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowQuery_Called_ReportRow);
-                return rowQuery_Called_ReportRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRow FindById(int Id) {
-                return ((Query_Called_ReportRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                Query_Called_ReportDataTable cln = ((Query_Called_ReportDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new Query_Called_ReportDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnName = base.Columns["Name"];
-                this.columnDate = base.Columns["Date"];
-                this.columnFinished = base.Columns["Finished"];
-                this.columnDescripition = base.Columns["Descripition"];
-                this.columnPriorityId = base.Columns["PriorityId"];
-                this.columnExpr1 = base.Columns["Expr1"];
-                this.columnDays = base.Columns["Days"];
-                this.columnExpr2 = base.Columns["Expr2"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDate);
-                this.columnFinished = new global::System.Data.DataColumn("Finished", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFinished);
-                this.columnDescripition = new global::System.Data.DataColumn("Descripition", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescripition);
-                this.columnPriorityId = new global::System.Data.DataColumn("PriorityId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPriorityId);
-                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr1);
-                this.columnDays = new global::System.Data.DataColumn("Days", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDays);
-                this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr2);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
-                this.columnId.Unique = true;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 100;
-                this.columnDate.AllowDBNull = false;
-                this.columnFinished.AllowDBNull = false;
-                this.columnFinished.MaxLength = 1;
-                this.columnDescripition.MaxLength = 300;
-                this.columnPriorityId.AllowDBNull = false;
-                this.columnExpr1.AllowDBNull = false;
-                this.columnExpr1.MaxLength = 50;
-                this.columnDays.AllowDBNull = false;
-                this.columnExpr2.ReadOnly = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRow NewQuery_Called_ReportRow() {
-                return ((Query_Called_ReportRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new Query_Called_ReportRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(Query_Called_ReportRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.Query_Called_ReportRowChanged != null)) {
-                    this.Query_Called_ReportRowChanged(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.Query_Called_ReportRowChanging != null)) {
-                    this.Query_Called_ReportRowChanging(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.Query_Called_ReportRowDeleted != null)) {
-                    this.Query_Called_ReportRowDeleted(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.Query_Called_ReportRowDeleting != null)) {
-                    this.Query_Called_ReportRowDeleting(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveQuery_Called_ReportRow(Query_Called_ReportRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                academycoding2DataSet ds = new academycoding2DataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "Query_Called_ReportDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Query_Hours_ReportDataTable : global::System.Data.TypedTableBase<Query_Hours_ReportRow> {
             
             private global::System.Data.DataColumn columnId;
@@ -2751,20 +2349,17 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Hours_ReportRow AddQuery_Hours_ReportRow(CALLEDRow parentCALLEDRowByFK_CalledId2, string Name, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, System.DateTime DateChange, string Manual) {
+            public Query_Hours_ReportRow AddQuery_Hours_ReportRow(int CalledId, string Name, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, System.DateTime DateChange, string Manual) {
                 Query_Hours_ReportRow rowQuery_Hours_ReportRow = ((Query_Hours_ReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        CalledId,
                         Name,
                         DateInserted,
                         DateStarted,
                         EndDate,
                         DateChange,
                         Manual};
-                if ((parentCALLEDRowByFK_CalledId2 != null)) {
-                    columnValuesArray[1] = parentCALLEDRowByFK_CalledId2[0];
-                }
                 rowQuery_Hours_ReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQuery_Hours_ReportRow);
                 return rowQuery_Hours_ReportRow;
@@ -2965,6 +2560,399 @@ namespace CalledManagement {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class Query_Called_ReportDataTable : global::System.Data.TypedTableBase<Query_Called_ReportRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnFinished;
+            
+            private global::System.Data.DataColumn columnDescripition;
+            
+            private global::System.Data.DataColumn columnPriorityId;
+            
+            private global::System.Data.DataColumn columnExpr1;
+            
+            private global::System.Data.DataColumn columnDays;
+            
+            private global::System.Data.DataColumn columnExpr3;
+            
+            private global::System.Data.DataColumn columnExpr2;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Query_Called_ReportDataTable() {
+                this.TableName = "Query_Called_Report";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal Query_Called_ReportDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected Query_Called_ReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FinishedColumn {
+                get {
+                    return this.columnFinished;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DescripitionColumn {
+                get {
+                    return this.columnDescripition;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PriorityIdColumn {
+                get {
+                    return this.columnPriorityId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DaysColumn {
+                get {
+                    return this.columnDays;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Expr3Column {
+                get {
+                    return this.columnExpr3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Expr2Column {
+                get {
+                    return this.columnExpr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Query_Called_ReportRow this[int index] {
+                get {
+                    return ((Query_Called_ReportRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Query_Called_ReportRowChangeEventHandler Query_Called_ReportRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddQuery_Called_ReportRow(Query_Called_ReportRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Query_Called_ReportRow AddQuery_Called_ReportRow(string Name, System.DateTime Date, string Finished, string Descripition, PRIORITYRow parentPRIORITYRowByFK_Priority_id1, string Expr1, int Days, System.DateTime Expr3, int Expr2) {
+                Query_Called_ReportRow rowQuery_Called_ReportRow = ((Query_Called_ReportRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Name,
+                        Date,
+                        Finished,
+                        Descripition,
+                        null,
+                        Expr1,
+                        Days,
+                        Expr3,
+                        Expr2};
+                if ((parentPRIORITYRowByFK_Priority_id1 != null)) {
+                    columnValuesArray[5] = parentPRIORITYRowByFK_Priority_id1[0];
+                }
+                rowQuery_Called_ReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowQuery_Called_ReportRow);
+                return rowQuery_Called_ReportRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                Query_Called_ReportDataTable cln = ((Query_Called_ReportDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new Query_Called_ReportDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnName = base.Columns["Name"];
+                this.columnDate = base.Columns["Date"];
+                this.columnFinished = base.Columns["Finished"];
+                this.columnDescripition = base.Columns["Descripition"];
+                this.columnPriorityId = base.Columns["PriorityId"];
+                this.columnExpr1 = base.Columns["Expr1"];
+                this.columnDays = base.Columns["Days"];
+                this.columnExpr3 = base.Columns["Expr3"];
+                this.columnExpr2 = base.Columns["Expr2"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnFinished = new global::System.Data.DataColumn("Finished", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFinished);
+                this.columnDescripition = new global::System.Data.DataColumn("Descripition", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescripition);
+                this.columnPriorityId = new global::System.Data.DataColumn("PriorityId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPriorityId);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
+                this.columnDays = new global::System.Data.DataColumn("Days", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDays);
+                this.columnExpr3 = new global::System.Data.DataColumn("Expr3", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr3);
+                this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr2);
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 100;
+                this.columnDate.AllowDBNull = false;
+                this.columnFinished.AllowDBNull = false;
+                this.columnFinished.MaxLength = 1;
+                this.columnDescripition.AllowDBNull = false;
+                this.columnDescripition.MaxLength = 300;
+                this.columnPriorityId.AllowDBNull = false;
+                this.columnExpr1.AllowDBNull = false;
+                this.columnExpr1.MaxLength = 50;
+                this.columnExpr3.ReadOnly = true;
+                this.columnExpr2.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Query_Called_ReportRow NewQuery_Called_ReportRow() {
+                return ((Query_Called_ReportRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new Query_Called_ReportRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(Query_Called_ReportRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.Query_Called_ReportRowChanged != null)) {
+                    this.Query_Called_ReportRowChanged(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.Query_Called_ReportRowChanging != null)) {
+                    this.Query_Called_ReportRowChanging(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.Query_Called_ReportRowDeleted != null)) {
+                    this.Query_Called_ReportRowDeleted(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.Query_Called_ReportRowDeleting != null)) {
+                    this.Query_Called_ReportRowDeleting(this, new Query_Called_ReportRowChangeEvent(((Query_Called_ReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveQuery_Called_ReportRow(Query_Called_ReportRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                academycoding2DataSet ds = new academycoding2DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "Query_Called_ReportDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class CALLEDRow : global::System.Data.DataRow {
@@ -3082,17 +3070,6 @@ namespace CalledManagement {
                     return ((HOURWORKEDRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CalledId"])));
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Hours_ReportRow[] GetQuery_Hours_ReportRows() {
-                if ((this.Table.ChildRelations["FK_CalledId2"] == null)) {
-                    return new Query_Hours_ReportRow[0];
-                }
-                else {
-                    return ((Query_Hours_ReportRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CalledId2"])));
-                }
-            }
         }
         
         /// <summary>
@@ -3204,17 +3181,6 @@ namespace CalledManagement {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_CalledId"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRow Query_Called_ReportRow {
-                get {
-                    return ((Query_Called_ReportRow)(this.GetParentRow(this.Table.ParentRelations["FK_CalledId1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CalledId1"]);
                 }
             }
             
@@ -3511,176 +3477,6 @@ namespace CalledManagement {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class Query_Called_ReportRow : global::System.Data.DataRow {
-            
-            private Query_Called_ReportDataTable tableQuery_Called_Report;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal Query_Called_ReportRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableQuery_Called_Report = ((Query_Called_ReportDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableQuery_Called_Report.IdColumn]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableQuery_Called_Report.NameColumn]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Date {
-                get {
-                    return ((global::System.DateTime)(this[this.tableQuery_Called_Report.DateColumn]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.DateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Finished {
-                get {
-                    return ((string)(this[this.tableQuery_Called_Report.FinishedColumn]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.FinishedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Descripition {
-                get {
-                    try {
-                        return ((string)(this[this.tableQuery_Called_Report.DescripitionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Descripition\' na tabela \'Query_Called_Report\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableQuery_Called_Report.DescripitionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int PriorityId {
-                get {
-                    return ((int)(this[this.tableQuery_Called_Report.PriorityIdColumn]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.PriorityIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Expr1 {
-                get {
-                    return ((string)(this[this.tableQuery_Called_Report.Expr1Column]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.Expr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Days {
-                get {
-                    return ((int)(this[this.tableQuery_Called_Report.DaysColumn]));
-                }
-                set {
-                    this[this.tableQuery_Called_Report.DaysColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Expr2 {
-                get {
-                    try {
-                        return ((int)(this[this.tableQuery_Called_Report.Expr2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Expr2\' na tabela \'Query_Called_Report\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableQuery_Called_Report.Expr2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PRIORITYRow PRIORITYRow {
-                get {
-                    return ((PRIORITYRow)(this.GetParentRow(this.Table.ParentRelations["FK_Priority_id1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Priority_id1"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDescripitionNull() {
-                return this.IsNull(this.tableQuery_Called_Report.DescripitionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDescripitionNull() {
-                this[this.tableQuery_Called_Report.DescripitionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsExpr2Null() {
-                return this.IsNull(this.tableQuery_Called_Report.Expr2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetExpr2Null() {
-                this[this.tableQuery_Called_Report.Expr2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public HOURWORKEDRow[] GetHOURWORKEDRows() {
-                if ((this.Table.ChildRelations["FK_CalledId1"] == null)) {
-                    return new HOURWORKEDRow[0];
-                }
-                else {
-                    return ((HOURWORKEDRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CalledId1"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class Query_Hours_ReportRow : global::System.Data.DataRow {
             
             private Query_Hours_ReportDataTable tableQuery_Hours_Report;
@@ -3792,17 +3588,6 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CALLEDRow CALLEDRow {
-                get {
-                    return ((CALLEDRow)(this.GetParentRow(this.Table.ParentRelations["FK_CalledId2"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CalledId2"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDateChangeNull() {
                 return this.IsNull(this.tableQuery_Hours_Report.DateChangeColumn);
             }
@@ -3834,6 +3619,193 @@ namespace CalledManagement {
                 else {
                     return ((HOURWORKEDRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CalledId3"])));
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class Query_Called_ReportRow : global::System.Data.DataRow {
+            
+            private Query_Called_ReportDataTable tableQuery_Called_Report;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal Query_Called_ReportRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableQuery_Called_Report = ((Query_Called_ReportDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableQuery_Called_Report.IdColumn]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableQuery_Called_Report.NameColumn]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableQuery_Called_Report.DateColumn]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Finished {
+                get {
+                    return ((string)(this[this.tableQuery_Called_Report.FinishedColumn]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.FinishedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Descripition {
+                get {
+                    return ((string)(this[this.tableQuery_Called_Report.DescripitionColumn]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.DescripitionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int PriorityId {
+                get {
+                    return ((int)(this[this.tableQuery_Called_Report.PriorityIdColumn]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.PriorityIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Expr1 {
+                get {
+                    return ((string)(this[this.tableQuery_Called_Report.Expr1Column]));
+                }
+                set {
+                    this[this.tableQuery_Called_Report.Expr1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Days {
+                get {
+                    try {
+                        return ((int)(this[this.tableQuery_Called_Report.DaysColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Days\' na tabela \'Query_Called_Report\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQuery_Called_Report.DaysColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Expr3 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableQuery_Called_Report.Expr3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Expr3\' na tabela \'Query_Called_Report\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQuery_Called_Report.Expr3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Expr2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableQuery_Called_Report.Expr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Expr2\' na tabela \'Query_Called_Report\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQuery_Called_Report.Expr2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PRIORITYRow PRIORITYRow {
+                get {
+                    return ((PRIORITYRow)(this.GetParentRow(this.Table.ParentRelations["FK_Priority_id1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Priority_id1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDaysNull() {
+                return this.IsNull(this.tableQuery_Called_Report.DaysColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDaysNull() {
+                this[this.tableQuery_Called_Report.DaysColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsExpr3Null() {
+                return this.IsNull(this.tableQuery_Called_Report.Expr3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetExpr3Null() {
+                this[this.tableQuery_Called_Report.Expr3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsExpr2Null() {
+                return this.IsNull(this.tableQuery_Called_Report.Expr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetExpr2Null() {
+                this[this.tableQuery_Called_Report.Expr2Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -4011,22 +3983,22 @@ namespace CalledManagement {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class Query_Called_ReportRowChangeEvent : global::System.EventArgs {
+        public class Query_Hours_ReportRowChangeEvent : global::System.EventArgs {
             
-            private Query_Called_ReportRow eventRow;
+            private Query_Hours_ReportRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRowChangeEvent(Query_Called_ReportRow row, global::System.Data.DataRowAction action) {
+            public Query_Hours_ReportRowChangeEvent(Query_Hours_ReportRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Called_ReportRow Row {
+            public Query_Hours_ReportRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4045,22 +4017,22 @@ namespace CalledManagement {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class Query_Hours_ReportRowChangeEvent : global::System.EventArgs {
+        public class Query_Called_ReportRowChangeEvent : global::System.EventArgs {
             
-            private Query_Hours_ReportRow eventRow;
+            private Query_Called_ReportRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Hours_ReportRowChangeEvent(Query_Hours_ReportRow row, global::System.Data.DataRowAction action) {
+            public Query_Called_ReportRowChangeEvent(Query_Called_ReportRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Hours_ReportRow Row {
+            public Query_Called_ReportRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4260,20 +4232,30 @@ SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE (Id 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM dbo.CALLED";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
+            this._commandCollection[1].CommandText = @"SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, CAST(h.DateInserted AS DATE) AS Expr3, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
 FROM            CALLED AS c INNER JOIN
                          PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
-                         HOURWORKED AS h ON c.Id = h.CalledId
-GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days
-ORDER BY c.PriorityId DESC, p.Days DESC, c.Date DESC";
+                         HOURWORKED AS h ON  c.Id = h.CalledId 
+GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.DateInserted AS DATE)
+ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, CAST(h.DateInserted AS DATE) AS Expr3, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
+FROM            CALLED AS c INNER JOIN
+                         PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
+                         HOURWORKED AS h ON  c.Id = h.CalledId 
+GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.DateInserted AS DATE)
+ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC
+";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4319,6 +4301,30 @@ ORDER BY c.PriorityId DESC, p.Days DESC, c.Date DESC";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual academycoding2DataSet.CALLEDDataTable GetDataBy() {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            academycoding2DataSet.CALLEDDataTable dataTable = new academycoding2DataSet.CALLEDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy1(academycoding2DataSet.CALLEDDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual academycoding2DataSet.CALLEDDataTable GetDataBy1() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             academycoding2DataSet.CALLEDDataTable dataTable = new academycoding2DataSet.CALLEDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6122,186 +6128,6 @@ SELECT Id, Name, Login, Password, Grupo FROM USUARIO WHERE (Id = @Id)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class Query_Called_ReportTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public Query_Called_ReportTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Query_Called_Report";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Date", "Date");
-            tableMapping.ColumnMappings.Add("Finished", "Finished");
-            tableMapping.ColumnMappings.Add("Descripition", "Descripition");
-            tableMapping.ColumnMappings.Add("PriorityId", "PriorityId");
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
-            tableMapping.ColumnMappings.Add("Days", "Days");
-            tableMapping.ColumnMappings.Add("Expr2", "Expr2");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CalledManagement.Properties.Settings.Default.academycoding2ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
-FROM            CALLED AS c INNER JOIN
-                         PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
-                         HOURWORKED AS h ON c.Id = h.CalledId
-GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days
-ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(academycoding2DataSet.Query_Called_ReportDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual academycoding2DataSet.Query_Called_ReportDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            academycoding2DataSet.Query_Called_ReportDataTable dataTable = new academycoding2DataSet.Query_Called_ReportDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class Query_Hours_ReportTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -6466,6 +6292,187 @@ ORDER BY H.EndDate DESC";
         public virtual academycoding2DataSet.Query_Hours_ReportDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             academycoding2DataSet.Query_Hours_ReportDataTable dataTable = new academycoding2DataSet.Query_Hours_ReportDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class Query_Called_ReportTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public Query_Called_ReportTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Query_Called_Report";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Date", "Date");
+            tableMapping.ColumnMappings.Add("Finished", "Finished");
+            tableMapping.ColumnMappings.Add("Descripition", "Descripition");
+            tableMapping.ColumnMappings.Add("PriorityId", "PriorityId");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("Days", "Days");
+            tableMapping.ColumnMappings.Add("Expr3", "Expr3");
+            tableMapping.ColumnMappings.Add("Expr2", "Expr2");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::CalledManagement.Properties.Settings.Default.academycoding2ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, CAST(h.DateInserted AS DATE) AS Expr3, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
+FROM            CALLED AS c INNER JOIN
+                         PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
+                         HOURWORKED AS h ON  c.Id = h.CalledId 
+GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.DateInserted AS DATE)
+ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(academycoding2DataSet.Query_Called_ReportDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual academycoding2DataSet.Query_Called_ReportDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            academycoding2DataSet.Query_Called_ReportDataTable dataTable = new academycoding2DataSet.Query_Called_ReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

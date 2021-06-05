@@ -87,6 +87,7 @@ namespace CalledManagement
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private academycoding2DataSetTableAdapters.DataTable1TableAdapter DataTable1TableAdapter;
         private System.Windows.Forms.BindingSource Query_Called_ReportBindingSource;
         private academycoding2DataSet academycoding2DataSet;
         private academycoding2DataSetTableAdapters.Query_Called_ReportTableAdapter Query_Called_ReportTableAdapter;

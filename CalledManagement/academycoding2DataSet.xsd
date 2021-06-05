@@ -2,7 +2,7 @@
 <xs:schema id="academycoding2DataSet" targetNamespace="http://tempuri.org/academycoding2DataSet.xsd" xmlns:mstns="http://tempuri.org/academycoding2DataSet.xsd" xmlns="http://tempuri.org/academycoding2DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="academycoding2ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="academycoding2ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CalledManagement.Properties.Settings.GlobalReference.Default.academycoding2ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
@@ -78,12 +78,26 @@ SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE (Id 
               <DbSource ConnectionRef="academycoding2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
+                    <CommandText>SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, CAST(h.DateInserted AS DATE) AS Expr3, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
 FROM            CALLED AS c INNER JOIN
                          PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
-                         HOURWORKED AS h ON c.Id = h.CalledId
-GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days
-ORDER BY c.PriorityId DESC, p.Days DESC, c.Date DESC</CommandText>
+                         HOURWORKED AS h ON  c.Id = h.CalledId 
+GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.DateInserted AS DATE)
+ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="academycoding2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, CAST(h.DateInserted AS DATE) AS Expr3, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
+FROM            CALLED AS c INNER JOIN
+                         PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
+                         HOURWORKED AS h ON  c.Id = h.CalledId 
+GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.DateInserted AS DATE)
+ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC
+</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -365,35 +379,6 @@ SELECT Id, Name, Login, Password, Grupo FROM USUARIO WHERE (Id = @Id)</CommandTe
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Query_Called_ReportTableAdapter" GeneratorDataComponentClassName="Query_Called_ReportTableAdapter" Name="Query_Called_Report" UserDataComponentName="Query_Called_ReportTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="academycoding2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
-FROM            CALLED AS c INNER JOIN
-                         PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
-                         HOURWORKED AS h ON c.Id = h.CalledId
-GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days
-ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="Date" DataSetColumn="Date" />
-              <Mapping SourceColumn="Finished" DataSetColumn="Finished" />
-              <Mapping SourceColumn="Descripition" DataSetColumn="Descripition" />
-              <Mapping SourceColumn="PriorityId" DataSetColumn="PriorityId" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
-              <Mapping SourceColumn="Days" DataSetColumn="Days" />
-              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Query_Hours_ReportTableAdapter" GeneratorDataComponentClassName="Query_Hours_ReportTableAdapter" Name="Query_Hours_Report" UserDataComponentName="Query_Hours_ReportTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="academycoding2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -418,6 +403,36 @@ ORDER BY H.EndDate DESC</CommandText>
               <Mapping SourceColumn="EndDate" DataSetColumn="EndDate" />
               <Mapping SourceColumn="DateChange" DataSetColumn="DateChange" />
               <Mapping SourceColumn="Manual" DataSetColumn="Manual" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Query_Called_ReportTableAdapter" GeneratorDataComponentClassName="Query_Called_ReportTableAdapter" Name="Query_Called_Report" UserDataComponentName="Query_Called_ReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="academycoding2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name AS Expr1, p.Days, CAST(h.DateInserted AS DATE) AS Expr3, SUM(DATEDIFF(minute, h.DateStarted, h.EndDate)) AS Expr2
+FROM            CALLED AS c INNER JOIN
+                         PRIORITY AS p ON c.PriorityId = p.Id LEFT OUTER JOIN
+                         HOURWORKED AS h ON  c.Id = h.CalledId 
+GROUP BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.DateInserted AS DATE)
+ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Date" DataSetColumn="Date" />
+              <Mapping SourceColumn="Finished" DataSetColumn="Finished" />
+              <Mapping SourceColumn="Descripition" DataSetColumn="Descripition" />
+              <Mapping SourceColumn="PriorityId" DataSetColumn="PriorityId" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Days" DataSetColumn="Days" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -571,45 +586,6 @@ ORDER BY H.EndDate DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Query_Called_Report" msprop:Generator_TableClassName="Query_Called_ReportDataTable" msprop:Generator_TableVarName="tableQuery_Called_Report" msprop:Generator_TablePropName="Query_Called_Report" msprop:Generator_RowDeletingName="Query_Called_ReportRowDeleting" msprop:Generator_RowChangingName="Query_Called_ReportRowChanging" msprop:Generator_RowEvHandlerName="Query_Called_ReportRowChangeEventHandler" msprop:Generator_RowDeletedName="Query_Called_ReportRowDeleted" msprop:Generator_UserTableName="Query_Called_Report" msprop:Generator_RowChangedName="Query_Called_ReportRowChanged" msprop:Generator_RowEvArgName="Query_Called_ReportRowChangeEvent" msprop:Generator_RowClassName="Query_Called_ReportRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" />
-              <xs:element name="Finished" msprop:Generator_ColumnVarNameInTable="columnFinished" msprop:Generator_ColumnPropNameInRow="Finished" msprop:Generator_ColumnPropNameInTable="FinishedColumn" msprop:Generator_UserColumnName="Finished">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Descripition" msprop:Generator_ColumnVarNameInTable="columnDescripition" msprop:Generator_ColumnPropNameInRow="Descripition" msprop:Generator_ColumnPropNameInTable="DescripitionColumn" msprop:Generator_UserColumnName="Descripition" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="300" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PriorityId" msprop:Generator_ColumnVarNameInTable="columnPriorityId" msprop:Generator_ColumnPropNameInRow="PriorityId" msprop:Generator_ColumnPropNameInTable="PriorityIdColumn" msprop:Generator_UserColumnName="PriorityId" type="xs:int" />
-              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Days" msprop:Generator_ColumnVarNameInTable="columnDays" msprop:Generator_ColumnPropNameInRow="Days" msprop:Generator_ColumnPropNameInTable="DaysColumn" msprop:Generator_UserColumnName="Days" type="xs:int" />
-              <xs:element name="Expr2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:int" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Query_Hours_Report" msprop:Generator_TableClassName="Query_Hours_ReportDataTable" msprop:Generator_TableVarName="tableQuery_Hours_Report" msprop:Generator_TablePropName="Query_Hours_Report" msprop:Generator_RowDeletingName="Query_Hours_ReportRowDeleting" msprop:Generator_RowChangingName="Query_Hours_ReportRowChanging" msprop:Generator_RowEvHandlerName="Query_Hours_ReportRowChangeEventHandler" msprop:Generator_RowDeletedName="Query_Hours_ReportRowDeleted" msprop:Generator_UserTableName="Query_Hours_Report" msprop:Generator_RowChangedName="Query_Hours_ReportRowChanged" msprop:Generator_RowEvArgName="Query_Hours_ReportRowChangeEvent" msprop:Generator_RowClassName="Query_Hours_ReportRow">
           <xs:complexType>
             <xs:sequence>
@@ -636,6 +612,46 @@ ORDER BY H.EndDate DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Query_Called_Report" msprop:Generator_TableClassName="Query_Called_ReportDataTable" msprop:Generator_TableVarName="tableQuery_Called_Report" msprop:Generator_TablePropName="Query_Called_Report" msprop:Generator_RowDeletingName="Query_Called_ReportRowDeleting" msprop:Generator_RowChangingName="Query_Called_ReportRowChanging" msprop:Generator_RowEvHandlerName="Query_Called_ReportRowChangeEventHandler" msprop:Generator_RowDeletedName="Query_Called_ReportRowDeleted" msprop:Generator_UserTableName="Query_Called_Report" msprop:Generator_RowChangedName="Query_Called_ReportRowChanged" msprop:Generator_RowEvArgName="Query_Called_ReportRowChangeEvent" msprop:Generator_RowClassName="Query_Called_ReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" />
+              <xs:element name="Finished" msprop:Generator_ColumnVarNameInTable="columnFinished" msprop:Generator_ColumnPropNameInRow="Finished" msprop:Generator_ColumnPropNameInTable="FinishedColumn" msprop:Generator_UserColumnName="Finished">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descripition" msprop:Generator_ColumnVarNameInTable="columnDescripition" msprop:Generator_ColumnPropNameInRow="Descripition" msprop:Generator_ColumnPropNameInTable="DescripitionColumn" msprop:Generator_UserColumnName="Descripition">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PriorityId" msprop:Generator_ColumnVarNameInTable="columnPriorityId" msprop:Generator_ColumnPropNameInRow="PriorityId" msprop:Generator_ColumnPropNameInTable="PriorityIdColumn" msprop:Generator_UserColumnName="PriorityId" type="xs:int" />
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Days" msprop:Generator_ColumnVarNameInTable="columnDays" msprop:Generator_ColumnPropNameInRow="Days" msprop:Generator_ColumnPropNameInTable="DaysColumn" msprop:Generator_UserColumnName="Days" type="xs:int" minOccurs="0" />
+              <xs:element name="Expr3" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_UserColumnName="Expr3" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Expr2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -658,10 +674,6 @@ ORDER BY H.EndDate DESC</CommandText>
       <xs:selector xpath=".//mstns:USUARIO" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:unique name="Query_Called_Report_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Query_Called_Report" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
     <xs:unique name="Query_Hours_Report_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Query_Hours_Report" />
       <xs:field xpath="mstns:Id" />
@@ -672,10 +684,8 @@ ORDER BY H.EndDate DESC</CommandText>
       <msdata:Relationship name="FK_Priority_id" msdata:parent="PRIORITY" msdata:child="CALLED" msdata:parentkey="Id" msdata:childkey="PriorityId" msprop:Generator_UserChildTable="CALLED" msprop:Generator_ChildPropName="GetCALLEDRows" msprop:Generator_UserRelationName="FK_Priority_id" msprop:Generator_ParentPropName="PRIORITYRow" msprop:Generator_RelationVarName="relationFK_Priority_id" msprop:Generator_UserParentTable="PRIORITY" />
       <msdata:Relationship name="FK_CalledId" msdata:parent="CALLED" msdata:child="HOURWORKED" msdata:parentkey="Id" msdata:childkey="CalledId" msprop:Generator_UserChildTable="HOURWORKED" msprop:Generator_ChildPropName="GetHOURWORKEDRows" msprop:Generator_UserRelationName="FK_CalledId" msprop:Generator_RelationVarName="relationFK_CalledId" msprop:Generator_UserParentTable="CALLED" msprop:Generator_ParentPropName="CALLEDRow" />
       <msdata:Relationship name="USERPERMISSAO_USUARIO_FK" msdata:parent="USUARIO" msdata:child="PERMISSAO_USUARIO" msdata:parentkey="Id" msdata:childkey="UserId" msprop:Generator_UserChildTable="PERMISSAO_USUARIO" msprop:Generator_ChildPropName="GetPERMISSAO_USUARIORows" msprop:Generator_UserRelationName="USERPERMISSAO_USUARIO_FK" msprop:Generator_ParentPropName="USUARIORow" msprop:Generator_RelationVarName="relationUSERPERMISSAO_USUARIO_FK" msprop:Generator_UserParentTable="USUARIO" />
-      <msdata:Relationship name="FK_CalledId1" msdata:parent="Query_Called_Report" msdata:child="HOURWORKED" msdata:parentkey="Id" msdata:childkey="CalledId" msprop:Generator_UserChildTable="HOURWORKED" msprop:Generator_ChildPropName="GetHOURWORKEDRows" msprop:Generator_UserRelationName="FK_CalledId1" msprop:Generator_RelationVarName="relationFK_CalledId1" msprop:Generator_UserParentTable="Query_Called_Report" msprop:Generator_ParentPropName="Query_Called_ReportRow" />
-      <msdata:Relationship name="FK_Priority_id1" msdata:parent="PRIORITY" msdata:child="Query_Called_Report" msdata:parentkey="Id" msdata:childkey="PriorityId" msprop:Generator_UserChildTable="Query_Called_Report" msprop:Generator_ChildPropName="GetQuery_Called_ReportRows" msprop:Generator_UserRelationName="FK_Priority_id1" msprop:Generator_ParentPropName="PRIORITYRow" msprop:Generator_RelationVarName="relationFK_Priority_id1" msprop:Generator_UserParentTable="PRIORITY" />
-      <msdata:Relationship name="FK_CalledId2" msdata:parent="CALLED" msdata:child="Query_Hours_Report" msdata:parentkey="Id" msdata:childkey="CalledId" msprop:Generator_UserChildTable="Query_Hours_Report" msprop:Generator_ChildPropName="GetQuery_Hours_ReportRows" msprop:Generator_UserRelationName="FK_CalledId2" msprop:Generator_ParentPropName="CALLEDRow" msprop:Generator_RelationVarName="relationFK_CalledId2" msprop:Generator_UserParentTable="CALLED" />
       <msdata:Relationship name="FK_CalledId3" msdata:parent="Query_Hours_Report" msdata:child="HOURWORKED" msdata:parentkey="Id" msdata:childkey="CalledId" msprop:Generator_UserChildTable="HOURWORKED" msprop:Generator_ChildPropName="GetHOURWORKEDRows" msprop:Generator_UserRelationName="FK_CalledId3" msprop:Generator_RelationVarName="relationFK_CalledId3" msprop:Generator_UserParentTable="Query_Hours_Report" msprop:Generator_ParentPropName="Query_Hours_ReportRow" />
+      <msdata:Relationship name="FK_Priority_id1" msdata:parent="PRIORITY" msdata:child="Query_Called_Report" msdata:parentkey="Id" msdata:childkey="PriorityId" msprop:Generator_UserChildTable="Query_Called_Report" msprop:Generator_ChildPropName="GetQuery_Called_ReportRows" msprop:Generator_UserRelationName="FK_Priority_id1" msprop:Generator_ParentPropName="PRIORITYRow" msprop:Generator_RelationVarName="relationFK_Priority_id1" msprop:Generator_UserParentTable="PRIORITY" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -69,7 +69,7 @@ namespace CalledManagement.DAO
             //SqlConnection conn = new SqlConnection(strConn);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update HOURWORKED set DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where CalledId = @CalledId";
+            cmd.CommandText = "update HOURWORKED set DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
@@ -81,6 +81,7 @@ namespace CalledManagement.DAO
                     toconnection.ToConnect();
 
                     // Esse objeto é responsável em executar os comandos SQL
+                    cmd.Parameters.AddWithValue("@Id", hourworked.Id);
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId.Id);
                     //cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
@@ -157,7 +158,7 @@ namespace CalledManagement.DAO
             {
                 cmd.Connection = toconnection.ToConnect();
                 cmd.CommandText = "" +
-                    "SELECT H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
+                    "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
                     "FROM HOURWORKED AS H " +
                     "INNER JOIN CALLED AS C " +
                     "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC";
@@ -215,6 +216,37 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listas registros: " + ex.Message);
             }
         }
+        public void ListarComBoxID(ComboBox cbxRegID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            ToConnection toconnection = new ToConnection();
+
+            try
+            {
+                cmd.Connection = toconnection.ToConnect();
+                cmd.CommandText = "SELECT Id FROM HOURWORKED ORDER BY Id ASC";
+
+                SqlDataReader adp = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+
+                dt.Load(adp);
+                cbxRegID.Text = "Selecione um id";
+                cbxRegID.DisplayMember = "Id";
+                cbxRegID.ValueMember = "Id";
+                cbxRegID.DataSource = dt;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            }
+
+            finally
+            {
+                ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                toconection.ToDisconnect();
+            }
+        }
         public HourWorked SearchID(int ID)
         {
             HourWorked hourworked = new HourWorked();
@@ -225,8 +257,8 @@ namespace CalledManagement.DAO
             ToConnection toconnection = new ToConnection();
 
             cmd.Connection = toconnection.ToConnect();
-            cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
-                "Manual FROM HOURWORKED WHERE CalledId LIKE @Id";
+            cmd.CommandText = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
+                "Manual FROM HOURWORKED WHERE Id LIKE @Id";
             cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Connection = toconnection.ToConnect();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -235,6 +267,7 @@ namespace CalledManagement.DAO
             while (reader.Read())
             {
                 //recuperar os campos
+                hourworked.Id = int.Parse(reader["Id"].ToString());
                 hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
                 hourworked.DateStarted = Convert.ToDateTime(reader["DateStarted"].ToString());
                 hourworked.EndDate = Convert.ToDateTime(reader["EndDate"].ToString());

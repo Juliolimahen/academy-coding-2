@@ -92,6 +92,8 @@
             this.btnRegChangeCalled = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
+            this.cbxRegIDHours = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -343,6 +345,8 @@
             // 
             // gbxRegHours
             // 
+            this.gbxRegHours.Controls.Add(this.label11);
+            this.gbxRegHours.Controls.Add(this.cbxRegIDHours);
             this.gbxRegHours.Controls.Add(this.groupBox3);
             this.gbxRegHours.Controls.Add(this.btnRegDeleteHours);
             this.gbxRegHours.Controls.Add(this.btnRegSaveHours);
@@ -369,9 +373,9 @@
             // 
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.lbRegDateTime);
-            this.groupBox3.Location = new System.Drawing.Point(29, 197);
+            this.groupBox3.Location = new System.Drawing.Point(29, 319);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(463, 160);
+            this.groupBox3.Size = new System.Drawing.Size(463, 125);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chamado Atual";
@@ -457,7 +461,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(26, 27);
+            this.label13.Location = new System.Drawing.Point(26, 102);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(122, 13);
             this.label13.TabIndex = 61;
@@ -475,7 +479,7 @@
             // 
             this.cbxRegHours.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cbxRegHours.FormattingEnabled = true;
-            this.cbxRegHours.Location = new System.Drawing.Point(29, 46);
+            this.cbxRegHours.Location = new System.Drawing.Point(29, 133);
             this.cbxRegHours.Name = "cbxRegHours";
             this.cbxRegHours.Size = new System.Drawing.Size(463, 21);
             this.cbxRegHours.TabIndex = 59;
@@ -483,7 +487,7 @@
             // 
             // mstbRegDateTimeFinished
             // 
-            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 131);
+            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 206);
             this.mstbRegDateTimeFinished.Mask = "00-00-0000 90:00";
             this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
             this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(209, 20);
@@ -492,7 +496,7 @@
             // 
             // mstbRegDateTimeInit
             // 
-            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 131);
+            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 206);
             this.mstbRegDateTimeInit.Mask = "00-00-0000 90:00";
             this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
             this.mstbRegDateTimeInit.Size = new System.Drawing.Size(193, 20);
@@ -502,7 +506,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 102);
+            this.label2.Location = new System.Drawing.Point(280, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 56;
@@ -511,7 +515,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 102);
+            this.label1.Location = new System.Drawing.Point(26, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 55;
@@ -772,6 +776,25 @@
             this.tbcCalled.Size = new System.Drawing.Size(1200, 650);
             this.tbcCalled.TabIndex = 0;
             // 
+            // cbxRegIDHours
+            // 
+            this.cbxRegIDHours.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.cbxRegIDHours.FormattingEnabled = true;
+            this.cbxRegIDHours.Location = new System.Drawing.Point(29, 61);
+            this.cbxRegIDHours.Name = "cbxRegIDHours";
+            this.cbxRegIDHours.Size = new System.Drawing.Size(463, 21);
+            this.cbxRegIDHours.TabIndex = 69;
+            this.cbxRegIDHours.Text = "selecione um id";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(26, 35);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.TabIndex = 70;
+            this.label11.Text = "Codigo Horas";
+            // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -870,5 +893,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbxRegIDHours;
     }
 }
