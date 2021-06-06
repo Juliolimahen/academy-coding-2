@@ -287,3 +287,12 @@ C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\D
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CopyComplete
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.exe
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.AccessControl.dll
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.Permissions.dll
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.AccessControl.xml
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.Permissions.xml
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.Principal.Windows.xml

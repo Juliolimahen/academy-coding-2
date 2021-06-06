@@ -69,7 +69,7 @@ namespace CalledManagement.DAO
             //SqlConnection conn = new SqlConnection(strConn);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update HOURWORKED set DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
+            cmd.CommandText = "update HOURWORKED set CalledId = @CalledId, DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
@@ -170,7 +170,6 @@ namespace CalledManagement.DAO
 
                     cmd.ExecuteNonQuery();
                 }
-                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
                 SqlDataReader rd = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -181,39 +180,11 @@ namespace CalledManagement.DAO
 
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
-            }
-        }
-        public void CalculateHoursWorked(int ID, DataGridView dgvPanelRegCalled)
-        {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
-
-            try
-            {
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Name, SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-                    "FROM CALLED c LEFT JOIN HOURWORKED h ON c.Id = h.CalledId group BY c.Id, c.Name ";
-                //cmd.Parameters.AddWithValue("@ID", "%" + ID + "%");
-
-                cmd.ExecuteNonQuery();
-
-                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable db = new DataTable();
-                adp.Fill(db);
-                //dgvSec.DataSource = db;
-
-                /*SqlDataReader rd = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(rd);
-                dgvPanelRegCalled.DataSource = dt;
-                dgvPanelRegCalled.Refresh();*/
+                MessageBox.Show("Erro ao Listar registros: " + ex.Message);
             }
 
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+            finally {
+                toconnection.ToDisconnect();
             }
         }
         public void ListarComBoxID(ComboBox cbxRegID)
@@ -243,7 +214,7 @@ namespace CalledManagement.DAO
 
             finally
             {
-                ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                ToConnection toconection = new ToConnection();
                 toconection.ToDisconnect();
             }
         }
@@ -263,7 +234,7 @@ namespace CalledManagement.DAO
             cmd.Connection = toconnection.ToConnect();
             SqlDataReader reader = cmd.ExecuteReader();
 
-            //percorre todas as linhas de DataReader
+            //percorre todas linhas de DataReader
             while (reader.Read())
             {
                 //recuperar os campos

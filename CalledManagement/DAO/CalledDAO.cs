@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace CalledManagement.DAO
 {
     //Classe responsavel pela comunicação da entidade Called com o banco de dados 
     class CalledDAO
     {
-        public bool Insert(Called called)
+        public bool Insert(Called called, DataGridView dgvSecCalled)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
 
@@ -48,6 +49,7 @@ namespace CalledManagement.DAO
 
                     //teste...
                     MessageBox.Show("Cadastro salvo com sucesso!");
+                    dgvSecCalled.Refresh();
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
 
@@ -89,7 +91,7 @@ namespace CalledManagement.DAO
                     toconnection.ToConnect();
 
                     // Esse objeto é responsável em executar os comandos SQL
-                    
+
                     cmd.Parameters.AddWithValue("@Id", called.Id);
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
@@ -156,50 +158,63 @@ namespace CalledManagement.DAO
 
         public void ListarGrid(DataGridView dgvSecCalled, string name)
         {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            try
+            string listQuery = "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
+               "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
+               "FROM CALLED c " +
+               "INNER JOIN PRIORITY p " +
+               "ON c.PriorityId = p.Id " +
+               "LEFT JOIN HOURWORKED h ON " +
+               "c.Id = h.CalledId " +
+               "group BY c.Id, c.Name, c.Date, c.Finished, " +
+               "c.Descripition, c.PriorityId, p.Name, p.Days " +
+               "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC ";
+
+            using (var connection = new SqlConnection(connectionString))
             {
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "" +
-                    "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days, " +
-                    "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-                    "FROM CALLED c " +
-                    "INNER JOIN PRIORITY p " +
-                    "ON c.PriorityId = p.Id " +
-                    "LEFT JOIN HOURWORKED h ON " +
-                    "c.Id = h.CalledId group BY c.Id, c.Name, c.Date, c.Finished, c.Descripition, c.PriorityId, p.Name, p.Days " +
-                    "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC";
+                connection.Open();
 
-                //SELECT Name, 
-
-                if (name.Length > 0)
+                try
                 {
-                    cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition FROM CALLED WHERE Name LIKE @Name";
+                    //SqlCommand cmd = new SqlCommand(listQuery);
+                    var cmd = new SqlCommand(listQuery, connection);
 
-                    cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+                    // Pesquisa por nome Nome
+                    if (name.Length > 0)
+                    {
+                        cmd.CommandText = "" +
+                           "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
+                           "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
+                           "FROM CALLED c " +
+                           "INNER JOIN PRIORITY p " +
+                           "ON c.PriorityId = p.Id " +
+                           "LEFT JOIN HOURWORKED h ON " +
+                           "c.Id = h.CalledId " +
+                           "WHERE c.Name LIKE @Name " +
+                           "group BY c.Id, c.Name, c.Date, c.Finished, " +
+                           "c.Descripition, c.PriorityId, p.Name, p.Days " +
+                           "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC ";
 
-                    cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(rd);
+                    dgvSecCalled.DataSource = dt;
                 }
-                // cmd.Parameters.AddWithValue("@Name", "%" + Name + "%");
 
-                SqlDataReader rd = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(rd);
-                dgvSecCalled.DataSource = dt;
-                
- 
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
-            }
-            finally
-            {
-                //ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
-                //toconection.ToDisconnect();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
         public void ListarComboBox(ComboBox cbxSec)
@@ -228,7 +243,7 @@ namespace CalledManagement.DAO
             }
             finally
             {
-                ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                ToConnection toconection = new ToConnection();
                 toconection.ToDisconnect();
             }
         }
@@ -259,7 +274,7 @@ namespace CalledManagement.DAO
 
             finally
             {
-                ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
+                ToConnection toconection = new ToConnection();
                 toconection.ToDisconnect();
             }
         }
@@ -272,24 +287,24 @@ namespace CalledManagement.DAO
 
             SqlCommand cmd = new SqlCommand();
             ToConnection toconnection = new ToConnection();
-            
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
-                cmd.Parameters.AddWithValue("@Id", ID);
-                cmd.Connection = toconnection.ToConnect();
-                SqlDataReader reader = cmd.ExecuteReader();
 
-                //percorre todas as linhas de DataReader
-                while (reader.Read())
-                {
-                    //recuperar os campos
-                    called.Id = int.Parse(reader["Id"].ToString());
-                    called.Name = reader["Name"].ToString();
-                    called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                    called.Finished = reader["Finished"].ToString();
-                    called.Descripition = reader["Descripition"].ToString();
-                    called.PriorityId.Id= int.Parse(reader["PriorityId"].ToString());
-                }
+            cmd.Connection = toconnection.ToConnect();
+            cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Connection = toconnection.ToConnect();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            //percorre todas as linhas de DataReader
+            while (reader.Read())
+            {
+                //recuperar os campos
+                called.Id = int.Parse(reader["Id"].ToString());
+                called.Name = reader["Name"].ToString();
+                called.Date = Convert.ToDateTime(reader["Date"].ToString());
+                called.Finished = reader["Finished"].ToString();
+                called.Descripition = reader["Descripition"].ToString();
+                called.PriorityId.Id = int.Parse(reader["PriorityId"].ToString());
+            }
 
             return called;
         }

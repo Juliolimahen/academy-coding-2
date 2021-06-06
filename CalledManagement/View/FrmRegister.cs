@@ -30,6 +30,26 @@ namespace CalledManagement
             InitializeComponent();
         }
 
+        private void FrmRegisterCalled_Load(object sender, EventArgs e)
+        {
+            Function.EnableFields(this, false);
+            Function.EnableButtons(this, "Load");
+            LoadComboxs();
+            LoadGrids();
+            
+
+            if (rbRegCalledHoursSystem.Checked == true)
+            {
+                dtpRegDate.Enabled = false;
+            }
+            else
+            {
+                dtpRegDate.Enabled = true;
+            }
+            txtSecSearchCalled.Enabled = true;
+            Function.Clean(this);
+        }
+
         //Botão para Finalizar chamado
         private void btnRegFinish_Click(object sender, EventArgs e)
         {
@@ -51,6 +71,8 @@ namespace CalledManagement
         //botão para salvar registros 
         private void btnRegSave_Click(object sender, EventArgs e)
         {
+            dgvSecCalled.Refresh();
+
             if (ValidateData() == true)
             {
                 Called called = new Called();
@@ -85,7 +107,7 @@ namespace CalledManagement
                 if (operation == "Init")
                 {
                     CalledDAO calleddao = new CalledDAO();
-                    if (calleddao.Insert(called) == false)
+                    if (calleddao.Insert(called, dgvSecCalled) == false)
                     {
                         txtRegName.Focus();
                         return;
@@ -104,6 +126,9 @@ namespace CalledManagement
                     }
                 }
             }
+
+            LoadComboxs();
+            LoadGrids();
 
             Function.EnableFields(this, false);
             Function.Clean(this);
@@ -185,71 +210,6 @@ namespace CalledManagement
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
-            string SecSearchCalled = txtSecSearchCalled.Text;
-            //calleddao.SearchGrid(dgvSecCalled, name);
-
-            calleddao.ListarGrid(dgvSecCalled, SecSearchCalled);
-
-            string SecSearchHours;
-            SecSearchHours = txtSecSearchHours.Text;
-            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
-        }
-
-        private void FrmRegisterCalled_Load(object sender, EventArgs e)
-        {   
-            Function.EnableFields(this, false);
-            Function.EnableButtons(this, "Load");
-            txtSecSearchCalled.Enabled = true;
-
-            CalledDAO calleddao = new CalledDAO();
-            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
-            PriorityDAO prioritydao = new PriorityDAO();
-            cbxRegID.Focus();
-            string name = txtSecSearchCalled.Text;
-            calleddao.ListarGrid(dgvSecCalled, name);
-
-            string SecSearchHours;
-            SecSearchHours = txtSecSearchHours.Text;
-            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
-
-            calleddao.ListarComboBox(cbxRegHours);
-            prioritydao.ListarComboBox(cbxRegPriority);
-            calleddao.ListarComBoxID(cbxRegID);
-            hourworkeddao.ListarComBoxID(cbxRegIDHours);
-
-            if (rbRegCalledHoursSystem.Checked == true)
-            {
-                dtpRegDate.Enabled = false;
-            }
-            else
-            {
-                dtpRegDate.Enabled = true;
-            }
-
-            Function.Clean(this);
-        }
-
-        //Botão Cancelar 
-
-        //metodo resposavel pela validação dos dados 
-        private Boolean ValidateData()
-        {
-            if (txtRegName.Text == string.Empty)
-            {
-                MessageBox.Show("O campo nome é obrigatório!", "Atenção");
-                txtRegName.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private void btnSecSearch_Click_1(object sender, EventArgs e)
-        {
-            //nova instancia 
-            CalledDAO calleddao = new CalledDAO();
-            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
-
             string name = txtSecSearchCalled.Text;
             calleddao.ListarGrid(dgvSecCalled, name);
 
@@ -260,9 +220,11 @@ namespace CalledManagement
 
         private void btnRegInitHours_Click(object sender, EventArgs e)
         {
+
             Function.EnableFields(this, true);
             Function.Clean(this);
             Function.EnableButtons(this, "Save");
+            cbxRegIDHours.Enabled = false;
             cbxRegHours.Focus();
             operation = "Init";
             _DateTime = DateTime.Now;
@@ -271,12 +233,16 @@ namespace CalledManagement
 
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
+
             if (cbxRegIDHours.SelectedIndex < 0)
             {
                 MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
                 cbxRegIDHours.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
+                cbxRegHours.Enabled = false;
+
+
             }
 
             else if (cbxRegIDHours.SelectedIndex > -1)
@@ -332,13 +298,13 @@ namespace CalledManagement
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
 
-                if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
-                {
+            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
+            {
 
-                    MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+                MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
 
-                }
-            
+            }
+
             else
             {
                 hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
@@ -358,13 +324,16 @@ namespace CalledManagement
             }
             else if (operation == "Change")
             {
-                hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
+                hourworked.Id = Convert.ToInt32(cbxRegIDHours.SelectedValue.ToString());
                 if (hourworkeddao.Change(hourworked) == false)
                 {
                     txtRegName.Focus();
                     return;
                 }
             }
+
+            LoadComboxs();
+            LoadGrids();
 
             Function.EnableFields(this, false);
             Function.Clean(this);
@@ -388,7 +357,12 @@ namespace CalledManagement
 
         private void btnRegFinishedHours_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            if (MessageBox.Show("Deseja realmente finalizar o cadastro?", "Atenção",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                gbxRegCalled.Enabled = true;
+                gbxRegHours.Enabled = false;
+            }
         }
 
         private void btnRegFinishedCalled_Click(object sender, EventArgs e)
@@ -401,16 +375,19 @@ namespace CalledManagement
             }
         }
 
-        private void btnRegFinishedHours_Click_1(object sender, EventArgs e)
+        //metodo resposavel pela validação dos dados 
+        private Boolean ValidateData()
         {
-            if (MessageBox.Show("Deseja realmente finalizar o cadastro?", "Atenção",
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (txtRegName.Text == string.Empty)
             {
-                gbxRegCalled.Enabled = true;
-                gbxRegHours.Enabled = false;
+                MessageBox.Show("O campo nome é obrigatório!", "Atenção");
+                txtRegName.Focus();
+                return false;
             }
-        }
 
+            return true;
+        }
+        //metodo resposavel por buscar os registros do chamados para alteração
         private void BuscarRegistroCalled()
         {
             int id = int.Parse(cbxRegID.SelectedValue.ToString());
@@ -466,6 +443,45 @@ namespace CalledManagement
             CalledDAO calleddao = new CalledDAO();
             string name = txtSecSearchCalled.Text;
             calleddao.ListarGrid(dgvSecCalled, name);
+        }
+
+        private void btnSecSearchHours_Click(object sender, EventArgs e)
+        {
+            //nova instancia 
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
+
+            string name = txtSecSearchCalled.Text;
+            hourworkeddao.ListarGrid(dgvSecHours, name);
+
+            string SecSearchHours;
+            SecSearchHours = txtSecSearchHours.Text;
+            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
+        }
+
+        public void LoadGrids()
+        {
+            CalledDAO calleddao = new CalledDAO();
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
+            PriorityDAO prioritydao = new PriorityDAO();
+      
+            string name = txtSecSearchCalled.Text;
+            calleddao.ListarGrid(dgvSecCalled, name);
+
+            string SecSearchHours;
+            SecSearchHours = txtSecSearchHours.Text;
+            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
+
+        }
+        public void LoadComboxs()
+        {
+            CalledDAO calleddao = new CalledDAO();
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
+            PriorityDAO prioritydao = new PriorityDAO();
+
+            calleddao.ListarComboBox(cbxRegHours);
+            prioritydao.ListarComboBox(cbxRegPriority);
+            calleddao.ListarComBoxID(cbxRegID);
+            hourworkeddao.ListarComBoxID(cbxRegIDHours);
         }
     }
 }
