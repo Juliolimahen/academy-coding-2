@@ -10,9 +10,6 @@ namespace CalledManagement.DAO
     {
         public bool Insert(Priority priority)
         {
-            //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
-
-            //SqlConnection conn = new SqlConnection(strConn);
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "insert into PRIORITY (Name, Days) values (@Name, @Days)";
@@ -47,10 +44,8 @@ namespace CalledManagement.DAO
                 {
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
-                    // Informando "Erro ao salvar registro" + o erro recebido do banco de dados
+                    
                 }
-                // O finally é sempre executado,
                 finally
                 {
                     ToConnection toconection = new ToConnection();

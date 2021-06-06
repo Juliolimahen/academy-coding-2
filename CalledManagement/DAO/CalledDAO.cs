@@ -219,32 +219,38 @@ namespace CalledManagement.DAO
         }
         public void ListarComboBox(ComboBox cbxSec)
         {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            try
+            string qry = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
+
+            using (var connection = new SqlConnection(connectionString))
             {
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
+                connection.Open();//abre conexão com o banco 
+                try
+                {
+                    
+                    var cmd = new SqlCommand(qry , connection);
 
-                SqlDataReader adp = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
+                    //cmd.CommandText = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
 
-                dt.Load(adp);
-                cbxSec.Text = "Selecione um chamado";
-                cbxSec.DisplayMember = "Name";
-                cbxSec.ValueMember = "Id";
-                cbxSec.DataSource = dt;
-            }
+                    SqlDataReader adp = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
 
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
-            }
-            finally
-            {
-                ToConnection toconection = new ToConnection();
-                toconection.ToDisconnect();
+                    dt.Load(adp);
+                    cbxSec.Text = "Selecione um chamado";
+                    cbxSec.DisplayMember = "Name";
+                    cbxSec.ValueMember = "Id";
+                    cbxSec.DataSource = dt;
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
         public void ListarComBoxID(ComboBox cbxRegID)

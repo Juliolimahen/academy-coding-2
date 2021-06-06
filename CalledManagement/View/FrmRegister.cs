@@ -14,14 +14,14 @@ using System.Windows.Forms;
 
 namespace CalledManagement
 {
-    
+
     //Classe resposavel pelo formulário de registro. herdada da classe Form
     public partial class FrmRegisterCalled : Form
     {
 
         // variavel global resposanvel por armazanar qual operação seguir na troca de botoes 
         string operation;
-        
+
         //variavel global resposavel por guardar hora e data da inserção dos chamados 
         DateTime _DateTime;
         //Construtor responsavel por inicializar o componente; 
@@ -36,7 +36,7 @@ namespace CalledManagement
             Function.EnableButtons(this, "Load");
             LoadComboxs();
             LoadGrids();
-            
+
 
             if (rbRegCalledHoursSystem.Checked == true)
             {
@@ -73,7 +73,7 @@ namespace CalledManagement
         {
             dgvSecCalled.Refresh();
 
-            if (ValidateData() == true)
+            if (ValidateDataCalled() == true)
             {
                 Called called = new Called();
                 HourWorked hourworked = new HourWorked();
@@ -141,10 +141,10 @@ namespace CalledManagement
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
-            
+
             if (cbxRegID.SelectedIndex < 0)
             {
-                MessageBox.Show("Selecione um codigo identificador para alterar um registro e clique novamente em alterar!","Atenção!!!");
+                MessageBox.Show("Selecione um codigo identificador para alterar um registro e clique novamente em alterar!", "Atenção!!!");
                 cbxRegID.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
@@ -298,37 +298,40 @@ namespace CalledManagement
                 hourworked.DateInserted = _DateTime = DateTime.Now;
             }
 
-            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
+            if (ValidateDataHours() == true)
             {
 
-                MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+                // if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
+                // {
 
-            }
+                // MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
 
-            else
-            {
+                // }
+
+                // else
+                //{
                 hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
                 hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
+                // }
 
-            }
-
-            if (operation == "Change")
-            {
-                hourworked.DateChange = _DateTime = DateTime.Now;
-            }
-
-            if (operation == "Init")
-            {
-                hourworkeddao.Insert(hourworked);
-
-            }
-            else if (operation == "Change")
-            {
-                hourworked.Id = Convert.ToInt32(cbxRegIDHours.SelectedValue.ToString());
-                if (hourworkeddao.Change(hourworked) == false)
+                if (operation == "Change")
                 {
-                    txtRegName.Focus();
-                    return;
+                    hourworked.DateChange = _DateTime = DateTime.Now;
+                }
+
+                if (operation == "Init")
+                {
+                    hourworkeddao.Insert(hourworked);
+
+                }
+                else if (operation == "Change")
+                {
+                    hourworked.Id = Convert.ToInt32(cbxRegIDHours.SelectedValue.ToString());
+                    if (hourworkeddao.Change(hourworked) == false)
+                    {
+                        txtRegName.Focus();
+                        return;
+                    }
                 }
             }
 
@@ -376,12 +379,31 @@ namespace CalledManagement
         }
 
         //metodo resposavel pela validação dos dados 
-        private Boolean ValidateData()
+        private Boolean ValidateDataCalled()
         {
             if (txtRegName.Text == string.Empty)
             {
                 MessageBox.Show("O campo nome é obrigatório!", "Atenção");
                 txtRegName.Focus();
+                return false;
+            }
+            return true;
+        }
+        private Boolean ValidateDataHours()
+        {
+
+            if (mstbRegDateTimeInit.Text == string.Empty)
+            {
+                MessageBox.Show("O campo data/hora inicio é obrigatório!", "Atenção");
+                mstbRegDateTimeInit.Focus();
+                return false;
+            }
+             
+           // MessageBox.Show(result.ToString());
+            if (Convert.ToInt32(mstbRegDateTimeFinished.ToString()) < Convert.ToInt32(mstbRegDateTimeInit.ToString()))
+            {
+               MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+                mstbRegDateTimeInit.Focus();
                 return false;
             }
 
@@ -463,7 +485,7 @@ namespace CalledManagement
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             PriorityDAO prioritydao = new PriorityDAO();
-      
+
             string name = txtSecSearchCalled.Text;
             calleddao.ListarGrid(dgvSecCalled, name);
 
