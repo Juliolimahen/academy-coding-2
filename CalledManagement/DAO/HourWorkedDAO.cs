@@ -1,6 +1,7 @@
 ﻿using CalledManagement.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,81 +16,71 @@ namespace CalledManagement.DAO
     {
         public bool Insert(HourWorked hourworked)
         {
-            //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
-            SqlCommand cmd = new SqlCommand();
+            string qry = "INSERT INTO HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
 
-            cmd.CommandText = "insert into HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) values (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
-
+            using (var connection = new SqlConnection(connectionString))
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
-                    ToConnection toconnection = new ToConnection();
+                    //abre conexao
+                    connection.Open();
+                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
+                    var cmd = new SqlCommand(qry, connection);
 
+                    // O objetro cmd recebe os parâmetros com os valores dos campos
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId.Id);
                     cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
-                    //cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
 
-                    cmd.Connection = toconnection.ToConnect();
-                    // O objetro cmd recebe os parâmetros com os valores dos campos
-
+                    // Retorna o comando SQL de INSERT no banco de dados. 
                     cmd.ExecuteNonQuery();
 
                     //teste...
                     MessageBox.Show("Cadastro salvo com sucesso!");
 
-                    // Retorna o comando SQL de INSERT no banco de dados. 
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                 }
                 catch (Exception ex)
                 {
+                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
-
                 }
                 // O finally é sempre executado,
                 finally
                 {
-                    ToConnection toconection = new ToConnection();
                     // fechando a conexão com o banco de dados.
-                    toconection.ToDisconnect();
+                    connection.Close();
                 }
             }
         }
         public bool Change(HourWorked hourworked)
         {
-            //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
-
-            //SqlConnection conn = new SqlConnection(strConn);
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update HOURWORKED set CalledId = @CalledId, DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            string qry = "UPDATE HOURWORKED set CalledId = @CalledId, DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
+            
+            using (var connection = new SqlConnection(connectionString))
             {
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
-                    //SqlCommand cmd = new SqlCommand(strConn);
-
-                    //conn.Open(); // Abre a conexão com o banco de dados.
-
-                    ToConnection toconnection = new ToConnection();
-                    toconnection.ToConnect();
+                    //Abre a conexão com o banco de dados.
+                    connection.Open();
+                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
+                    var cmd = new SqlCommand(qry, connection);
 
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Id", hourworked.Id);
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId.Id);
-                    //cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
                     //cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
 
-                    cmd.Connection = toconnection.ToConnect();
                     // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
                     cmd.ExecuteNonQuery();
 
@@ -102,38 +93,35 @@ namespace CalledManagement.DAO
                 }
                 catch (Exception ex)
                 {
+                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
-                    // Informando "Erro ao salvar registro" + o erro recebido do banco de dados
                 }
-                // O finally é sempre executado,
+                // O finally é sempre executado
                 finally
                 {
                     // fechando a conexão com o banco de dados.
-                    ToConnection toconection = new ToConnection();
-                    toconection.ToDisconnect();
+                    connection.Close();
                 }
             }
         }
         public bool Delete(int ID)
         {
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            string qry = "delete from HOURWORKED where calledId = @Id";
+            using (var connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     //abre conexão
-                    SqlCommand cmd = new SqlCommand();
-                    ToConnection toconnection = new ToConnection();
-                    cmd.Connection = toconnection.ToConnect();
-
-
-                    cmd.CommandText = "delete from HOURWORKED where calledId = @Id";
+                    connection.Open();
+                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
+                    var cmd = new SqlCommand(qry, connection);
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Id", ID);
                     cmd.ExecuteNonQuery();
                     //teste
                     MessageBox.Show("Cadastro Excluido com sucesso!");
-
 
                     return true;
                 }
@@ -144,79 +132,95 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    ToConnection toconection = new ToConnection();
-                    toconection.ToDisconnect();
+                    connection.Close();
                 }
             }
         }
         public void ListarGrid(DataGridView dgvSecHours, string name)
         {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
-
-            try
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            var qry = ""+
+                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
+                        "FROM HOURWORKED AS H " +
+                        "INNER JOIN CALLED AS C " +
+                        "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC" +
+                        "";    
+            
+            using (var connection = new SqlConnection(connectionString))
             {
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "" +
-                    "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
-                    "FROM HOURWORKED AS H " +
-                    "INNER JOIN CALLED AS C " +
-                    "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC";
-
-                if (name.Length > 0)
+                try
                 {
-                    cmd.CommandText = "SELECT CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED WHERE Name LIKE @Name";
-                    cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+                    //Abre conexão
+                    connection.Open();
+                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
+                    var cmd = new SqlCommand(qry, connection);
 
-                    cmd.ExecuteNonQuery();
+                    //Busca por nome
+                    if (name.Length > 0)
+                    {
+                        cmd.CommandText = "" +
+                        #region
+                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
+                        "FROM HOURWORKED AS H " +
+                        "INNER JOIN CALLED AS C " +
+                        "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC" +
+                        "WHERE C.Name LIKE @Name" +
+                        #endregion
+                        "";
+                        cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(rd);
+                    dgvSecHours.DataSource = dt;
                 }
 
-                SqlDataReader rd = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(rd);
-                dgvSecHours.DataSource = dt;
-                dgvSecHours.Refresh();
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Listar registros: " + ex.Message);
+                }
 
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Listar registros: " + ex.Message);
-            }
-
-            finally
-            {
-                toconnection.ToDisconnect();
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
         public void ListarComBoxID(ComboBox cbxRegID)
         {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            var qry = "SELECT Id FROM HOURWORKED ORDER BY Id ASC";
 
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id FROM HOURWORKED ORDER BY Id ASC";
+                try
+                {
+                    connection.Open();
+                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
+                    var cmd = new SqlCommand(qry, connection);
 
-                SqlDataReader adp = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
 
-                dt.Load(adp);
-                cbxRegID.Text = "Selecione um id";
-                cbxRegID.DisplayMember = "Id";
-                cbxRegID.ValueMember = "Id";
-                cbxRegID.DataSource = dt;
-            }
+                    dt.Load(dr);
+                    cbxRegID.Text = "Selecione um id";
+                    cbxRegID.DisplayMember = "Id";
+                    cbxRegID.ValueMember = "Id";
+                    cbxRegID.DataSource = dt;
+                }
 
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+                }
 
-            finally
-            {
-                ToConnection toconection = new ToConnection();
-                toconection.ToDisconnect();
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
         public HourWorked SearchID(int ID)
@@ -225,28 +229,30 @@ namespace CalledManagement.DAO
             Called called = new Called();
             hourworked.CalledId = called;
 
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
-
-            cmd.Connection = toconnection.ToConnect();
-            cmd.CommandText = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
-                "Manual FROM HOURWORKED WHERE Id LIKE @Id";
-            cmd.Parameters.AddWithValue("@Id", ID);
-            cmd.Connection = toconnection.ToConnect();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            //percorre todas linhas de DataReader
-            while (reader.Read())
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            var qry = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
+                    "Manual FROM HOURWORKED WHERE Id LIKE @Id";
+            using (var connection = new SqlConnection(connectionString))
             {
-                //recuperar os campos
-                hourworked.Id = int.Parse(reader["Id"].ToString());
-                hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
-                hourworked.DateStarted = Convert.ToDateTime(reader["DateStarted"].ToString());
-                hourworked.EndDate = Convert.ToDateTime(reader["EndDate"].ToString());
-                //hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
-            }
+                //Abre conexão
+                connection.Open();
+                // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
+                var cmd = new SqlCommand(qry, connection);
 
-            return hourworked;
+                cmd.Parameters.AddWithValue("@Id", ID);
+                SqlDataReader reader = cmd.ExecuteReader();
+                //percorre todas linhas de DataReader
+                while (reader.Read())
+                {
+                    //recuperar os campos
+                    hourworked.Id = int.Parse(reader["Id"].ToString());
+                    hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
+                    hourworked.DateStarted = Convert.ToDateTime(reader["DateStarted"].ToString());
+                    hourworked.EndDate = Convert.ToDateTime(reader["EndDate"].ToString());
+                    //hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
+                }
+                return hourworked;
+            }
         }
     }
 }

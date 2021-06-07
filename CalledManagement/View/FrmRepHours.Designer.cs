@@ -31,13 +31,24 @@ namespace CalledManagement
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.academycoding2DataSet = new CalledManagement.academycoding2DataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepHours));
             this.Query_Hours_ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.academycoding2DataSet = new CalledManagement.academycoding2DataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.Query_Hours_ReportTableAdapter = new CalledManagement.academycoding2DataSetTableAdapters.Query_Hours_ReportTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Query_Hours_ReportBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Query_Hours_ReportBindingSource
+            // 
+            this.Query_Hours_ReportBindingSource.DataMember = "Query_Hours_Report";
+            this.Query_Hours_ReportBindingSource.DataSource = this.academycoding2DataSet;
+            // 
+            // academycoding2DataSet
+            // 
+            this.academycoding2DataSet.DataSetName = "academycoding2DataSet";
+            this.academycoding2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -53,16 +64,6 @@ namespace CalledManagement
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // academycoding2DataSet
-            // 
-            this.academycoding2DataSet.DataSetName = "academycoding2DataSet";
-            this.academycoding2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // Query_Hours_ReportBindingSource
-            // 
-            this.Query_Hours_ReportBindingSource.DataMember = "Query_Hours_Report";
-            this.Query_Hours_ReportBindingSource.DataSource = this.academycoding2DataSet;
-            // 
             // Query_Hours_ReportTableAdapter
             // 
             this.Query_Hours_ReportTableAdapter.ClearBeforeFill = true;
@@ -73,11 +74,12 @@ namespace CalledManagement
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRepHours";
-            this.Text = "Form1";
+            this.Text = "Relatório Horas";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Query_Hours_ReportBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

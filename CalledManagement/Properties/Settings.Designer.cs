@@ -26,8 +26,8 @@ namespace CalledManagement.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DEVPC\\SQLEXPRESS;Initial Catalog=academycoding2;Integrated Security=T" +
-            "rue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TI-NET-PC\\SQLEXPRESS;Initial Catalog=academycoding2;Integrated Securi" +
+            "ty=True")]
         public string academycoding2ConnectionString {
             get {
                 return ((string)(this["academycoding2ConnectionString"]));

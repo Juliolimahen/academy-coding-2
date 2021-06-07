@@ -17,7 +17,7 @@ namespace CalledManagement.DAO
         public bool Insert(Called called)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            string qry = "insert into CALLED (Name, Date, Descripition, Finished, PriorityId) values (@Name, @Date, @Descripition, @Finished, @PriorityId)";
+            string qry = "INSERT INTO CALLED (Name, Date, Descripition, Finished, PriorityId) VALUES (@Name, @Date, @Descripition, @Finished, @PriorityId)";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -65,44 +65,43 @@ namespace CalledManagement.DAO
 
             using (var connection = new SqlConnection(connectionString))
             {
+
+                try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
-                    try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
-                    {
-                        // Abre a conexão com o banco de dados.
-                        connection.Open();
-                        var cmd = new SqlCommand(qry, connection);
+                    // Abre a conexão com o banco de dados.
+                    connection.Open();
+                    var cmd = new SqlCommand(qry, connection);
 
-                        // Esse objeto é responsável em executar os comandos SQL
+                    // Esse objeto é responsável em executar os comandos SQL
 
-                        cmd.Parameters.AddWithValue("@Id", called.Id);
-                        cmd.Parameters.AddWithValue("@Name", called.Name);
-                        cmd.Parameters.AddWithValue("@Date", called.Date);
-                        cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
-                        cmd.Parameters.AddWithValue("@Finished", called.Finished);
-                        cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
+                    cmd.Parameters.AddWithValue("@Id", called.Id);
+                    cmd.Parameters.AddWithValue("@Name", called.Name);
+                    cmd.Parameters.AddWithValue("@Date", called.Date);
+                    cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
+                    cmd.Parameters.AddWithValue("@Finished", called.Finished);
+                    cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
 
-                        // Retorna o comando SQL de INSERT no banco de dados
-                        cmd.ExecuteNonQuery();
+                    // Retorna o comando SQL de INSERT no banco de dados
+                    cmd.ExecuteNonQuery();
 
-                        //teste
-                        MessageBox.Show("Cadastro alterado com sucesso!");
-                        // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
-                        return true;
+                    //teste
+                    MessageBox.Show("Cadastro alterado com sucesso!");
+                    // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
+                    return true;
 
 
-                    }
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao salvar registro: " + ex.Message);
-                        return false;
-                    }
-                    // O finally é sempre executado,
-                    finally
-                    {
-                        // fechando a conexão com o banco de dados.
-                        connection.Close();
-                    }
+                }
+                // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar registro: " + ex.Message);
+                    return false;
+                }
+                // O finally é sempre executado,
+                finally
+                {
+                    // fechando a conexão com o banco de dados.
+                    connection.Close();
                 }
             }
         }
@@ -142,7 +141,9 @@ namespace CalledManagement.DAO
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            string listQuery = "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
+            string qry = "" +
+            #region
+                "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
                "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
                "FROM CALLED c " +
                "INNER JOIN PRIORITY p " +
@@ -151,7 +152,9 @@ namespace CalledManagement.DAO
                "c.Id = h.CalledId " +
                "group BY c.Id, c.Name, c.Date, c.Finished, " +
                "c.Descripition, c.PriorityId, p.Name, p.Days " +
-               "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC ";
+               "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC " +
+            #endregion
+               "";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -159,13 +162,13 @@ namespace CalledManagement.DAO
 
                 try
                 {
-                    //SqlCommand cmd = new SqlCommand(listQuery);
-                    var cmd = new SqlCommand(listQuery, connection);
+                    var cmd = new SqlCommand(qry, connection);
 
                     // Pesquisa por nome Nome
                     if (name.Length > 0)
                     {
                         cmd.CommandText = "" +
+                        #region
                            "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
                            "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
                            "FROM CALLED c " +
@@ -176,10 +179,10 @@ namespace CalledManagement.DAO
                            "WHERE c.Name LIKE @Name " +
                            "group BY c.Id, c.Name, c.Date, c.Finished, " +
                            "c.Descripition, c.PriorityId, p.Name, p.Days " +
-                           "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC ";
-
+                           "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC" +
+                        #endregion
+                           "";
                         cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
-
                         cmd.ExecuteNonQuery();
                     }
 
@@ -203,7 +206,7 @@ namespace CalledManagement.DAO
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            string qry = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
+            string qry = "SELECT Name, Id FROM CALLED";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -235,7 +238,7 @@ namespace CalledManagement.DAO
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            string qry = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
+            string qry = "SELECT Name, Id FROM CALLED";
 
             using (var connection = new SqlConnection(connectionString))
             {

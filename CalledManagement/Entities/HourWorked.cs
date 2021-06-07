@@ -9,10 +9,9 @@ namespace CalledManagement.Entities
     //Classe responsável pela modelagem das horas trabalhadas
     public class HourWorked
     {
+        //metodos get e set "props" gerados pela IDE
         public int Id { get; set; }//associação
         public Called CalledId { get; set; }//associação
-        public User UserId { get; set; }
-        //metodos get e set "props" gerados pela IDE
         public DateTime DateInserted { get; set; }
         public DateTime DateStarted { get; set; }
         public DateTime EndDate { get; set; }

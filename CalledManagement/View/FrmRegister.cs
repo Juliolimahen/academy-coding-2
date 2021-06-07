@@ -22,8 +22,6 @@ namespace CalledManagement
         // variavel global resposanvel por armazanar qual operação seguir na troca de botoes 
         string operation;
 
-        //variavel global resposavel por guardar hora e data da inserção dos chamados 
-        DateTime _DateTime;
         //Construtor responsavel por inicializar o componente; 
         public FrmRegisterCalled()
         {
@@ -36,8 +34,7 @@ namespace CalledManagement
             Function.EnableButtons(this, "Load");
             LoadComboxs();
             LoadGrids();
-
-
+            
             if (rbRegCalledHoursSystem.Checked == true)
             {
                 dtpRegDate.Enabled = false;
@@ -283,36 +280,31 @@ namespace CalledManagement
             HourWorked hourworked = new HourWorked();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             Called called = new Called();
-
+            //teste
             MessageBox.Show(text: cbxRegHours.SelectedValue.ToString());
             hourworked.CalledId = called;
             hourworked.CalledId.Id = Convert.ToInt32(cbxRegHours.SelectedValue.ToString());
+
             if (operation == "Init")
             {
-                hourworked.DateInserted = _DateTime = DateTime.Now;
+                hourworked.DateInserted = DateTime.Now;
             }
-
             if (ValidateDataHours() == true)
             {
-
-                // if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
-                // {
-
-                // MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
-
-                // }
-
-                // else
-                //{
-                hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
-                hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
-                // }
-
-                if (operation == "Change")
+                /*if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
                 {
-                    hourworked.DateChange = _DateTime = DateTime.Now;
-                }
 
+                    MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+
+                }*/
+
+                //else
+                //{
+                    hourworked.DateStarted = Convert.ToDateTime(mstbRegDateTimeInit.Text);
+                    hourworked.EndDate = Convert.ToDateTime(mstbRegDateTimeFinished.Text);
+
+                //}
+               
                 if (operation == "Init")
                 {
                     hourworkeddao.Insert(hourworked);
@@ -321,10 +313,15 @@ namespace CalledManagement
                 else if (operation == "Change")
                 {
                     hourworked.Id = Convert.ToInt32(cbxRegIDHours.SelectedValue.ToString());
+                    hourworked.DateChange = DateTime.Now;
                     if (hourworkeddao.Change(hourworked) == false)
                     {
                         txtRegName.Focus();
                         return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cadastro salvo com sucesso!");
                     }
                 }
             }
@@ -394,9 +391,11 @@ namespace CalledManagement
             }
 
             // MessageBox.Show(result.ToString());
-            if (Convert.ToInt32(mstbRegDateTimeFinished.ToString()) < Convert.ToInt32(mstbRegDateTimeInit.ToString()))
-            {
-                MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+  
+            if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text))
+                { 
+            
+                MessageBox.Show("A Data de inicio não pode ser mais recente que a data atual!");
                 mstbRegDateTimeInit.Focus();
                 return false;
             }

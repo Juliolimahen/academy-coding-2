@@ -69,8 +69,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxRegHours = new System.Windows.Forms.ComboBox();
-            this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
-            this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gbxRegCalled = new System.Windows.Forms.GroupBox();
@@ -97,6 +95,8 @@
             this.btnRegChangeCalled = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
+            this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
+            this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -393,6 +393,8 @@
             // 
             // gbxRegHours
             // 
+            this.gbxRegHours.Controls.Add(this.mstbRegDateTimeFinished);
+            this.gbxRegHours.Controls.Add(this.mstbRegDateTimeInit);
             this.gbxRegHours.Controls.Add(this.label11);
             this.gbxRegHours.Controls.Add(this.cbxRegIDHours);
             this.gbxRegHours.Controls.Add(this.btnRegDeleteHours);
@@ -404,8 +406,6 @@
             this.gbxRegHours.Controls.Add(this.label13);
             this.gbxRegHours.Controls.Add(this.label3);
             this.gbxRegHours.Controls.Add(this.cbxRegHours);
-            this.gbxRegHours.Controls.Add(this.mstbRegDateTimeFinished);
-            this.gbxRegHours.Controls.Add(this.mstbRegDateTimeInit);
             this.gbxRegHours.Controls.Add(this.label2);
             this.gbxRegHours.Controls.Add(this.label1);
             this.gbxRegHours.Enabled = false;
@@ -521,26 +521,6 @@
             this.cbxRegHours.Size = new System.Drawing.Size(463, 21);
             this.cbxRegHours.TabIndex = 59;
             this.cbxRegHours.Text = "selecione um chamado";
-            // 
-            // mstbRegDateTimeFinished
-            // 
-            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 206);
-            this.mstbRegDateTimeFinished.Mask = "00-00-0000 90:00";
-            this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
-            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(209, 20);
-            this.mstbRegDateTimeFinished.TabIndex = 58;
-            this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
-            // 
-            // mstbRegDateTimeInit
-            // 
-            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 206);
-            this.mstbRegDateTimeInit.Mask = "00-00-0000 90:00";
-            this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
-            this.mstbRegDateTimeInit.RejectInputOnFirstFailure = true;
-            this.mstbRegDateTimeInit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(193, 20);
-            this.mstbRegDateTimeInit.TabIndex = 57;
-            this.mstbRegDateTimeInit.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label2
             // 
@@ -815,6 +795,24 @@
             this.tbcCalled.Size = new System.Drawing.Size(1200, 650);
             this.tbcCalled.TabIndex = 0;
             // 
+            // mstbRegDateTimeInit
+            // 
+            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 213);
+            this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
+            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(193, 20);
+            this.mstbRegDateTimeInit.TabIndex = 71;
+            this.mstbRegDateTimeInit.ValidatingType = typeof(System.DateTime);
+            // 
+            // mstbRegDateTimeFinished
+            // 
+            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 213);
+            this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
+            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(209, 20);
+            this.mstbRegDateTimeFinished.TabIndex = 72;
+            this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
+            // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -823,7 +821,7 @@
             this.Controls.Add(this.tbcCalled);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRegisterCalled";
-            this.Text = "CHAMADOS";
+            this.Text = "Chamados";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpClosedCalled.ResumeLayout(false);
@@ -868,8 +866,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxRegHours;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeFinished;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeInit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbxRegCalled;
@@ -916,5 +912,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeFinished;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeInit;
     }
 }
