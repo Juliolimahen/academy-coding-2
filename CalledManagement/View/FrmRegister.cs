@@ -49,13 +49,11 @@ namespace CalledManagement
             txtSecSearchCalled.Enabled = true;
             Function.Clean(this);
         }
-
         //Botão para Finalizar chamado
         private void btnRegFinish_Click(object sender, EventArgs e)
         {
             Dispose();
         }
-
         //Botao para iniciar chamado 
         private void btnRegInit_Click(object sender, EventArgs e)
         {
@@ -65,14 +63,10 @@ namespace CalledManagement
             cbxRegID.Enabled = false;
             txtRegName.Focus();
             operation = "Init";
-            _DateTime = DateTime.Now;
-            lbRegDateTime.Text = _DateTime.ToString();
         }
         //botão para salvar registros 
         private void btnRegSave_Click(object sender, EventArgs e)
         {
-            dgvSecCalled.Refresh();
-
             if (ValidateDataCalled() == true)
             {
                 Called called = new Called();
@@ -107,7 +101,7 @@ namespace CalledManagement
                 if (operation == "Init")
                 {
                     CalledDAO calleddao = new CalledDAO();
-                    if (calleddao.Insert(called, dgvSecCalled) == false)
+                    if (calleddao.Insert(called) == false)
                     {
                         txtRegName.Focus();
                         return;
@@ -126,10 +120,8 @@ namespace CalledManagement
                     }
                 }
             }
-
             LoadComboxs();
             LoadGrids();
-
             Function.EnableFields(this, false);
             Function.Clean(this);
             Function.EnableButtons(this, "Init");
@@ -137,7 +129,6 @@ namespace CalledManagement
             cbxRegID.Focus();
             operation = "";
         }
-
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
         {
@@ -161,6 +152,7 @@ namespace CalledManagement
 
             operation = "Change";
         }
+        //botão responsável por cancelar cadastro 
         private void btnRegCancel_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente cancelar a edição do registro ?", "Atenção",
@@ -173,7 +165,7 @@ namespace CalledManagement
                 operation = "";
             }
         }
-
+        //botão resposavel por deletar registros dos chamados 
         private void btnRegDelete_Click(object sender, EventArgs e)
         {
             //verifica se campo nome esta vazio 
@@ -194,6 +186,8 @@ namespace CalledManagement
                         Function.Clean(this);
                         Function.EnableButtons(this, "Init");
                         cbxRegID.Focus();
+                        LoadGrids();
+                        LoadComboxs();
                     }
                 }
             }
@@ -217,20 +211,17 @@ namespace CalledManagement
             SecSearchHours = txtSecSearchHours.Text;
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
         }
-
+        //botão responsável por iniciar o cadastro de horas 
         private void btnRegInitHours_Click(object sender, EventArgs e)
         {
-
             Function.EnableFields(this, true);
             Function.Clean(this);
             Function.EnableButtons(this, "Save");
             cbxRegIDHours.Enabled = false;
             cbxRegHours.Focus();
             operation = "Init";
-            _DateTime = DateTime.Now;
-            lbRegDateTime.Text = _DateTime.ToString();
         }
-
+        //botão responsável por por aterar cadastro horas
         private void btnRegChangeHours_Click(object sender, EventArgs e)
         {
 
@@ -256,7 +247,7 @@ namespace CalledManagement
 
             operation = "Change";
         }
-
+        //botão responsável por deletar cadastro de horas 
         private void btnRegDeleteHours_Click(object sender, EventArgs e)
         {
             if (cbxRegID.SelectedIndex >= 0)
@@ -275,6 +266,8 @@ namespace CalledManagement
                         Function.Clean(this);
                         Function.EnableButtons(this, "Init");
                         cbxRegHours.Focus();
+                        LoadComboxs();
+                        LoadGrids();
                     }
                 }
             }
@@ -284,6 +277,7 @@ namespace CalledManagement
                 Function.EnableFields(this, true);
             }
         }
+        //botao responsavel por salvar resgistro de horas 
         private void btnRegSaveHours_Click(object sender, EventArgs e)
         {
             HourWorked hourworked = new HourWorked();
@@ -344,7 +338,7 @@ namespace CalledManagement
             operation = "";
 
         }
-
+        //botão responsável por cancelar cadastro 
         private void btnRegCancelHours_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente cancelar a edição do registro?", "Atenção",
@@ -357,7 +351,7 @@ namespace CalledManagement
                 operation = "";
             }
         }
-
+        //botao responsável por disabilitar a tela de cadastro de horas 
         private void btnRegFinishedHours_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente finalizar o cadastro?", "Atenção",
@@ -367,7 +361,7 @@ namespace CalledManagement
                 gbxRegHours.Enabled = false;
             }
         }
-
+        //botao responsável por disabilitar a tela de cadastro de chamados
         private void btnRegFinishedCalled_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente finalizar o cadastro?", "Atenção",
@@ -377,8 +371,7 @@ namespace CalledManagement
                 gbxRegCalled.Enabled = false;
             }
         }
-
-        //metodo resposavel pela validação dos dados 
+        //metodo resposavel pela validação dos dados de chamados
         private Boolean ValidateDataCalled()
         {
             if (txtRegName.Text == string.Empty)
@@ -389,6 +382,7 @@ namespace CalledManagement
             }
             return true;
         }
+        //metodo resposavel pela validação dos dados de horas 
         private Boolean ValidateDataHours()
         {
 
@@ -398,18 +392,18 @@ namespace CalledManagement
                 mstbRegDateTimeInit.Focus();
                 return false;
             }
-             
-           // MessageBox.Show(result.ToString());
+
+            // MessageBox.Show(result.ToString());
             if (Convert.ToInt32(mstbRegDateTimeFinished.ToString()) < Convert.ToInt32(mstbRegDateTimeInit.ToString()))
             {
-               MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
+                MessageBox.Show("A Data de termino não pode ser mais recente que a de inicio!");
                 mstbRegDateTimeInit.Focus();
                 return false;
             }
 
             return true;
         }
-        //metodo resposavel por buscar os registros do chamados para alteração
+        //metodo resposavel por buscar os registros dos chamados para alteração
         private void BuscarRegistroCalled()
         {
             int id = int.Parse(cbxRegID.SelectedValue.ToString());
@@ -439,6 +433,7 @@ namespace CalledManagement
             }
             else MessageBox.Show("Codigo do chamado não encontrado!", "Atenção");
         }
+        //metodo resposavel por buscar os registros das horas para alteração
         private void BuscarRegistroHours()
         {
             int id = int.Parse(cbxRegIDHours.SelectedValue.ToString());
@@ -459,14 +454,7 @@ namespace CalledManagement
             }
             else MessageBox.Show("Nenhuma hora cadastrada para este chamado!", "Atenção");
         }
-
-        private void btnSecUpdateCalled_Click(object sender, EventArgs e)
-        {
-            CalledDAO calleddao = new CalledDAO();
-            string name = txtSecSearchCalled.Text;
-            calleddao.ListarGrid(dgvSecCalled, name);
-        }
-
+        //botão responsável por pesquisar cadastro horas
         private void btnSecSearchHours_Click(object sender, EventArgs e)
         {
             //nova instancia 
@@ -479,7 +467,7 @@ namespace CalledManagement
             SecSearchHours = txtSecSearchHours.Text;
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
         }
-
+        //metodo responsavel por carregar DataGridView
         public void LoadGrids()
         {
             CalledDAO calleddao = new CalledDAO();
@@ -494,6 +482,7 @@ namespace CalledManagement
             hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
 
         }
+        //metodo responsavel por carregar ComboBox
         public void LoadComboxs()
         {
             CalledDAO calleddao = new CalledDAO();
@@ -507,4 +496,3 @@ namespace CalledManagement
         }
     }
 }
-

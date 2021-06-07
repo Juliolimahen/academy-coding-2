@@ -109,7 +109,7 @@ namespace CalledManagement.DAO
                 }
                 // O finally é sempre executado,
                 finally
-                { 
+                {
                     // fechando a conexão com o banco de dados.
                     ToConnection toconection = new ToConnection();
                     toconection.ToDisconnect();
@@ -183,7 +183,8 @@ namespace CalledManagement.DAO
                 MessageBox.Show("Erro ao Listar registros: " + ex.Message);
             }
 
-            finally {
+            finally
+            {
                 toconnection.ToDisconnect();
             }
         }

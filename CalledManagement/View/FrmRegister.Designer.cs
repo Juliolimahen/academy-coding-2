@@ -60,9 +60,6 @@
             this.gbxRegHours = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cbxRegIDHours = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lbRegDateTime = new System.Windows.Forms.Label();
             this.btnRegDeleteHours = new System.Windows.Forms.Button();
             this.btnRegSaveHours = new System.Windows.Forms.Button();
             this.btnRegCancelHours = new System.Windows.Forms.Button();
@@ -106,7 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
             this.tbpResgister.SuspendLayout();
             this.gbxRegHours.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.gbxRegCalled.SuspendLayout();
             this.gbxStatus.SuspendLayout();
             this.gbxTypeRegHoursCalled.SuspendLayout();
@@ -399,7 +395,6 @@
             // 
             this.gbxRegHours.Controls.Add(this.label11);
             this.gbxRegHours.Controls.Add(this.cbxRegIDHours);
-            this.gbxRegHours.Controls.Add(this.groupBox3);
             this.gbxRegHours.Controls.Add(this.btnRegDeleteHours);
             this.gbxRegHours.Controls.Add(this.btnRegSaveHours);
             this.gbxRegHours.Controls.Add(this.btnRegCancelHours);
@@ -439,35 +434,6 @@
             this.cbxRegIDHours.Size = new System.Drawing.Size(463, 21);
             this.cbxRegIDHours.TabIndex = 69;
             this.cbxRegIDHours.Text = "selecione um id";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.lbRegDateTime);
-            this.groupBox3.Location = new System.Drawing.Point(29, 319);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(463, 125);
-            this.groupBox3.TabIndex = 43;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Chamado Atual";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(24, 34);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Data/Hora cadastro";
-            // 
-            // lbRegDateTime
-            // 
-            this.lbRegDateTime.AutoSize = true;
-            this.lbRegDateTime.Location = new System.Drawing.Point(24, 64);
-            this.lbRegDateTime.Name = "lbRegDateTime";
-            this.lbRegDateTime.Size = new System.Drawing.Size(81, 13);
-            this.lbRegDateTime.TabIndex = 0;
-            this.lbRegDateTime.Text = "dd-MM-yy h:m:s";
             // 
             // btnRegDeleteHours
             // 
@@ -869,8 +835,6 @@
             this.tbpResgister.ResumeLayout(false);
             this.gbxRegHours.ResumeLayout(false);
             this.gbxRegHours.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.gbxRegCalled.ResumeLayout(false);
             this.gbxRegCalled.PerformLayout();
             this.gbxStatus.ResumeLayout(false);
@@ -895,9 +859,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TabPage tbpResgister;
         private System.Windows.Forms.GroupBox gbxRegHours;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lbRegDateTime;
         private System.Windows.Forms.Button btnRegDeleteHours;
         private System.Windows.Forms.Button btnRegSaveHours;
         private System.Windows.Forms.Button btnRegCancelHours;

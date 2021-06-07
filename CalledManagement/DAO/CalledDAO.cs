@@ -14,26 +14,19 @@ namespace CalledManagement.DAO
     //Classe responsavel pela comunicação da entidade Called com o banco de dados 
     class CalledDAO
     {
-        public bool Insert(Called called, DataGridView dgvSecCalled)
+        public bool Insert(Called called)
         {
-            //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            string qry = "insert into CALLED (Name, Date, Descripition, Finished, PriorityId) values (@Name, @Date, @Descripition, @Finished, @PriorityId)";
 
-            //SqlConnection conn = new SqlConnection(strConn);
-
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "insert into CALLED (Name, Date, Descripition, Finished, PriorityId) values (@Name, @Date, @Descripition, @Finished, @PriorityId)";
-
+            using (var connection = new SqlConnection(connectionString))
             {
+
                 try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
-                    //SqlCommand cmd = new SqlCommand(strConn);
-
-                    //conn.Open(); 
-
-                    ToConnection toconnection = new ToConnection();
                     // Abre a conexão com o banco de dados.
-                    toconnection.ToConnect();
+                    connection.Open();
+                    var cmd = new SqlCommand(qry, connection);
 
                     // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Name", called.Name);
@@ -41,100 +34,91 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
                     cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
-
-                    cmd.Connection = toconnection.ToConnect();
 
                     // Retorna o comando SQL de INSERT no banco de dados. 
                     cmd.ExecuteNonQuery();
 
                     //teste...
                     MessageBox.Show("Cadastro salvo com sucesso!");
-                    dgvSecCalled.Refresh();
+
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
 
                 }
                 catch (Exception ex)
                 {
+                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
-                    // Informando "Erro ao salvar registro" + o erro recebido do banco de dados
                 }
                 // O finally é sempre executado,
                 finally
                 {
-                    ToConnection toconection = new ToConnection();
-                    // fechando a conexão com o banco de dados.
-                    toconection.ToDisconnect();
+                    connection.Close();
                 }
             }
         }
-
         public bool Change(Called called)
         {
-            //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            string qry = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId where Id = @Id";
 
-            //SqlConnection conn = new SqlConnection(strConn);
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId where Id = @Id";
+            using (var connection = new SqlConnection(connectionString))
             {
-                try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
                 {
-                    //SqlCommand cmd = new SqlCommand(strConn);
+                    try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
+                    {
+                        // Abre a conexão com o banco de dados.
+                        connection.Open();
+                        var cmd = new SqlCommand(qry, connection);
 
-                    //conn.Open(); 
+                        // Esse objeto é responsável em executar os comandos SQL
 
-                    ToConnection toconnection = new ToConnection();
-                    // Abre a conexão com o banco de dados.
-                    toconnection.ToConnect();
+                        cmd.Parameters.AddWithValue("@Id", called.Id);
+                        cmd.Parameters.AddWithValue("@Name", called.Name);
+                        cmd.Parameters.AddWithValue("@Date", called.Date);
+                        cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
+                        cmd.Parameters.AddWithValue("@Finished", called.Finished);
+                        cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
 
-                    // Esse objeto é responsável em executar os comandos SQL
+                        // Retorna o comando SQL de INSERT no banco de dados
+                        cmd.ExecuteNonQuery();
 
-                    cmd.Parameters.AddWithValue("@Id", called.Id);
-                    cmd.Parameters.AddWithValue("@Name", called.Name);
-                    cmd.Parameters.AddWithValue("@Date", called.Date);
-                    cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
-                    cmd.Parameters.AddWithValue("@Finished", called.Finished);
-                    cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
+                        //teste
+                        MessageBox.Show("Cadastro alterado com sucesso!");
+                        // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
+                        return true;
 
-                    // O objetro cmd recebe os parâmetros com os valores dos campos 
-                    cmd.Connection = toconnection.ToConnect();
 
-                    cmd.ExecuteNonQuery();
-                    // Retorna o comando SQL de INSERT no banco de dados
-                    //teste
-                    MessageBox.Show("Cadastro alterado com sucesso!");
-                    return true;
-                    // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao salvar registro: " + ex.Message);
-                    return false;
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
-                    // Informando "Erro ao salvar registro" + o erro recebido do banco de dados
-                }
-                finally
-                {
-                    ToConnection toconection = new ToConnection();// fechando a conexão com o banco de dados.
-                    toconection.ToDisconnect();// O finally é sempre executado,
+                    }
+                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao salvar registro: " + ex.Message);
+                        return false;
+                    }
+                    // O finally é sempre executado,
+                    finally
+                    {
+                        // fechando a conexão com o banco de dados.
+                        connection.Close();
+                    }
                 }
             }
         }
         public bool Delete(int ID)
         {
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            string qry = "delete from CALLED where Id = @Id";
+
+            using (var connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     //abre conexão
-                    SqlCommand cmd = new SqlCommand();
-                    ToConnection toconnection = new ToConnection();
-                    cmd.Connection = toconnection.ToConnect();
+                    connection.Open();
+                    var cmd = new SqlCommand(qry, connection);
 
-                    cmd.CommandText = "delete from CALLED where Id = @Id";
                     cmd.Parameters.AddWithValue("@Id", ID);
                     cmd.ExecuteNonQuery();
 
@@ -150,12 +134,10 @@ namespace CalledManagement.DAO
                 }
                 finally
                 {
-                    ToConnection toconection = new ToConnection();
-                    toconection.ToDisconnect();
+                    connection.Close();
                 }
             }
         }
-
         public void ListarGrid(DataGridView dgvSecCalled, string name)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
@@ -228,21 +210,17 @@ namespace CalledManagement.DAO
                 connection.Open();//abre conexão com o banco 
                 try
                 {
-                    
-                    var cmd = new SqlCommand(qry , connection);
+                    var cmd = new SqlCommand(qry, connection);
 
-                    //cmd.CommandText = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
-
-                    SqlDataReader adp = cmd.ExecuteReader();
+                    SqlDataReader rd = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
 
-                    dt.Load(adp);
+                    dt.Load(rd);
                     cbxSec.Text = "Selecione um chamado";
                     cbxSec.DisplayMember = "Name";
                     cbxSec.ValueMember = "Id";
                     cbxSec.DataSource = dt;
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao Listas registros: " + ex.Message);
@@ -255,63 +233,68 @@ namespace CalledManagement.DAO
         }
         public void ListarComBoxID(ComboBox cbxRegID)
         {
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            try
+            string qry = "SELECT Name, Id FROM CALLED ORDER BY Date ASC";
+
+            using (var connection = new SqlConnection(connectionString))
             {
-                cmd.Connection = toconnection.ToConnect();
-                cmd.CommandText = "SELECT Id FROM CALLED ORDER BY Id ASC";
 
-                SqlDataReader adp = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    var cmd = new SqlCommand(qry, connection);
 
-                dt.Load(adp);
-                cbxRegID.Text = "Selecione um id";
-                cbxRegID.DisplayMember = "Id";
-                cbxRegID.ValueMember = "Id";
-                cbxRegID.DataSource = dt;
-            }
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
 
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Listas registros: " + ex.Message);
-            }
+                    dt.Load(rd);
+                    cbxRegID.Text = "Selecione um id";
+                    cbxRegID.DisplayMember = "Id";
+                    cbxRegID.ValueMember = "Id";
+                    cbxRegID.DataSource = dt;
+                }
 
-            finally
-            {
-                ToConnection toconection = new ToConnection();
-                toconection.ToDisconnect();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Listas registros: " + ex.Message);
+                }
+
+                finally
+                {
+                    ToConnection toconection = new ToConnection();
+                    toconection.ToDisconnect();
+                }
             }
         }
-
         public Called SearchID(int ID)
         {
             Called called = new Called();
             Priority priority = new Priority();
             called.PriorityId = priority;
 
-            SqlCommand cmd = new SqlCommand();
-            ToConnection toconnection = new ToConnection();
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            string qry = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
 
-            cmd.Connection = toconnection.ToConnect();
-            cmd.CommandText = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
-            cmd.Parameters.AddWithValue("@Id", ID);
-            cmd.Connection = toconnection.ToConnect();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            //percorre todas as linhas de DataReader
-            while (reader.Read())
+            using (var connection = new SqlConnection(connectionString))
             {
-                //recuperar os campos
-                called.Id = int.Parse(reader["Id"].ToString());
-                called.Name = reader["Name"].ToString();
-                called.Date = Convert.ToDateTime(reader["Date"].ToString());
-                called.Finished = reader["Finished"].ToString();
-                called.Descripition = reader["Descripition"].ToString();
-                called.PriorityId.Id = int.Parse(reader["PriorityId"].ToString());
-            }
+                connection.Open();
+                var cmd = new SqlCommand(qry, connection);
+                cmd.Parameters.AddWithValue("@Id", ID);
+                SqlDataReader rd = cmd.ExecuteReader();
 
+                //percorre todas as linhas de DataReader
+                while (rd.Read())
+                {
+                    //recuperar os campos
+                    called.Id = int.Parse(rd["Id"].ToString());
+                    called.Name = rd["Name"].ToString();
+                    called.Date = Convert.ToDateTime(rd["Date"].ToString());
+                    called.Finished = rd["Finished"].ToString();
+                    called.Descripition = rd["Descripition"].ToString();
+                    called.PriorityId.Id = int.Parse(rd["PriorityId"].ToString());
+                }
+            }
             return called;
         }
     }
