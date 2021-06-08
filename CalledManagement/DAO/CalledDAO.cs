@@ -22,24 +22,21 @@ namespace CalledManagement.DAO
             using (var connection = new SqlConnection(connectionString))
             {
 
-                try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
+                try // Verifica se a operação com o banco irá occorrer sem erros
                 {
                     // Abre a conexão com o banco de dados.
                     connection.Open();
+                    // Cria objeto cmd da classe SQLCommand passando os comandos SQL e a conexão como parametro
                     var cmd = new SqlCommand(qry, connection);
 
-                    // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
                     cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
 
-                    // Retorna o comando SQL de INSERT no banco de dados. 
+                    // Método para executar comandos no BD
                     cmd.ExecuteNonQuery();
-
-                    //teste...
-                    MessageBox.Show("Cadastro salvo com sucesso!");
 
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
@@ -47,13 +44,14 @@ namespace CalledManagement.DAO
                 }
                 catch (Exception ex)
                 {
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
+                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch exibindo uma mensagem de erro
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
                 }
                 // O finally é sempre executado,
                 finally
                 {
+                    //fecha a conexão com o banco
                     connection.Close();
                 }
             }
@@ -66,13 +64,14 @@ namespace CalledManagement.DAO
             using (var connection = new SqlConnection(connectionString))
             {
 
-                try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
+                try // Verifica se a operação com o banco irá ocorrer sem erros
                 {
                     // Abre a conexão com o banco de dados.
                     connection.Open();
+                    // Esse objeto é responsável em executar os comandos SQL
                     var cmd = new SqlCommand(qry, connection);
 
-                    // Esse objeto é responsável em executar os comandos SQL
+                    
 
                     cmd.Parameters.AddWithValue("@Id", called.Id);
                     cmd.Parameters.AddWithValue("@Name", called.Name);
@@ -143,7 +142,7 @@ namespace CalledManagement.DAO
 
             string qry = "" +
             #region
-                "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
+               "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE), " +
                "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
                "FROM CALLED c " +
                "INNER JOIN PRIORITY p " +
@@ -151,8 +150,8 @@ namespace CalledManagement.DAO
                "LEFT JOIN HOURWORKED h ON " +
                "c.Id = h.CalledId " +
                "group BY c.Id, c.Name, c.Date, c.Finished, " +
-               "c.Descripition, c.PriorityId, p.Name, p.Days " +
-               "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC " +
+               "c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE) " +
+               "ORDER BY c.Finished, CAST(h.EndDate AS DATE), c.Date DESC, c.PriorityId DESC " +
             #endregion
                "";
 

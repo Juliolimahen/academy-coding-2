@@ -303,3 +303,4 @@ C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\C
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CopyComplete
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.exe
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache

@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.02375cm</Width>
+              <Width>1.02375cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -18,16 +18,16 @@
               <Width>2.97625cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.23542cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.20354cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.94437cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -43,7 +43,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Codigo</Value>
+                              <Value>ID</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -558,7 +558,7 @@
         <Top>0.65828cm</Top>
         <Left>0.60537cm</Left>
         <Height>1.2cm</Height>
-        <Width>20.47625cm</Width>
+        <Width>18.35958cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -622,8 +622,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox12</rd:DefaultName>
-          <Top>0.76412cm</Top>
-          <Left>8.10537cm</Left>
+          <Top>0.86361cm</Top>
+          <Left>7.10537cm</Left>
           <Height>1.5cm</Height>
           <Width>6.86562cm</Width>
           <ZIndex>1</ZIndex>
@@ -653,7 +653,7 @@
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
           <Top>1.2937cm</Top>
-          <Left>18.58162cm</Left>
+          <Left>16.46495cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>2</ZIndex>

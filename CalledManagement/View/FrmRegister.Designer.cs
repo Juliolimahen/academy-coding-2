@@ -47,17 +47,10 @@
             this.txtSecSearchCalled = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvSecCalled = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.gbxRegHours = new System.Windows.Forms.GroupBox();
+            this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
+            this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cbxRegIDHours = new System.Windows.Forms.ComboBox();
             this.btnRegDeleteHours = new System.Windows.Forms.Button();
@@ -95,8 +88,16 @@
             this.btnRegChangeCalled = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
-            this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
-            this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -291,6 +292,7 @@
             this.Column6,
             this.Column7,
             this.Column9,
+            this.Column18,
             this.Column8});
             this.dgvSecCalled.GridColor = System.Drawing.SystemColors.Control;
             this.dgvSecCalled.Location = new System.Drawing.Point(21, 47);
@@ -298,86 +300,6 @@
             this.dgvSecCalled.RowHeadersWidth = 40;
             this.dgvSecCalled.Size = new System.Drawing.Size(1100, 476);
             this.dgvSecCalled.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column1.Width = 46;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "Name";
-            this.Column2.HeaderText = "Nome";
-            this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column2.Width = 41;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.DataPropertyName = "Date";
-            this.Column3.HeaderText = "Data";
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column3.Width = 36;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.DataPropertyName = "Finished";
-            this.Column4.HeaderText = "Finalizado (S/N)";
-            this.Column4.Name = "Column4";
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.DataPropertyName = "Descripition";
-            this.Column5.HeaderText = "Descrição";
-            this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column5.Width = 61;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column6.DataPropertyName = "PriorityId";
-            this.Column6.HeaderText = "Cod. Prioridade";
-            this.Column6.Name = "Column6";
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column6.Width = 77;
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column7.DataPropertyName = "Name1";
-            this.Column7.HeaderText = "Prioridade";
-            this.Column7.Name = "Column7";
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column7.Width = 60;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "Days";
-            this.Column9.HeaderText = "Dias para conclusão";
-            this.Column9.Name = "Column9";
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column9.Width = 99;
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column8.DataPropertyName = "Column1";
-            this.Column8.HeaderText = "Tempo gasto (min)";
-            this.Column8.Name = "Column8";
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column8.Width = 70;
             // 
             // tbpResgister
             // 
@@ -415,6 +337,24 @@
             this.gbxRegHours.TabIndex = 17;
             this.gbxRegHours.TabStop = false;
             this.gbxRegHours.Text = "Cadastro de Horas";
+            // 
+            // mstbRegDateTimeFinished
+            // 
+            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 213);
+            this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
+            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(209, 20);
+            this.mstbRegDateTimeFinished.TabIndex = 72;
+            this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
+            // 
+            // mstbRegDateTimeInit
+            // 
+            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 213);
+            this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
+            this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
+            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(193, 20);
+            this.mstbRegDateTimeInit.TabIndex = 71;
+            this.mstbRegDateTimeInit.ValidatingType = typeof(System.DateTime);
             // 
             // label11
             // 
@@ -795,23 +735,93 @@
             this.tbcCalled.Size = new System.Drawing.Size(1200, 650);
             this.tbcCalled.TabIndex = 0;
             // 
-            // mstbRegDateTimeInit
+            // Column1
             // 
-            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 213);
-            this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
-            this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
-            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(193, 20);
-            this.mstbRegDateTimeInit.TabIndex = 71;
-            this.mstbRegDateTimeInit.ValidatingType = typeof(System.DateTime);
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "Codigo";
+            this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Width = 46;
             // 
-            // mstbRegDateTimeFinished
+            // Column2
             // 
-            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 213);
-            this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
-            this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
-            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(209, 20);
-            this.mstbRegDateTimeFinished.TabIndex = 72;
-            this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "Name";
+            this.Column2.HeaderText = "Nome";
+            this.Column2.Name = "Column2";
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.Width = 41;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "Date";
+            this.Column3.HeaderText = "Data";
+            this.Column3.Name = "Column3";
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 36;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column4.DataPropertyName = "Finished";
+            this.Column4.HeaderText = "Finalizado (S/N)";
+            this.Column4.Name = "Column4";
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column5.DataPropertyName = "Descripition";
+            this.Column5.HeaderText = "Descrição";
+            this.Column5.Name = "Column5";
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 61;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column6.DataPropertyName = "PriorityId";
+            this.Column6.HeaderText = "Cod. Prioridade";
+            this.Column6.Name = "Column6";
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column6.Width = 77;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column7.DataPropertyName = "Name1";
+            this.Column7.HeaderText = "Prioridade";
+            this.Column7.Name = "Column7";
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column7.Width = 60;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Days";
+            this.Column9.HeaderText = "Dias para conclusão";
+            this.Column9.Name = "Column9";
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column9.Width = 99;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "Column1";
+            this.Column18.HeaderText = "Data Termino";
+            this.Column18.Name = "Column18";
+            this.Column18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column18.Width = 69;
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column8.DataPropertyName = "Column2";
+            this.Column8.HeaderText = "Tempo gasto (min)";
+            this.Column8.Name = "Column8";
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column8.Width = 70;
             // 
             // FrmRegisterCalled
             // 
@@ -903,6 +913,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeFinished;
+        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeInit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -911,8 +923,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeFinished;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeInit;
     }
 }
