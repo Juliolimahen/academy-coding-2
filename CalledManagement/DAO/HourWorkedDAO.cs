@@ -17,8 +17,7 @@ namespace CalledManagement.DAO
         public bool Insert(HourWorked hourworked)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-
-            string qry = "INSERT INTO HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
+            var qry = "INSERT INTO HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
 
             using (var connection = new SqlConnection(connectionString))
             {
