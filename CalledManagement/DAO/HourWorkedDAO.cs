@@ -136,13 +136,19 @@ namespace CalledManagement.DAO
         public void ListarGrid(DataGridView dgvSecHours, string name)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry = ""+
-                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange " +
-                        "FROM HOURWORKED AS H " +
-                        "INNER JOIN CALLED AS C " +
-                        "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC" +
-                        "";    
-            
+            //var qry = ""+
+            string QrySelect = "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange ";
+            string QryFrom = "FROM HOURWORKED AS H ";
+            string QryJoin = "INNER JOIN CALLED AS C ";
+            string QryOn = "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC";
+
+            StringBuilder qry = new StringBuilder();
+
+            qry.Append(QrySelect);
+            qry.Append(QryFrom);
+            qry.Append(QryJoin);
+            qry.Append(QryOn);
+
             using (var connection = new SqlConnection(connectionString))
             {
                 try
@@ -150,7 +156,8 @@ namespace CalledManagement.DAO
                     //Abre conexão
                     connection.Open();
                     // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
-                    var cmd = new SqlCommand(qry, connection);
+
+                    var cmd = new SqlCommand(qry.ToString(), connection);
 
                     //Busca por nome
                     if (name.Length > 0)

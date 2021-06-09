@@ -38,8 +38,6 @@ namespace CalledManagement.DAO
                     // Método para executar comandos no BD
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Cadastro salvo com sucesso!");
-
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
 

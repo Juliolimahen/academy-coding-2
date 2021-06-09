@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace CalledManagement.Entities
 {
+    //classe Prioridade
     public class Priority
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Days { get; set; }
 
+        //teste
         public override string ToString()
         {
             return "ID: " + Id + "   Nome: " + Name + "   Dias: " + Days;
         }
-
+        //teste, lista de prioridades
         public List<Priority> ListPriority(){
 
             List<Priority> list = new List<Priority>();

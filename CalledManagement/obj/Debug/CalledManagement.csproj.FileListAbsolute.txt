@@ -220,6 +220,15 @@ C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\D
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.AccessControl.xml
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.Permissions.xml
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRepHours.resources
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRepCalled.resources
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.Properties.Resources.resources
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.GenerateResource.cache
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\RdlCompile.cache
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\RdlCompile.compiled
+C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CoreCompileInputs.cache
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\SqlServerTypes\x86\msvcr120.dll
@@ -289,17 +298,6 @@ C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\p
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRepHours.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmLogin.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmMain.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRegisterCalled.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmUser.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.FrmRepCalled.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.Properties.Resources.resources
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.GenerateResource.cache
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\RdlCompile.cache
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\RdlCompile.compiled
-C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CoreCompileInputs.cache
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csproj.CopyComplete
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.exe
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb

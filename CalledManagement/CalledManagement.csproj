@@ -96,24 +96,16 @@
     <Compile Include="DAO\HourWorkedDAO.cs" />
     <Compile Include="DAO\PriorityDAO.cs" />
     <Compile Include="DAO\Conexao\ToConnection.cs" />
-    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Entities\Called.cs" />
     <Compile Include="Entities\Enums\CalledStatus.cs" />
     <Compile Include="Entities\HourWorked.cs" />
     <Compile Include="Entities\Priority.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Operation.cs" />
     <Compile Include="View\FrmRepHours.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FrmRepHours.Designer.cs">
       <DependentUpon>FrmRepHours.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmMain.cs">
       <SubType>Form</SubType>
@@ -126,12 +118,6 @@
     </Compile>
     <Compile Include="View\FrmRegister.Designer.cs">
       <DependentUpon>FrmRegister.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FrmUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmUser.Designer.cs">
-      <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmRepCalled.cs">
       <SubType>Form</SubType>
@@ -147,17 +133,11 @@
       <DependentUpon>FrmRepHours.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportHours .rdlc" />
-    <EmbeddedResource Include="View\FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRegister.resx">
       <DependentUpon>FrmRegister.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmUser.resx">
-      <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRepCalled.resx">
       <DependentUpon>FrmRepCalled.cs</DependentUpon>

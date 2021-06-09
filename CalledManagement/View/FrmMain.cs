@@ -21,19 +21,12 @@ namespace CalledManagement
         {
             FrmRegisterCalled frmregistercalled = new FrmRegisterCalled();
             frmregistercalled.ShowDialog();
-
         }
 
         private void tsmiReport_Click(object sender, EventArgs e)
         {
             FrmRepCalled frmrepcalled = new FrmRepCalled();
             frmrepcalled.ShowDialog();
-        }
-
-        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmUser frmuser = new FrmUser();
-            frmuser.ShowDialog();
         }
 
         private void chamadosFechadosToolStripMenuItem_Click(object sender, EventArgs e)
