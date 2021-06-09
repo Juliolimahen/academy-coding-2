@@ -878,8 +878,6 @@ namespace CalledManagement {
             
             private global::System.Data.DataColumn columnDateChange;
             
-            private global::System.Data.DataColumn columnManual;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public HOURWORKEDDataTable() {
@@ -963,14 +961,6 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ManualColumn {
-                get {
-                    return this.columnManual;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1006,7 +996,7 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public HOURWORKEDRow AddHOURWORKEDRow(CALLEDRow parentCALLEDRowByFK_CalledId, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, System.DateTime DateChange, string Manual) {
+            public HOURWORKEDRow AddHOURWORKEDRow(CALLEDRow parentCALLEDRowByFK_CalledId, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, System.DateTime DateChange) {
                 HOURWORKEDRow rowHOURWORKEDRow = ((HOURWORKEDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1014,8 +1004,7 @@ namespace CalledManagement {
                         DateInserted,
                         DateStarted,
                         EndDate,
-                        DateChange,
-                        Manual};
+                        DateChange};
                 if ((parentCALLEDRowByFK_CalledId != null)) {
                     columnValuesArray[1] = parentCALLEDRowByFK_CalledId[0];
                 }
@@ -1054,7 +1043,6 @@ namespace CalledManagement {
                 this.columnDateStarted = base.Columns["DateStarted"];
                 this.columnEndDate = base.Columns["EndDate"];
                 this.columnDateChange = base.Columns["DateChange"];
-                this.columnManual = base.Columns["Manual"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1072,8 +1060,6 @@ namespace CalledManagement {
                 base.Columns.Add(this.columnEndDate);
                 this.columnDateChange = new global::System.Data.DataColumn("DateChange", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateChange);
-                this.columnManual = new global::System.Data.DataColumn("Manual", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnManual);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1084,9 +1070,6 @@ namespace CalledManagement {
                 this.columnId.Unique = true;
                 this.columnCalledId.AllowDBNull = false;
                 this.columnDateInserted.AllowDBNull = false;
-                this.columnDateStarted.AllowDBNull = false;
-                this.columnEndDate.AllowDBNull = false;
-                this.columnManual.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2213,8 +2196,6 @@ namespace CalledManagement {
             
             private global::System.Data.DataColumn columnDateChange;
             
-            private global::System.Data.DataColumn columnManual;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Query_Hours_ReportDataTable() {
@@ -2306,14 +2287,6 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ManualColumn {
-                get {
-                    return this.columnManual;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2349,7 +2322,7 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Query_Hours_ReportRow AddQuery_Hours_ReportRow(int CalledId, string Name, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, System.DateTime DateChange, string Manual) {
+            public Query_Hours_ReportRow AddQuery_Hours_ReportRow(int CalledId, string Name, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, System.DateTime DateChange) {
                 Query_Hours_ReportRow rowQuery_Hours_ReportRow = ((Query_Hours_ReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2358,8 +2331,7 @@ namespace CalledManagement {
                         DateInserted,
                         DateStarted,
                         EndDate,
-                        DateChange,
-                        Manual};
+                        DateChange};
                 rowQuery_Hours_ReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQuery_Hours_ReportRow);
                 return rowQuery_Hours_ReportRow;
@@ -2396,7 +2368,6 @@ namespace CalledManagement {
                 this.columnDateStarted = base.Columns["DateStarted"];
                 this.columnEndDate = base.Columns["EndDate"];
                 this.columnDateChange = base.Columns["DateChange"];
-                this.columnManual = base.Columns["Manual"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2416,8 +2387,6 @@ namespace CalledManagement {
                 base.Columns.Add(this.columnEndDate);
                 this.columnDateChange = new global::System.Data.DataColumn("DateChange", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateChange);
-                this.columnManual = new global::System.Data.DataColumn("Manual", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnManual);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -2430,9 +2399,6 @@ namespace CalledManagement {
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 100;
                 this.columnDateInserted.AllowDBNull = false;
-                this.columnDateStarted.AllowDBNull = false;
-                this.columnEndDate.AllowDBNull = false;
-                this.columnManual.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3123,7 +3089,12 @@ namespace CalledManagement {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime DateStarted {
                 get {
-                    return ((global::System.DateTime)(this[this.tableHOURWORKED.DateStartedColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableHOURWORKED.DateStartedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'DateStarted\' na tabela \'HOURWORKED\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableHOURWORKED.DateStartedColumn] = value;
@@ -3134,7 +3105,12 @@ namespace CalledManagement {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime EndDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableHOURWORKED.EndDateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableHOURWORKED.EndDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'EndDate\' na tabela \'HOURWORKED\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableHOURWORKED.EndDateColumn] = value;
@@ -3154,22 +3130,6 @@ namespace CalledManagement {
                 }
                 set {
                     this[this.tableHOURWORKED.DateChangeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Manual {
-                get {
-                    try {
-                        return ((string)(this[this.tableHOURWORKED.ManualColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Manual\' na tabela \'HOURWORKED\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableHOURWORKED.ManualColumn] = value;
                 }
             }
             
@@ -3197,6 +3157,30 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDateStartedNull() {
+                return this.IsNull(this.tableHOURWORKED.DateStartedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateStartedNull() {
+                this[this.tableHOURWORKED.DateStartedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEndDateNull() {
+                return this.IsNull(this.tableHOURWORKED.EndDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEndDateNull() {
+                this[this.tableHOURWORKED.EndDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDateChangeNull() {
                 return this.IsNull(this.tableHOURWORKED.DateChangeColumn);
             }
@@ -3205,18 +3189,6 @@ namespace CalledManagement {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDateChangeNull() {
                 this[this.tableHOURWORKED.DateChangeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsManualNull() {
-                return this.IsNull(this.tableHOURWORKED.ManualColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetManualNull() {
-                this[this.tableHOURWORKED.ManualColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3536,7 +3508,12 @@ namespace CalledManagement {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime DateStarted {
                 get {
-                    return ((global::System.DateTime)(this[this.tableQuery_Hours_Report.DateStartedColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableQuery_Hours_Report.DateStartedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'DateStarted\' na tabela \'Query_Hours_Report\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableQuery_Hours_Report.DateStartedColumn] = value;
@@ -3547,7 +3524,12 @@ namespace CalledManagement {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime EndDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableQuery_Hours_Report.EndDateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableQuery_Hours_Report.EndDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'EndDate\' na tabela \'Query_Hours_Report\' é DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableQuery_Hours_Report.EndDateColumn] = value;
@@ -3572,18 +3554,26 @@ namespace CalledManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Manual {
-                get {
-                    try {
-                        return ((string)(this[this.tableQuery_Hours_Report.ManualColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Manual\' na tabela \'Query_Hours_Report\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableQuery_Hours_Report.ManualColumn] = value;
-                }
+            public bool IsDateStartedNull() {
+                return this.IsNull(this.tableQuery_Hours_Report.DateStartedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateStartedNull() {
+                this[this.tableQuery_Hours_Report.DateStartedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEndDateNull() {
+                return this.IsNull(this.tableQuery_Hours_Report.EndDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEndDateNull() {
+                this[this.tableQuery_Hours_Report.EndDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3596,18 +3586,6 @@ namespace CalledManagement {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDateChangeNull() {
                 this[this.tableQuery_Hours_Report.DateChangeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsManualNull() {
-                return this.IsNull(this.tableQuery_Hours_Report.ManualColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetManualNull() {
-                this[this.tableQuery_Hours_Report.ManualColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4645,52 +4623,49 @@ ORDER BY c.Date DESC, c.PriorityId DESC, p.Days DESC
             tableMapping.ColumnMappings.Add("DateStarted", "DateStarted");
             tableMapping.ColumnMappings.Add("EndDate", "EndDate");
             tableMapping.ColumnMappings.Add("DateChange", "DateChange");
-            tableMapping.ColumnMappings.Add("Manual", "Manual");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[HOURWORKED] WHERE (([Id] = @Original_Id) AND ([CalledId] = @Original_CalledId) AND ([DateInserted] = @Original_DateInserted) AND ([DateStarted] = @Original_DateStarted) AND ([EndDate] = @Original_EndDate) AND ((@IsNull_DateChange = 1 AND [DateChange] IS NULL) OR ([DateChange] = @Original_DateChange)) AND ((@IsNull_Manual = 1 AND [Manual] IS NULL) OR ([Manual] = @Original_Manual)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[HOURWORKED] WHERE (([Id] = @Original_Id) AND ([CalledId] = @Original_CalledId) AND ([DateInserted] = @Original_DateInserted) AND ((@IsNull_DateStarted = 1 AND [DateStarted] IS NULL) OR ([DateStarted] = @Original_DateStarted)) AND ((@IsNull_EndDate = 1 AND [EndDate] IS NULL) OR ([EndDate] = @Original_EndDate)) AND ((@IsNull_DateChange = 1 AND [DateChange] IS NULL) OR ([DateChange] = @Original_DateChange)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CalledId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CalledId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateInserted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateInserted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateStarted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateStarted", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateStarted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateStarted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EndDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EndDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateChange", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateChange", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateChange", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateChange", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Manual", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manual", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Manual", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manual", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[HOURWORKED] ([CalledId], [DateInserted], [DateStarted], [EndDate], [DateChange], [Manual]) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate, @DateChange, @Manual);
-SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[HOURWORKED] ([CalledId], [DateInserted], [DateStarted], [EndDate], [DateChange]) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate, @DateChange);
+SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange FROM HOURWORKED WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CalledId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CalledId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateInserted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateInserted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateStarted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateStarted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateChange", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateChange", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Manual", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[HOURWORKED] SET [CalledId] = @CalledId, [DateInserted] = @DateInserted, [DateStarted] = @DateStarted, [EndDate] = @EndDate, [DateChange] = @DateChange, [Manual] = @Manual WHERE (([Id] = @Original_Id) AND ([CalledId] = @Original_CalledId) AND ([DateInserted] = @Original_DateInserted) AND ([DateStarted] = @Original_DateStarted) AND ([EndDate] = @Original_EndDate) AND ((@IsNull_DateChange = 1 AND [DateChange] IS NULL) OR ([DateChange] = @Original_DateChange)) AND ((@IsNull_Manual = 1 AND [Manual] IS NULL) OR ([Manual] = @Original_Manual)));
-SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM HOURWORKED WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[HOURWORKED] SET [CalledId] = @CalledId, [DateInserted] = @DateInserted, [DateStarted] = @DateStarted, [EndDate] = @EndDate, [DateChange] = @DateChange WHERE (([Id] = @Original_Id) AND ([CalledId] = @Original_CalledId) AND ([DateInserted] = @Original_DateInserted) AND ((@IsNull_DateStarted = 1 AND [DateStarted] IS NULL) OR ([DateStarted] = @Original_DateStarted)) AND ((@IsNull_EndDate = 1 AND [EndDate] IS NULL) OR ([EndDate] = @Original_EndDate)) AND ((@IsNull_DateChange = 1 AND [DateChange] IS NULL) OR ([DateChange] = @Original_DateChange)));
+SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange FROM HOURWORKED WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CalledId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CalledId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateInserted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateInserted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateStarted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateStarted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateChange", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateChange", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Manual", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CalledId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CalledId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateInserted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateInserted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateStarted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateStarted", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateStarted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateStarted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EndDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EndDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateChange", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateChange", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateChange", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateChange", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Manual", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manual", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Manual", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Manual", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -4707,8 +4682,8 @@ SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual FROM " +
-                "dbo.HOURWORKED";
+            this._commandCollection[0].CommandText = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange FROM dbo.HOUR" +
+                "WORKED";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -4801,27 +4776,33 @@ ORDER BY H.EndDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_CalledId, System.DateTime Original_DateInserted, System.DateTime Original_DateStarted, System.DateTime Original_EndDate, global::System.Nullable<global::System.DateTime> Original_DateChange, string Original_Manual) {
+        public virtual int Delete(int Original_Id, int Original_CalledId, System.DateTime Original_DateInserted, global::System.Nullable<global::System.DateTime> Original_DateStarted, global::System.Nullable<global::System.DateTime> Original_EndDate, global::System.Nullable<global::System.DateTime> Original_DateChange) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_CalledId));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_DateInserted));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_DateStarted));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_EndDate));
-            if ((Original_DateChange.HasValue == true)) {
+            if ((Original_DateStarted.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_DateStarted.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Original_EndDate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_DateChange.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_EndDate.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_Manual == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((Original_DateChange.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_DateChange.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Manual));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4843,22 +4824,26 @@ ORDER BY H.EndDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int CalledId, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, global::System.Nullable<global::System.DateTime> DateChange, string Manual) {
+        public virtual int Insert(int CalledId, System.DateTime DateInserted, global::System.Nullable<global::System.DateTime> DateStarted, global::System.Nullable<global::System.DateTime> EndDate, global::System.Nullable<global::System.DateTime> DateChange) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CalledId));
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DateInserted));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DateStarted));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(EndDate));
+            if ((DateStarted.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DateStarted.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((EndDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(EndDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((DateChange.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(DateChange.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Manual == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Manual));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4880,45 +4865,55 @@ ORDER BY H.EndDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int CalledId, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, global::System.Nullable<global::System.DateTime> DateChange, string Manual, int Original_Id, int Original_CalledId, System.DateTime Original_DateInserted, System.DateTime Original_DateStarted, System.DateTime Original_EndDate, global::System.Nullable<global::System.DateTime> Original_DateChange, string Original_Manual, int Id) {
+        public virtual int Update(int CalledId, System.DateTime DateInserted, global::System.Nullable<global::System.DateTime> DateStarted, global::System.Nullable<global::System.DateTime> EndDate, global::System.Nullable<global::System.DateTime> DateChange, int Original_Id, int Original_CalledId, System.DateTime Original_DateInserted, global::System.Nullable<global::System.DateTime> Original_DateStarted, global::System.Nullable<global::System.DateTime> Original_EndDate, global::System.Nullable<global::System.DateTime> Original_DateChange, int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(CalledId));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DateInserted));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DateStarted));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(EndDate));
+            if ((DateStarted.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DateStarted.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((EndDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(EndDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((DateChange.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(DateChange.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Manual == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_CalledId));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_DateInserted));
+            if ((Original_DateStarted.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DateStarted.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Manual));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_CalledId));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_DateInserted));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DateStarted));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_EndDate));
+            if ((Original_EndDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_EndDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((Original_DateChange.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_DateChange.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_DateChange.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((Original_Manual == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Manual));
-            }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4939,8 +4934,8 @@ ORDER BY H.EndDate DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int CalledId, System.DateTime DateInserted, System.DateTime DateStarted, System.DateTime EndDate, global::System.Nullable<global::System.DateTime> DateChange, string Manual, int Original_Id, int Original_CalledId, System.DateTime Original_DateInserted, System.DateTime Original_DateStarted, System.DateTime Original_EndDate, global::System.Nullable<global::System.DateTime> Original_DateChange, string Original_Manual) {
-            return this.Update(CalledId, DateInserted, DateStarted, EndDate, DateChange, Manual, Original_Id, Original_CalledId, Original_DateInserted, Original_DateStarted, Original_EndDate, Original_DateChange, Original_Manual, Original_Id);
+        public virtual int Update(int CalledId, System.DateTime DateInserted, global::System.Nullable<global::System.DateTime> DateStarted, global::System.Nullable<global::System.DateTime> EndDate, global::System.Nullable<global::System.DateTime> DateChange, int Original_Id, int Original_CalledId, System.DateTime Original_DateInserted, global::System.Nullable<global::System.DateTime> Original_DateStarted, global::System.Nullable<global::System.DateTime> Original_EndDate, global::System.Nullable<global::System.DateTime> Original_DateChange) {
+            return this.Update(CalledId, DateInserted, DateStarted, EndDate, DateChange, Original_Id, Original_CalledId, Original_DateInserted, Original_DateStarted, Original_EndDate, Original_DateChange, Original_Id);
         }
     }
     
@@ -6247,7 +6242,6 @@ SELECT Id, Name, Login, Password, Grupo FROM USUARIO WHERE (Id = @Id)";
             tableMapping.ColumnMappings.Add("DateStarted", "DateStarted");
             tableMapping.ColumnMappings.Add("EndDate", "EndDate");
             tableMapping.ColumnMappings.Add("DateChange", "DateChange");
-            tableMapping.ColumnMappings.Add("Manual", "Manual");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6264,7 +6258,7 @@ SELECT Id, Name, Login, Password, Grupo FROM USUARIO WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual
+            this._commandCollection[0].CommandText = @"SELECT        H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange
 FROM            HOURWORKED AS H INNER JOIN
                          CALLED AS C ON H.CalledId = C.Id INNER JOIN
                          CALLED ON H.CalledId = CALLED.Id

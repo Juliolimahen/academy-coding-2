@@ -68,7 +68,6 @@ namespace CalledManagement.DAO
                 }
             }
         }
-
         public bool Change(User user)
         {
             //string strConn = @"server=TI-NET-PC\SQLEXPRESS; DataBase=academycoding2; Trusted_Connection = True";
@@ -124,7 +123,6 @@ namespace CalledManagement.DAO
                 }
             }
         }
-
         public bool Delete(int ID)
         {
             {
@@ -154,7 +152,6 @@ namespace CalledManagement.DAO
                 }
             }
         }
-
         public void ListarGrid(DataGridView dgvSec, string name)
         {
             SqlCommand cmd = new SqlCommand();

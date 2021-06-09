@@ -38,6 +38,8 @@ namespace CalledManagement.DAO
                     // Método para executar comandos no BD
                     cmd.ExecuteNonQuery();
 
+                    MessageBox.Show("Cadastro salvo com sucesso!");
+
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
 
@@ -168,7 +170,7 @@ namespace CalledManagement.DAO
                     {
                         cmd.CommandText = "" +
                         #region
-                           "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, " +
+                           "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE), " +
                            "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
                            "FROM CALLED c " +
                            "INNER JOIN PRIORITY p " +
@@ -177,8 +179,8 @@ namespace CalledManagement.DAO
                            "c.Id = h.CalledId " +
                            "WHERE c.Name LIKE @Name " +
                            "group BY c.Id, c.Name, c.Date, c.Finished, " +
-                           "c.Descripition, c.PriorityId, p.Name, p.Days " +
-                           "ORDER BY c.Finished, c.Date DESC, c.PriorityId DESC" +
+                           "c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE) " +
+                           "ORDER BY c.Finished, CAST(h.EndDate AS DATE), c.Date DESC, c.PriorityId DESC" +
                         #endregion
                            "";
                         cmd.Parameters.AddWithValue("@Name", "%" + name + "%");

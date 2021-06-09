@@ -17,7 +17,7 @@ namespace CalledManagement.DAO
         public bool Insert(HourWorked hourworked)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry = "INSERT INTO HOURWORKED (CalledId, DateInserted, DateStarted, EndDate, Manual) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate, @Manual)";
+            var qry = "INSERT INTO HOURWORKED (CalledId, DateInserted, DateStarted, EndDate ) VALUES (@CalledId, @DateInserted, @DateStarted, @EndDate )";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -33,7 +33,6 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
-                    cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
 
                     // Retorna o comando SQL de INSERT no banco de dados. 
                     cmd.ExecuteNonQuery();
@@ -78,7 +77,6 @@ namespace CalledManagement.DAO
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
                     cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
                     cmd.Parameters.AddWithValue("@DateChange", hourworked.DateChange);
-                    //cmd.Parameters.AddWithValue("@Manual", hourworked.Manual);
 
                     // O objetro cmd recebe os parâmetros com os valores dos campos Ex.: @nome, @logradouro, @numero, etc.
                     cmd.ExecuteNonQuery();
@@ -139,7 +137,7 @@ namespace CalledManagement.DAO
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             var qry = ""+
-                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
+                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange " +
                         "FROM HOURWORKED AS H " +
                         "INNER JOIN CALLED AS C " +
                         "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC" +
