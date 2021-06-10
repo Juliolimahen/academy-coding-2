@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalledManagement.Entities.Enums
+namespace CalledManagement.EntitiesDAO.Enums
 {
     //Enumeração responsavel por 
     enum CalledStatus

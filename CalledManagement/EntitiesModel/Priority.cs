@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalledManagement.Entities
+namespace CalledManagement.EntitiesDAO
 {
     //classe Prioridade
     public class Priority

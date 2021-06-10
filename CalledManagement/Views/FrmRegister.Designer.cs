@@ -467,6 +467,7 @@
             this.cbxRegIDHours.Size = new System.Drawing.Size(463, 21);
             this.cbxRegIDHours.TabIndex = 69;
             this.cbxRegIDHours.Text = "selecione um id";
+            this.cbxRegIDHours.SelectedIndexChanged += new System.EventHandler(this.cbxRegIDHours_SelectedIndexChanged);
             // 
             // btnRegDeleteHours
             // 

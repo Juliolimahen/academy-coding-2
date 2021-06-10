@@ -1,11 +1,11 @@
-﻿using CalledManagement.Entities;
+﻿using CalledManagement.EntitiesDAO;
 using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace CalledManagement.DAO
+namespace CalledManagement.EntitiesDAO
 {
     class PriorityDAO
     {

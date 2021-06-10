@@ -1,15 +1,11 @@
-﻿using CalledManagement.Entities;
+﻿using CalledManagement.EntitiesDAO;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace CalledManagement.DAO
+namespace CalledManagement.EntitiesDAO
 {
     //Classe responsavel pela comunicação da entidade Called com o banco de dados 
     class CalledDAO
@@ -264,8 +260,7 @@ namespace CalledManagement.DAO
 
                 finally
                 {
-                    ToConnection toconection = new ToConnection();
-                    toconection.ToDisconnect();
+                    connection.Close();
                 }
             }
         }

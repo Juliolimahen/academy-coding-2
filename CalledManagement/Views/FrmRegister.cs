@@ -1,5 +1,4 @@
-﻿using CalledManagement.DAO;
-using CalledManagement.Entities;
+﻿using CalledManagement.EntitiesDAO;
 using CalledManagement.Utils;
 using CalledManagement.Enums;
 using System;
@@ -414,7 +413,7 @@ namespace CalledManagement
         }
         //metodo resposavel por buscar os registros das horas para alteração
         private void BuscarRegistroHours()
-        {
+        { 
             int id = int.Parse(cbxRegIDHours.SelectedValue.ToString());
             Function.Clean(this);
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
@@ -437,14 +436,14 @@ namespace CalledManagement
         private void btnSecSearchHours_Click(object sender, EventArgs e)
         {
             //nova instancia 
-            /*HourWorkedDAO hourworkeddao = new HourWorkedDAO();
+            HourWorkedDAO hourworkeddao = new HourWorkedDAO();
 
             string name = txtSecSearchCalled.Text;
             hourworkeddao.ListarGrid(dgvSecHours, name);
             string SecSearchHours;
             SecSearchHours = txtSecSearchHours.Text;
-            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);*/
-            LoadGrids();
+            hourworkeddao.ListarGrid(dgvSecHours, SecSearchHours);
+            //LoadGrids();
 
         }
         //metodo responsavel por carregar DataGridView
@@ -477,6 +476,11 @@ namespace CalledManagement
             calleddao.ListarComBoxID(cbxRegID);
             hourworkeddao.ListarComBoxID(cbxRegIDHours);
             txtSecSearchCalled.Enabled = true;
+        }
+
+        private void cbxRegIDHours_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

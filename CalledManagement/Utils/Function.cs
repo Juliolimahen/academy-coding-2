@@ -1,5 +1,5 @@
 ﻿using System;
-using CalledManagement.Entities;
+using CalledManagement.EntitiesDAO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,35 +10,6 @@ namespace CalledManagement.Utils
 {
     class Function
     {
-        //funcao responsavel por habilitar os campos 
-        public static void EnableFields(Control formulario, bool p)
-        {
-            foreach (Control ctl in formulario.Controls)
-            {
-                switch (ctl)
-                {
-                    case TextBox _:
-                        ((TextBox)ctl).Enabled = p;
-                        break;
-                    case DateTimePicker _:
-                        ((DateTimePicker)ctl).Enabled = p;
-                        break;
-                    case MaskedTextBox _:
-                        ((MaskedTextBox)ctl).Enabled = p;
-                        break;
-                    case ComboBox _:
-                        ((ComboBox)ctl).Enabled = p;
-                        break;
-                    default:
-                        if (ctl.Controls.Count > 0)
-                        {
-                            EnableFields(ctl, p);
-                        }
-
-                        break;
-                }
-            }
-        }
         //funcao responsavel por liampar formularios 
         public static void Clean(Control formulario)
         {
@@ -75,19 +46,19 @@ namespace CalledManagement.Utils
                     case Button _:
                         if (sit == "Save")
                         {
-                            if (((Button)ctl).Name == "btnRegInit")
+                            if (((Button)ctl).Name == "btnRegInit" || (((Button)ctl).Name == "btnRegInitHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegChange")
+                            else if (((Button)ctl).Name == "btnRegChange" || (((Button)ctl).Name == "btnRegChangeHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegSave")
+                            else if (((Button)ctl).Name == "btnRegSave" || (((Button)ctl).Name == "btnRegInitSaveHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegDelete")
+                            else if (((Button)ctl).Name == "btnRegDelete" || (((Button)ctl).Name == "btnRegDeleteHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
@@ -95,26 +66,26 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegFinish")
+                            else if (((Button)ctl).Name == "btnRegFinish" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
                         }
                         if (sit == "Change")
                         {
-                            if (((Button)ctl).Name == "btnRegInit")
+                            if (((Button)ctl).Name == "btnRegInit" || (((Button)ctl).Name == "btnRegInitHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegChange")
+                            else if (((Button)ctl).Name == "btnRegChange" || (((Button)ctl).Name == "btnRegChangeHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegSave")
+                            else if (((Button)ctl).Name == "btnRegSave" || (((Button)ctl).Name == "btnRegInitSaveHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegDelete")
+                            else if (((Button)ctl).Name == "btnRegDelete" || (((Button)ctl).Name == "btnRegDeleteHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
@@ -122,26 +93,26 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegFinish")
+                            else if (((Button)ctl).Name == "btnRegFinish" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
                         }
                         if (sit == "Init")
                         {
-                            if (((Button)ctl).Name == "btnRegInit")
+                            if (((Button)ctl).Name == "btnRegInit" || (((Button)ctl).Name == "btnRegInitHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegChange")
+                            else if (((Button)ctl).Name == "btnRegChange" || (((Button)ctl).Name == "btnRegChangeHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegSave")
+                            else if (((Button)ctl).Name == "btnRegSave" || (((Button)ctl).Name == "btnRegInitSaveHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegDelete")
+                            else if (((Button)ctl).Name == "btnRegDelete" || (((Button)ctl).Name == "btnRegDeleteHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
@@ -149,26 +120,26 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegFinish")
+                            else if (((Button)ctl).Name == "btnRegFinishedCalled" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
                                 ((Button)ctl).Enabled = false;
                             }
                         }
                         if (sit == "Load")
                         {
-                            if (((Button)ctl).Name == "btnRegInit")
+                            if (((Button)ctl).Name == "btnRegInit" || (((Button)ctl).Name == "btnRegInitHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegChange")
+                            else if (((Button)ctl).Name == "btnRegChange" || (((Button)ctl).Name == "btnRegChangeHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegSave")
+                            else if (((Button)ctl).Name == "btnRegSave" || (((Button)ctl).Name == "btnRegInitSaveHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
-                            else if (((Button)ctl).Name == "btnRegDelete")
+                            else if (((Button)ctl).Name == "btnRegDelete" || (((Button)ctl).Name == "btnRegDeleteHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
@@ -176,9 +147,9 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = false;
                             }
-                            else if (((Button)ctl).Name == "btnRegFinish")
+                            else if (((Button)ctl).Name == "btnRegFinishedCalled" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
-                                ((Button)ctl).Enabled = false;
+                                ((Button)ctl).Enabled = true;
                             }
                         }
                         break;
@@ -192,22 +163,38 @@ namespace CalledManagement.Utils
                 }
             }
         }
-        //funÇão resposavel por não permitir a entrada de caracteres indesejaveis 
-        public static void EnterNumbers(KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar) || //Letras
-                char.IsSymbol(e.KeyChar) || //Símbolos
-                char.IsWhiteSpace(e.KeyChar) || //Espaço
-                char.IsPunctuation(e.KeyChar)) //Pontuação
-                e.Handled = true; //Não permitir
 
-        }
-        public static void EnterCurrency(KeyPressEventArgs e)
+        //funcao responsavel por habilitar os campos 
+        public static void EnableFields(Control formulario, bool p)
         {
-            if (char.IsLetter(e.KeyChar) || //Letras
-                char.IsSymbol(e.KeyChar) || //Símbolos
-                char.IsWhiteSpace(e.KeyChar)) //Espaço
-                e.Handled = true; //Não permitir
+            foreach (Control ctl in formulario.Controls)
+            {
+                switch (ctl)
+                {
+                    case TextBox _:
+                        ((TextBox)ctl).Enabled = p;
+                        break;
+                    case DateTimePicker _:
+                        ((DateTimePicker)ctl).Enabled = p;
+                        break;
+                    case MaskedTextBox _:
+                        ((MaskedTextBox)ctl).Enabled = p;
+                        break;
+                    case ComboBox _:
+                        ((ComboBox)ctl).Enabled = p;
+                        break;
+                    case RadioButton _:
+                        ((RadioButton)ctl).Enabled = p;
+                        break;
+                    default:
+                        if (ctl.Controls.Count > 0)
+                        {
+                            EnableFields(ctl, p);
+                        }
+                        break;
+                }
+            }
         }
     }
 }
+

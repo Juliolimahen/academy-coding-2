@@ -1,4 +1,4 @@
-﻿using CalledManagement.Entities;
+﻿using CalledManagement.EntitiesDAO;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalledManagement.DAO
+namespace CalledManagement.EntitiesDAO
 {
     //Classe responsavel pela comunicação da entidade HourWorked com o banco de dados 
     class HourWorkedDAO
@@ -137,10 +137,14 @@ namespace CalledManagement.DAO
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             //var qry = ""+
+            #region
             string QrySelect = "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange ";
             string QryFrom = "FROM HOURWORKED AS H ";
             string QryJoin = "INNER JOIN CALLED AS C ";
-            string QryOn = "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC";
+            string QryOn = "ON H.CalledId = C.Id ";
+            string QryOrderBy=  "ORDER BY H.DateInserted DESC ";
+            string qryLike = "WHERE C.Name LIKE @Name ";
+            #endregion
 
             StringBuilder qry = new StringBuilder();
 
@@ -148,6 +152,7 @@ namespace CalledManagement.DAO
             qry.Append(QryFrom);
             qry.Append(QryJoin);
             qry.Append(QryOn);
+            qry.Append(QryOrderBy);
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -162,17 +167,26 @@ namespace CalledManagement.DAO
                     //Busca por nome
                     if (name.Length > 0)
                     {
-                        cmd.CommandText = "" +
+                       /* qry.Append(QrySelect);
+                        qry.Append(QryFrom);
+                        qry.Append(QryJoin);
+                        qry.Append(QryOn);
+                        qry.Append(qryLike);
+                        qry.Append(QryOrderBy);*/
+
+                        cmd.CommandText = ""+ 
+                        
                         #region
-                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange, H.Manual " +
+                        "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange " +
                         "FROM HOURWORKED AS H " +
                         "INNER JOIN CALLED AS C " +
-                        "ON H.CalledId = C.Id ORDER BY H.DateInserted DESC" +
-                        "WHERE C.Name LIKE @Name" +
-                        #endregion
+                        "ON H.CalledId = C.Id " +
+                        "WHERE C.Name LIKE @Name " +
+                        "ORDER BY H.DateInserted DESC " +
                         "";
-                        cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
-
+                        #endregion
+                        
+                        cmd.Parameters.AddWithValue("@Name", "%" +name+ "%");
                         cmd.ExecuteNonQuery();
                     }
 
@@ -234,8 +248,8 @@ namespace CalledManagement.DAO
             hourworked.CalledId = called;
 
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange, " +
-                    "Manual FROM HOURWORKED WHERE Id LIKE @Id";
+            var qry = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange " +
+                    "FROM HOURWORKED WHERE Id LIKE @Id";
             using (var connection = new SqlConnection(connectionString))
             {
                 //Abre conexão
@@ -253,7 +267,6 @@ namespace CalledManagement.DAO
                     hourworked.CalledId.Id = int.Parse(reader["CalledId"].ToString());
                     hourworked.DateStarted = Convert.ToDateTime(reader["DateStarted"].ToString());
                     hourworked.EndDate = Convert.ToDateTime(reader["EndDate"].ToString());
-                    //hourworked.Manual = Convert.ToChar(reader["Manual"].ToString());
                 }
                 return hourworked;
             }

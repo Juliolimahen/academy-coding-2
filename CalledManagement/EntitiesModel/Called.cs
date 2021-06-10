@@ -1,11 +1,11 @@
-﻿using CalledManagement.Entities.Enums;
+﻿using CalledManagement.EntitiesDAO.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalledManagement.Entities
+namespace CalledManagement.EntitiesDAO
 {
     //Classe responsável pela modelagem do chamado
     public class Called
