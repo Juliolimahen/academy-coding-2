@@ -70,16 +70,16 @@ namespace CalledManagement
                 Called called = new Called();
                 HourWorked hourworked = new HourWorked();
                 called.Name = txtRegName.Text;
-                if (rbRegCalledHoursSystem.Checked == true)
-                {
+                //if (rbRegCalledHoursSystem.Checked == true)
+               // {
                     dtpRegDate.Enabled = false;
                     called.Date = DateTime.Now;
-                }
-                else
-                {
-                    dtpRegDate.Enabled = true;
-                    called.Date = Convert.ToDateTime(dtpRegDate.Text);
-                }
+                //}
+               // else
+                //{
+                //    dtpRegDate.Enabled = true;
+               //     called.Date = Convert.ToDateTime(dtpRegDate.Text);
+               // }
                 called.Descripition = txtRegDescripition.Text;
 
                 if (rbRegStatusFinished.Checked == true)
@@ -249,20 +249,18 @@ namespace CalledManagement
 
             if (cbxRegIDHours.SelectedIndex < 0)
             {
-                MessageBox.Show("Selecione um codigo identificador para alterar o registro!");
+                MessageBox.Show("Selecione um codigo identificador para alterar o registro e clique novamente em alterar para recuperar os dados!");
                 cbxRegIDHours.Focus();
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Change");
                 cbxRegHours.Enabled = false;
-
-
             }
 
             else if (cbxRegIDHours.SelectedIndex > -1)
             {
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Save");
-                BuscarRegistroHours();
+                SearchHourRecords();
                 cbxRegHours.Enabled = false;
                 //txtRegName.Focus();
             }
@@ -273,22 +271,22 @@ namespace CalledManagement
         //botão responsável por deletar cadastro de horas 
         private void btnRegDeleteHours_Click(object sender, EventArgs e)
         {
-            if (cbxRegID.SelectedIndex >= 0)
+            if (cbxRegIDHours.SelectedIndex >= 0)
             {
                 if (MessageBox.Show("Confirma a exclusão do registro?", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     HourWorkedDAO hourworkeddao = new HourWorkedDAO();
-                    if (hourworkeddao.Delete(Convert.ToInt32(cbxRegHours.SelectedValue.ToString())) == false)
+                    if (hourworkeddao.Delete(Convert.ToInt32(cbxRegIDHours.SelectedValue.ToString())) == false)
                     {
                         cbxRegHours.Focus();
                     }
                     else
                     {
                         Function.Clean(this);
-                        Function.EnableButtons(this, "Init");
-                        cbxRegHours.Focus();
+                        Function.EnableButtons(this, "Load");
+                        cbxRegIDHours.Focus();
                         LoadComboxs();
                         LoadGrids();
                     }
@@ -412,7 +410,7 @@ namespace CalledManagement
             else MessageBox.Show("Codigo do chamado não encontrado!", "Atenção");
         }
         //metodo resposavel por buscar os registros das horas para alteração
-        private void BuscarRegistroHours()
+        private void SearchHourRecords()
         { 
             int id = int.Parse(cbxRegIDHours.SelectedValue.ToString());
             Function.Clean(this);
@@ -470,7 +468,6 @@ namespace CalledManagement
             CalledDAO calleddao = new CalledDAO();
             HourWorkedDAO hourworkeddao = new HourWorkedDAO();
             PriorityDAO prioritydao = new PriorityDAO();
-
             calleddao.ListarComboBox(cbxRegHours);
             prioritydao.ListarComboBox(cbxRegPriority);
             calleddao.ListarComBoxID(cbxRegID);
@@ -478,9 +475,5 @@ namespace CalledManagement
             txtSecSearchCalled.Enabled = true;
         }
 
-        private void cbxRegIDHours_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

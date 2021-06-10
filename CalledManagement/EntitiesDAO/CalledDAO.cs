@@ -18,7 +18,7 @@ namespace CalledManagement.EntitiesDAO
             using (var connection = new SqlConnection(connectionString))
             {
 
-                try // Verifica se a operação com o banco irá occorrer sem erros
+                try // Verifica se a operação com o banco irá ocorrer sem erros
                 {
                     // Abre a conexão com o banco de dados.
                     connection.Open();

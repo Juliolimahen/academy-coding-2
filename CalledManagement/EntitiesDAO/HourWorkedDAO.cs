@@ -84,13 +84,13 @@ namespace CalledManagement.EntitiesDAO
                     //teste
                     MessageBox.Show("Cadastro alterado com sucesso!");
 
-                    // Retorna o comando SQL de INSERT no banco de dados. (Sem Retorno de dados)
+                    // Retorna o comando SQL de INSERT no banco de dados
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                 }
                 catch (Exception ex)
                 {
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
+                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch disparado uma mensagem de erro
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
                 }
@@ -167,16 +167,17 @@ namespace CalledManagement.EntitiesDAO
                     //Busca por nome
                     if (name.Length > 0)
                     {
-                       /* qry.Append(QrySelect);
+                        qry.Clear();
+                        qry.Append(QrySelect);
                         qry.Append(QryFrom);
                         qry.Append(QryJoin);
                         qry.Append(QryOn);
                         qry.Append(qryLike);
-                        qry.Append(QryOrderBy);*/
+                        qry.Append(QryOrderBy);
 
                         cmd.CommandText = ""+ 
                         
-                        #region
+                        /*#region
                         "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange " +
                         "FROM HOURWORKED AS H " +
                         "INNER JOIN CALLED AS C " +
@@ -184,7 +185,7 @@ namespace CalledManagement.EntitiesDAO
                         "WHERE C.Name LIKE @Name " +
                         "ORDER BY H.DateInserted DESC " +
                         "";
-                        #endregion
+                        #endregion*/
                         
                         cmd.Parameters.AddWithValue("@Name", "%" +name+ "%");
                         cmd.ExecuteNonQuery();
@@ -210,7 +211,7 @@ namespace CalledManagement.EntitiesDAO
         public void ListarComBoxID(ComboBox cbxRegID)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry = "SELECT Id FROM HOURWORKED ORDER BY Id ASC";
+            var qry = "SELECT Id FROM HOURWORKED";
 
             using (var connection = new SqlConnection(connectionString))
             {

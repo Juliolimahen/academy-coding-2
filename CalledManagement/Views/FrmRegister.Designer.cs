@@ -80,10 +80,7 @@
             this.rbRegStatusFinished = new System.Windows.Forms.RadioButton();
             this.rbRegStatusProgress = new System.Windows.Forms.RadioButton();
             this.gbxTypeRegHoursCalled = new System.Windows.Forms.GroupBox();
-            this.rbRegCalledHoursSystem = new System.Windows.Forms.RadioButton();
-            this.rbRegCalledHoursManual = new System.Windows.Forms.RadioButton();
             this.dtpRegDate = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnRegFinishedCalled = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbxRegPriority = new System.Windows.Forms.ComboBox();
@@ -467,7 +464,6 @@
             this.cbxRegIDHours.Size = new System.Drawing.Size(463, 21);
             this.cbxRegIDHours.TabIndex = 69;
             this.cbxRegIDHours.Text = "selecione um id";
-            this.cbxRegIDHours.SelectedIndexChanged += new System.EventHandler(this.cbxRegIDHours_SelectedIndexChanged);
             // 
             // btnRegDeleteHours
             // 
@@ -561,18 +557,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(280, 183);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 13);
+            this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 56;
-            this.label2.Text = "Data/           Hora Termino";
+            this.label2.Text = "Data/Hora Termino";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(26, 183);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 13);
+            this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 55;
-            this.label1.Text = "Data /          Hora Inicio";
+            this.label1.Text = "Data /Hora Inicio";
             // 
             // gbxRegCalled
             // 
@@ -653,58 +649,24 @@
             // 
             // gbxTypeRegHoursCalled
             // 
-            this.gbxTypeRegHoursCalled.Controls.Add(this.rbRegCalledHoursSystem);
-            this.gbxTypeRegHoursCalled.Controls.Add(this.rbRegCalledHoursManual);
             this.gbxTypeRegHoursCalled.Controls.Add(this.dtpRegDate);
-            this.gbxTypeRegHoursCalled.Controls.Add(this.label6);
             this.gbxTypeRegHoursCalled.Location = new System.Drawing.Point(32, 213);
             this.gbxTypeRegHoursCalled.Name = "gbxTypeRegHoursCalled";
-            this.gbxTypeRegHoursCalled.Size = new System.Drawing.Size(458, 94);
+            this.gbxTypeRegHoursCalled.Size = new System.Drawing.Size(458, 87);
             this.gbxTypeRegHoursCalled.TabIndex = 78;
             this.gbxTypeRegHoursCalled.TabStop = false;
             this.gbxTypeRegHoursCalled.Text = "Data/Hora Cadastro";
             // 
-            // rbRegCalledHoursSystem
-            // 
-            this.rbRegCalledHoursSystem.AutoSize = true;
-            this.rbRegCalledHoursSystem.Checked = true;
-            this.rbRegCalledHoursSystem.Location = new System.Drawing.Point(9, 28);
-            this.rbRegCalledHoursSystem.Name = "rbRegCalledHoursSystem";
-            this.rbRegCalledHoursSystem.Size = new System.Drawing.Size(62, 17);
-            this.rbRegCalledHoursSystem.TabIndex = 77;
-            this.rbRegCalledHoursSystem.TabStop = true;
-            this.rbRegCalledHoursSystem.Text = "Sistema";
-            this.rbRegCalledHoursSystem.UseVisualStyleBackColor = true;
-            // 
-            // rbRegCalledHoursManual
-            // 
-            this.rbRegCalledHoursManual.AutoSize = true;
-            this.rbRegCalledHoursManual.Location = new System.Drawing.Point(77, 28);
-            this.rbRegCalledHoursManual.Name = "rbRegCalledHoursManual";
-            this.rbRegCalledHoursManual.Size = new System.Drawing.Size(60, 17);
-            this.rbRegCalledHoursManual.TabIndex = 76;
-            this.rbRegCalledHoursManual.Text = "Manual";
-            this.rbRegCalledHoursManual.UseVisualStyleBackColor = true;
-            // 
             // dtpRegDate
             // 
             this.dtpRegDate.Enabled = false;
-            this.dtpRegDate.Location = new System.Drawing.Point(75, 60);
+            this.dtpRegDate.Location = new System.Drawing.Point(6, 37);
             this.dtpRegDate.Mask = "00/00/0000 90:00";
             this.dtpRegDate.Name = "dtpRegDate";
-            this.dtpRegDate.Size = new System.Drawing.Size(120, 20);
+            this.dtpRegDate.Size = new System.Drawing.Size(179, 20);
             this.dtpRegDate.TabIndex = 58;
             this.dtpRegDate.ValidatingType = typeof(System.DateTime);
             this.dtpRegDate.VisibleChanged += new System.EventHandler(this.FrmRegisterCalled_Load);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 63);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Data e hora";
             // 
             // btnRegFinishedCalled
             // 
@@ -894,14 +856,11 @@
         private System.Windows.Forms.Button btnRegCancelCalled;
         private System.Windows.Forms.Button btnRegChangeCalled;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabControl tbcCalled;
         private System.Windows.Forms.Button btnRegFinishedCalled;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbxRegPriority;
         private System.Windows.Forms.GroupBox gbxTypeRegHoursCalled;
-        private System.Windows.Forms.RadioButton rbRegCalledHoursSystem;
-        private System.Windows.Forms.RadioButton rbRegCalledHoursManual;
         private System.Windows.Forms.GroupBox gbxStatus;
         private System.Windows.Forms.RadioButton rbRegStatusFinished;
         private System.Windows.Forms.RadioButton rbRegStatusProgress;

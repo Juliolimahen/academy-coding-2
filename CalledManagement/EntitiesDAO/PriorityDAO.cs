@@ -25,7 +25,7 @@ namespace CalledManagement.EntitiesDAO
                     cmd.ExecuteNonQuery();
 
                     //teste...
-                    MessageBox.Show("Cadastro salvo com sucesso!");
+                    //MessageBox.Show("Cadastro salvo com sucesso!");
                     return true;
                 }
                 catch (Exception ex)
@@ -64,14 +64,12 @@ namespace CalledManagement.EntitiesDAO
                     MessageBox.Show("Cadastro Excluido com sucesso!");
                     return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
                     // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
-                    // Informando "Erro ao salvar registro" + o erro recebido do banco de dados
                 }
                 finally
                 {

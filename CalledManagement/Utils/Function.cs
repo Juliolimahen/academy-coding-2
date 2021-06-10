@@ -68,7 +68,7 @@ namespace CalledManagement.Utils
                             }
                             else if (((Button)ctl).Name == "btnRegFinish" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
-                                ((Button)ctl).Enabled = false;
+                                ((Button)ctl).Enabled = true;
                             }
                         }
                         if (sit == "Change")
@@ -95,7 +95,7 @@ namespace CalledManagement.Utils
                             }
                             else if (((Button)ctl).Name == "btnRegFinish" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
-                                ((Button)ctl).Enabled = false;
+                                ((Button)ctl).Enabled = true;
                             }
                         }
                         if (sit == "Init")
@@ -122,7 +122,7 @@ namespace CalledManagement.Utils
                             }
                             else if (((Button)ctl).Name == "btnRegFinishedCalled" || (((Button)ctl).Name == "btnRegFinishedHours"))
                             {
-                                ((Button)ctl).Enabled = false;
+                                ((Button)ctl).Enabled = true;
                             }
                         }
                         if (sit == "Load")
