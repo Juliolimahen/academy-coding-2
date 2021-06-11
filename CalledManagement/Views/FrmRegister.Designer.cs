@@ -80,7 +80,7 @@
             this.rbRegStatusFinished = new System.Windows.Forms.RadioButton();
             this.rbRegStatusProgress = new System.Windows.Forms.RadioButton();
             this.gbxTypeRegHoursCalled = new System.Windows.Forms.GroupBox();
-            this.dtpRegDate = new System.Windows.Forms.MaskedTextBox();
+            this.txtRegDate = new System.Windows.Forms.MaskedTextBox();
             this.btnRegFinishedCalled = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbxRegPriority = new System.Windows.Forms.ComboBox();
@@ -649,7 +649,7 @@
             // 
             // gbxTypeRegHoursCalled
             // 
-            this.gbxTypeRegHoursCalled.Controls.Add(this.dtpRegDate);
+            this.gbxTypeRegHoursCalled.Controls.Add(this.txtRegDate);
             this.gbxTypeRegHoursCalled.Location = new System.Drawing.Point(32, 213);
             this.gbxTypeRegHoursCalled.Name = "gbxTypeRegHoursCalled";
             this.gbxTypeRegHoursCalled.Size = new System.Drawing.Size(458, 87);
@@ -657,16 +657,16 @@
             this.gbxTypeRegHoursCalled.TabStop = false;
             this.gbxTypeRegHoursCalled.Text = "Data/Hora Cadastro";
             // 
-            // dtpRegDate
+            // txtRegDate
             // 
-            this.dtpRegDate.Enabled = false;
-            this.dtpRegDate.Location = new System.Drawing.Point(6, 37);
-            this.dtpRegDate.Mask = "00/00/0000 90:00";
-            this.dtpRegDate.Name = "dtpRegDate";
-            this.dtpRegDate.Size = new System.Drawing.Size(179, 20);
-            this.dtpRegDate.TabIndex = 58;
-            this.dtpRegDate.ValidatingType = typeof(System.DateTime);
-            this.dtpRegDate.VisibleChanged += new System.EventHandler(this.FrmRegisterCalled_Load);
+            this.txtRegDate.Enabled = false;
+            this.txtRegDate.Location = new System.Drawing.Point(6, 37);
+            this.txtRegDate.Mask = "00/00/0000 90:00";
+            this.txtRegDate.Name = "txtRegDate";
+            this.txtRegDate.Size = new System.Drawing.Size(179, 20);
+            this.txtRegDate.TabIndex = 58;
+            this.txtRegDate.ValidatingType = typeof(System.DateTime);
+            this.txtRegDate.VisibleChanged += new System.EventHandler(this.FrmRegisterCalled_Load);
             // 
             // btnRegFinishedCalled
             // 
@@ -799,8 +799,8 @@
             this.Controls.Add(this.tbcCalled);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRegisterCalled";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chamados";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpClosedCalled.ResumeLayout(false);
             this.tbpClosedCalled.PerformLayout();
@@ -846,7 +846,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbxRegCalled;
-        private System.Windows.Forms.MaskedTextBox dtpRegDate;
+        private System.Windows.Forms.MaskedTextBox txtRegDate;
         private System.Windows.Forms.Button btnRegDeleteCalled;
         private System.Windows.Forms.TextBox txtRegDescripition;
         private System.Windows.Forms.TextBox txtRegName;

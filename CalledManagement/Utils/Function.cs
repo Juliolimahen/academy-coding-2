@@ -70,6 +70,10 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = true;
                             }
+                            else if (((Button)ctl).Name == "btnSecSearch" || (((Button)ctl).Name == "btnSecSearchHours"))
+                            {
+                                ((Button)ctl).Enabled = true;
+                            }
                         }
                         if (sit == "Change")
                         {
@@ -94,6 +98,10 @@ namespace CalledManagement.Utils
                                 ((Button)ctl).Enabled = true;
                             }
                             else if (((Button)ctl).Name == "btnRegFinish" || (((Button)ctl).Name == "btnRegFinishedHours"))
+                            {
+                                ((Button)ctl).Enabled = true;
+                            }
+                            else if (((Button)ctl).Name == "btnSecSearch" || (((Button)ctl).Name == "btnSecSearchHours"))
                             {
                                 ((Button)ctl).Enabled = true;
                             }
@@ -124,6 +132,10 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = true;
                             }
+                            else if (((Button)ctl).Name == "btnSecSearch" || (((Button)ctl).Name == "btnSecSearchHours"))
+                            {
+                                ((Button)ctl).Enabled = true;
+                            }
                         }
                         if (sit == "Load")
                         {
@@ -151,6 +163,10 @@ namespace CalledManagement.Utils
                             {
                                 ((Button)ctl).Enabled = true;
                             }
+                            else if (((Button)ctl).Name == "btnSecSearch" || (((Button)ctl).Name == "btnSecSearchHours"))
+                            {
+                                ((Button)ctl).Enabled = true;
+                            }
                         }
                         break;
                     default:
@@ -163,7 +179,6 @@ namespace CalledManagement.Utils
                 }
             }
         }
-
         //funcao responsavel por habilitar os campos 
         public static void EnableFields(Control formulario, bool p)
         {

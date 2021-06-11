@@ -24,8 +24,6 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@Days", priority.Days);
                     cmd.ExecuteNonQuery();
 
-                    //teste...
-                    //MessageBox.Show("Cadastro salvo com sucesso!");
                     return true;
                 }
                 catch (Exception ex)
@@ -46,30 +44,22 @@ namespace CalledManagement.EntitiesDAO
 
             using (var connection = new SqlConnection(connectionString))
             {
-                try // Verifica se a operação com o banco irá ocorre irá ocorresem erros
+                try 
                 {
-                    // Abre a conexão com o banco de dados.
                     connection.Open();
                     var cmd = new SqlCommand(qry, connection);
 
-                    // Esse objeto é responsável em executar os comandos SQL
                     cmd.Parameters.AddWithValue("@Id", priority.Id);
                     cmd.Parameters.AddWithValue("@Name", priority.Name);
                     cmd.Parameters.AddWithValue("@Days", priority.Days);
-
-                    // Retorna o comando SQL de INSERT no banco de dados
                     cmd.ExecuteNonQuery();
 
-                    //teste
-                    MessageBox.Show("Cadastro Excluido com sucesso!");
                     return true;
-                    // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro para
                 }
                 finally
                 {
@@ -106,7 +96,7 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ListarComboBox(ComboBox cbxRegPriority)
+        public void ToListComboBox(ComboBox cbxRegPriority)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             var qry = "SELECT Name, Id FROM PRIORITY ORDER BY Days DESC";

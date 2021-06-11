@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Text;
 
 namespace CalledManagement.EntitiesDAO
 {
@@ -12,9 +13,11 @@ namespace CalledManagement.EntitiesDAO
     {
         public bool Insert(Called called)
         {
+            //String de conexao
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+            //Variavel que armazena comando sql
             string qry = "INSERT INTO CALLED (Name, Date, Descripition, Finished, PriorityId) VALUES (@Name, @Date, @Descripition, @Finished, @PriorityId)";
-
+            // Cria objeto connection da classe Sql Connection passando por parâmetro a string de conexão
             using (var connection = new SqlConnection(connectionString))
             {
 
@@ -22,7 +25,7 @@ namespace CalledManagement.EntitiesDAO
                 {
                     // Abre a conexão com o banco de dados.
                     connection.Open();
-                    // Cria objeto cmd da classe SQLCommand passando os comandos SQL e a conexão como parametro
+                    // Cria objeto cmd da classe SQLCommand passando os comandos SQL e a conexão como parametro e executar o SQL
                     var cmd = new SqlCommand(qry, connection);
 
                     cmd.Parameters.AddWithValue("@Name", called.Name);
@@ -33,10 +36,8 @@ namespace CalledManagement.EntitiesDAO
 
                     // Método para executar comandos no BD
                     cmd.ExecuteNonQuery();
-
-                    return true;
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
-
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -55,7 +56,7 @@ namespace CalledManagement.EntitiesDAO
         public bool Change(Called called)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            string qry = "update CALLED set Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId where Id = @Id";
+            string qry = "UPDATE CALLED SET Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId WHERE Id = @Id";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -67,8 +68,6 @@ namespace CalledManagement.EntitiesDAO
                     // Esse objeto é responsável em executar os comandos SQL
                     var cmd = new SqlCommand(qry, connection);
 
-                    
-
                     cmd.Parameters.AddWithValue("@Id", called.Id);
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
@@ -79,12 +78,8 @@ namespace CalledManagement.EntitiesDAO
                     // Retorna o comando SQL de INSERT no banco de dados
                     cmd.ExecuteNonQuery();
 
-                    //teste
-                    MessageBox.Show("Cadastro alterado com sucesso!");
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                     return true;
-
-
                 }
                 // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
                 catch (Exception ex)
@@ -103,7 +98,7 @@ namespace CalledManagement.EntitiesDAO
         public bool Delete(int ID)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            string qry = "delete from CALLED where Id = @Id";
+            string qry = "DELETE FROM CALLED where Id = @Id";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -115,8 +110,6 @@ namespace CalledManagement.EntitiesDAO
 
                     cmd.Parameters.AddWithValue("@Id", ID);
                     cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Cadastro Excluido com sucesso!");
 
                     return true;
 
@@ -132,24 +125,32 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ListarGrid(DataGridView dgvSecCalled, string name)
+        public void ToListGrid(DataGridView dgvSecCalled, string name)
         {
+            //string de conexao
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-
-            string qry = "" +
+            
+            //Variaveis que armazenam os comandos SQL
             #region
-               "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE), " +
-               "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-               "FROM CALLED c " +
-               "INNER JOIN PRIORITY p " +
-               "ON c.PriorityId = p.Id " +
-               "LEFT JOIN HOURWORKED h ON " +
-               "c.Id = h.CalledId " +
-               "group BY c.Id, c.Name, c.Date, c.Finished, " +
-               "c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE) " +
-               "ORDER BY c.Finished, CAST(h.EndDate AS DATE), c.Date DESC, c.PriorityId DESC " +
+            string QrySelect = "SELECT C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE), " +
+            "SUM(DATEDIFF(minute, DateStarted, EndDate)) ";
+            string QryFrom = "FROM CALLED C ";
+            string QryInnerJoin = "INNER JOIN PRIORITY P ON C.PriorityId = P.Id ";
+            string QryLeftJoin = "LEFT JOIN HOURWORKED H ON C.Id = H.CalledId ";
+            string QryGroupBy = "group BY C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE) ";
+            string QryOrderBy = "ORDER BY C.Finished, CAST(H.DateInserted AS DATE), C.Date DESC, C.PriorityId DESC ";
+            string QryWhere = "WHERE c.Name ";
+            string QryLike = "LIKE @Name ";
             #endregion
-               "";
+
+            StringBuilder qry = new StringBuilder();
+
+            qry.Append(QrySelect);
+            qry.Append(QryFrom);
+            qry.Append(QryInnerJoin);
+            qry.Append(QryLeftJoin);
+            qry.Append(QryGroupBy);
+            qry.Append(QryOrderBy);
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -157,26 +158,22 @@ namespace CalledManagement.EntitiesDAO
 
                 try
                 {
-                    var cmd = new SqlCommand(qry, connection);
+                    var cmd = new SqlCommand(qry.ToString(), connection);
 
                     // Pesquisa por nome Nome
                     if (name.Length > 0)
                     {
-                        cmd.CommandText = "" +
-                        #region
-                           "SELECT c.Id, c.Name, c.Date, c.Finished, c.Descripition,c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE), " +
-                           "SUM(DATEDIFF(minute, DateStarted, EndDate)) " +
-                           "FROM CALLED c " +
-                           "INNER JOIN PRIORITY p " +
-                           "ON c.PriorityId = p.Id " +
-                           "LEFT JOIN HOURWORKED h ON " +
-                           "c.Id = h.CalledId " +
-                           "WHERE c.Name LIKE @Name " +
-                           "group BY c.Id, c.Name, c.Date, c.Finished, " +
-                           "c.Descripition, c.PriorityId, p.Name, p.Days, CAST(h.EndDate AS DATE) " +
-                           "ORDER BY c.Finished, CAST(h.EndDate AS DATE), c.Date DESC, c.PriorityId DESC" +
-                        #endregion
-                           "";
+                        qry.Clear();
+                        qry.Append(QrySelect);
+                        qry.Append(QryFrom);
+                        qry.Append(QryInnerJoin);
+                        qry.Append(QryLeftJoin);
+                        qry.Append(QryWhere);
+                        qry.Append(QryLike);
+                        qry.Append(QryGroupBy);
+                        qry.Append(QryOrderBy);
+
+                        cmd.CommandText = qry.ToString();
                         cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
                         cmd.ExecuteNonQuery();
                     }
@@ -197,7 +194,7 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ListarComboBox(ComboBox cbxSec)
+        public void ToListComboBox(ComboBox cbxSec)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
@@ -229,7 +226,7 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ListarComBoxID(ComboBox cbxRegID)
+        public void ToListComBoxID(ComboBox cbxRegID)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 

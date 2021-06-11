@@ -97,10 +97,8 @@
     <Compile Include="EntitiesDAO\HourWorkedDAO.cs" />
     <Compile Include="EntitiesDAO\PriorityDAO.cs" />
     <Compile Include="EntitiesModel\Called.cs" />
-    <Compile Include="EntitiesModel\Enums\CalledStatus.cs" />
     <Compile Include="EntitiesModel\HourWorked.cs" />
     <Compile Include="EntitiesModel\Priority.cs" />
-    <Compile Include="Enums\Operation.cs" />
     <Compile Include="Views\FrmRepHours.cs">
       <SubType>Form</SubType>
     </Compile>
