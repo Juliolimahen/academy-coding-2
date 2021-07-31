@@ -32,8 +32,7 @@ namespace CalledManagement
             Function.EnableButtons(this, "Load");
             LoadComboxs();
             LoadGrids();
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
             Function.Clean(this);
         }
         //Botão para Finalizar chamado
@@ -50,8 +49,7 @@ namespace CalledManagement
             cbxRegID.Enabled = false;
             txtRegName.Focus();
             operation = "Init";
-            txtRegDate.Enabled = false;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botão para salvar registros 
         private void btnRegSave_Click(object sender, EventArgs e)
@@ -62,9 +60,7 @@ namespace CalledManagement
                 HourWorked hourworked = new HourWorked();
                 called.Name = txtRegName.Text;
                 called.Date = DateTime.Now;
-              
                 called.Descripition = txtRegDescripition.Text;
-
                 if (rbRegStatusFinished.Checked == true)
                 {
                     called.Finished = "S";
@@ -85,6 +81,10 @@ namespace CalledManagement
                         txtRegName.Focus();
                         return;
                     }
+                    else
+                    {
+                        MessageBox.Show("Cadastro salvo com sucesso!!!");
+                    }
                 }
                 else if (operation == "Change")
                 {
@@ -95,11 +95,14 @@ namespace CalledManagement
                         txtRegName.Focus();
                         return;
                     }
+                    else
+                    {
+                        MessageBox.Show("Cadastro alterado com sucesso!!!");
+                    }
                     txtRegDate.Enabled = false;
                 }
+                
             }
-
-            MessageBox.Show("Cadastro salvo com sucesso!");
             LoadComboxs();
             LoadGrids();
             Function.EnableFields(this, false);
@@ -108,8 +111,7 @@ namespace CalledManagement
             cbxRegID.Enabled = true;
             cbxRegID.Focus();
             operation = "";
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
@@ -131,10 +133,8 @@ namespace CalledManagement
                 cbxRegID.Enabled = true;
                 txtRegName.Focus();
             }
-
             operation = "Change";
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botão responsável por cancelar cadastro 
         private void btnRegCancel_Click(object sender, EventArgs e)
@@ -146,8 +146,7 @@ namespace CalledManagement
                 Function.Clean(this);
                 Function.EnableButtons(this, "Load");
                 operation = "";
-                txtSecSearchHours.Enabled = true;
-                txtSecSearchCalled.Enabled = true;
+                HabilitarTxtPesquisaGrid();
             }
         }
         //botão resposavel por deletar registros dos chamados 
@@ -173,17 +172,15 @@ namespace CalledManagement
                         cbxRegID.Focus();
                         LoadGrids();
                         LoadComboxs();
-                        MessageBox.Show("Cadastro Excluido com sucesso!");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Digite um codigo identificador para excluir um registro!");
+                MessageBox.Show("Selecione um codigo identificador para excluir um registro!");
                 Function.EnableFields(this, true);
             }
-            txtSecSearchCalled.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //Botão pesquisa na grid view 
         private void btnSecSearch_Click(object sender, EventArgs e)
@@ -199,8 +196,7 @@ namespace CalledManagement
             cbxRegIDHours.Enabled = false;
             cbxRegHours.Focus();
             operation = "Init";
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botão responsável por por aterar cadastro horas
         private void btnRegChangeHours_Click(object sender, EventArgs e)
@@ -224,8 +220,7 @@ namespace CalledManagement
             }
 
             operation = "Change";
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botão responsável por deletar cadastro de horas 
         private void btnRegDeleteHours_Click(object sender, EventArgs e)
@@ -259,8 +254,7 @@ namespace CalledManagement
                 Function.EnableFields(this, true);
                 cbxRegHours.Enabled = false;
             }
-            txtSecSearchCalled.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botao responsavel por salvar resgistro de horas 
         private void btnRegSaveHours_Click(object sender, EventArgs e)
@@ -291,21 +285,15 @@ namespace CalledManagement
                         txtRegName.Focus();
                         return;
                     }
-                    else
-                    {
-                        MessageBox.Show("Cadastro salvo com sucesso!");
-                    }
                 }
             }
-
             LoadComboxs();
             LoadGrids();
             Function.EnableFields(this, false);
             Function.Clean(this);
             Function.EnableButtons(this, "Init");
-            operation = "";
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            operation = "Init";
+            HabilitarTxtPesquisaGrid();
         }
         //botao responsável por disabilitar a tela de cadastro de horas 
         private void btnRegFinishedHours_Click(object sender, EventArgs e)
@@ -316,8 +304,7 @@ namespace CalledManagement
                 gbxRegCalled.Enabled = true;
                 gbxRegHours.Enabled = false;
             }
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //botao responsável por disabilitar a tela de cadastro de chamados
         private void btnRegFinishedCalled_Click(object sender, EventArgs e)
@@ -328,8 +315,7 @@ namespace CalledManagement
                 gbxRegHours.Enabled = true;
                 gbxRegCalled.Enabled = false;
             }
-            txtSecSearchHours.Enabled = true;
-            txtSecSearchCalled.Enabled = true;
+            HabilitarTxtPesquisaGrid();
         }
         //metodo resposavel pela validação dos dados de chamados
         private Boolean ValidateDataCalled()
@@ -358,10 +344,10 @@ namespace CalledManagement
                 return false;
 
             }
-            if (!mstbRegDateTimeInit.MaskCompleted)
+            if (!mstbRegDateTimeFinished.MaskCompleted)
             {
                 MessageBox.Show("O campo data/hora Termino é obrigatório!", "Atenção");
-                mstbRegDateTimeInit.Focus();
+                mstbRegDateTimeFinished.Focus();
                 return false;
             }
 
@@ -369,7 +355,7 @@ namespace CalledManagement
             {
                 if (Convert.ToDateTime(mstbRegDateTimeInit.Text) > Convert.ToDateTime(mstbRegDateTimeFinished.Text) || Convert.ToDateTime(mstbRegDateTimeInit.Text) > DateTime.Now)
                 {
-                    MessageBox.Show("A Data de inicio não pode ser mais recente que a data de termino!");
+                    MessageBox.Show("A Data de inicio não pode ser mais recente que a data de termino ou a data do sistema!");
                     mstbRegDateTimeInit.Focus();
                     return false;
                 }
@@ -462,6 +448,10 @@ namespace CalledManagement
             hourworkeddao.ToListComBox(cbxRegIDHours);
             txtSecSearchCalled.Enabled = true;
         }
-
+       public void HabilitarTxtPesquisaGrid()
+        {
+            txtSecSearchHours.Enabled = true;
+            txtSecSearchCalled.Enabled = true;
+        }
     }
 }

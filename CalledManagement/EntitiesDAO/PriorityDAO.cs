@@ -12,8 +12,7 @@ namespace CalledManagement.EntitiesDAO
         public bool Insert(Priority priority)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry= "insert into PRIORITY (Name, Days) values (@Name, @Days)";
-
+            string qry= "insert into PRIORITY (Name, Days) values (@Name, @Days)";
             using (var connection = new SqlConnection(connectionString))
             {
                 try 
@@ -23,7 +22,7 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@Name", priority.Name);
                     cmd.Parameters.AddWithValue("@Days", priority.Days);
                     cmd.ExecuteNonQuery();
-
+                    MessageBox.Show("Cadastro Salvo com sucesso!");
                     return true;
                 }
                 catch (Exception ex)
@@ -40,7 +39,7 @@ namespace CalledManagement.EntitiesDAO
         public bool Change(Priority priority)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry = "update USER set Name = @Name, Days = @Days where Id = @Id";
+            string qry = "update USER set Name = @Name, Days = @Days where Id = @Id";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -53,6 +52,8 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@Name", priority.Name);
                     cmd.Parameters.AddWithValue("@Days", priority.Days);
                     cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Cadastro alterado com sucesso!");
 
                     return true;
                 }
@@ -77,12 +78,9 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Open();
                     var cmd = new SqlCommand(qry, connection);
-
                     cmd.Parameters.AddWithValue("@Id", ID);
                     cmd.ExecuteNonQuery();
-
                     MessageBox.Show("Cadastro Excluido com sucesso!");
-
                     return true;
                 }
                 catch (Exception ex)
@@ -99,7 +97,7 @@ namespace CalledManagement.EntitiesDAO
         public void ToListComboBox(ComboBox cbxRegPriority)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            var qry = "SELECT Name, Id FROM PRIORITY ORDER BY Days DESC";
+            string qry = "SELECT Name, Id FROM PRIORITY ORDER BY Days DESC";
             using (var connection = new SqlConnection(connectionString))
             {
                 try
@@ -108,7 +106,6 @@ namespace CalledManagement.EntitiesDAO
                     var cmd = new SqlCommand(qry, connection);
                     SqlDataReader adp = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-
                     dt.Load(adp);
                     cbxRegPriority.DisplayMember = "Name";
                     cbxRegPriority.ValueMember = "Id";
