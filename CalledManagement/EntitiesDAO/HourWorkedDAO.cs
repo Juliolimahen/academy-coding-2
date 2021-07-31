@@ -32,21 +32,14 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@CalledId", hourworked.CalledId.Id);
                     cmd.Parameters.AddWithValue("@DateInserted", hourworked.DateInserted);
                     cmd.Parameters.AddWithValue("@DateStarted", hourworked.DateStarted);
-                    if (hourworked.EndDate != null)
-                    {
-                        cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@EndDate",DBNull.Value);
-                    }
+                    cmd.Parameters.AddWithValue("@EndDate", hourworked.EndDate);
 
                     // Retorna o comando SQL de INSERT no banco de dados. 
                     cmd.ExecuteNonQuery();
-                    
+                    MessageBox.Show("Cadastro salvo com sucesso!");
+
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                     return true;
-                    
                 }
                 catch (Exception ex)
                 {
@@ -68,7 +61,7 @@ namespace CalledManagement.EntitiesDAO
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             //Variavel que armazena o camando SQL 
             string qry = "UPDATE HOURWORKED set CalledId = @CalledId, DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
-            
+
             // Cria objeto connection da classe Sql Connection passando por parâmetro a string de conexão 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -89,6 +82,7 @@ namespace CalledManagement.EntitiesDAO
 
                     // Retorna o comando SQL UPDATE no banco de dados
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cadastro alterado com sucesso!");
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente
                     return true;
                 }
@@ -125,6 +119,8 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@Id", ID);
                     cmd.ExecuteNonQuery();
 
+                    MessageBox.Show("Cadastro excluido com sucesso!");
+
                     return true;
                 }
                 catch (Exception ex)
@@ -141,32 +137,28 @@ namespace CalledManagement.EntitiesDAO
         public void ToListGrid(DataGridView dgvSecHours, string name)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-
-            #region
+            #region Strings SQL
             string QrySelect = "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange ";
             string QryFrom = "FROM HOURWORKED AS H ";
             string QryJoin = "INNER JOIN CALLED AS C ";
             string QryOn = "ON H.CalledId = C.Id ";
-            string QryOrderBy=  "ORDER BY H.DateInserted DESC ";
+            string QryOrderBy = "ORDER BY H.DateInserted DESC ";
             string QryLike = "WHERE C.Name LIKE @Name ";
-            #endregion
-
+            #endregion 
             StringBuilder qry = new StringBuilder();
-
             qry.Append(QrySelect);
             qry.Append(QryFrom);
             qry.Append(QryJoin);
             qry.Append(QryOn);
             qry.Append(QryOrderBy);
-
             using (var connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     //Abre conexão
                     connection.Open();
-                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
 
+                    // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
                     var cmd = new SqlCommand(qry.ToString(), connection);
 
                     //Busca por nome
@@ -179,24 +171,19 @@ namespace CalledManagement.EntitiesDAO
                         qry.Append(QryOn);
                         qry.Append(QryLike);
                         qry.Append(QryOrderBy);
-
                         cmd.CommandText = qry.ToString();
-                                  
-                        cmd.Parameters.AddWithValue("@Name", "%" +name+ "%");
+                        cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
                         cmd.ExecuteNonQuery();
                     }
-
                     SqlDataReader rd = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(rd);
                     dgvSecHours.DataSource = dt;
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao Listar registros: " + ex.Message);
                 }
-
                 finally
                 {
                     connection.Close();
@@ -213,24 +200,21 @@ namespace CalledManagement.EntitiesDAO
                 try
                 {
                     connection.Open();
+
                     // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
                     var cmd = new SqlCommand(qry, connection);
-
                     SqlDataReader dr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-
                     dt.Load(dr);
                     cbxRegID.Text = "Selecione um id";
                     cbxRegID.DisplayMember = "Id";
                     cbxRegID.ValueMember = "Id";
                     cbxRegID.DataSource = dt;
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao Listas registros: " + ex.Message);
                 }
-
                 finally
                 {
                     connection.Close();
@@ -242,20 +226,19 @@ namespace CalledManagement.EntitiesDAO
             HourWorked hourworked = new HourWorked();
             Called called = new Called();
             hourworked.CalledId = called;
-
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             var qry = "SELECT Id, CalledId, DateInserted, DateStarted, EndDate, DateChange " +
                     "FROM HOURWORKED WHERE Id LIKE @Id";
-
             using (var connection = new SqlConnection(connectionString))
             {
                 //Abre conexão
                 connection.Open();
+
                 // Cria objeto cmd da classe SqlCommand passando os comandos SQL e a conexão com o Banco de Dados
                 var cmd = new SqlCommand(qry, connection);
-
                 cmd.Parameters.AddWithValue("@Id", ID);
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 //percorre todas linhas de DataReader
                 while (reader.Read())
                 {

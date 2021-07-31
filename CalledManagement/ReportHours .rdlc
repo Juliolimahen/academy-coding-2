@@ -558,8 +558,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox12</rd:DefaultName>
-          <Top>0.86361cm</Top>
-          <Left>7.10537cm</Left>
+          <Top>0.96944cm</Top>
+          <Left>6.33808cm</Left>
           <Height>1.5cm</Height>
           <Width>6.86562cm</Width>
           <ZIndex>1</ZIndex>
@@ -589,7 +589,7 @@
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
           <Top>1.2937cm</Top>
-          <Left>16.46495cm</Left>
+          <Left>14.52058cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>2</ZIndex>

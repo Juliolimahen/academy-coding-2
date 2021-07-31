@@ -301,3 +301,4 @@ C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\D
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.pdb
 C:\Users\TI_NET_PC\Documents\academy\academycoding2\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
 C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.csprojAssemblyReference.cache
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement\obj\Debug\CalledManagement.Views.FrmDashboard.resources

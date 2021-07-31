@@ -31,7 +31,6 @@ namespace CalledManagement.Utils
                         {
                             Clean(ctl);
                         }
-
                         break;
                 }
             }
@@ -174,7 +173,6 @@ namespace CalledManagement.Utils
                         {
                             EnableButtons(ctl, sit);
                         }
-
                         break;
                 }
             }

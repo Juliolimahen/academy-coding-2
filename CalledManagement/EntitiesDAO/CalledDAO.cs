@@ -16,18 +16,16 @@ namespace CalledManagement.EntitiesDAO
             //String de conexao
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             //Variavel que armazena comando sql
-            string qry = "INSERT INTO CALLED (Name, Date, Descripition, Finished, PriorityId) VALUES (@Name, @Date, @Descripition, @Finished, @PriorityId)";
+            var qry = "INSERT INTO CALLED (Name, Date, Descripition, Finished, PriorityId) VALUES (@Name, @Date, @Descripition, @Finished, @PriorityId)";
             // Cria objeto connection da classe Sql Connection passando por parâmetro a string de conexão
             using (var connection = new SqlConnection(connectionString))
             {
-
                 try // Verifica se a operação com o banco irá ocorrer sem erros
                 {
-                    // Abre a conexão com o banco de dados.
+                    // Abre a conexão com o banco de dados
                     connection.Open();
                     // Cria objeto cmd da classe SQLCommand passando os comandos SQL e a conexão como parametro e executar o SQL
                     var cmd = new SqlCommand(qry, connection);
-
                     cmd.Parameters.AddWithValue("@Name", called.Name);
                     cmd.Parameters.AddWithValue("@Date", called.Date);
                     cmd.Parameters.AddWithValue("@Descripition", called.Descripition);
@@ -36,16 +34,17 @@ namespace CalledManagement.EntitiesDAO
 
                     // Método para executar comandos no BD
                     cmd.ExecuteNonQuery();
-                    // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
+                    MessageBox.Show("Cadastro salvo com sucesso!");
+                    // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch exibindo uma mensagem de erro
+                    // Caso ocorra algum erro nos comandos abaixo do try será executado o catch exibindo uma mensagem de erro
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
                     return false;
                 }
-                // O finally é sempre executado,
+                // O finally é sempre executado
                 finally
                 {
                     //fecha a conexão com o banco
@@ -56,7 +55,7 @@ namespace CalledManagement.EntitiesDAO
         public bool Change(Called called)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            string qry = "UPDATE CALLED SET Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId WHERE Id = @Id";
+            var qry = "UPDATE CALLED SET Name = @Name, Date = @Date, Descripition = @Descripition, Finished = @Finished, PriorityId = @PriorityId WHERE Id = @Id";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -75,13 +74,14 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@Finished", called.Finished);
                     cmd.Parameters.AddWithValue("@PriorityId", called.PriorityId.Id);
 
-                    // Retorna o comando SQL de INSERT no banco de dados
+                    // Retorna o comando SQL de Upadate no banco de dados
                     cmd.ExecuteNonQuery();
 
+                    MessageBox.Show("Cadastro alterado com sucesso!");
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                     return true;
                 }
-                // Caso ocorrra algum erro nos comandos abaixo do try será executado o catch(), disparado uma mensagem de erro
+                // Caso ocorra algum erro nos comandos abaixo do try será executado o catch disparado uma mensagem de erro
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao salvar registro: " + ex.Message);
@@ -98,7 +98,7 @@ namespace CalledManagement.EntitiesDAO
         public bool Delete(int ID)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            string qry = "DELETE FROM CALLED where Id = @Id";
+            var qry = "DELETE FROM CALLED where Id = @Id";
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -111,6 +111,7 @@ namespace CalledManagement.EntitiesDAO
                     cmd.Parameters.AddWithValue("@Id", ID);
                     cmd.ExecuteNonQuery();
 
+                    MessageBox.Show("Cadastro excluido com sucesso!");
                     return true;
 
                 }
@@ -129,22 +130,20 @@ namespace CalledManagement.EntitiesDAO
         {
             //string de conexao
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            
+
             //Variaveis que armazenam os comandos SQL
-            #region
+            #region String SQL
             string QrySelect = "SELECT C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE), " +
             "SUM(DATEDIFF(minute, DateStarted, EndDate)) ";
             string QryFrom = "FROM CALLED C ";
             string QryInnerJoin = "INNER JOIN PRIORITY P ON C.PriorityId = P.Id ";
             string QryLeftJoin = "LEFT JOIN HOURWORKED H ON C.Id = H.CalledId ";
             string QryGroupBy = "group BY C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE) ";
-            string QryOrderBy = "ORDER BY C.Finished, CAST(H.DateInserted AS DATE), C.Date DESC, C.PriorityId DESC ";
-            string QryWhere = "WHERE c.Name ";
+            string QryOrderBy = "ORDER BY C.Finished, CAST(H.DateInserted AS DATE) Desc, C.Date DESC, C.PriorityId DESC ";
+            string QryWhere = "WHERE C.Name ";
             string QryLike = "LIKE @Name ";
             #endregion
-
             StringBuilder qry = new StringBuilder();
-
             qry.Append(QrySelect);
             qry.Append(QryFrom);
             qry.Append(QryInnerJoin);
@@ -155,7 +154,6 @@ namespace CalledManagement.EntitiesDAO
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
                 try
                 {
                     var cmd = new SqlCommand(qry.ToString(), connection);
@@ -172,18 +170,15 @@ namespace CalledManagement.EntitiesDAO
                         qry.Append(QryLike);
                         qry.Append(QryGroupBy);
                         qry.Append(QryOrderBy);
-
                         cmd.CommandText = qry.ToString();
                         cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
                         cmd.ExecuteNonQuery();
                     }
-
                     SqlDataReader rd = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(rd);
                     dgvSecCalled.DataSource = dt;
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao Listas registros: " + ex.Message);
@@ -197,19 +192,15 @@ namespace CalledManagement.EntitiesDAO
         public void ToListComboBox(ComboBox cbxSec)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-
-            string qry = "SELECT Name, Id FROM CALLED";
-
+            var qry = "SELECT Name, Id FROM CALLED";
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();//abre conexão com o banco 
                 try
                 {
                     var cmd = new SqlCommand(qry, connection);
-
                     SqlDataReader rd = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-
                     dt.Load(rd);
                     cbxSec.Text = "Selecione um chamado";
                     cbxSec.DisplayMember = "Name";
@@ -229,32 +220,25 @@ namespace CalledManagement.EntitiesDAO
         public void ToListComBoxID(ComboBox cbxRegID)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-
             string qry = "SELECT Name, Id FROM CALLED";
-
             using (var connection = new SqlConnection(connectionString))
             {
-
                 try
                 {
                     connection.Open();
                     var cmd = new SqlCommand(qry, connection);
-
                     SqlDataReader rd = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-
                     dt.Load(rd);
                     cbxRegID.Text = "Selecione um id";
                     cbxRegID.DisplayMember = "Id";
                     cbxRegID.ValueMember = "Id";
                     cbxRegID.DataSource = dt;
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao Listas registros: " + ex.Message);
                 }
-
                 finally
                 {
                     connection.Close();
@@ -266,10 +250,8 @@ namespace CalledManagement.EntitiesDAO
             Called called = new Called();
             Priority priority = new Priority();
             called.PriorityId = priority;
-
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            string qry = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
-
+            var qry = "SELECT Id, Name, Date, Finished, Descripition, PriorityId FROM CALLED WHERE Id LIKE @Id";
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
