@@ -32,13 +32,23 @@ namespace CalledManagement
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepCalled));
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.academycoding2DataSet = new CalledManagement.academycoding2DataSet();
             this.Query_Called_ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.academycoding2DataSet = new CalledManagement.academycoding2DataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.Query_Called_ReportTableAdapter = new CalledManagement.academycoding2DataSetTableAdapters.Query_Called_ReportTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Query_Called_ReportBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Query_Called_ReportBindingSource
+            // 
+            this.Query_Called_ReportBindingSource.DataMember = "Query_Called_Report";
+            this.Query_Called_ReportBindingSource.DataSource = this.academycoding2DataSet;
+            // 
+            // academycoding2DataSet
+            // 
+            this.academycoding2DataSet.DataSetName = "academycoding2DataSet";
+            this.academycoding2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -54,16 +64,6 @@ namespace CalledManagement
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // academycoding2DataSet
-            // 
-            this.academycoding2DataSet.DataSetName = "academycoding2DataSet";
-            this.academycoding2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // Query_Called_ReportBindingSource
-            // 
-            this.Query_Called_ReportBindingSource.DataMember = "Query_Called_Report";
-            this.Query_Called_ReportBindingSource.DataSource = this.academycoding2DataSet;
-            // 
             // Query_Called_ReportTableAdapter
             // 
             this.Query_Called_ReportTableAdapter.ClearBeforeFill = true;
@@ -78,8 +78,8 @@ namespace CalledManagement
             this.Name = "FrmRepCalled";
             this.Text = "Relatório  Chamados";
             this.Load += new System.EventHandler(this.FrmRepCalled_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Query_Called_ReportBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.academycoding2DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

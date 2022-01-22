@@ -16,5 +16,6 @@ namespace CalledManagement.EntitiesDAO
         public DateTime DateStarted { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime DateChange { get; set; }
+        public List <Called> Calleds { get; set; }
     }
 }

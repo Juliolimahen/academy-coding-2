@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalledManagement.EntitiesDAO;
+using CalledManagement.Views;
 
 namespace CalledManagement
 {
@@ -17,7 +18,7 @@ namespace CalledManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            Application.Run(new FrmLogin());
         }
     }
 }
