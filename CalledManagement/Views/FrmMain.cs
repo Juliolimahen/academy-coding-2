@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalledManagement.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +35,17 @@ namespace CalledManagement
             FrmRepHours frmrephours = new FrmRepHours();
             frmrephours.ShowDialog();
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmDashboard frmDashBoard = new FrmDashboard();
+            frmDashBoard.ShowDialog();
+        }
+
+        private void usuáriosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmUser frmUser = new FrmUser();
+            frmUser.ShowDialog();
+        }
     }
-    
 }

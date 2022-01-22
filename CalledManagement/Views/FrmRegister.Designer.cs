@@ -80,6 +80,8 @@
             this.rbRegStatusFinished = new System.Windows.Forms.RadioButton();
             this.rbRegStatusProgress = new System.Windows.Forms.RadioButton();
             this.gbxTypeRegHoursCalled = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.txtRegDate = new System.Windows.Forms.MaskedTextBox();
             this.btnRegFinishedCalled = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -517,6 +519,7 @@
             // 
             // btnRegInitHours
             // 
+            this.btnRegInitHours.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnRegInitHours.Location = new System.Drawing.Point(29, 501);
             this.btnRegInitHours.Name = "btnRegInitHours";
             this.btnRegInitHours.Size = new System.Drawing.Size(62, 49);
@@ -597,6 +600,7 @@
             // 
             // btnRegInit
             // 
+            this.btnRegInit.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnRegInit.Location = new System.Drawing.Point(35, 501);
             this.btnRegInit.Name = "btnRegInit";
             this.btnRegInit.Size = new System.Drawing.Size(61, 49);
@@ -649,6 +653,8 @@
             // 
             // gbxTypeRegHoursCalled
             // 
+            this.gbxTypeRegHoursCalled.Controls.Add(this.radioButton1);
+            this.gbxTypeRegHoursCalled.Controls.Add(this.radioButton2);
             this.gbxTypeRegHoursCalled.Controls.Add(this.txtRegDate);
             this.gbxTypeRegHoursCalled.Location = new System.Drawing.Point(32, 213);
             this.gbxTypeRegHoursCalled.Name = "gbxTypeRegHoursCalled";
@@ -657,10 +663,32 @@
             this.gbxTypeRegHoursCalled.TabStop = false;
             this.gbxTypeRegHoursCalled.Text = "Data/Hora Cadastro";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(103, 33);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(78, 17);
+            this.radioButton1.TabIndex = 79;
+            this.radioButton1.Text = "Automático";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(8, 33);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(60, 17);
+            this.radioButton2.TabIndex = 78;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Manual";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // txtRegDate
             // 
             this.txtRegDate.Enabled = false;
-            this.txtRegDate.Location = new System.Drawing.Point(6, 37);
+            this.txtRegDate.Location = new System.Drawing.Point(8, 56);
             this.txtRegDate.Mask = "00/00/0000 90:00";
             this.txtRegDate.Name = "txtRegDate";
             this.txtRegDate.Size = new System.Drawing.Size(179, 20);
@@ -698,6 +726,7 @@
             // 
             // btnRegDeleteCalled
             // 
+            this.btnRegDeleteCalled.ForeColor = System.Drawing.Color.Red;
             this.btnRegDeleteCalled.Location = new System.Drawing.Point(233, 501);
             this.btnRegDeleteCalled.Name = "btnRegDeleteCalled";
             this.btnRegDeleteCalled.Size = new System.Drawing.Size(58, 49);
@@ -712,7 +741,7 @@
             this.txtRegDescripition.Location = new System.Drawing.Point(32, 118);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
-            this.txtRegDescripition.Size = new System.Drawing.Size(458, 72);
+            this.txtRegDescripition.Size = new System.Drawing.Size(458, 66);
             this.txtRegDescripition.TabIndex = 39;
             // 
             // txtRegName
@@ -753,6 +782,7 @@
             // 
             // btnRegCancelCalled
             // 
+            this.btnRegCancelCalled.ForeColor = System.Drawing.Color.Red;
             this.btnRegCancelCalled.Location = new System.Drawing.Point(169, 501);
             this.btnRegCancelCalled.Name = "btnRegCancelCalled";
             this.btnRegCancelCalled.Size = new System.Drawing.Size(58, 49);
@@ -763,6 +793,7 @@
             // 
             // btnRegChangeCalled
             // 
+            this.btnRegChangeCalled.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnRegChangeCalled.Location = new System.Drawing.Point(102, 501);
             this.btnRegChangeCalled.Name = "btnRegChangeCalled";
             this.btnRegChangeCalled.Size = new System.Drawing.Size(61, 49);
@@ -889,5 +920,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }

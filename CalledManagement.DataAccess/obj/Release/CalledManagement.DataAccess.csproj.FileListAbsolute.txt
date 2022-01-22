@@ -1,0 +1,6 @@
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement.DataAccess\bin\Release\CalledManagement.DataAccess.dll
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement.DataAccess\bin\Release\CalledManagement.DataAccess.pdb
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement.DataAccess\obj\Release\CalledManagement.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement.DataAccess\obj\Release\CalledManagement.DataAccess.dll
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement.DataAccess\obj\Release\CalledManagement.DataAccess.pdb
+C:\Users\julio\Documents\AcademyCoding 2.0\academycoding2\CalledManagement.DataAccess\obj\Release\CalledManagement.DataAccess.csprojAssemblyReference.cache
