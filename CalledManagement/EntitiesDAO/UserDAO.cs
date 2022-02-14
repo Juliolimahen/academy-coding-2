@@ -244,7 +244,6 @@ namespace CalledManagement.EntitiesDAO
                 {
                     return false;
                 }
- 
             }
         }
     }

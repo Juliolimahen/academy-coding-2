@@ -1,4 +1,6 @@
-﻿using CalledManagement.Views;
+﻿using CalledManagement.EntitiesDAO;
+
+using CalledManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,5 +49,49 @@ namespace CalledManagement
             FrmUser frmUser = new FrmUser();
             frmUser.ShowDialog();
         }
+        public void ListarChamadosAbertos()
+        {
+            CalledDAO calleddao = new CalledDAO();
+            string name = "";
+            dataGridView1.DataSource = calleddao.ToListGrid(name);
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            // TODO: esta linha de código carrega dados na tabela 'academycoding2DataSet.CALLED'. Você pode movê-la ou removê-la conforme necessário.
+            ListarChamadosAbertos();
+        }
+      
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            // método executado somente quando o dado um
+            // duplo clique no DataGridView
+            LevarID();
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // método executado somente quando
+                // dado um ENTER no datagridview
+                LevarID();
+            }
+        }
+
+        private void LevarID()
+        {
+            /*if (dataGridView1. > 0)
+            {
+                /*txtCodigo.Text = listBox1.CurrentRow.Cells[0].Value.ToString();
+                //Pega o valor da celula [0] que é referente
+                // o <<ID>> e passa para o campo txtcodigo
+                tabControl1.SelectedTab = tbpCadastro;
+                txtCodigo.Focus();
+                BuscarRegistro();
+
+            }*/
+        }
+
     }
 }

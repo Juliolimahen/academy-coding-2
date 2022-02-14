@@ -94,22 +94,20 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ToListComboBox(ComboBox cbxRegPriority)
+        public DataTable ToListComboBox()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             string qry = "SELECT Name, Id FROM PRIORITY ORDER BY Days DESC";
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable dt = new DataTable();
                 try
                 {
                     connection.Open();
                     var cmd = new SqlCommand(qry, connection);
                     SqlDataReader adp = cmd.ExecuteReader();
-                    DataTable dt = new DataTable();
+                    
                     dt.Load(adp);
-                    cbxRegPriority.DisplayMember = "Name";
-                    cbxRegPriority.ValueMember = "Id";
-                    cbxRegPriority.DataSource = dt;
                 }
 
                 catch (Exception ex)
@@ -120,6 +118,7 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Close();
                 }
+                return dt;
             }
         }
     }

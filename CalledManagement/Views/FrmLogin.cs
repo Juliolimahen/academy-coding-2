@@ -17,12 +17,13 @@ namespace CalledManagement.Views
         public FrmLogin()
         {
             InitializeComponent();
+            this.MaximumSize = new System.Drawing.Size(404, 490);
         }
         public void Login()
         {
+            
             UserDAO userdao = new UserDAO();
-
-            if (userdao.VerificaLogin(txtUser, txtPassword)==true)
+            if (userdao.VerificaLogin(txtUser, txtPassword) == true)
             {
                 this.Visible = false;
                 FrmMain frmMain = new FrmMain();
@@ -39,5 +40,9 @@ namespace CalledManagement.Views
             Login();
         }
 
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            //var result = txtPassword.Text.Length > 0 ? btnEntrar.Enabled = true : btnEntrar.Enabled = false;
+        }
     }
 }

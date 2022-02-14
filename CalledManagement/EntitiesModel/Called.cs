@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace CalledManagement.EntitiesDAO
 {
     //Classe responsável pela modelagem do chamado
-    public class Called
-    {
+    public class Called : EntitiesModel.IEntidade
+    { 
         //metodos get e set "props" gerados pela IDE
-        public int Id { get; set; }
+        public int Id { get; set;}
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public string Finished { get; set; }

@@ -138,11 +138,11 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ToListGrid(DataGridView dgvSecHours, string name)
+        public DataTable ToListGrid(string name)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            #region
+            #region Buscar Registros Horas
             string QrySelect = "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange ";
             string QryFrom = "FROM HOURWORKED AS H ";
             string QryJoin = "INNER JOIN CALLED AS C ";
@@ -161,6 +161,7 @@ namespace CalledManagement.EntitiesDAO
 
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable dt = new DataTable();
                 try
                 {
                     //Abre conexão
@@ -187,9 +188,8 @@ namespace CalledManagement.EntitiesDAO
                     }
 
                     SqlDataReader rd = cmd.ExecuteReader();
-                    DataTable dt = new DataTable();
                     dt.Load(rd);
-                    dgvSecHours.DataSource = dt;
+                    
                 }
 
                 catch (Exception ex)
@@ -201,6 +201,8 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Close();
                 }
+
+                return dt;
             }
         }
         public void ToListComBox(ComboBox cbxRegID)

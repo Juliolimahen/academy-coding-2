@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CalledManagement.EntitiesDAO
 {
     //classe Prioridade
-    public class Priority
+    public class Priority : EntitiesModel.IEntidade
     {
         public int Id { get; set; }
         public string Name { get; set; }
