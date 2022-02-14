@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalledManagement.EntitiesModel
 {
-    class User
+    class User: EntitiesModel.IEntidade
     {
         //metodos get e set "props" gerados pela IDE
         public int Id { get; set; }

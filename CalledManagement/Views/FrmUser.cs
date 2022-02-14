@@ -29,8 +29,6 @@ namespace CalledManagement.Views
             //cbxRegID.Enabled = false;
             txtRegName.Focus();
             operation = "Init";
-            //txtRegDate.Enabled = false;
-            //txtSecSearchCalled.Enabled = true;
         }
         private Boolean ValidateDataUser()
         {
@@ -54,17 +52,12 @@ namespace CalledManagement.Views
             User user = new User();
             if (ValidateDataUser() == true)
             {
-
-                //HourWorked hourworked = new HourWorked();
                 user.Descripition = txtRegName.Text;
                 user.RegisterDate = DateTime.Now;
                 //user.UpdateDate = DateTime.Now;
                 user.Password = txtRegPassword.Text;
                 user.Email = txtEmail.Text;
 
-                //Priority priority = new Priority();
-                //called.PriorityId = priority;
-                //called.PriorityId.Id = Convert.ToInt32(cbxRegPriority.SelectedValue.ToString());
                 if (operation == "Init")
                 {
                     UserDAO userdao = new UserDAO();
@@ -83,20 +76,15 @@ namespace CalledManagement.Views
                         txtRegName.Focus();
                         return;
                     }
-                    //txtRegDate.Enabled = false;
                 }
             }
 
-            //LoadComboxs();
-            //LoadGrids();
             Function.EnableFields(this, false);
             Function.Clean(this);
             Function.EnableButtons(this, "Init");
             cbxRegID.Enabled = true;
             cbxRegID.Focus();
             operation = "";
-            //txtSecSearchHours.Enabled = true;
-            // txtSecSearchCalled.Enabled = true;
         }
         //botão para editar registros 
         private void btnRegChange_Click(object sender, EventArgs e)
@@ -114,14 +102,10 @@ namespace CalledManagement.Views
             {
                 Function.EnableFields(this, true);
                 Function.EnableButtons(this, "Save");
-                //BuscarRegistroCalled();
                 cbxRegID.Enabled = true;
                 txtRegName.Focus();
             }
-
             operation = "Change";
-            //txtSecSearchHours.Enabled = true;
-            //txtSecSearchCalled.Enabled = true;
         }
         //botão responsável por cancelar cadastro 
         private void btnRegCancel_Click(object sender, EventArgs e)
@@ -133,8 +117,6 @@ namespace CalledManagement.Views
                 Function.Clean(this);
                 Function.EnableButtons(this, "Load");
                 operation = "";
-                // txtSecSearchHours.Enabled = true;
-                // txtSecSearchCalled.Enabled = true;
             }
         }
         //botão resposavel por deletar registros dos chamados 
@@ -169,8 +151,6 @@ namespace CalledManagement.Views
                 MessageBox.Show("Digite um codigo identificador para excluir um registro!");
                 Function.EnableFields(this, true);
             }
-            //txtSecSearchCalled.Enabled = true;
-            //txtSecSearchCalled.Enabled = true;
         }
 
         private void btnRegFinish_Click(object sender, EventArgs e)
@@ -182,10 +162,7 @@ namespace CalledManagement.Views
         {
             Function.EnableFields(this, false);
             Function.EnableButtons(this, "Load");
-            //LoadComboxs();
             LoadGrids();
-            //txtSecSearchHours.Enabled = true;
-            //txtSecSearchCalled.Enabled = true;
             Function.Clean(this);
         }
         public void LoadGrids()
@@ -194,10 +171,6 @@ namespace CalledManagement.Views
       
             string name = txtSecSearchUser.Text;
             userdao.ToListGrid(dgvUser, name);
-
-            //textBoxPesquisa
-            //txtSecSearchCalled.Enabled = true;
-            //txtSecSearchHours.Enabled = true;
         }
         public void LoadComboxs()
         {

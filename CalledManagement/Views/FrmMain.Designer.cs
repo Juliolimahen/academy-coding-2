@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemUser = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.prioradadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.permissõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRegister = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDashBoard = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,22 +50,22 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.usuáriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.prioradadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.permissõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Desktop;
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemUser,
@@ -79,7 +77,7 @@
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(18, 12, 18, 12);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(1440, 60);
+            this.menuStrip1.Size = new System.Drawing.Size(1440, 74);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,34 +85,57 @@
             // 
             this.toolStripMenuItemUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrarToolStripMenuItem});
+            this.toolStripMenuItemUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItemUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItemUser.Name = "toolStripMenuItemUser";
-            this.toolStripMenuItemUser.Size = new System.Drawing.Size(94, 36);
+            this.toolStripMenuItemUser.Size = new System.Drawing.Size(106, 50);
             this.toolStripMenuItemUser.Text = "Admnistrativo";
             // 
             // cadastrarToolStripMenuItem
             // 
+            this.cadastrarToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
             this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuáriosToolStripMenuItem1,
             this.prioradadesToolStripMenuItem,
             this.permissõesToolStripMenuItem});
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
+            // 
+            // usuáriosToolStripMenuItem1
+            // 
+            this.usuáriosToolStripMenuItem1.Name = "usuáriosToolStripMenuItem1";
+            this.usuáriosToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.usuáriosToolStripMenuItem1.Text = "Usuários";
+            this.usuáriosToolStripMenuItem1.Click += new System.EventHandler(this.usuáriosToolStripMenuItem1_Click);
+            // 
+            // prioradadesToolStripMenuItem
+            // 
+            this.prioradadesToolStripMenuItem.Name = "prioradadesToolStripMenuItem";
+            this.prioradadesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.prioradadesToolStripMenuItem.Text = "Prioradades";
+            // 
+            // permissõesToolStripMenuItem
+            // 
+            this.permissõesToolStripMenuItem.Name = "permissõesToolStripMenuItem";
+            this.permissõesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.permissõesToolStripMenuItem.Text = "Permissões";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRegister});
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(82, 36);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(84, 50);
             this.toolStripMenuItem1.Text = "Chamados";
             // 
             // tsmiRegister
             // 
             this.tsmiRegister.Name = "tsmiRegister";
-            this.tsmiRegister.Size = new System.Drawing.Size(133, 22);
-            this.tsmiRegister.Text = "Cadastrar";
+            this.tsmiRegister.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRegister.Text = "Cadastro";
             this.tsmiRegister.Click += new System.EventHandler(this.tsmiRegister_Click);
             // 
             // toolStripMenuItemDashBoard
@@ -123,27 +144,29 @@
             this.toolStripMenuItem2,
             this.horasToolStripMenuItem,
             this.usuáriosToolStripMenuItem});
+            this.toolStripMenuItemDashBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItemDashBoard.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.toolStripMenuItemDashBoard.Name = "toolStripMenuItemDashBoard";
-            this.toolStripMenuItemDashBoard.Size = new System.Drawing.Size(76, 36);
+            this.toolStripMenuItemDashBoard.Size = new System.Drawing.Size(86, 50);
             this.toolStripMenuItemDashBoard.Text = "DashBoard";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItem2.Text = "Chamados";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // horasToolStripMenuItem
             // 
             this.horasToolStripMenuItem.Name = "horasToolStripMenuItem";
-            this.horasToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.horasToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.horasToolStripMenuItem.Text = "Horas";
             // 
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             // 
             // toolStripMenuItem3
@@ -151,22 +174,23 @@
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiReport,
             this.chamadosFechadosToolStripMenuItem});
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(79, 36);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 50);
             this.toolStripMenuItem3.Text = "Relatórios";
             // 
             // tsmiReport
             // 
             this.tsmiReport.Name = "tsmiReport";
-            this.tsmiReport.Size = new System.Drawing.Size(190, 22);
+            this.tsmiReport.Size = new System.Drawing.Size(192, 22);
             this.tsmiReport.Text = "Chamados";
             this.tsmiReport.Click += new System.EventHandler(this.tsmiReport_Click);
             // 
             // chamadosFechadosToolStripMenuItem
             // 
             this.chamadosFechadosToolStripMenuItem.Name = "chamadosFechadosToolStripMenuItem";
-            this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.chamadosFechadosToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.chamadosFechadosToolStripMenuItem.Text = "Horas Trabalhadas ";
             this.chamadosFechadosToolStripMenuItem.Click += new System.EventHandler(this.chamadosFechadosToolStripMenuItem_Click);
             // 
@@ -180,9 +204,9 @@
             this.aCESSORAPIDOToolStripMenuItem,
             this.agendaDeChamadosToolStripMenuItem,
             this.toolStripMenuItem4});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 60);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 66);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(132, 800);
+            this.menuStrip2.Size = new System.Drawing.Size(132, 794);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -200,7 +224,7 @@
             // agendaDeChamadosToolStripMenuItem
             // 
             this.agendaDeChamadosToolStripMenuItem.Name = "agendaDeChamadosToolStripMenuItem";
-            this.agendaDeChamadosToolStripMenuItem.Size = new System.Drawing.Size(136, 796);
+            this.agendaDeChamadosToolStripMenuItem.Size = new System.Drawing.Size(136, 790);
             this.agendaDeChamadosToolStripMenuItem.Text = "Agenda de Chamados";
             // 
             // toolStripMenuItem4
@@ -208,7 +232,7 @@
             this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem5});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(12, 796);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(12, 790);
             // 
             // toolStripMenuItem5
             // 
@@ -217,56 +241,42 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.groupBox1.Location = new System.Drawing.Point(147, 77);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(147, 126);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1157, 644);
+            this.groupBox1.Size = new System.Drawing.Size(1193, 356);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chamados Recentes";
+            this.groupBox1.Text = "Chamados Abertos";
             // 
-            // chart1
+            // dataGridView1
             // 
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(240, 162);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series2";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(445, 277);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            title1.Name = "Title1";
-            this.chart1.Titles.Add(title1);
+            this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.dataGridView1.AllowDrop = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 18);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(1187, 335);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.VirtualMode = true;
             // 
-            // usuáriosToolStripMenuItem1
+            // groupBox2
             // 
-            this.usuáriosToolStripMenuItem1.Name = "usuáriosToolStripMenuItem1";
-            this.usuáriosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.usuáriosToolStripMenuItem1.Text = "Usuários";
-            this.usuáriosToolStripMenuItem1.Click += new System.EventHandler(this.usuáriosToolStripMenuItem1_Click);
-            // 
-            // prioradadesToolStripMenuItem
-            // 
-            this.prioradadesToolStripMenuItem.Name = "prioradadesToolStripMenuItem";
-            this.prioradadesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.prioradadesToolStripMenuItem.Text = "Prioradades";
-            // 
-            // permissõesToolStripMenuItem
-            // 
-            this.permissõesToolStripMenuItem.Name = "permissõesToolStripMenuItem";
-            this.permissõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.permissõesToolStripMenuItem.Text = "Permissões";
+            this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(150, 488);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1190, 344);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Estatisticas";
             // 
             // FrmMain
             // 
@@ -274,7 +284,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1424, 861);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
@@ -286,11 +296,13 @@
             this.Name = "FrmMain";
             this.Text = "Called Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,7 +323,6 @@
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem aCESSORAPIDOToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ToolStripMenuItem agendaDeChamadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
@@ -319,6 +330,8 @@
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem prioradadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem permissõesToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

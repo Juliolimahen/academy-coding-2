@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CalledManagement.EntitiesDAO
 {
     //Classe responsável pela modelagem das horas trabalhadas
-    public class HourWorked
+    public class HourWorked : EntitiesModel.IEntidade
     {
         //metodos get e set "props" gerados pela IDE
         public int Id { get; set; }

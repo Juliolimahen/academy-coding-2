@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -105,8 +108,14 @@
     <Compile Include="EntitiesDAO\UserDAO.cs" />
     <Compile Include="EntitiesModel\Called.cs" />
     <Compile Include="EntitiesModel\HourWorked.cs" />
+    <Compile Include="EntitiesModel\IEntidade.cs" />
     <Compile Include="EntitiesModel\Priority.cs" />
     <Compile Include="EntitiesModel\User.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,14 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="ReportCalled.rdlc" />
     <None Include="academycoding2DataSet.xsc">
       <DependentUpon>academycoding2DataSet.xsd</DependentUpon>
@@ -212,10 +216,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Icons\academy-coding-2-0-1.bmp" />
     <Content Include="Icons\logo.ico" />
     <None Include="Icons\logo.png" />
-    <Content Include="Icons\MainMenu.bmp" />
+    <Content Include="Logo.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
