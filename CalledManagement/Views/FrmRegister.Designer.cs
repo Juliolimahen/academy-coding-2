@@ -98,6 +98,10 @@
             this.btnRegChangeCalled = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tbpClosedCalled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
             this.tbpOpenCalled.SuspendLayout();
@@ -110,14 +114,16 @@
             this.gbxStatus.SuspendLayout();
             this.gbxTypeRegHoursCalled.SuspendLayout();
             this.tbcCalled.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbpClosedCalled
             // 
-            this.tbpClosedCalled.Controls.Add(this.btnSecSearchHours);
-            this.tbpClosedCalled.Controls.Add(this.txtSecSearchHours);
-            this.tbpClosedCalled.Controls.Add(this.label10);
-            this.tbpClosedCalled.Controls.Add(this.dgvSecHours);
+            this.tbpClosedCalled.Controls.Add(this.groupBox4);
+            this.tbpClosedCalled.Controls.Add(this.groupBox3);
             this.tbpClosedCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpClosedCalled.Name = "tbpClosedCalled";
             this.tbpClosedCalled.Padding = new System.Windows.Forms.Padding(3);
@@ -128,7 +134,7 @@
             // 
             // btnSecSearchHours
             // 
-            this.btnSecSearchHours.Location = new System.Drawing.Point(268, 551);
+            this.btnSecSearchHours.Location = new System.Drawing.Point(325, 27);
             this.btnSecSearchHours.Name = "btnSecSearchHours";
             this.btnSecSearchHours.Size = new System.Drawing.Size(102, 23);
             this.btnSecSearchHours.TabIndex = 8;
@@ -138,15 +144,15 @@
             // 
             // txtSecSearchHours
             // 
-            this.txtSecSearchHours.Location = new System.Drawing.Point(68, 554);
+            this.txtSecSearchHours.Location = new System.Drawing.Point(59, 27);
             this.txtSecSearchHours.Name = "txtSecSearchHours";
-            this.txtSecSearchHours.Size = new System.Drawing.Size(185, 20);
+            this.txtSecSearchHours.Size = new System.Drawing.Size(260, 20);
             this.txtSecSearchHours.TabIndex = 7;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 556);
+            this.label10.Location = new System.Drawing.Point(18, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 13);
             this.label10.TabIndex = 6;
@@ -175,10 +181,10 @@
             this.Column15,
             this.Column16});
             this.dgvSecHours.GridColor = System.Drawing.SystemColors.InactiveBorder;
-            this.dgvSecHours.Location = new System.Drawing.Point(3, 3);
+            this.dgvSecHours.Location = new System.Drawing.Point(32, 37);
             this.dgvSecHours.Name = "dgvSecHours";
             this.dgvSecHours.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvSecHours.Size = new System.Drawing.Size(1174, 324);
+            this.dgvSecHours.Size = new System.Drawing.Size(914, 324);
             this.dgvSecHours.TabIndex = 1;
             // 
             // Column10
@@ -240,10 +246,8 @@
             // 
             // tbpOpenCalled
             // 
-            this.tbpOpenCalled.Controls.Add(this.btnSecSearch);
-            this.tbpOpenCalled.Controls.Add(this.txtSecSearchCalled);
-            this.tbpOpenCalled.Controls.Add(this.label9);
-            this.tbpOpenCalled.Controls.Add(this.dgvSecCalled);
+            this.tbpOpenCalled.Controls.Add(this.groupBox6);
+            this.tbpOpenCalled.Controls.Add(this.groupBox5);
             this.tbpOpenCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpOpenCalled.Name = "tbpOpenCalled";
             this.tbpOpenCalled.Padding = new System.Windows.Forms.Padding(3);
@@ -254,9 +258,9 @@
             // 
             // btnSecSearch
             // 
-            this.btnSecSearch.Location = new System.Drawing.Point(260, 548);
+            this.btnSecSearch.Location = new System.Drawing.Point(307, 43);
             this.btnSecSearch.Name = "btnSecSearch";
-            this.btnSecSearch.Size = new System.Drawing.Size(102, 23);
+            this.btnSecSearch.Size = new System.Drawing.Size(107, 23);
             this.btnSecSearch.TabIndex = 7;
             this.btnSecSearch.Text = "Pesquisar";
             this.btnSecSearch.UseVisualStyleBackColor = true;
@@ -264,15 +268,15 @@
             // 
             // txtSecSearchCalled
             // 
-            this.txtSecSearchCalled.Location = new System.Drawing.Point(59, 551);
+            this.txtSecSearchCalled.Location = new System.Drawing.Point(61, 45);
             this.txtSecSearchCalled.Name = "txtSecSearchCalled";
-            this.txtSecSearchCalled.Size = new System.Drawing.Size(185, 20);
+            this.txtSecSearchCalled.Size = new System.Drawing.Size(240, 20);
             this.txtSecSearchCalled.TabIndex = 6;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 554);
+            this.label9.Location = new System.Drawing.Point(20, 48);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 5;
@@ -305,12 +309,12 @@
             this.Column18,
             this.Column8});
             this.dgvSecCalled.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvSecCalled.Location = new System.Drawing.Point(8, 21);
+            this.dgvSecCalled.Location = new System.Drawing.Point(23, 25);
             this.dgvSecCalled.Name = "dgvSecCalled";
             this.dgvSecCalled.ReadOnly = true;
             this.dgvSecCalled.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvSecCalled.RowHeadersWidth = 40;
-            this.dgvSecCalled.Size = new System.Drawing.Size(1158, 489);
+            this.dgvSecCalled.Size = new System.Drawing.Size(1087, 401);
             this.dgvSecCalled.TabIndex = 0;
             this.dgvSecCalled.VirtualMode = true;
             // 
@@ -853,6 +857,50 @@
             this.tbcCalled.Size = new System.Drawing.Size(1200, 650);
             this.tbcCalled.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSecSearchHours);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtSecSearchHours);
+            this.groupBox3.Location = new System.Drawing.Point(49, 23);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1110, 119);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filtros";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dgvSecHours);
+            this.groupBox4.Location = new System.Drawing.Point(49, 169);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1110, 478);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Chamados";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnSecSearch);
+            this.groupBox5.Controls.Add(this.txtSecSearchCalled);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Location = new System.Drawing.Point(37, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1127, 100);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Filtros";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.dgvSecCalled);
+            this.groupBox6.Location = new System.Drawing.Point(37, 150);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1127, 478);
+            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Chamados";
+            // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -865,10 +913,8 @@
             this.Text = "Chamados";
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpClosedCalled.ResumeLayout(false);
-            this.tbpClosedCalled.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).EndInit();
             this.tbpOpenCalled.ResumeLayout(false);
-            this.tbpOpenCalled.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
             this.tbpResgister.ResumeLayout(false);
             this.gbxRegHours.ResumeLayout(false);
@@ -883,6 +929,12 @@
             this.gbxTypeRegHoursCalled.ResumeLayout(false);
             this.gbxTypeRegHoursCalled.PerformLayout();
             this.tbcCalled.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -958,5 +1010,9 @@
         private System.Windows.Forms.DateTimePicker dtpRegDateInit;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
