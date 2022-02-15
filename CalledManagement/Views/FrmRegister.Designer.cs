@@ -30,9 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.tbpClosedCalled = new System.Windows.Forms.TabPage();
-            this.btnSecSearchHours = new System.Windows.Forms.Button();
-            this.txtSecSearchHours = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvSecHours = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,10 +39,12 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSecSearchHours = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSecSearchHours = new System.Windows.Forms.TextBox();
             this.tbpOpenCalled = new System.Windows.Forms.TabPage();
-            this.btnSecSearch = new System.Windows.Forms.Button();
-            this.txtSecSearchCalled = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +56,10 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSecSearch = new System.Windows.Forms.Button();
+            this.txtSecSearchCalled = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.gbxRegHours = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -98,14 +102,14 @@
             this.btnRegChangeCalled = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tbpClosedCalled.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.tbpOpenCalled.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.tbpResgister.SuspendLayout();
             this.gbxRegHours.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -114,10 +118,6 @@
             this.gbxStatus.SuspendLayout();
             this.gbxTypeRegHoursCalled.SuspendLayout();
             this.tbcCalled.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbpClosedCalled
@@ -132,31 +132,15 @@
             this.tbpClosedCalled.Text = "Horas Cadastradas";
             this.tbpClosedCalled.UseVisualStyleBackColor = true;
             // 
-            // btnSecSearchHours
+            // groupBox4
             // 
-            this.btnSecSearchHours.Location = new System.Drawing.Point(325, 27);
-            this.btnSecSearchHours.Name = "btnSecSearchHours";
-            this.btnSecSearchHours.Size = new System.Drawing.Size(102, 23);
-            this.btnSecSearchHours.TabIndex = 8;
-            this.btnSecSearchHours.Text = "Pesquisar";
-            this.btnSecSearchHours.UseVisualStyleBackColor = true;
-            this.btnSecSearchHours.Click += new System.EventHandler(this.btnSecSearchHours_Click);
-            // 
-            // txtSecSearchHours
-            // 
-            this.txtSecSearchHours.Location = new System.Drawing.Point(59, 27);
-            this.txtSecSearchHours.Name = "txtSecSearchHours";
-            this.txtSecSearchHours.Size = new System.Drawing.Size(260, 20);
-            this.txtSecSearchHours.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 32);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Nome";
+            this.groupBox4.Controls.Add(this.dgvSecHours);
+            this.groupBox4.Location = new System.Drawing.Point(49, 159);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1110, 488);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Chamados";
             // 
             // dgvSecHours
             // 
@@ -244,6 +228,44 @@
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column16.Width = 87;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSecSearchHours);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtSecSearchHours);
+            this.groupBox3.Location = new System.Drawing.Point(49, 23);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1110, 94);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filtros";
+            // 
+            // btnSecSearchHours
+            // 
+            this.btnSecSearchHours.Location = new System.Drawing.Point(325, 27);
+            this.btnSecSearchHours.Name = "btnSecSearchHours";
+            this.btnSecSearchHours.Size = new System.Drawing.Size(102, 23);
+            this.btnSecSearchHours.TabIndex = 8;
+            this.btnSecSearchHours.Text = "Pesquisar";
+            this.btnSecSearchHours.UseVisualStyleBackColor = true;
+            this.btnSecSearchHours.Click += new System.EventHandler(this.btnSecSearchHours_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Nome";
+            // 
+            // txtSecSearchHours
+            // 
+            this.txtSecSearchHours.Location = new System.Drawing.Point(59, 27);
+            this.txtSecSearchHours.Name = "txtSecSearchHours";
+            this.txtSecSearchHours.Size = new System.Drawing.Size(260, 20);
+            this.txtSecSearchHours.TabIndex = 7;
+            // 
             // tbpOpenCalled
             // 
             this.tbpOpenCalled.Controls.Add(this.groupBox6);
@@ -256,31 +278,15 @@
             this.tbpOpenCalled.Text = "Chamados Cadastrados";
             this.tbpOpenCalled.UseVisualStyleBackColor = true;
             // 
-            // btnSecSearch
+            // groupBox6
             // 
-            this.btnSecSearch.Location = new System.Drawing.Point(307, 43);
-            this.btnSecSearch.Name = "btnSecSearch";
-            this.btnSecSearch.Size = new System.Drawing.Size(107, 23);
-            this.btnSecSearch.TabIndex = 7;
-            this.btnSecSearch.Text = "Pesquisar";
-            this.btnSecSearch.UseVisualStyleBackColor = true;
-            this.btnSecSearch.Click += new System.EventHandler(this.btnSecSearch_Click);
-            // 
-            // txtSecSearchCalled
-            // 
-            this.txtSecSearchCalled.Location = new System.Drawing.Point(61, 45);
-            this.txtSecSearchCalled.Name = "txtSecSearchCalled";
-            this.txtSecSearchCalled.Size = new System.Drawing.Size(240, 20);
-            this.txtSecSearchCalled.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 48);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Nome";
+            this.groupBox6.Controls.Add(this.dgvSecCalled);
+            this.groupBox6.Location = new System.Drawing.Point(37, 150);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1127, 478);
+            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Chamados";
             // 
             // dgvSecCalled
             // 
@@ -415,6 +421,44 @@
             this.Column8.ReadOnly = true;
             this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column8.Width = 70;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnSecSearch);
+            this.groupBox5.Controls.Add(this.txtSecSearchCalled);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Location = new System.Drawing.Point(37, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1127, 100);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Filtros";
+            // 
+            // btnSecSearch
+            // 
+            this.btnSecSearch.Location = new System.Drawing.Point(307, 43);
+            this.btnSecSearch.Name = "btnSecSearch";
+            this.btnSecSearch.Size = new System.Drawing.Size(107, 23);
+            this.btnSecSearch.TabIndex = 7;
+            this.btnSecSearch.Text = "Pesquisar";
+            this.btnSecSearch.UseVisualStyleBackColor = true;
+            this.btnSecSearch.Click += new System.EventHandler(this.btnSecSearch_Click);
+            // 
+            // txtSecSearchCalled
+            // 
+            this.txtSecSearchCalled.Location = new System.Drawing.Point(61, 45);
+            this.txtSecSearchCalled.Name = "txtSecSearchCalled";
+            this.txtSecSearchCalled.Size = new System.Drawing.Size(240, 20);
+            this.txtSecSearchCalled.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Nome";
             // 
             // tbpResgister
             // 
@@ -857,50 +901,6 @@
             this.tbcCalled.Size = new System.Drawing.Size(1200, 650);
             this.tbcCalled.TabIndex = 0;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnSecSearchHours);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtSecSearchHours);
-            this.groupBox3.Location = new System.Drawing.Point(49, 23);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1110, 119);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Filtros";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dgvSecHours);
-            this.groupBox4.Location = new System.Drawing.Point(49, 169);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1110, 478);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Chamados";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnSecSearch);
-            this.groupBox5.Controls.Add(this.txtSecSearchCalled);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Location = new System.Drawing.Point(37, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1127, 100);
-            this.groupBox5.TabIndex = 8;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Filtros";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.dgvSecCalled);
-            this.groupBox6.Location = new System.Drawing.Point(37, 150);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1127, 478);
-            this.groupBox6.TabIndex = 9;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Chamados";
-            // 
             // FrmRegisterCalled
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -913,9 +913,15 @@
             this.Text = "Chamados";
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpClosedCalled.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tbpOpenCalled.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.tbpResgister.ResumeLayout(false);
             this.gbxRegHours.ResumeLayout(false);
             this.gbxRegHours.PerformLayout();
@@ -929,12 +935,6 @@
             this.gbxTypeRegHoursCalled.ResumeLayout(false);
             this.gbxTypeRegHoursCalled.PerformLayout();
             this.tbcCalled.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
