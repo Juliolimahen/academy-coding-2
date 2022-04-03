@@ -3,7 +3,7 @@ Sistema para organização de chamados abertos, desenvolvido durante o desafio S
 ### Plano de Refatoração 
   - Trabalhar com consultas LINQ 
   - Separar as consultas (banco) em uma solução diferente 
-  - Usar threads para utilizar telas 
+  - Usar threads para atuaizar telas 
   - Usar herança e interfaces nos CRUDS 
   - Criar Dashboards 
   - Criar Controle de acesso de usuários
