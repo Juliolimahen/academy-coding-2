@@ -38,15 +38,15 @@ namespace CalledManagement.EntitiesDAO
                     }
                     else
                     {
-                        cmd.Parameters.AddWithValue("@EndDate",DBNull.Value);
+                        cmd.Parameters.AddWithValue("@EndDate", DBNull.Value);
                     }
 
                     // Retorna o comando SQL de INSERT no banco de dados. 
                     cmd.ExecuteNonQuery();
-                    
+
                     // Retorna true (verdadeiro) caso a inserção do registro seja realizado corretamente.
                     return true;
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -68,7 +68,7 @@ namespace CalledManagement.EntitiesDAO
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
             //Variavel que armazena o camando SQL 
             string qry = "UPDATE HOURWORKED set CalledId = @CalledId, DateStarted = @DateStarted, EndDate = @EndDate, DateChange = @DateChange where Id = @Id";
-            
+
             // Cria objeto connection da classe Sql Connection passando por parâmetro a string de conexão 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -138,16 +138,16 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ToListGrid(DataGridView dgvSecHours, string name)
+        public DataTable ToListGrid(string name)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
-            #region
+            #region Buscar Registros Horas
             string QrySelect = "SELECT H.Id, H.CalledId, C.Name, H.DateInserted, H.DateStarted, H.EndDate, H.DateChange ";
             string QryFrom = "FROM HOURWORKED AS H ";
             string QryJoin = "INNER JOIN CALLED AS C ";
             string QryOn = "ON H.CalledId = C.Id ";
-            string QryOrderBy=  "ORDER BY H.DateInserted DESC ";
+            string QryOrderBy = "ORDER BY H.DateInserted DESC ";
             string QryLike = "WHERE C.Name LIKE @Name ";
             #endregion
 
@@ -161,6 +161,7 @@ namespace CalledManagement.EntitiesDAO
 
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable dt = new DataTable();
                 try
                 {
                     //Abre conexão
@@ -181,15 +182,14 @@ namespace CalledManagement.EntitiesDAO
                         qry.Append(QryOrderBy);
 
                         cmd.CommandText = qry.ToString();
-                                  
-                        cmd.Parameters.AddWithValue("@Name", "%" +name+ "%");
+
+                        cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
                         cmd.ExecuteNonQuery();
                     }
 
                     SqlDataReader rd = cmd.ExecuteReader();
-                    DataTable dt = new DataTable();
                     dt.Load(rd);
-                    dgvSecHours.DataSource = dt;
+                    
                 }
 
                 catch (Exception ex)
@@ -201,6 +201,8 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Close();
                 }
+
+                return dt;
             }
         }
         public void ToListComBox(ComboBox cbxRegID)

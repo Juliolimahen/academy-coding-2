@@ -10,7 +10,7 @@ namespace CalledManagement.Utils
 {
     class Function
     {
-        //funcao responsavel por liampar formularios 
+        //funcao responsavel por limpar formularios 
         public static void Clean(Control formulario)
         {
             foreach (Control ctl in formulario.Controls)
@@ -31,7 +31,6 @@ namespace CalledManagement.Utils
                         {
                             Clean(ctl);
                         }
-
                         break;
                 }
             }
@@ -174,7 +173,6 @@ namespace CalledManagement.Utils
                         {
                             EnableButtons(ctl, sit);
                         }
-
                         break;
                 }
             }

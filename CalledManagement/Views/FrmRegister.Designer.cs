@@ -30,9 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegisterCalled));
             this.tbpClosedCalled = new System.Windows.Forms.TabPage();
-            this.btnSecSearchHours = new System.Windows.Forms.Button();
-            this.txtSecSearchHours = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvSecHours = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,10 +39,12 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSecSearchHours = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSecSearchHours = new System.Windows.Forms.TextBox();
             this.tbpOpenCalled = new System.Windows.Forms.TabPage();
-            this.btnSecSearch = new System.Windows.Forms.Button();
-            this.txtSecSearchCalled = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgvSecCalled = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +56,19 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSecSearch = new System.Windows.Forms.Button();
+            this.txtSecSearchCalled = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbpResgister = new System.Windows.Forms.TabPage();
             this.gbxRegHours = new System.Windows.Forms.GroupBox();
-            this.mstbRegDateTimeFinished = new System.Windows.Forms.MaskedTextBox();
-            this.mstbRegDateTimeInit = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpRegTimeInit = new System.Windows.Forms.DateTimePicker();
+            this.dtpRegDateInit = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpRegTimeFinished = new System.Windows.Forms.DateTimePicker();
+            this.dtpRegDateFinished = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.cbxRegIDHours = new System.Windows.Forms.ComboBox();
             this.btnRegDeleteHours = new System.Windows.Forms.Button();
@@ -69,10 +78,7 @@
             this.btnRegFinishedHours = new System.Windows.Forms.Button();
             this.btnRegInitHours = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.cbxRegHours = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbxRegCalled = new System.Windows.Forms.GroupBox();
             this.btnRegInit = new System.Windows.Forms.Button();
             this.cbxRegID = new System.Windows.Forms.ComboBox();
@@ -80,6 +86,8 @@
             this.rbRegStatusFinished = new System.Windows.Forms.RadioButton();
             this.rbRegStatusProgress = new System.Windows.Forms.RadioButton();
             this.gbxTypeRegHoursCalled = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.txtRegDate = new System.Windows.Forms.MaskedTextBox();
             this.btnRegFinishedCalled = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -95,11 +103,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbcCalled = new System.Windows.Forms.TabControl();
             this.tbpClosedCalled.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.tbpOpenCalled.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.tbpResgister.SuspendLayout();
             this.gbxRegHours.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.gbxRegCalled.SuspendLayout();
             this.gbxStatus.SuspendLayout();
             this.gbxTypeRegHoursCalled.SuspendLayout();
@@ -108,10 +122,8 @@
             // 
             // tbpClosedCalled
             // 
-            this.tbpClosedCalled.Controls.Add(this.btnSecSearchHours);
-            this.tbpClosedCalled.Controls.Add(this.txtSecSearchHours);
-            this.tbpClosedCalled.Controls.Add(this.label10);
-            this.tbpClosedCalled.Controls.Add(this.dgvSecHours);
+            this.tbpClosedCalled.Controls.Add(this.groupBox4);
+            this.tbpClosedCalled.Controls.Add(this.groupBox3);
             this.tbpClosedCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpClosedCalled.Name = "tbpClosedCalled";
             this.tbpClosedCalled.Padding = new System.Windows.Forms.Padding(3);
@@ -120,34 +132,19 @@
             this.tbpClosedCalled.Text = "Horas Cadastradas";
             this.tbpClosedCalled.UseVisualStyleBackColor = true;
             // 
-            // btnSecSearchHours
+            // groupBox4
             // 
-            this.btnSecSearchHours.Location = new System.Drawing.Point(268, 551);
-            this.btnSecSearchHours.Name = "btnSecSearchHours";
-            this.btnSecSearchHours.Size = new System.Drawing.Size(102, 23);
-            this.btnSecSearchHours.TabIndex = 8;
-            this.btnSecSearchHours.Text = "Pesquisar";
-            this.btnSecSearchHours.UseVisualStyleBackColor = true;
-            this.btnSecSearchHours.Click += new System.EventHandler(this.btnSecSearchHours_Click);
-            // 
-            // txtSecSearchHours
-            // 
-            this.txtSecSearchHours.Location = new System.Drawing.Point(68, 554);
-            this.txtSecSearchHours.Name = "txtSecSearchHours";
-            this.txtSecSearchHours.Size = new System.Drawing.Size(185, 20);
-            this.txtSecSearchHours.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 556);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Nome";
+            this.groupBox4.Controls.Add(this.dgvSecHours);
+            this.groupBox4.Location = new System.Drawing.Point(49, 159);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1110, 488);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Chamados";
             // 
             // dgvSecHours
             // 
+            this.dgvSecHours.AllowDrop = true;
             this.dgvSecHours.AllowUserToAddRows = false;
             this.dgvSecHours.AllowUserToDeleteRows = false;
             this.dgvSecHours.AllowUserToResizeColumns = false;
@@ -156,8 +153,9 @@
             this.dgvSecHours.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSecHours.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvSecHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSecHours.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dgvSecHours.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvSecHours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSecHours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSecHours.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
             this.Column11,
@@ -166,13 +164,11 @@
             this.Column14,
             this.Column15,
             this.Column16});
-            this.dgvSecHours.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSecHours.GridColor = System.Drawing.SystemColors.Window;
-            this.dgvSecHours.Location = new System.Drawing.Point(3, 3);
+            this.dgvSecHours.GridColor = System.Drawing.SystemColors.InactiveBorder;
+            this.dgvSecHours.Location = new System.Drawing.Point(32, 37);
             this.dgvSecHours.Name = "dgvSecHours";
             this.dgvSecHours.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvSecHours.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvSecHours.Size = new System.Drawing.Size(1186, 618);
+            this.dgvSecHours.Size = new System.Drawing.Size(914, 324);
             this.dgvSecHours.TabIndex = 1;
             // 
             // Column10
@@ -198,7 +194,7 @@
             this.Column12.HeaderText = "Cod. Chamado ";
             this.Column12.Name = "Column12";
             this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column12.Width = 77;
+            this.Column12.Width = 86;
             // 
             // Column13
             // 
@@ -206,7 +202,7 @@
             this.Column13.HeaderText = "Data Inserção";
             this.Column13.Name = "Column13";
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column13.Width = 72;
+            this.Column13.Width = 80;
             // 
             // Column14
             // 
@@ -214,7 +210,7 @@
             this.Column14.HeaderText = "Data Inicio";
             this.Column14.Name = "Column14";
             this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column14.Width = 58;
+            this.Column14.Width = 64;
             // 
             // Column15
             // 
@@ -222,7 +218,7 @@
             this.Column15.HeaderText = "Data Termino";
             this.Column15.Name = "Column15";
             this.Column15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column15.Width = 69;
+            this.Column15.Width = 77;
             // 
             // Column16
             // 
@@ -230,14 +226,50 @@
             this.Column16.HeaderText = "Data Alteração ";
             this.Column16.Name = "Column16";
             this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column16.Width = 78;
+            this.Column16.Width = 87;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSecSearchHours);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtSecSearchHours);
+            this.groupBox3.Location = new System.Drawing.Point(49, 23);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1110, 94);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filtros";
+            // 
+            // btnSecSearchHours
+            // 
+            this.btnSecSearchHours.Location = new System.Drawing.Point(325, 27);
+            this.btnSecSearchHours.Name = "btnSecSearchHours";
+            this.btnSecSearchHours.Size = new System.Drawing.Size(102, 23);
+            this.btnSecSearchHours.TabIndex = 8;
+            this.btnSecSearchHours.Text = "Pesquisar";
+            this.btnSecSearchHours.UseVisualStyleBackColor = true;
+            this.btnSecSearchHours.Click += new System.EventHandler(this.btnSecSearchHours_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Nome";
+            // 
+            // txtSecSearchHours
+            // 
+            this.txtSecSearchHours.Location = new System.Drawing.Point(59, 27);
+            this.txtSecSearchHours.Name = "txtSecSearchHours";
+            this.txtSecSearchHours.Size = new System.Drawing.Size(260, 20);
+            this.txtSecSearchHours.TabIndex = 7;
             // 
             // tbpOpenCalled
             // 
-            this.tbpOpenCalled.Controls.Add(this.btnSecSearch);
-            this.tbpOpenCalled.Controls.Add(this.txtSecSearchCalled);
-            this.tbpOpenCalled.Controls.Add(this.label9);
-            this.tbpOpenCalled.Controls.Add(this.dgvSecCalled);
+            this.tbpOpenCalled.Controls.Add(this.groupBox6);
+            this.tbpOpenCalled.Controls.Add(this.groupBox5);
             this.tbpOpenCalled.Location = new System.Drawing.Point(4, 22);
             this.tbpOpenCalled.Name = "tbpOpenCalled";
             this.tbpOpenCalled.Padding = new System.Windows.Forms.Padding(3);
@@ -246,36 +278,23 @@
             this.tbpOpenCalled.Text = "Chamados Cadastrados";
             this.tbpOpenCalled.UseVisualStyleBackColor = true;
             // 
-            // btnSecSearch
+            // groupBox6
             // 
-            this.btnSecSearch.Location = new System.Drawing.Point(260, 548);
-            this.btnSecSearch.Name = "btnSecSearch";
-            this.btnSecSearch.Size = new System.Drawing.Size(102, 23);
-            this.btnSecSearch.TabIndex = 7;
-            this.btnSecSearch.Text = "Pesquisar";
-            this.btnSecSearch.UseVisualStyleBackColor = true;
-            this.btnSecSearch.Click += new System.EventHandler(this.btnSecSearch_Click);
-            // 
-            // txtSecSearchCalled
-            // 
-            this.txtSecSearchCalled.Location = new System.Drawing.Point(59, 551);
-            this.txtSecSearchCalled.Name = "txtSecSearchCalled";
-            this.txtSecSearchCalled.Size = new System.Drawing.Size(185, 20);
-            this.txtSecSearchCalled.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 554);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Nome";
+            this.groupBox6.Controls.Add(this.dgvSecCalled);
+            this.groupBox6.Location = new System.Drawing.Point(37, 150);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1127, 478);
+            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Chamados";
             // 
             // dgvSecCalled
             // 
+            this.dgvSecCalled.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.dgvSecCalled.AllowDrop = true;
             this.dgvSecCalled.AllowUserToAddRows = false;
             this.dgvSecCalled.AllowUserToDeleteRows = false;
+            this.dgvSecCalled.AllowUserToOrderColumns = true;
             this.dgvSecCalled.AllowUserToResizeColumns = false;
             this.dgvSecCalled.AllowUserToResizeRows = false;
             this.dgvSecCalled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
@@ -295,13 +314,15 @@
             this.Column9,
             this.Column18,
             this.Column8});
-            this.dgvSecCalled.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSecCalled.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvSecCalled.Location = new System.Drawing.Point(3, 3);
+            this.dgvSecCalled.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvSecCalled.Location = new System.Drawing.Point(23, 25);
             this.dgvSecCalled.Name = "dgvSecCalled";
+            this.dgvSecCalled.ReadOnly = true;
+            this.dgvSecCalled.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvSecCalled.RowHeadersWidth = 40;
-            this.dgvSecCalled.Size = new System.Drawing.Size(1186, 618);
+            this.dgvSecCalled.Size = new System.Drawing.Size(1087, 401);
             this.dgvSecCalled.TabIndex = 0;
+            this.dgvSecCalled.VirtualMode = true;
             // 
             // Column1
             // 
@@ -309,6 +330,7 @@
             this.Column1.DataPropertyName = "Id";
             this.Column1.HeaderText = "Codigo";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column1.Width = 46;
             // 
@@ -318,6 +340,7 @@
             this.Column2.DataPropertyName = "Name";
             this.Column2.HeaderText = "Nome";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column2.Width = 41;
             // 
@@ -327,6 +350,7 @@
             this.Column3.DataPropertyName = "Date";
             this.Column3.HeaderText = "Data";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column3.Width = 36;
             // 
@@ -336,6 +360,7 @@
             this.Column4.DataPropertyName = "Finished";
             this.Column4.HeaderText = "Finalizado (S/N)";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column4.Width = 80;
             // 
@@ -345,6 +370,7 @@
             this.Column5.DataPropertyName = "Descripition";
             this.Column5.HeaderText = "Descrição";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column5.Width = 61;
             // 
@@ -354,6 +380,7 @@
             this.Column6.DataPropertyName = "PriorityId";
             this.Column6.HeaderText = "Cod. Prioridade";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column6.Width = 77;
             // 
@@ -363,6 +390,7 @@
             this.Column7.DataPropertyName = "Name1";
             this.Column7.HeaderText = "Prioridade";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column7.Width = 60;
             // 
@@ -371,16 +399,18 @@
             this.Column9.DataPropertyName = "Days";
             this.Column9.HeaderText = "Dias para conclusão";
             this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column9.Width = 99;
             // 
             // Column18
             // 
             this.Column18.DataPropertyName = "Column1";
-            this.Column18.HeaderText = "Data Termino";
+            this.Column18.HeaderText = "Data Cad. Horas";
             this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
             this.Column18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column18.Width = 69;
+            this.Column18.Width = 83;
             // 
             // Column8
             // 
@@ -388,8 +418,47 @@
             this.Column8.DataPropertyName = "Column2";
             this.Column8.HeaderText = "Tempo gasto (min)";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column8.Width = 70;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnSecSearch);
+            this.groupBox5.Controls.Add(this.txtSecSearchCalled);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Location = new System.Drawing.Point(37, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1127, 100);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Filtros";
+            // 
+            // btnSecSearch
+            // 
+            this.btnSecSearch.Location = new System.Drawing.Point(307, 43);
+            this.btnSecSearch.Name = "btnSecSearch";
+            this.btnSecSearch.Size = new System.Drawing.Size(107, 23);
+            this.btnSecSearch.TabIndex = 7;
+            this.btnSecSearch.Text = "Pesquisar";
+            this.btnSecSearch.UseVisualStyleBackColor = true;
+            this.btnSecSearch.Click += new System.EventHandler(this.btnSecSearch_Click);
+            // 
+            // txtSecSearchCalled
+            // 
+            this.txtSecSearchCalled.Location = new System.Drawing.Point(61, 45);
+            this.txtSecSearchCalled.Name = "txtSecSearchCalled";
+            this.txtSecSearchCalled.Size = new System.Drawing.Size(240, 20);
+            this.txtSecSearchCalled.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Nome";
             // 
             // tbpResgister
             // 
@@ -405,8 +474,8 @@
             // 
             // gbxRegHours
             // 
-            this.gbxRegHours.Controls.Add(this.mstbRegDateTimeFinished);
-            this.gbxRegHours.Controls.Add(this.mstbRegDateTimeInit);
+            this.gbxRegHours.Controls.Add(this.groupBox2);
+            this.gbxRegHours.Controls.Add(this.groupBox1);
             this.gbxRegHours.Controls.Add(this.label11);
             this.gbxRegHours.Controls.Add(this.cbxRegIDHours);
             this.gbxRegHours.Controls.Add(this.btnRegDeleteHours);
@@ -416,10 +485,7 @@
             this.gbxRegHours.Controls.Add(this.btnRegFinishedHours);
             this.gbxRegHours.Controls.Add(this.btnRegInitHours);
             this.gbxRegHours.Controls.Add(this.label13);
-            this.gbxRegHours.Controls.Add(this.label3);
             this.gbxRegHours.Controls.Add(this.cbxRegHours);
-            this.gbxRegHours.Controls.Add(this.label2);
-            this.gbxRegHours.Controls.Add(this.label1);
             this.gbxRegHours.Enabled = false;
             this.gbxRegHours.Location = new System.Drawing.Point(605, 19);
             this.gbxRegHours.Name = "gbxRegHours";
@@ -428,23 +494,64 @@
             this.gbxRegHours.TabStop = false;
             this.gbxRegHours.Text = "Cadastro de Horas";
             // 
-            // mstbRegDateTimeFinished
+            // groupBox2
             // 
-            this.mstbRegDateTimeFinished.Location = new System.Drawing.Point(283, 213);
-            this.mstbRegDateTimeFinished.Mask = "00/00/0000 90:00";
-            this.mstbRegDateTimeFinished.Name = "mstbRegDateTimeFinished";
-            this.mstbRegDateTimeFinished.Size = new System.Drawing.Size(209, 20);
-            this.mstbRegDateTimeFinished.TabIndex = 72;
-            this.mstbRegDateTimeFinished.ValidatingType = typeof(System.DateTime);
+            this.groupBox2.Controls.Add(this.dtpRegTimeInit);
+            this.groupBox2.Controls.Add(this.dtpRegDateInit);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(16, 173);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(476, 69);
+            this.groupBox2.TabIndex = 78;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Data /Hora Inicio";
             // 
-            // mstbRegDateTimeInit
+            // dtpRegTimeInit
             // 
-            this.mstbRegDateTimeInit.Location = new System.Drawing.Point(29, 213);
-            this.mstbRegDateTimeInit.Mask = "00/00/0000 90:00";
-            this.mstbRegDateTimeInit.Name = "mstbRegDateTimeInit";
-            this.mstbRegDateTimeInit.Size = new System.Drawing.Size(193, 20);
-            this.mstbRegDateTimeInit.TabIndex = 71;
-            this.mstbRegDateTimeInit.ValidatingType = typeof(System.DateTime);
+            this.dtpRegTimeInit.Location = new System.Drawing.Point(239, 33);
+            this.dtpRegTimeInit.Name = "dtpRegTimeInit";
+            this.dtpRegTimeInit.Size = new System.Drawing.Size(168, 20);
+            this.dtpRegTimeInit.TabIndex = 74;
+            // 
+            // dtpRegDateInit
+            // 
+            this.dtpRegDateInit.Location = new System.Drawing.Point(6, 33);
+            this.dtpRegDateInit.Name = "dtpRegDateInit";
+            this.dtpRegDateInit.Size = new System.Drawing.Size(227, 20);
+            this.dtpRegDateInit.TabIndex = 73;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 60;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtpRegTimeFinished);
+            this.groupBox1.Controls.Add(this.dtpRegDateFinished);
+            this.groupBox1.Location = new System.Drawing.Point(16, 306);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(475, 70);
+            this.groupBox1.TabIndex = 77;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Data/Hora Termino";
+            // 
+            // dtpRegTimeFinished
+            // 
+            this.dtpRegTimeFinished.Location = new System.Drawing.Point(239, 31);
+            this.dtpRegTimeFinished.Name = "dtpRegTimeFinished";
+            this.dtpRegTimeFinished.Size = new System.Drawing.Size(168, 20);
+            this.dtpRegTimeFinished.TabIndex = 76;
+            // 
+            // dtpRegDateFinished
+            // 
+            this.dtpRegDateFinished.Location = new System.Drawing.Point(6, 31);
+            this.dtpRegDateFinished.Name = "dtpRegDateFinished";
+            this.dtpRegDateFinished.Size = new System.Drawing.Size(227, 20);
+            this.dtpRegDateFinished.TabIndex = 75;
             // 
             // label11
             // 
@@ -517,6 +624,7 @@
             // 
             // btnRegInitHours
             // 
+            this.btnRegInitHours.ForeColor = System.Drawing.Color.Black;
             this.btnRegInitHours.Location = new System.Drawing.Point(29, 501);
             this.btnRegInitHours.Name = "btnRegInitHours";
             this.btnRegInitHours.Size = new System.Drawing.Size(62, 49);
@@ -534,14 +642,6 @@
             this.label13.TabIndex = 61;
             this.label13.Text = "Chamados Cadastrados ";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 213);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
-            this.label3.TabIndex = 60;
-            // 
             // cbxRegHours
             // 
             this.cbxRegHours.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -551,24 +651,6 @@
             this.cbxRegHours.Size = new System.Drawing.Size(463, 21);
             this.cbxRegHours.TabIndex = 59;
             this.cbxRegHours.Text = "selecione um chamado";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 183);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 13);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "Data/Hora Termino";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 183);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Data /Hora Inicio";
             // 
             // gbxRegCalled
             // 
@@ -597,6 +679,7 @@
             // 
             // btnRegInit
             // 
+            this.btnRegInit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRegInit.Location = new System.Drawing.Point(35, 501);
             this.btnRegInit.Name = "btnRegInit";
             this.btnRegInit.Size = new System.Drawing.Size(61, 49);
@@ -649,6 +732,8 @@
             // 
             // gbxTypeRegHoursCalled
             // 
+            this.gbxTypeRegHoursCalled.Controls.Add(this.radioButton1);
+            this.gbxTypeRegHoursCalled.Controls.Add(this.radioButton2);
             this.gbxTypeRegHoursCalled.Controls.Add(this.txtRegDate);
             this.gbxTypeRegHoursCalled.Location = new System.Drawing.Point(32, 213);
             this.gbxTypeRegHoursCalled.Name = "gbxTypeRegHoursCalled";
@@ -657,10 +742,32 @@
             this.gbxTypeRegHoursCalled.TabStop = false;
             this.gbxTypeRegHoursCalled.Text = "Data/Hora Cadastro";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(103, 33);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(78, 17);
+            this.radioButton1.TabIndex = 79;
+            this.radioButton1.Text = "Automático";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(8, 33);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(60, 17);
+            this.radioButton2.TabIndex = 78;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Manual";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // txtRegDate
             // 
             this.txtRegDate.Enabled = false;
-            this.txtRegDate.Location = new System.Drawing.Point(6, 37);
+            this.txtRegDate.Location = new System.Drawing.Point(8, 56);
             this.txtRegDate.Mask = "00/00/0000 90:00";
             this.txtRegDate.Name = "txtRegDate";
             this.txtRegDate.Size = new System.Drawing.Size(179, 20);
@@ -698,6 +805,7 @@
             // 
             // btnRegDeleteCalled
             // 
+            this.btnRegDeleteCalled.ForeColor = System.Drawing.Color.Black;
             this.btnRegDeleteCalled.Location = new System.Drawing.Point(233, 501);
             this.btnRegDeleteCalled.Name = "btnRegDeleteCalled";
             this.btnRegDeleteCalled.Size = new System.Drawing.Size(58, 49);
@@ -712,7 +820,7 @@
             this.txtRegDescripition.Location = new System.Drawing.Point(32, 118);
             this.txtRegDescripition.Multiline = true;
             this.txtRegDescripition.Name = "txtRegDescripition";
-            this.txtRegDescripition.Size = new System.Drawing.Size(458, 72);
+            this.txtRegDescripition.Size = new System.Drawing.Size(458, 66);
             this.txtRegDescripition.TabIndex = 39;
             // 
             // txtRegName
@@ -753,6 +861,7 @@
             // 
             // btnRegCancelCalled
             // 
+            this.btnRegCancelCalled.ForeColor = System.Drawing.Color.Black;
             this.btnRegCancelCalled.Location = new System.Drawing.Point(169, 501);
             this.btnRegCancelCalled.Name = "btnRegCancelCalled";
             this.btnRegCancelCalled.Size = new System.Drawing.Size(58, 49);
@@ -763,6 +872,7 @@
             // 
             // btnRegChangeCalled
             // 
+            this.btnRegChangeCalled.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRegChangeCalled.Location = new System.Drawing.Point(102, 501);
             this.btnRegChangeCalled.Name = "btnRegChangeCalled";
             this.btnRegChangeCalled.Size = new System.Drawing.Size(61, 49);
@@ -803,14 +913,21 @@
             this.Text = "Chamados";
             this.Load += new System.EventHandler(this.FrmRegisterCalled_Load);
             this.tbpClosedCalled.ResumeLayout(false);
-            this.tbpClosedCalled.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecHours)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tbpOpenCalled.ResumeLayout(false);
-            this.tbpOpenCalled.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecCalled)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.tbpResgister.ResumeLayout(false);
             this.gbxRegHours.ResumeLayout(false);
             this.gbxRegHours.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.gbxRegCalled.ResumeLayout(false);
             this.gbxRegCalled.PerformLayout();
             this.gbxStatus.ResumeLayout(false);
@@ -843,8 +960,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxRegHours;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbxRegCalled;
         private System.Windows.Forms.MaskedTextBox txtRegDate;
         private System.Windows.Forms.Button btnRegDeleteCalled;
@@ -869,8 +984,14 @@
         private System.Windows.Forms.DataGridView dgvSecCalled;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbxRegIDHours;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeFinished;
-        private System.Windows.Forms.MaskedTextBox mstbRegDateTimeInit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridView dgvSecHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -881,13 +1002,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridView dgvSecHours;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.DateTimePicker dtpRegTimeFinished;
+        private System.Windows.Forms.DateTimePicker dtpRegDateFinished;
+        private System.Windows.Forms.DateTimePicker dtpRegTimeInit;
+        private System.Windows.Forms.DateTimePicker dtpRegDateInit;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

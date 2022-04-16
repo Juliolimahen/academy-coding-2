@@ -15,6 +15,7 @@ namespace CalledManagement.academycoding2DataSetTableAdapters
     {
     }
 
-    public partial class CALLEDTableAdapter {
+    public partial class CALLEDTableAdapter
+    {
     }
 }

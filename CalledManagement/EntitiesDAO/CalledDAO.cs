@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Text;
+using System.Collections.Generic;
 
 namespace CalledManagement.EntitiesDAO
 {
@@ -125,13 +126,13 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
         }
-        public void ToListGrid(DataGridView dgvSecCalled, string name)
+        public DataTable ToListGrid( string name)
         {
             //string de conexao
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
-            
+
             //Variaveis que armazenam os comandos SQL
-            #region
+            #region Buscar Chamados
             string QrySelect = "SELECT C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE), " +
             "SUM(DATEDIFF(minute, DateStarted, EndDate)) ";
             string QryFrom = "FROM CALLED C ";
@@ -155,7 +156,7 @@ namespace CalledManagement.EntitiesDAO
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
+                DataTable dt = new DataTable();
                 try
                 {
                     var cmd = new SqlCommand(qry.ToString(), connection);
@@ -177,11 +178,8 @@ namespace CalledManagement.EntitiesDAO
                         cmd.Parameters.AddWithValue("@Name", "%" + name + "%");
                         cmd.ExecuteNonQuery();
                     }
-
                     SqlDataReader rd = cmd.ExecuteReader();
-                    DataTable dt = new DataTable();
-                    dt.Load(rd);
-                    dgvSecCalled.DataSource = dt;
+                    dt.Load(rd);   
                 }
 
                 catch (Exception ex)
@@ -192,29 +190,25 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Close();
                 }
+
+                return dt;
             }
         }
-        public void ToListComboBox(ComboBox cbxSec)
+        public DataTable ToListComboBox()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
             string qry = "SELECT Name, Id FROM CALLED";
-
+            
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable dt = new DataTable();
                 connection.Open();//abre conexão com o banco 
                 try
                 {
                     var cmd = new SqlCommand(qry, connection);
-
                     SqlDataReader rd = cmd.ExecuteReader();
-                    DataTable dt = new DataTable();
-
                     dt.Load(rd);
-                    cbxSec.Text = "Selecione um chamado";
-                    cbxSec.DisplayMember = "Name";
-                    cbxSec.ValueMember = "Id";
-                    cbxSec.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -224,9 +218,11 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Close();
                 }
+
+                return dt;
             }
         }
-        public void ToListComBoxID(ComboBox cbxRegID)
+        public DataTable ToListComBoxID()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
 
@@ -234,6 +230,7 @@ namespace CalledManagement.EntitiesDAO
 
             using (var connection = new SqlConnection(connectionString))
             {
+                DataTable dt = new DataTable();
 
                 try
                 {
@@ -241,13 +238,7 @@ namespace CalledManagement.EntitiesDAO
                     var cmd = new SqlCommand(qry, connection);
 
                     SqlDataReader rd = cmd.ExecuteReader();
-                    DataTable dt = new DataTable();
-
                     dt.Load(rd);
-                    cbxRegID.Text = "Selecione um id";
-                    cbxRegID.DisplayMember = "Id";
-                    cbxRegID.ValueMember = "Id";
-                    cbxRegID.DataSource = dt;
                 }
 
                 catch (Exception ex)
@@ -259,6 +250,8 @@ namespace CalledManagement.EntitiesDAO
                 {
                     connection.Close();
                 }
+
+                return dt;
             }
         }
         public Called SearchID(int ID)
@@ -290,6 +283,60 @@ namespace CalledManagement.EntitiesDAO
                 }
             }
             return called;
+        }
+        public List<Called> CarregaListaChamadosAbertos()
+        {
+            List<Called> lista = new List<Called>(); 
+            //string de conexao
+            var connectionString = ConfigurationManager.ConnectionStrings["CalledManagement.Properties.Settings.academycoding2ConnectionString"].ConnectionString;
+
+            //Variaveis que armazenam os comandos SQL
+            #region
+            string QrySelect = "SELECT C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE), " +
+            "SUM(DATEDIFF(minute, DateStarted, EndDate)) ";
+            string QryFrom = "FROM CALLED C ";
+            string QryInnerJoin = "INNER JOIN PRIORITY P ON C.PriorityId = P.Id ";
+            string QryLeftJoin = "LEFT JOIN HOURWORKED H ON C.Id = H.CalledId ";
+            string QryGroupBy = "group BY C.Id, C.Name, C.Date, C.Finished, C.Descripition, C.PriorityId, P.Name, P.Days, CAST(H.DateInserted AS DATE) ";
+            string QryOrderBy = "ORDER BY C.Finished, CAST(H.DateInserted AS DATE), C.Date DESC, C.PriorityId DESC ";
+            //string QryWhere = "WHERE c.Name ";
+            //string QryLike = "LIKE @Name ";
+            #endregion
+
+            StringBuilder qry = new StringBuilder();
+
+            qry.Append(QrySelect);
+            qry.Append(QryFrom);
+            qry.Append(QryInnerJoin);
+            qry.Append(QryLeftJoin);
+            qry.Append(QryGroupBy);
+            qry.Append(QryOrderBy);
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                //DataTable dt = new DataTable();
+                connection.Open();
+
+                
+                    var cmd = new SqlCommand(qry.ToString(), connection);
+
+                    // Pesquisa por nome Nome
+                    
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    //Recupera Campos
+                    Called called = new Called();
+                    //called.Id = int.Parse(rd["C.Id"].ToString());
+                    called.Name = rd["C.Name"].ToString();
+                    lista.Add(called);
+                }
+
+                    connection.Close();
+                }
+                return lista;
         }
     }
 }
