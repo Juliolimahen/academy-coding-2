@@ -7,7 +7,27 @@
 Sistema para organização de chamados abertos desenvolvido durante o desafio Smartbreeder Academy Coding 2.0. 
 
 ## Layout Desktop
-![Login ](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/login.png) ![Home ](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/menu-principal.png) ![Cadastro chamado](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/cadastro-chamado.png) ![Cadastro horas](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/cadastro-horas.png) ![Listagem chamados](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/listagem-chamados.png) ![Listagem horas ](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/listagem-horas.png) ![Relatório 1](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/relatorio_1.png) ![Relatório 2](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/relatorio_2.png)
+
+### Login 
+![Login ](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/login.png) 
+
+### Menu Principal
+![Home ](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/menu-principal.png) 
+
+### Cadastro de chamados
+![Cadastro chamado](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/cadastro-chamado.png) 
+
+### Cadastro de horas
+![Cadastro horas](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/cadastro-horas.png) 
+
+### Listagem de chamados
+![Listagem chamados](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/listagem-chamados.png) 
+
+### Listagem de horas
+![Listagem horas ](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/listagem-horas.png) 
+
+### Relatório
+![Relatório 1](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/relatorio_1.png) ![Relatório 2](https://github.com/Juliolimahen/assets/blob/main/academy-coding-2/relatorio_2.png)
 
 
 ## Modelo conceitual
