@@ -51,7 +51,8 @@ Sistema para organização de chamados abertos desenvolvido durante o desafio Sm
 - Criar Logs de acesso 
 - Criar Testes de integração 
 - Criar Testes Unitários 
-- Automatizar Testes 
+- Automatizar Testes
+- Em andamento...
 
 # Autor
 
